@@ -1,6 +1,8 @@
 pub mod castling_rights;
 pub mod chess;
 pub mod color;
+pub mod knightattacks;
 pub mod piece;
+pub mod rayattacks;
 pub mod square;
 pub mod utils;
