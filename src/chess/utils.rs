@@ -140,6 +140,13 @@ pub fn parse_row(
     (pieces, squares)
 }
 
+pub fn set_bit(bitboard: BitBoard, row: i32, col: i32) -> BitBoard {
+    if row < 1 || row > 8 || col < 1 || col > 8 {
+        return bitboard;
+    }
+    bitboard | (1 << ((col - 1) + (row - 1) * 8))
+}
+
 pub fn bitboard_to_string(bitboard: BitBoard, mark: Option<usize>) -> String {
     let mut row = String::new();
     let mut board = String::new();

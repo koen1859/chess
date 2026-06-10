@@ -1,4 +1,4 @@
-use crate::chess::utils::{BitBoard, bitboard_to_string};
+use crate::chess::utils::{BitBoard, bitboard_to_string, set_bit};
 
 pub struct KnightAttacks(Vec<BitBoard>);
 
@@ -29,16 +29,9 @@ fn knight_attacks(row: i32, col: i32) -> BitBoard {
     ];
 
     for (r, c) in attack_pairs {
-        bitboard |= set_bit(row + r, col + c)
+        bitboard = set_bit(bitboard, row + r, col + c)
     }
     bitboard
-}
-
-fn set_bit(row: i32, col: i32) -> BitBoard {
-    if row < 1 || row > 8 || col < 1 || col > 8 {
-        return 0;
-    }
-    1 << ((col - 1) + (row - 1) * 8)
 }
 
 #[cfg(test)]

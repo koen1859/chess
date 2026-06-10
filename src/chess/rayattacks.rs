@@ -1,4 +1,4 @@
-use crate::chess::utils::{BitBoard, bit_scan, bit_scan_backward, bitboard_to_string};
+use crate::chess::utils::{BitBoard, bit_scan, bit_scan_backward, bitboard_to_string, set_bit};
 
 pub struct Rays {
     north_rays: Vec<BitBoard>,
@@ -50,26 +50,19 @@ impl Rays {
 }
 
 // Ray starting from (row, col) with dr=1 north, dr=-1 south, dc=1 east, dc=-1 west
-fn ray(row: usize, col: usize, dr: isize, dc: isize) -> BitBoard {
+fn ray(row: usize, col: usize, dr: i32, dc: i32) -> BitBoard {
     let mut bb = 0;
 
-    let mut r = row as isize + dr;
-    let mut c = col as isize + dc;
+    let mut r: i32 = row as i32 + dr;
+    let mut c: i32 = col as i32 + dc;
 
     while (1..=8).contains(&r) && (1..=8).contains(&c) {
-        bb = set_bit(bb, r as usize, c as usize);
+        bb = set_bit(bb, r, c);
         r += dr;
         c += dc;
     }
 
     bb
-}
-
-pub fn set_bit(bitboard: BitBoard, row: usize, col: usize) -> BitBoard {
-    if row < 1 || row > 8 || col < 1 || col > 8 {
-        return bitboard;
-    }
-    bitboard | (1 << ((col - 1) + (row - 1) * 8))
 }
 
 // Forward ray indicates whether bit indices increase or decrease when moving away from the source square over the ray.
