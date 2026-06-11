@@ -1,6 +1,8 @@
 use crate::chess::utils::{BitBoard, bitboard_to_string, set_bit};
 
-pub struct KnightAttacks(Vec<BitBoard>);
+pub struct KnightAttacks {
+    pub attacks: Vec<BitBoard>,
+}
 
 impl KnightAttacks {
     pub fn new() -> Self {
@@ -11,7 +13,7 @@ impl KnightAttacks {
                 attacks.push(attacks_from_this_square);
             }
         }
-        Self(attacks)
+        Self { attacks: attacks }
     }
 }
 
@@ -41,8 +43,14 @@ mod tests {
     #[test]
     fn print_knight_attacks() {
         let knight_attacks = KnightAttacks::new();
-        println!("{}", bitboard_to_string(knight_attacks.0[3], Some(3)));
-        println!("{}", bitboard_to_string(knight_attacks.0[30], Some(30)));
-        println!("{}", bitboard_to_string(knight_attacks.0[39], Some(39)));
+        println!("{}", bitboard_to_string(knight_attacks.attacks[3], Some(3)));
+        println!(
+            "{}",
+            bitboard_to_string(knight_attacks.attacks[30], Some(30))
+        );
+        println!(
+            "{}",
+            bitboard_to_string(knight_attacks.attacks[39], Some(39))
+        );
     }
 }

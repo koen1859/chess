@@ -11,6 +11,6 @@ bitflags! {
         const ALL = Self::WHITEKINGSIDE.bits()
             |Self::WHITEQUEENSIDE.bits()
             |Self::BLACKKINGSIDE.bits()
-            |Self::BLACKKINGSIDE.bits();
+            |Self::BLACKQUEENSIDE.bits();
     }
 }

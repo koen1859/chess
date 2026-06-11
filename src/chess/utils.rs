@@ -3,11 +3,11 @@ pub type BitBoard = u64;
 
 use crate::chess::{
     color::Color,
-    piece::{Piece, PiecePos, PieceType},
+    piece::{Piece, PieceType},
     square::Square,
 };
 
-pub fn bit_to_pos(bit: PiecePos) -> Result<String, String> {
+pub fn bit_to_pos(bit: BitBoard) -> Result<String, String> {
     if bit == 0 {
         Err("No piece present!".to_string())
     } else {
@@ -16,7 +16,7 @@ pub fn bit_to_pos(bit: PiecePos) -> Result<String, String> {
     }
 }
 
-pub fn pos_to_bit(pos: &str) -> Result<PiecePos, String> {
+pub fn pos_to_bit(pos: &str) -> Result<BitBoard, String> {
     if pos.len() != 2 {
         return Err(format!(
             "Invalid length for piece position: {}, string: '{}'",

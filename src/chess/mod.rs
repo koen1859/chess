@@ -2,6 +2,7 @@ pub mod castling_rights;
 pub mod chess;
 pub mod color;
 pub mod knightattacks;
+pub mod movegeneration;
 pub mod pawnattacks;
 pub mod piece;
 pub mod rayattacks;
