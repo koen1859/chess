@@ -11,7 +11,7 @@
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
-      nativeBuildInputs = with pkgs; [rustc cargo rustfmt];
+      nativeBuildInputs = with pkgs; [rustc cargo rustfmt cargo-watch];
     in {
       devShells.default = pkgs.mkShell {
         buildInputs = nativeBuildInputs;
