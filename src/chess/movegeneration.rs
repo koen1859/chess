@@ -1,51 +1,77 @@
 use crate::chess::{
     chess::Chess,
     color::Color::{Black, White},
-    knightattacks::KnightAttacks,
-    piece::{Piece, PieceType::*},
-    utils::{BitBoard, bit_scan, bitboard_to_string},
+    knightattacks::KNIGHT_ATTACKS,
+    utils::{BitBoard, bit_scan, extract_bits},
 };
+use bitflags::bitflags;
 
-// Take a chess game (full position), and return a vector of all possible next positions
-pub fn generate_moves(game: &Chess) -> Vec<Chess> {
-    let mut new_positions: Vec<BitBoard> = vec![];
-
-    for piece in &game.pieces {
-        if piece.color == game.active_color {
-            match piece.piece_type {
-                Knight => {
-                    let positions = generate_knight_moves(&piece, &game);
-                    new_positions.extend(positions);
-                }
-                typ => panic!("Unimplemented!"),
-            }
-        }
-    }
-
-    vec![]
+#[derive(Debug, Clone, Copy)]
+pub struct Move {
+    pub from: u8,
+    pub to: u8,
+    pub flags: MoveFlags,
 }
 
-fn generate_knight_moves(piece: &Piece, game: &Chess) -> Vec<BitBoard> {
-    let mut attacks: BitBoard = game.knight_attacks.attacks[bit_scan(piece.position)];
+bitflags! {
+    #[derive(Debug, Clone, Copy)]
+    pub struct MoveFlags: u8 {
+        const CAPTURE=1;
+        const EN_PASSENT=2;
+        const CASTLE=4;
+        const PROMOTION=8;
+    }
+}
 
-    // Find all the squares occupied by our own pieces
-    let own_occupancy: BitBoard = match piece.color {
-        White => game.white_occupancy,
-        Black => game.black_occupancy,
-    };
+impl Chess {
+    pub fn generate_moves(&self) -> Vec<Move> {
+        let mut moves = Vec::new();
+        self.generate_knight_moves(&mut moves);
+        moves
+    }
 
-    // attacks &= -own_occupancy;
+    fn generate_knight_moves(&self, moves: &mut Vec<Move>) {
+        let (knights_unmut, own_occ, enemy_occ) = match self.active_color {
+            White => (
+                self.white_knights,
+                self.white_occupancy(),
+                self.black_occupancy(),
+            ),
+            Black => (
+                self.black_knights,
+                self.black_occupancy(),
+                self.white_occupancy(),
+            ),
+        };
+        let mut knights: BitBoard = knights_unmut;
 
-    println!(
-        "{}",
-        bitboard_to_string(attacks, Some(bit_scan(piece.position)))
-    );
-    vec![attacks]
+        while knights != 0 {
+            let from: usize = bit_scan(knights);
+            let mut targets: BitBoard = KNIGHT_ATTACKS[from] & !own_occ;
+
+            while targets != 0 {
+                let to: usize = bit_scan(targets);
+                let flags = if (enemy_occ >> to) & 1 != 0 {
+                    MoveFlags::CAPTURE
+                } else {
+                    MoveFlags::empty()
+                };
+                moves.push(Move {
+                    from: from as u8,
+                    to: to as u8,
+                    flags: flags,
+                });
+                targets &= targets - 1;
+            }
+            knights &= knights - 1;
+        }
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::bitboard_to_string;
 
     #[test]
     fn test_movegen() {
@@ -53,10 +79,10 @@ mod tests {
 
         println!("{}", chess.to_string());
 
-        println!("{}", bitboard_to_string(chess.white_occupancy, None));
+        println!("{}", bitboard_to_string(chess.white_occupancy(), None));
 
-        println!("{}", bitboard_to_string(chess.black_occupancy, None));
+        println!("{}", bitboard_to_string(chess.black_occupancy(), None));
 
-        generate_moves(&chess);
+        println!("{:?}", chess.generate_moves());
     }
 }

@@ -1,74 +1,71 @@
-use crate::chess::utils::{BitBoard, bit_scan, bit_scan_backward, bitboard_to_string, set_bit};
+use crate::chess::utils::{BitBoard, bit_scan, bit_scan_backward, set_bit};
+
+pub const RAYS: Rays = Rays::new();
 
 pub struct Rays {
-    north_rays: Vec<BitBoard>,
-    south_rays: Vec<BitBoard>,
-    east_rays: Vec<BitBoard>,
-    west_rays: Vec<BitBoard>,
+    pub north: [BitBoard; 64],
+    pub south: [BitBoard; 64],
+    pub east: [BitBoard; 64],
+    pub west: [BitBoard; 64],
 
-    northeast_rays: Vec<BitBoard>,
-    northwest_rays: Vec<BitBoard>,
-    southeast_rays: Vec<BitBoard>,
-    southwest_rays: Vec<BitBoard>,
+    pub northeast: [BitBoard; 64],
+    pub northwest: [BitBoard; 64],
+    pub southeast: [BitBoard; 64],
+    pub southwest: [BitBoard; 64],
 }
 
 impl Rays {
-    fn new() -> Self {
-        let mut north_rays = vec![];
-        let mut south_rays = vec![];
-        let mut east_rays = vec![];
-        let mut west_rays = vec![];
-        let mut northeast_rays = vec![];
-        let mut northwest_rays = vec![];
-        let mut southeast_rays = vec![];
-        let mut southwest_rays = vec![];
+    const fn new() -> Self {
+        Rays {
+            north: generate_ray_family(1, 0),
+            south: generate_ray_family(-1, 0),
+            east: generate_ray_family(0, 1),
+            west: generate_ray_family(0, -1),
 
-        for row in 1..=8 {
-            for col in 1..=8 {
-                north_rays.push(ray(row, col, 1, 0));
-                south_rays.push(ray(row, col, -1, 0));
-                east_rays.push(ray(row, col, 0, 1));
-                west_rays.push(ray(row, col, 0, -1));
-                northeast_rays.push(ray(row, col, 1, 1));
-                northwest_rays.push(ray(row, col, 1, -1));
-                southeast_rays.push(ray(row, col, -1, 1));
-                southwest_rays.push(ray(row, col, -1, -1));
-            }
-        }
-
-        Self {
-            north_rays: north_rays,
-            south_rays: south_rays,
-            east_rays: east_rays,
-            west_rays: west_rays,
-            northeast_rays: northeast_rays,
-            northwest_rays: northwest_rays,
-            southeast_rays: southeast_rays,
-            southwest_rays: southwest_rays,
+            northeast: generate_ray_family(1, 1),
+            northwest: generate_ray_family(1, -1),
+            southeast: generate_ray_family(-1, 1),
+            southwest: generate_ray_family(-1, -1),
         }
     }
 }
 
 // Ray starting from (row, col) with dr=1 north, dr=-1 south, dc=1 east, dc=-1 west
-fn ray(row: usize, col: usize, dr: i32, dc: i32) -> BitBoard {
-    let mut bb = 0;
+const fn ray(row: i32, col: i32, dr: i32, dc: i32) -> BitBoard {
+    let mut bitboard = 0;
 
     let mut r: i32 = row as i32 + dr;
     let mut c: i32 = col as i32 + dc;
 
-    while (1..=8).contains(&r) && (1..=8).contains(&c) {
-        bb = set_bit(bb, r, c);
+    while r >= 1 && r <= 8 && c >= 1 && c <= 8 {
+        bitboard = set_bit(bitboard, r, c);
         r += dr;
         c += dc;
     }
 
-    bb
+    bitboard
+}
+
+const fn generate_ray_family(dr: i32, dc: i32) -> [BitBoard; 64] {
+    let mut rays = [0; 64];
+
+    let mut row = 1;
+    while row <= 8 {
+        let mut col = 1;
+        while col <= 8 {
+            let sq = ((row - 1) * 8 + (col - 1)) as usize;
+            rays[sq] = ray(row, col, dr, dc);
+            col += 1;
+        }
+        row += 1;
+    }
+    rays
 }
 
 // Forward ray indicates whether bit indices increase or decrease when moving away from the source square over the ray.
-fn blocked_ray_attack(
+const fn blocked_ray_attack(
     ray: BitBoard,
-    ray_family: &Vec<BitBoard>,
+    ray_family: &[BitBoard; 64],
     forward_ray: bool,
     occupancy: BitBoard,
 ) -> BitBoard {
@@ -81,7 +78,7 @@ fn blocked_ray_attack(
     }
 
     // Find the index of the square that is blocked
-    let blocking_bit_index: usize = if forward_ray {
+    let blocker: usize = if forward_ray {
         bit_scan(overlap)
     } else {
         bit_scan_backward(overlap)
@@ -89,7 +86,7 @@ fn blocked_ray_attack(
 
     // Get a ray in the same direction starting from the blocking square (So not including the blocking square)
     // This is logical since if a piece blocks the ray we can take that piece, so we want this square to be included in the final ray
-    let ray_after = ray_family[blocking_bit_index];
+    let ray_after = ray_family[blocker];
 
     // Return the inverse of the intersection of the original ray and the blocked part
     ray ^ ray_after
@@ -98,6 +95,7 @@ fn blocked_ray_attack(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::bitboard_to_string;
 
     #[test]
     fn make_n_ray() {
@@ -122,7 +120,7 @@ mod tests {
         let occupancy = blocker;
 
         let rays = Rays::new();
-        let result = blocked_ray_attack(ray, &rays.northeast_rays, true, occupancy);
+        let result = blocked_ray_attack(ray, &rays.northeast, true, occupancy);
 
         // Expected: only squares before and including blocker remain:
         // (5,5) only

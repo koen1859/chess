@@ -9,6 +9,6 @@ fn main() {
     println!("En passent: {:?}", chess.en_passent);
     println!("Full move number: {:?}", chess.fullmove_number);
 
-    println!("{}", bitboard_to_string(chess.white_occupancy, None));
-    println!("{}", bitboard_to_string(chess.black_occupancy, None));
+    println!("{}", bitboard_to_string(chess.white_occupancy(), None));
+    println!("{}", bitboard_to_string(chess.black_occupancy(), None));
 }

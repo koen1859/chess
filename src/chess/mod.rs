@@ -4,7 +4,6 @@ pub mod color;
 pub mod knightattacks;
 pub mod movegeneration;
 pub mod pawnattacks;
-pub mod piece;
 pub mod rayattacks;
 pub mod square;
 pub mod utils;

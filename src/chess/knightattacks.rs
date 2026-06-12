@@ -1,24 +1,26 @@
-use crate::chess::utils::{BitBoard, bitboard_to_string, set_bit};
+use crate::chess::utils::{BitBoard, set_bit};
 
-pub struct KnightAttacks {
-    pub attacks: Vec<BitBoard>,
-}
+pub const KNIGHT_ATTACKS: [BitBoard; 64] = generate_knight_attacks();
 
-impl KnightAttacks {
-    pub fn new() -> Self {
-        let mut attacks: Vec<BitBoard> = vec![];
-        for row in 1..=8 {
-            for col in 1..=8 {
-                let attacks_from_this_square = knight_attacks(row, col);
-                attacks.push(attacks_from_this_square);
-            }
+const fn generate_knight_attacks() -> [BitBoard; 64] {
+    let mut attacks = [0; 64];
+
+    let mut row = 1;
+    while row <= 8 {
+        let mut col = 1;
+        while col <= 8 {
+            attacks[((row - 1) * 8 + (col - 1)) as usize] = knight_attacks(row, col);
+            col += 1;
         }
-        Self { attacks: attacks }
+        row += 1;
     }
+
+    attacks
 }
 
-fn knight_attacks(row: i32, col: i32) -> BitBoard {
-    let mut bitboard: BitBoard = 0;
+const fn knight_attacks(row: i32, col: i32) -> BitBoard {
+    let mut bitboard = 0;
+
     let attack_pairs = [
         (1, 2),
         (1, -2),
@@ -30,27 +32,25 @@ fn knight_attacks(row: i32, col: i32) -> BitBoard {
         (-2, -1),
     ];
 
-    for (r, c) in attack_pairs {
-        bitboard = set_bit(bitboard, row + r, col + c)
+    let mut i = 0;
+    while i < attack_pairs.len() {
+        let (r, c) = attack_pairs[i];
+        bitboard = set_bit(bitboard, row + r, col + c);
+        i += 1;
     }
+
     bitboard
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::bitboard_to_string;
 
     #[test]
     fn print_knight_attacks() {
-        let knight_attacks = KnightAttacks::new();
-        println!("{}", bitboard_to_string(knight_attacks.attacks[3], Some(3)));
-        println!(
-            "{}",
-            bitboard_to_string(knight_attacks.attacks[30], Some(30))
-        );
-        println!(
-            "{}",
-            bitboard_to_string(knight_attacks.attacks[39], Some(39))
-        );
+        println!("{}", bitboard_to_string(KNIGHT_ATTACKS[3], Some(3)));
+        println!("{}", bitboard_to_string(KNIGHT_ATTACKS[30], Some(30)));
+        println!("{}", bitboard_to_string(KNIGHT_ATTACKS[39], Some(39)));
     }
 }

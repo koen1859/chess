@@ -1,11 +1,7 @@
 use std::{char, collections::VecDeque};
 pub type BitBoard = u64;
 
-use crate::chess::{
-    color::Color,
-    piece::{Piece, PieceType},
-    square::Square,
-};
+use crate::chess::{color::Color, square::Square};
 
 pub fn bit_to_pos(bit: BitBoard) -> Result<String, String> {
     if bit == 0 {
@@ -73,14 +69,26 @@ pub fn index_to_pos(index: usize) -> String {
 
 // Returns the number of trailing zeros of a BitBoard
 // So: 00101110 -> 1
-pub fn bit_scan(bit: BitBoard) -> usize {
+pub const fn bit_scan(bit: BitBoard) -> usize {
     bit.trailing_zeros() as usize
 }
 
 // Returns number of bits after the highest nonzero bit
 // So: 00101110 -> 5
-pub fn bit_scan_backward(bit: BitBoard) -> usize {
+pub const fn bit_scan_backward(bit: BitBoard) -> usize {
     63 - bit.leading_zeros() as usize
+}
+
+pub fn extract_bits(mut bits: BitBoard) -> Vec<usize> {
+    // 00101 -> [0,2]
+    let mut result: Vec<usize> = Vec::with_capacity(bits.count_ones() as usize);
+
+    while bits != 0 {
+        result.push(bit_scan(bits));
+        bits &= bits - 1;
+    }
+
+    result
 }
 
 // s: "ABCDEF", sep: 'C' -> ("AB", "DEF")
@@ -92,55 +100,7 @@ pub fn split_on(s: &str, sep: char) -> (&str, &str) {
         .unwrap_or((&s[..], ""))
 }
 
-pub fn parse_row(
-    row: &str,
-    mut piece_index: usize,
-    mut piece_position: usize,
-) -> (Vec<Piece>, VecDeque<Square>) {
-    let mut pieces = Vec::new();
-    let mut squares = VecDeque::new();
-
-    let mut color: Color;
-
-    macro_rules! add_piece {
-        ($piece_type:ident) => {{
-            pieces.push(Piece::new(
-                (1 as BitBoard) << piece_position,
-                color,
-                PieceType::$piece_type,
-            ));
-            squares.push_front(Square::Occupied(piece_index));
-            piece_position += 1;
-            piece_index += 1;
-        }};
-    }
-
-    for c in row.chars() {
-        let is_upper = c.is_ascii_uppercase();
-        color = if is_upper { Color::White } else { Color::Black };
-        match c.to_ascii_lowercase() {
-            'r' => add_piece!(Rook),
-            'n' => add_piece!(Knight),
-            'b' => add_piece!(Bishop),
-            'q' => add_piece!(Queen),
-            'k' => add_piece!(King),
-            'p' => add_piece!(Pawn),
-            num => match num.to_digit(10) {
-                None => panic!("Invalid input: {}", num),
-                Some(number) => {
-                    for _ in 0..number {
-                        squares.push_front(Square::Empty);
-                        piece_position += 1;
-                    }
-                }
-            },
-        }
-    }
-
-    (pieces, squares)
-}
-
-pub fn set_bit(bitboard: BitBoard, row: i32, col: i32) -> BitBoard {
+pub const fn set_bit(bitboard: BitBoard, row: i32, col: i32) -> BitBoard {
     if row < 1 || row > 8 || col < 1 || col > 8 {
         return bitboard;
     }
