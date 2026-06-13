@@ -41,16 +41,3 @@ const fn knight_attacks(row: i32, col: i32) -> BitBoard {
 
     bitboard
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::bitboard_to_string;
-
-    #[test]
-    fn print_knight_attacks() {
-        println!("{}", bitboard_to_string(KNIGHT_MOVES[3], Some(3)));
-        println!("{}", bitboard_to_string(KNIGHT_MOVES[30], Some(30)));
-        println!("{}", bitboard_to_string(KNIGHT_MOVES[39], Some(39)));
-    }
-}

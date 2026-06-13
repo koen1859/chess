@@ -1,12 +1,5 @@
 use crate::chess::utils::*;
-use crate::chess::{
-    castling_rights::CastlingRights,
-    color::{
-        Color,
-        Color::{Black, White},
-    },
-    square::Square,
-};
+use crate::chess::{castling_rights::CastlingRights, color::Color, square::Square};
 
 #[derive(Clone, Copy)]
 pub struct Chess {
@@ -14,7 +7,7 @@ pub struct Chess {
 
     pub active_color: Color,
     pub castling_rights: CastlingRights,
-    pub en_passent: Option<BitBoard>,
+    pub en_passant: BitBoard,
     pub halfmove_clock: usize,
     pub fullmove_number: usize,
 
@@ -56,7 +49,7 @@ impl Chess {
             squares: [Square::Empty; 64],
             active_color: Color::White,
             castling_rights: CastlingRights::NONE,
-            en_passent: None,
+            en_passant: 0,
             halfmove_clock: 0,
             fullmove_number: 1,
 
@@ -172,12 +165,12 @@ impl Chess {
             }
         }
 
-        let (en_passent, rest): (&str, &str) = split_on(rest, ' ');
-        match en_passent {
-            "-" => chess.en_passent = None,
+        let (en_passant, rest): (&str, &str) = split_on(rest, ' ');
+        match en_passant {
+            "-" => chess.en_passant = 0,
             s => match pos_to_bit(s) {
                 Err(msg) => panic!("{}", msg),
-                Ok(bit) => chess.en_passent = Some(bit),
+                Ok(bit) => chess.en_passant = bit,
             },
         }
 
@@ -211,17 +204,4 @@ impl Chess {
             | self.black_queens
             | self.black_king
     }
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    // #[test]
-    // fn test_move_piece() {
-    //     let mut chess: Chess = Chess::new();
-    //     println!("{}", chess.to_string());
-    //     chess.apply_move(1 << 15, 31);
-    //     println!("{}", chess.to_string());
-    // }
 }

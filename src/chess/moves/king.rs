@@ -28,20 +28,3 @@ const fn king_move(row: i32, col: i32) -> BitBoard {
 
     bitboard
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::bitboard_to_string;
-
-    #[test]
-    fn print_king_moves() {
-        for i in 0..64 {
-            println!(
-                "Square {}:\n{}",
-                i,
-                bitboard_to_string(KING_MOVES[i], Some(i)),
-            );
-        }
-    }
-}
