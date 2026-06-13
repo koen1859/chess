@@ -45,7 +45,7 @@ bitflags! {
     #[derive(PartialEq, Eq, Debug, Clone, Copy)]
     pub struct MoveFlags: u8 {
         const CAPTURE=1<<0;
-        const EN_PASSANT=1<<1;
+        const EN_PASSENT=1<<1;
         const CASTLE_KINGSIDE=1<<2;
         const CASTLE_QUEENSIDE=1<<3;
         const PROMOTION_QUEEN=1<<4;
@@ -61,13 +61,13 @@ impl Chess {
         let moving_piece: Square = self.squares[m.from];
         let mut result_piece: Square = moving_piece;
 
-        // Handle en passant
-        self.en_passant = 0;
+        // Handle en passent
+        self.en_passent = 0;
         if moving_piece == Square::WhitePawn && m.to == m.from + 16 {
-            self.en_passant = 1u64 << (m.from + 8);
+            self.en_passent = 1u64 << (m.from + 8);
         }
         if moving_piece == Square::BlackPawn && m.from == m.to + 16 {
-            self.en_passant = 1u64 << (m.from - 8);
+            self.en_passent = 1u64 << (m.from - 8);
         }
 
         // Handle castling
@@ -151,7 +151,7 @@ impl Chess {
                 }
             }
         }
-        if m.flags.contains(MoveFlags::EN_PASSANT) {
+        if m.flags.contains(MoveFlags::EN_PASSENT) {
             let captured_sq = match moving_piece.color() {
                 Some(White) => m.to - 8,
                 Some(Black) => m.to + 8,
@@ -167,6 +167,11 @@ impl Chess {
         // Update bitboards
         self.remove_from_bitboard(moving_piece, from_bb);
         self.add_to_bitboard(result_piece, to_bb);
+
+        self.active_color = match self.active_color {
+            Color::White => Color::Black,
+            Color::Black => Color::White,
+        };
     }
     // Remove the piece at a given square index from the board
     fn remove_piece_at(&mut self, sq_idx: usize) {
@@ -298,7 +303,7 @@ impl Chess {
 
         generate_pawn_moves(pawns, own_occ, enemy_occ, self.active_color, &mut moves);
 
-        generate_en_passant_moves(pawns, self.en_passant, self.active_color, &mut moves);
+        generate_en_passent_moves(pawns, self.en_passent, self.active_color, &mut moves);
 
         generate_castling_moves(self, &mut moves);
 
@@ -466,17 +471,17 @@ fn generate_pawn_moves(
     }
 }
 
-fn generate_en_passant_moves(
+fn generate_en_passent_moves(
     mut pawns: BitBoard,
-    en_passant: BitBoard,
+    en_passent: BitBoard,
     active_color: Color,
     moves: &mut Vec<Move>,
 ) {
-    if en_passant == 0 {
+    if en_passent == 0 {
         return;
     }
 
-    let ep_square: usize = bit_scan(en_passant);
+    let ep_square: usize = bit_scan(en_passent);
     while pawns != 0 {
         let from: usize = bit_scan(pawns);
         let attacks = match active_color {
@@ -484,11 +489,11 @@ fn generate_en_passant_moves(
             Black => BLACK_PAWN_ATTACKS[from],
         };
 
-        if attacks & en_passant != 0 {
+        if attacks & en_passent != 0 {
             moves.push(Move {
                 from: from,
                 to: ep_square,
-                flags: MoveFlags::EN_PASSANT,
+                flags: MoveFlags::EN_PASSENT,
             });
         }
         pawns &= pawns - 1;

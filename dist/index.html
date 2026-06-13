@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rust Chess</title>
     
+    <link rel="stylesheet" href="/styles-4a1ee8bb93c350c6.css" integrity="sha384-DHiRXgkzVSSEJptKhYHbdtU71zXCmRPHyaSl6GGJZ+jSeRzAJtX0Wac+IMcJ7B5N"/>
+    
+    
+<link rel="modulepreload" href="/chess-865b615473007fa.js" crossorigin="anonymous" integrity="sha384-K5c8/t3WsoXI6q6Gre5+0KZtlpf8b1wIm8U7xIPePlIbreo+vHU3SNDiVEamGUdg"><link rel="preload" href="/chess-865b615473007fa_bg.wasm" crossorigin="anonymous" integrity="sha384-AOVrzWspbcB7UKqLfj86r33/xkuJhn8BWNcA4haiGsgI5F/nr8NA9LteJt+AJs3F" as="fetch" type="application/wasm"></head>
+<body>
+    
 <script type="module">
-import init, * as bindings from '/chess-f6b89287a93e54e4.js';
-const wasm = await init({ module_or_path: '/chess-f6b89287a93e54e4_bg.wasm' });
+import init, * as bindings from '/chess-865b615473007fa.js';
+const wasm = await init({ module_or_path: '/chess-865b615473007fa_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -15,10 +21,7 @@ window.wasmBindings = bindings;
 
 dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
 
-</script>
-    <link rel="stylesheet" href="/styles-a6175f9b05accfae.css" integrity="sha384-ZyXhrbNfTU+dOPWteMux5U4b6nNl38QuQ+2xOzjEkTcxG9rZsIoUxMPBo3qK/5Tx"/>
-  <link rel="modulepreload" href="/chess-f6b89287a93e54e4.js" crossorigin="anonymous" integrity="sha384-0WcHmQwmnTPi/XrFrNLoDCXmD9c/lkimCtl2dL64WgaFQD7nFVAah+iFHDXlyTU+"><link rel="preload" href="/chess-f6b89287a93e54e4_bg.wasm" crossorigin="anonymous" integrity="sha384-i0QEDNsWlmrK3/Md9LeFmpEjeXSqqMCwe4pBx0Nl2YujLwv/tL1VC26NPMaWAN/D" as="fetch" type="application/wasm"></head>
-  <body><script>"use strict";
+</script><script>"use strict";
 
 (function () {
 

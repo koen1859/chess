@@ -1,17 +1,14 @@
 use std::char;
 pub type BitBoard = u64;
 
-pub const FILE_A: u64 = 0x0101010101010101;
-pub const FILE_H: u64 = 0x8080808080808080;
-
-pub fn bit_to_pos(bit: BitBoard) -> Result<String, String> {
-    if bit == 0 {
-        Err("No piece present!".to_string())
-    } else {
-        let onebit_index = bit_scan(bit);
-        Ok(index_to_pos(onebit_index))
-    }
-}
+// pub fn bit_to_pos(bit: BitBoard) -> Result<String, String> {
+//     if bit == 0 {
+//         Err("No piece present!".to_string())
+//     } else {
+//         let onebit_index = bit_scan(bit);
+//         Ok(index_to_pos(onebit_index))
+//     }
+// }
 
 pub fn pos_to_bit(pos: &str) -> Result<BitBoard, String> {
     if pos.len() != 2 {
@@ -62,11 +59,11 @@ pub fn pos_to_bit(pos: &str) -> Result<BitBoard, String> {
     Ok(bit)
 }
 
-pub fn index_to_pos(index: usize) -> String {
-    let column: usize = index % 8;
-    let row: usize = index / 8 + 1;
-    format!("{}{}", char::from_u32((97 + column) as u32).unwrap(), row)
-}
+// pub fn index_to_pos(index: usize) -> String {
+//     let column: usize = index % 8;
+//     let row: usize = index / 8 + 1;
+//     format!("{}{}", char::from_u32((97 + column) as u32).unwrap(), row)
+// }
 
 // Returns the number of trailing zeros of a BitBoard
 // So: 00101110 -> 1
@@ -78,18 +75,6 @@ pub const fn bit_scan(bit: BitBoard) -> usize {
 // So: 00101110 -> 5
 pub const fn bit_scan_backward(bit: BitBoard) -> usize {
     63 - bit.leading_zeros() as usize
-}
-
-pub fn extract_bits(mut bits: BitBoard) -> Vec<usize> {
-    // 00101 -> [0,2]
-    let mut result: Vec<usize> = Vec::with_capacity(bits.count_ones() as usize);
-
-    while bits != 0 {
-        result.push(bit_scan(bits));
-        bits &= bits - 1;
-    }
-
-    result
 }
 
 // s: "ABCDEF", sep: 'C' -> ("AB", "DEF")
@@ -108,36 +93,36 @@ pub const fn set_bit(bitboard: BitBoard, row: i32, col: i32) -> BitBoard {
     bitboard | (1 << ((col - 1) + (row - 1) * 8))
 }
 
-pub fn bitboard_to_string(bitboard: BitBoard, mark: Option<usize>) -> String {
-    let mut row = String::new();
-    let mut board = String::new();
-
-    for i in 0..64 {
-        let value = (bitboard >> i) & 1; // Get the bit value of each board position
-
-        let s = if value == 0 {
-            String::from(".")
-        } else {
-            value.to_string()
-        };
-
-        match mark {
-            Some(idx) => {
-                if i == idx {
-                    row.push_str("X");
-                } else {
-                    row.push_str(&s);
-                }
-            }
-            None => row.push_str(&s),
-        }
-
-        if (i + 1) % 8 == 0 {
-            row.push_str("\n");
-            board.insert_str(0, &row);
-            row.clear();
-        }
-    }
-
-    board
-}
+// pub fn bitboard_to_string(bitboard: BitBoard, mark: Option<usize>) -> String {
+//     let mut row = String::new();
+//     let mut board = String::new();
+//
+//     for i in 0..64 {
+//         let value = (bitboard >> i) & 1; // Get the bit value of each board position
+//
+//         let s = if value == 0 {
+//             String::from(".")
+//         } else {
+//             value.to_string()
+//         };
+//
+//         match mark {
+//             Some(idx) => {
+//                 if i == idx {
+//                     row.push_str("X");
+//                 } else {
+//                     row.push_str(&s);
+//                 }
+//             }
+//             None => row.push_str(&s),
+//         }
+//
+//         if (i + 1) % 8 == 0 {
+//             row.push_str("\n");
+//             board.insert_str(0, &row);
+//             row.clear();
+//         }
+//     }
+//
+//     board
+// }

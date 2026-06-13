@@ -7,7 +7,7 @@ pub struct Chess {
 
     pub active_color: Color,
     pub castling_rights: CastlingRights,
-    pub en_passant: BitBoard,
+    pub en_passent: BitBoard,
     pub halfmove_clock: usize,
     pub fullmove_number: usize,
 
@@ -31,25 +31,25 @@ impl Chess {
         Chess::from_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
     }
 
-    pub fn to_string(&self) -> String {
-        let mut out: String = String::new();
-        for row in (0..8).rev() {
-            for col in 0..8 {
-                let sq: usize = row * 8 + col;
-                out.push(self.squares[sq].to_char());
-                out.push(' ');
-            }
-            out.push('\n');
-        }
-        out
-    }
+    // pub fn to_string(&self) -> String {
+    //     let mut out: String = String::new();
+    //     for row in (0..8).rev() {
+    //         for col in 0..8 {
+    //             let sq: usize = row * 8 + col;
+    //             out.push(self.squares[sq].to_char());
+    //             out.push(' ');
+    //         }
+    //         out.push('\n');
+    //     }
+    //     out
+    // }
 
     pub fn from_fen(fen: &str) -> Chess {
         let mut chess = Chess {
             squares: [Square::Empty; 64],
             active_color: Color::White,
             castling_rights: CastlingRights::NONE,
-            en_passant: 0,
+            en_passent: 0,
             halfmove_clock: 0,
             fullmove_number: 1,
 
@@ -165,12 +165,12 @@ impl Chess {
             }
         }
 
-        let (en_passant, rest): (&str, &str) = split_on(rest, ' ');
-        match en_passant {
-            "-" => chess.en_passant = 0,
+        let (en_passent, rest): (&str, &str) = split_on(rest, ' ');
+        match en_passent {
+            "-" => chess.en_passent = 0,
             s => match pos_to_bit(s) {
                 Err(msg) => panic!("{}", msg),
-                Ok(bit) => chess.en_passant = bit,
+                Ok(bit) => chess.en_passent = bit,
             },
         }
 

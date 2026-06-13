@@ -17,30 +17,6 @@ pub enum Square {
     BlackKing,
 }
 impl Square {
-    pub fn to_char(self) -> char {
-        match self {
-            Square::Empty => '.',
-
-            Square::WhitePawn => 'P',
-            Square::WhiteKnight => 'N',
-            Square::WhiteBishop => 'B',
-            Square::WhiteRook => 'R',
-            Square::WhiteQueen => 'Q',
-            Square::WhiteKing => 'K',
-
-            Square::BlackPawn => 'p',
-            Square::BlackKnight => 'n',
-            Square::BlackBishop => 'b',
-            Square::BlackRook => 'r',
-            Square::BlackQueen => 'q',
-            Square::BlackKing => 'k',
-        }
-    }
-
-    pub fn is_empty(self) -> bool {
-        matches!(self, Square::Empty)
-    }
-
     pub fn color(self) -> Option<Color> {
         match self {
             Square::WhitePawn

@@ -17,11 +17,12 @@ use crate::chess::{
 impl Chess {
     pub fn leaves_king_in_check(&self, m: &Move) -> bool {
         let mut temp_board = self.clone();
+        let king_color = self.active_color;
         temp_board.apply_move(m);
-        temp_board.is_active_color_in_check()
+        temp_board.is_color_in_check(king_color)
     }
-    pub fn is_active_color_in_check(&self) -> bool {
-        let (own_king_bb, opp_color) = match self.active_color {
+    pub fn is_color_in_check(&self, color: Color) -> bool {
+        let (own_king_bb, opp_color) = match color {
             White => (self.white_king, Black),
             Black => (self.black_king, White),
         };
