@@ -1,4 +1,3 @@
-use crate::chess::color::Color;
 use crate::chess::utils::{BitBoard, set_bit};
 
 pub const WHITE_PAWN_ATTACKS: [BitBoard; 64] = generate_family(true, true);

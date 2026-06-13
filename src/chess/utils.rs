@@ -1,7 +1,8 @@
-use std::{char, collections::VecDeque};
+use std::char;
 pub type BitBoard = u64;
 
-use crate::chess::{color::Color, square::Square};
+pub const FILE_A: u64 = 0x0101010101010101;
+pub const FILE_H: u64 = 0x8080808080808080;
 
 pub fn bit_to_pos(bit: BitBoard) -> Result<String, String> {
     if bit == 0 {

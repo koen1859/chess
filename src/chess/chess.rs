@@ -1,4 +1,3 @@
-use crate::chess::knightattacks::KNIGHT_ATTACKS;
 use crate::chess::utils::*;
 use crate::chess::{
     castling_rights::CastlingRights,
@@ -9,6 +8,7 @@ use crate::chess::{
     square::Square,
 };
 
+#[derive(Clone, Copy)]
 pub struct Chess {
     pub squares: [Square; 64],
 
@@ -195,81 +195,6 @@ impl Chess {
 
         chess
     }
-
-    pub fn move_piece(&mut self, from: usize, to: usize) {
-        let piece = self.squares[from];
-
-        if matches!(piece, Square::Empty) {
-            panic!("No piece on source square");
-        }
-
-        let from_bb = 1u64 << from;
-        let to_bb = 1u64 << to;
-
-        // Handle captures first
-        self.remove_piece_at(to);
-
-        // Move piece on board
-        self.squares[from] = Square::Empty;
-        self.squares[to] = piece;
-
-        // Update bitboards
-        self.move_bitboard(piece, from_bb, to_bb);
-    }
-
-    fn remove_piece_at(&mut self, sq: usize) {
-        let piece = self.squares[sq];
-
-        if matches!(piece, Square::Empty) {
-            return;
-        }
-
-        let bitboard = 1u64 << sq;
-
-        match piece {
-            Square::WhitePawn => self.white_pawns &= !bitboard,
-            Square::WhiteKnight => self.white_knights &= !bitboard,
-            Square::WhiteBishop => self.white_bishops &= !bitboard,
-            Square::WhiteRook => self.white_rooks &= !bitboard,
-            Square::WhiteQueen => self.white_queens &= !bitboard,
-            Square::WhiteKing => self.white_king &= !bitboard,
-
-            Square::BlackPawn => self.black_pawns &= !bitboard,
-            Square::BlackKnight => self.black_knights &= !bitboard,
-            Square::BlackBishop => self.black_bishops &= !bitboard,
-            Square::BlackRook => self.black_rooks &= !bitboard,
-            Square::BlackQueen => self.black_queens &= !bitboard,
-            Square::BlackKing => self.black_king &= !bitboard,
-
-            Square::Empty => {}
-        }
-
-        self.squares[sq] = Square::Empty;
-    }
-    fn move_bitboard(&mut self, piece: Square, from_bb: BitBoard, to_bb: BitBoard) {
-        let update = |bb: &mut BitBoard| {
-            *bb &= !from_bb;
-            *bb |= to_bb;
-        };
-
-        match piece {
-            Square::WhitePawn => update(&mut self.white_pawns),
-            Square::WhiteKnight => update(&mut self.white_knights),
-            Square::WhiteBishop => update(&mut self.white_bishops),
-            Square::WhiteRook => update(&mut self.white_rooks),
-            Square::WhiteQueen => update(&mut self.white_queens),
-            Square::WhiteKing => update(&mut self.white_king),
-
-            Square::BlackPawn => update(&mut self.black_pawns),
-            Square::BlackKnight => update(&mut self.black_knights),
-            Square::BlackBishop => update(&mut self.black_bishops),
-            Square::BlackRook => update(&mut self.black_rooks),
-            Square::BlackQueen => update(&mut self.black_queens),
-            Square::BlackKing => update(&mut self.black_king),
-
-            Square::Empty => unreachable!(),
-        }
-    }
     pub fn white_occupancy(&self) -> BitBoard {
         self.white_pawns
             | self.white_knights
@@ -292,11 +217,11 @@ impl Chess {
 mod test {
     use super::*;
 
-    #[test]
-    fn test_move_piece() {
-        let mut chess: Chess = Chess::new();
-        println!("{}", chess.to_string());
-        chess.move_piece(1 << 15, 31);
-        println!("{}", chess.to_string());
-    }
+    // #[test]
+    // fn test_move_piece() {
+    //     let mut chess: Chess = Chess::new();
+    //     println!("{}", chess.to_string());
+    //     chess.apply_move(1 << 15, 31);
+    //     println!("{}", chess.to_string());
+    // }
 }
