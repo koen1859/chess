@@ -1,4 +1,9 @@
-use crate::chess::utils::{BitBoard, bit_scan, bit_scan_backward, set_bit};
+use crate::chess::{
+    chess::Chess,
+    color::Color::{Black, White},
+    movegeneration::{Move, MoveFlags},
+    utils::{BitBoard, bit_scan, bit_scan_backward, set_bit},
+};
 
 const NORTH_RAYS: [BitBoard; 64] = generate_ray_family(1, 0);
 const SOUTH_RAYS: [BitBoard; 64] = generate_ray_family(-1, 0);
@@ -98,10 +103,8 @@ const fn blocked_ray_attack(
 
     // Get a ray in the same direction starting from the blocking square (So not including the blocking square)
     // This is logical since if a piece blocks the ray we can take that piece, so we want this square to be included in the final ray
-    let ray_after = ray_family[blocker];
-
     // Return the inverse of the intersection of the original ray and the blocked part
-    ray ^ ray_after
+    ray ^ ray_family[blocker]
 }
 
 pub const fn straight_attacks(square: usize, occupancy: BitBoard) -> BitBoard {

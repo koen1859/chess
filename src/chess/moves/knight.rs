@@ -1,50 +1,6 @@
-use crate::chess::{
-    chess::Chess,
-    color::Color::{Black, White},
-    movegeneration::{Move, MoveFlags},
-    utils::{BitBoard, bit_scan, set_bit},
-};
+use crate::chess::utils::{BitBoard, set_bit};
 
 pub const KNIGHT_MOVES: [BitBoard; 64] = generate_knight_attacks();
-
-impl Chess {
-    pub fn generate_knight_moves(&self, moves: &mut Vec<Move>) {
-        let (knights_unmut, own_occ, enemy_occ) = match self.active_color {
-            White => (
-                self.white_knights,
-                self.white_occupancy(),
-                self.black_occupancy(),
-            ),
-            Black => (
-                self.black_knights,
-                self.black_occupancy(),
-                self.white_occupancy(),
-            ),
-        };
-        let mut knights: BitBoard = knights_unmut;
-
-        while knights != 0 {
-            let from: usize = bit_scan(knights);
-            let mut targets: BitBoard = KNIGHT_MOVES[from] & !own_occ;
-
-            while targets != 0 {
-                let to: usize = bit_scan(targets);
-                let flags = if (enemy_occ >> to) & 1 != 0 {
-                    MoveFlags::CAPTURE
-                } else {
-                    MoveFlags::empty()
-                };
-                moves.push(Move {
-                    from: from,
-                    to: to,
-                    flags: flags,
-                });
-                targets &= targets - 1;
-            }
-            knights &= knights - 1;
-        }
-    }
-}
 
 const fn generate_knight_attacks() -> [BitBoard; 64] {
     let mut attacks = [0; 64];

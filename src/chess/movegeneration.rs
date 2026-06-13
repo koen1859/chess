@@ -1,7 +1,17 @@
 use crate::chess::{
     chess::Chess,
+    color::{
+        Color,
+        Color::{Black, White},
+    },
+    moves::{
+        king::KING_MOVES,
+        knight::KNIGHT_MOVES,
+        pawn::{BLACK_PAWN_ATTACKS, BLACK_PAWN_MOVES, WHITE_PAWN_ATTACKS, WHITE_PAWN_MOVES},
+        ray::{diagonal_attacks, straight_attacks},
+    },
     square::Square,
-    utils::{BitBoard, bitboard_to_string},
+    utils::{BitBoard, bit_scan, bitboard_to_string},
 };
 use bitflags::bitflags;
 
@@ -43,9 +53,8 @@ impl Chess {
         let to_bb: BitBoard = 1u64 << m.to;
 
         // Handle captures first
-        match m.flags {
-            MoveFlags::CAPTURE => self.remove_piece_at(m.to),
-            flag => {}
+        if m.flags.contains(MoveFlags::CAPTURE) {
+            self.remove_piece_at(m.to);
         }
 
         // Move piece on board
@@ -108,18 +117,165 @@ impl Chess {
     // Generate pseudo legal moves: Does not account for checks
     pub fn generate_pseudolegal_moves(&self) -> Vec<Move> {
         let mut moves = Vec::new();
-        self.generate_knight_moves(&mut moves);
-        // self.generate_pawn_moves(&mut moves);
-        // self.generate_ray_moves(&mut moves);
-        // self.generate_king_moves(&mut moves);
+
+        let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) =
+            match self.active_color {
+                White => (
+                    self.white_rooks,
+                    self.white_knights,
+                    self.white_bishops,
+                    self.white_queens,
+                    self.white_king,
+                    self.white_pawns,
+                    self.white_occupancy(),
+                    self.black_occupancy(),
+                ),
+                Black => (
+                    self.black_rooks,
+                    self.black_knights,
+                    self.black_bishops,
+                    self.black_queens,
+                    self.black_king,
+                    self.black_pawns,
+                    self.black_occupancy(),
+                    self.white_occupancy(),
+                ),
+            };
+        let all_occ: BitBoard = own_occ | enemy_occ;
+
+        generate_moves_for_piece_type(
+            knights,
+            own_occ,
+            enemy_occ,
+            |sq| KNIGHT_MOVES[sq],
+            &mut moves,
+        );
+
+        generate_moves_for_piece_type(
+            bishops,
+            own_occ,
+            enemy_occ,
+            |sq| diagonal_attacks(sq, all_occ),
+            &mut moves,
+        );
+
+        generate_moves_for_piece_type(
+            rooks,
+            own_occ,
+            enemy_occ,
+            |sq| straight_attacks(sq, all_occ),
+            &mut moves,
+        );
+
+        generate_moves_for_piece_type(
+            queens,
+            own_occ,
+            enemy_occ,
+            |sq| straight_attacks(sq, all_occ) | diagonal_attacks(sq, all_occ),
+            &mut moves,
+        );
+
+        generate_moves_for_piece_type(king, own_occ, enemy_occ, |sq| KING_MOVES[sq], &mut moves);
+
+        generate_pawn_moves(pawns, own_occ, enemy_occ, self.active_color, &mut moves);
+
         moves
     }
+
     // Filters out any illegal moves
     pub fn generate_moves(&self) -> Vec<Move> {
         self.generate_pseudolegal_moves()
             .into_iter()
             .filter(|m| !self.leaves_king_in_check(m))
             .collect()
+    }
+}
+
+pub fn generate_moves_for_piece_type<F>(
+    mut pieces: BitBoard,
+    own_occ: BitBoard,
+    enemy_occ: BitBoard,
+    attack_fn: F,
+    moves: &mut Vec<Move>,
+) where
+    F: Fn(usize) -> BitBoard,
+{
+    while pieces != 0 {
+        let from: usize = bit_scan(pieces);
+        let mut targets: BitBoard = attack_fn(from) & !own_occ;
+
+        while targets != 0 {
+            let to = bit_scan(targets);
+
+            let flags = if (enemy_occ & (1u64 << to)) != 0 {
+                MoveFlags::CAPTURE
+            } else {
+                MoveFlags::empty()
+            };
+            moves.push(Move {
+                from: from,
+                to: to,
+                flags: flags,
+            });
+            targets &= targets - 1;
+        }
+        pieces &= pieces - 1;
+    }
+}
+
+fn generate_pawn_moves(
+    pawns: BitBoard,
+    own_occ: BitBoard,
+    enemy_occ: BitBoard,
+    active_color: Color,
+    moves: &mut Vec<Move>,
+) {
+    let all_occ = own_occ | enemy_occ;
+
+    let mut remaining = pawns;
+
+    while remaining != 0 {
+        let from = bit_scan(remaining);
+
+        let quiets = match active_color {
+            White => WHITE_PAWN_MOVES[from] & !all_occ,
+            Black => BLACK_PAWN_MOVES[from] & !all_occ,
+        };
+
+        let captures = match active_color {
+            White => WHITE_PAWN_ATTACKS[from] & enemy_occ,
+            Black => BLACK_PAWN_ATTACKS[from] & enemy_occ,
+        };
+
+        let mut targets = quiets;
+
+        while targets != 0 {
+            let to = bit_scan(targets);
+
+            moves.push(Move {
+                from,
+                to,
+                flags: MoveFlags::empty(),
+            });
+
+            targets &= targets - 1;
+        }
+
+        let mut targets = captures;
+
+        while targets != 0 {
+            let to = bit_scan(targets);
+
+            moves.push(Move {
+                from,
+                to,
+                flags: MoveFlags::CAPTURE,
+            });
+
+            targets &= targets - 1;
+        }
+
+        remaining &= remaining - 1;
     }
 }
 

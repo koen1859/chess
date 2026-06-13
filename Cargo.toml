@@ -5,4 +5,7 @@ edition = "2024"
 
 [dependencies]
 bitflags = "2.13.0"
-yew = "0.23.0"
+getrandom = {version = "0.4.2", features = ["wasm_js"]}
+gloo-timers = "0.4.0"
+rand = "0.10.1"
+yew = {version = "0.23.0",  features = ["csr"]}
