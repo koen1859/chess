@@ -501,6 +501,10 @@ fn generate_en_passent_moves(
 }
 
 fn generate_castling_moves(chess: &Chess, moves: &mut Vec<Move>) {
+    if chess.white_king == 0 || chess.black_king == 0 {
+        return;
+    }
+
     let (king_sq, enemy_color) = match chess.active_color {
         White => (bit_scan(chess.white_king), Color::Black),
         Black => (bit_scan(chess.black_king), Color::White),

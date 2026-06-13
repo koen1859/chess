@@ -102,9 +102,6 @@ const fn forward_move_2(row: i32, col: i32, white: bool) -> BitBoard {
 }
 const fn diagonal_move(row: i32, col: i32, white: bool) -> BitBoard {
     let mut bitboard: BitBoard = 0;
-    if row == 1 || row == 8 {
-        return bitboard;
-    }
     if white {
         bitboard = set_bit(bitboard, row + 1, col + 1);
         bitboard = set_bit(bitboard, row + 1, col - 1);
