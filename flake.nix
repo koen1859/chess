@@ -11,10 +11,13 @@
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
-      nativeBuildInputs = with pkgs; [rustc cargo rustfmt cargo-watch rustup trunk lld pkg-config wasm-bindgen-cli];
+      nativeBuildInputs = with pkgs; [rustc cargo rustfmt cargo-watch rustup trunk lld pkg-config];
     in {
       devShells.default = pkgs.mkShell {
         buildInputs = nativeBuildInputs;
+        shellHook = ''
+          export PATH="/home/koenstevens/.cargo/bin:$PATH"
+        '';
       };
     });
 }
