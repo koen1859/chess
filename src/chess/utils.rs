@@ -77,6 +77,10 @@ pub const fn bit_scan_backward(bit: BitBoard) -> usize {
     63 - bit.leading_zeros() as usize
 }
 
+pub const fn count_ones(bit: BitBoard) -> i32 {
+    bit.count_ones() as i32
+}
+
 // s: "ABCDEF", sep: 'C' -> ("AB", "DEF")
 pub fn split_on(s: &str, sep: char) -> (&str, &str) {
     s.chars()

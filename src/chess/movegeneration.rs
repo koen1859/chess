@@ -80,6 +80,16 @@ impl Chess {
         let from_bb: BitBoard = 1u64 << m.from;
         let to_bb: BitBoard = 1u64 << m.to;
 
+        if !m.flags.contains(MoveFlags::CAPTURE) {
+            let piece_at_to = self.squares[m.to];
+            if piece_at_to != Square::Empty && piece_at_to.color() != Some(self.active_color) {
+                println!(
+                    "Capture missed: Moving from {} to {} which contains {:?}",
+                    m.from, m.to, piece_at_to
+                );
+            }
+        }
+
         if m.flags.contains(MoveFlags::CAPTURE) {
             self.remove_piece_at(m.to);
         }

@@ -1,7 +1,11 @@
 mod chess;
 
 use crate::chess::{
-    chess::Chess, color::Color, movegeneration::Move, movegeneration::MoveFlags, square::Square,
+    chess::Chess,
+    color::Color,
+    engine::best_move::get_best_move,
+    movegeneration::{Move, MoveFlags},
+    square::Square,
 };
 use rand::seq::IndexedRandom;
 use yew::prelude::*;
@@ -86,16 +90,10 @@ fn app() -> Html {
         use_effect(move || {
             if game.active_color != user_color {
                 let current = *game;
-                let moves = current.generate_moves();
-
-                if !moves.is_empty() {
-                    let mut rng = rand::rng();
-
-                    if let Some(&mv) = moves.choose(&mut rng) {
-                        let mut next = current;
-                        next.apply_move(&mv);
-                        game.set(next);
-                    }
+                if let Some(best_move) = get_best_move(&current, 3) {
+                    let mut next = current;
+                    next.apply_move(&best_move);
+                    game.set(next);
                 }
             }
             || {}
@@ -262,11 +260,22 @@ fn app() -> Html {
         sqs
     };
 
+    let advantage = game.count_material();
+
     html! {
         <div class="page">
             <h1>{ "Rust Chess" }</h1>
             <div class="user-color">{ format!("You are {}", user_color_str) }</div>
             <div class="status">{ &status }</div>
+            <div class="score-display">
+                if advantage > 0 {
+                    { format!("White is leading by: +{}", advantage) }
+                } else if advantage < 0 {
+                    { format!("Black is leading by: +{}", advantage.abs()) }
+                } else {
+                    { "Material is equal" }
+                }
+            </div>
             <div class="board-container">
                 { promotion_modal }
                 <div class="board">

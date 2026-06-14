@@ -23,8 +23,15 @@ const fn king_move(row: i32, col: i32) -> BitBoard {
 
     bitboard = set_bit(bitboard, row + 1, col);
     bitboard = set_bit(bitboard, row - 1, col);
+
     bitboard = set_bit(bitboard, row, col + 1);
     bitboard = set_bit(bitboard, row, col - 1);
+
+    bitboard = set_bit(bitboard, row + 1, col + 1);
+    bitboard = set_bit(bitboard, row - 1, col - 1);
+
+    bitboard = set_bit(bitboard, row - 1, col + 1);
+    bitboard = set_bit(bitboard, row + 1, col - 1);
 
     bitboard
 }
