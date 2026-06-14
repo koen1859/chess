@@ -61,6 +61,15 @@ impl Chess {
         let moving_piece: Square = self.squares[m.from];
         let mut result_piece: Square = moving_piece;
 
+        // Update halfmove clock: if pawn move / capture, reset else + 1
+        if (matches!(moving_piece, Square::WhitePawn | Square::BlackPawn)
+            | m.flags.contains(MoveFlags::CAPTURE))
+        {
+            self.halfmove_clock = 0;
+        } else {
+            self.halfmove_clock += 1;
+        }
+
         // Handle en passent
         self.en_passent = 0;
         if moving_piece == Square::WhitePawn && m.to == m.from + 16 {
@@ -180,7 +189,10 @@ impl Chess {
 
         self.active_color = match self.active_color {
             Color::White => Color::Black,
-            Color::Black => Color::White,
+            Color::Black => {
+                self.fullmove_number += 1;
+                Color::White
+            }
         };
     }
     // Remove the piece at a given square index from the board
@@ -252,6 +264,10 @@ impl Chess {
     fn generate_pseudolegal_moves(&self) -> Vec<Move> {
         let mut moves = Vec::new();
 
+        if self.halfmove_clock >= 100 {
+            return moves;
+        }
+
         let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) =
             match self.active_color {
                 White => (
@@ -316,6 +332,13 @@ impl Chess {
         generate_en_passent_moves(pawns, self.en_passent, self.active_color, &mut moves);
 
         generate_castling_moves(self, &mut moves);
+
+        // Sort by victim value
+        moves.sort_by(|a, b| {
+            let victim_a: i32 = self.squares[a.to].value();
+            let victim_b: i32 = self.squares[b.to].value();
+            victim_b.cmp(&victim_a)
+        });
 
         moves
     }
@@ -503,7 +526,7 @@ fn generate_en_passent_moves(
             moves.push(Move {
                 from: from,
                 to: ep_square,
-                flags: MoveFlags::EN_PASSENT,
+                flags: MoveFlags::EN_PASSENT | MoveFlags::CAPTURE, // Capture in theory should not do anything, since target square must be empty
             });
         }
         pawns &= pawns - 1;

@@ -17,7 +17,7 @@ pub enum Square {
     BlackKing,
 }
 impl Square {
-    pub fn color(self) -> Option<Color> {
+    pub fn color(&self) -> Option<Color> {
         match self {
             Square::WhitePawn
             | Square::WhiteKnight
@@ -34,6 +34,17 @@ impl Square {
             | Square::BlackKing => Some(Color::Black),
 
             Square::Empty => None,
+        }
+    }
+    pub fn value(&self) -> i32 {
+        match self {
+            Square::WhitePawn | Square::BlackPawn => 1,
+            Square::WhiteKnight | Square::BlackKnight => 3,
+            Square::WhiteBishop | Square::BlackBishop => 3,
+            Square::WhiteRook | Square::BlackRook => 5,
+            Square::WhiteQueen | Square::BlackQueen => 9,
+            Square::WhiteKing | Square::BlackKing => 0,
+            Square::Empty => 0,
         }
     }
 }

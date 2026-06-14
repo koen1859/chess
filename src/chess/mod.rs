@@ -7,3 +7,4 @@ pub mod movegeneration;
 pub mod moves;
 pub mod square;
 pub mod utils;
+pub mod zobrist_hash;

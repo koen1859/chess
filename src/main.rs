@@ -3,11 +3,12 @@ mod chess;
 use crate::chess::{
     chess::Chess,
     color::Color,
-    engine::best_move::get_best_move,
+    engine::engine::Engine,
     movegeneration::{Move, MoveFlags},
     square::Square,
 };
-use rand::seq::IndexedRandom;
+use gloo_timers::future::TimeoutFuture;
+use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
 
 /// Returns the file path to the SVG representing a piece.
@@ -57,6 +58,8 @@ fn app() -> Html {
         }
     });
 
+    let engine = use_state(|| Engine::new());
+
     let legal_moves: Vec<Move> = game.generate_moves();
 
     // Squares the currently selected piece can move to.
@@ -90,11 +93,18 @@ fn app() -> Html {
         use_effect(move || {
             if game.active_color != user_color {
                 let current = *game;
-                if let Some(best_move) = get_best_move(&current, 3) {
-                    let mut next = current;
-                    next.apply_move(&best_move);
-                    game.set(next);
-                }
+                let game_handle = game.clone();
+                let mut engine_handle = (*engine).clone();
+
+                spawn_local(async move {
+                    TimeoutFuture::new(0).await;
+                    if let Some(best_move) = engine_handle.get_best_move_in_time(&current, 1000) {
+                        let mut next = current;
+                        next.apply_move(&best_move);
+                        game.set(next);
+                        engine.set(engine_handle);
+                    }
+                });
             }
             || {}
         });

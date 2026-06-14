@@ -94,7 +94,7 @@ impl Chess {
     fn get_game_phase(&self) -> i32 {
         count_ones(self.white_knights | self.black_knights)
             + count_ones(self.white_bishops | self.black_bishops)
-            + 2 * count_ones(self.white_rooks | self.black_bishops)
+            + 2 * count_ones(self.white_rooks | self.black_rooks)
             + 4 * count_ones(self.white_queens | self.black_queens)
     }
     pub fn count_material(&self) -> i32 {
