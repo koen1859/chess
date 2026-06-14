@@ -93,7 +93,6 @@ fn app() -> Html {
         use_effect(move || {
             if game.active_color != user_color {
                 let current = *game;
-                let game_handle = game.clone();
                 let mut engine_handle = (*engine).clone();
 
                 spawn_local(async move {
