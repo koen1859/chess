@@ -273,7 +273,7 @@ fn app() -> Html {
 
     html! {
         <div class="page">
-            <h1>{ "Rust Chess" }</h1>
+            <h1>{ "Chess" }</h1>
             <div class="user-color">{ format!("You are {}", user_color_str) }</div>
             <div class="status">{ &status }</div>
             <div class="score-display">
