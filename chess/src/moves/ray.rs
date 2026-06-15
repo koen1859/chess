@@ -1,4 +1,4 @@
-use crate::chess::utils::{BitBoard, bit_scan, bit_scan_backward, set_bit};
+use crate::utils::{BitBoard, bit_scan, bit_scan_backward, set_bit};
 
 const NORTH_RAYS: [BitBoard; 64] = generate_ray_family(1, 0);
 const SOUTH_RAYS: [BitBoard; 64] = generate_ray_family(-1, 0);

@@ -1,3 +1,4 @@
+pub mod apply_undo_move;
 pub mod castling_rights;
 pub mod checks;
 pub mod chess;

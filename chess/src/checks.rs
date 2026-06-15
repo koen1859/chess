@@ -1,10 +1,10 @@
-use crate::chess::{
+use crate::{
+    apply_undo_move::Move,
     chess::Chess,
     color::{
         Color,
         Color::{Black, White},
     },
-    movegeneration::Move,
     moves::{
         king::KING_MOVES,
         knight::KNIGHT_MOVES,

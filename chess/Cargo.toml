@@ -1,0 +1,11 @@
+[package]
+name = "chess"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+bitflags = "2.13.0"
+getrandom = {version = "0.4.2", features = ["wasm_js"]}
+instant = {version = "0.1.13", features = ["wasm-bindgen"]}
+lazy_static = "1.5.0"
+rand = "0.10.1"

@@ -59,6 +59,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f202df86484c868dbad7eaa557ef785d5c66295e41b460ef922eca0723b842c"
 
 [[package]]
+name = "app"
+version = "0.1.0"
+dependencies = [
+ "chess",
+ "gloo-timers 0.4.0",
+ "rand",
+ "wasm-bindgen-futures",
+ "yew",
+]
+
+[[package]]
 name = "atomic-waker"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -161,6 +172,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "chess"
+version = "0.1.0"
+dependencies = [
+ "bitflags",
+ "getrandom 0.4.2",
+ "instant",
+ "lazy_static",
+ "rand",
+]
+
+[[package]]
 name = "clap"
 version = "4.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -260,23 +282,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cb4cb245038516f5f85277875cdaa4f7d2c9a0fa0468de06ed190163b1581fcf"
 dependencies = [
  "percent-encoding",
-]
-
-[[package]]
-name = "frontend"
-version = "0.1.0"
-dependencies = [
- "axum",
- "bitflags",
- "clap",
- "getrandom 0.4.2",
- "gloo-timers 0.4.0",
- "instant",
- "lazy_static",
- "rand",
- "tokio",
- "wasm-bindgen-futures",
- "yew",
 ]
 
 [[package]]
@@ -1112,6 +1117,15 @@ dependencies = [
  "itoa",
  "ryu",
  "serde",
+]
+
+[[package]]
+name = "server"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "clap",
+ "tokio",
 ]
 
 [[package]]

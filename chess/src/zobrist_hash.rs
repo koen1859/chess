@@ -1,6 +1,4 @@
-use crate::chess::color::Color;
-use crate::chess::square::Square;
-use crate::chess::utils::BitBoard;
+use crate::{chess::Chess, color::Color, square::Square, utils::BitBoard};
 use lazy_static::lazy_static;
 
 lazy_static! {
@@ -88,7 +86,7 @@ fn get_en_passant_index(en_passant: BitBoard) -> usize {
     square % 8
 }
 
-impl crate::chess::chess::Chess {
+impl Chess {
     /// Compute the zobrist hash for this position
     pub fn zobrist_hash(&self) -> u64 {
         let mut hash = 0u64;

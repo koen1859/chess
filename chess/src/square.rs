@@ -1,4 +1,4 @@
-use crate::chess::color::Color;
+use crate::color::Color;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Square {

@@ -1,4 +1,5 @@
-use crate::chess::{
+use crate::{
+    apply_undo_move::{Move, MoveFlags},
     castling_rights::CastlingRights,
     chess::Chess,
     color::{
@@ -14,10 +15,8 @@ use crate::chess::{
         },
         ray::{diagonal_attacks, straight_attacks},
     },
-    square::Square,
     utils::{BitBoard, bit_scan},
 };
-use bitflags::bitflags;
 
 // Square indices for castling moves, used to check if squares between king and rook are empty and not attacked
 const B1: usize = 1;
@@ -34,232 +33,7 @@ const D8: usize = 59;
 const F8: usize = 61;
 const G8: usize = 62;
 
-#[derive(Debug, Clone, Copy)]
-pub struct Move {
-    pub from: usize,
-    pub to: usize,
-    pub flags: MoveFlags,
-}
-
-bitflags! {
-    #[derive(PartialEq, Eq, Debug, Clone, Copy)]
-    pub struct MoveFlags: u8 {
-        const CAPTURE=1<<0;
-        const EN_PASSENT=1<<1;
-        const CASTLE_KINGSIDE=1<<2;
-        const CASTLE_QUEENSIDE=1<<3;
-        const PROMOTION_QUEEN=1<<4;
-        const PROMOTION_ROOK=1<<5;
-        const PROMOTION_BISHOP=1<<6;
-        const PROMOTION_KNIGHT=1<<7;
-    }
-}
-
 impl Chess {
-    // Move the piece on square idx from to square idx to
-    pub fn apply_move(&mut self, m: &Move) {
-        let moving_piece: Square = self.squares[m.from];
-        let mut result_piece: Square = moving_piece;
-
-        // Update halfmove clock: if pawn move / capture, reset else + 1
-        if (matches!(moving_piece, Square::WhitePawn | Square::BlackPawn)
-            | m.flags.contains(MoveFlags::CAPTURE))
-        {
-            self.halfmove_clock = 0;
-        } else {
-            self.halfmove_clock += 1;
-        }
-
-        // Handle en passent
-        self.en_passent = 0;
-        if moving_piece == Square::WhitePawn && m.to == m.from + 16 {
-            self.en_passent = 1u64 << (m.from + 8);
-        }
-        if moving_piece == Square::BlackPawn && m.from == m.to + 16 {
-            self.en_passent = 1u64 << (m.from - 8);
-        }
-
-        // Handle castling
-        self.update_castling_rights(m.from, moving_piece);
-
-        if matches!(moving_piece, Square::Empty) {
-            panic!("No piece on source square");
-        }
-
-        let from_bb: BitBoard = 1u64 << m.from;
-        let to_bb: BitBoard = 1u64 << m.to;
-
-        if !m.flags.contains(MoveFlags::CAPTURE) {
-            let piece_at_to = self.squares[m.to];
-            if piece_at_to != Square::Empty && piece_at_to.color() != Some(self.active_color) {
-                println!(
-                    "Capture missed: Moving from {} to {} which contains {:?}",
-                    m.from, m.to, piece_at_to
-                );
-            }
-        }
-
-        if m.flags.contains(MoveFlags::CAPTURE) {
-            self.remove_piece_at(m.to);
-        }
-        if m.flags.contains(MoveFlags::PROMOTION_QUEEN) {
-            if moving_piece.color() == Some(White) {
-                result_piece = Square::WhiteQueen;
-            } else {
-                result_piece = Square::BlackQueen;
-            }
-        }
-        if m.flags.contains(MoveFlags::PROMOTION_ROOK) {
-            if moving_piece.color() == Some(White) {
-                result_piece = Square::WhiteRook;
-            } else {
-                result_piece = Square::BlackRook;
-            }
-        }
-        if m.flags.contains(MoveFlags::PROMOTION_BISHOP) {
-            if moving_piece.color() == Some(White) {
-                result_piece = Square::WhiteBishop;
-            } else {
-                result_piece = Square::BlackBishop;
-            }
-        }
-        if m.flags.contains(MoveFlags::PROMOTION_KNIGHT) {
-            if moving_piece.color() == Some(White) {
-                result_piece = Square::WhiteKnight;
-            } else {
-                result_piece = Square::BlackKnight;
-            }
-        }
-        if m.flags.contains(MoveFlags::CASTLE_KINGSIDE) {
-            match self.active_color {
-                White => {
-                    // Move the rook as well
-                    self.squares[7] = Square::Empty;
-                    self.squares[5] = Square::WhiteRook;
-
-                    self.white_rooks &= !(1u64 << 7);
-                    self.white_rooks |= 1u64 << 5;
-                }
-                Black => {
-                    // Move the rook as well
-                    self.squares[63] = Square::Empty;
-                    self.squares[61] = Square::BlackRook;
-
-                    self.black_rooks &= !(1u64 << 63);
-                    self.black_rooks |= 1u64 << 61;
-                }
-            }
-        }
-        if m.flags.contains(MoveFlags::CASTLE_QUEENSIDE) {
-            match self.active_color {
-                White => {
-                    // Move the rook as well
-                    self.squares[0] = Square::Empty;
-                    self.squares[3] = Square::WhiteRook;
-
-                    self.white_rooks &= !(1u64 << 0);
-                    self.white_rooks |= 1u64 << 3;
-                }
-                Black => {
-                    // Move the rook as well
-                    self.squares[56] = Square::Empty;
-                    self.squares[59] = Square::BlackRook;
-
-                    self.black_rooks &= !(1u64 << 56);
-                    self.black_rooks |= 1u64 << 59;
-                }
-            }
-        }
-        if m.flags.contains(MoveFlags::EN_PASSENT) {
-            let captured_sq = match moving_piece.color() {
-                Some(White) => m.to - 8,
-                Some(Black) => m.to + 8,
-                None => unreachable!(),
-            };
-            self.remove_piece_at(captured_sq);
-        }
-
-        // Move piece on board
-        self.squares[m.from] = Square::Empty;
-        self.squares[m.to] = result_piece;
-
-        // Update bitboards
-        self.remove_from_bitboard(moving_piece, from_bb);
-        self.add_to_bitboard(result_piece, to_bb);
-
-        self.active_color = match self.active_color {
-            Color::White => Color::Black,
-            Color::Black => {
-                self.fullmove_number += 1;
-                Color::White
-            }
-        };
-    }
-    // Remove the piece at a given square index from the board
-    fn remove_piece_at(&mut self, sq_idx: usize) {
-        let square: Square = self.squares[sq_idx];
-        let bb: BitBoard = 1u64 << sq_idx;
-
-        self.update_castling_rights(sq_idx, square);
-
-        match square {
-            Square::WhitePawn => self.white_pawns &= !bb,
-            Square::WhiteKnight => self.white_knights &= !bb,
-            Square::WhiteBishop => self.white_bishops &= !bb,
-            Square::WhiteRook => self.white_rooks &= !bb,
-            Square::WhiteQueen => self.white_queens &= !bb,
-            Square::WhiteKing => self.white_king &= !bb,
-
-            Square::BlackPawn => self.black_pawns &= !bb,
-            Square::BlackKnight => self.black_knights &= !bb,
-            Square::BlackBishop => self.black_bishops &= !bb,
-            Square::BlackRook => self.black_rooks &= !bb,
-            Square::BlackQueen => self.black_queens &= !bb,
-            Square::BlackKing => self.black_king &= !bb,
-
-            Square::Empty => {}
-        }
-
-        self.squares[sq_idx] = Square::Empty;
-    }
-    fn remove_from_bitboard(&mut self, piece: Square, bb: BitBoard) {
-        match piece {
-            Square::WhitePawn => self.white_pawns &= !bb,
-            Square::WhiteKnight => self.white_knights &= !bb,
-            Square::WhiteBishop => self.white_bishops &= !bb,
-            Square::WhiteRook => self.white_rooks &= !bb,
-            Square::WhiteQueen => self.white_queens &= !bb,
-            Square::WhiteKing => self.white_king &= !bb,
-
-            Square::BlackPawn => self.black_pawns &= !bb,
-            Square::BlackKnight => self.black_knights &= !bb,
-            Square::BlackBishop => self.black_bishops &= !bb,
-            Square::BlackRook => self.black_rooks &= !bb,
-            Square::BlackQueen => self.black_queens &= !bb,
-            Square::BlackKing => self.black_king &= !bb,
-
-            Square::Empty => unreachable!(),
-        }
-    }
-    fn add_to_bitboard(&mut self, piece: Square, bb: BitBoard) {
-        match piece {
-            Square::WhitePawn => self.white_pawns |= bb,
-            Square::WhiteKnight => self.white_knights |= bb,
-            Square::WhiteBishop => self.white_bishops |= bb,
-            Square::WhiteRook => self.white_rooks |= bb,
-            Square::WhiteQueen => self.white_queens |= bb,
-            Square::WhiteKing => self.white_king |= bb,
-
-            Square::BlackPawn => self.black_pawns |= bb,
-            Square::BlackKnight => self.black_knights |= bb,
-            Square::BlackBishop => self.black_bishops |= bb,
-            Square::BlackRook => self.black_rooks |= bb,
-            Square::BlackQueen => self.black_queens |= bb,
-            Square::BlackKing => self.black_king |= bb,
-
-            Square::Empty => unreachable!(),
-        }
-    }
     // Generate pseudo legal moves: Does not account for checks
     fn generate_pseudolegal_moves(&self) -> Vec<Move> {
         let mut moves = Vec::new();
@@ -333,22 +107,25 @@ impl Chess {
 
         generate_castling_moves(self, &mut moves);
 
-        // Sort by victim value
-        moves.sort_by(|a, b| {
-            let victim_a: i32 = self.squares[a.to].value();
-            let victim_b: i32 = self.squares[b.to].value();
-            victim_b.cmp(&victim_a)
-        });
-
         moves
     }
 
     // Filters out any illegal moves
     pub fn generate_moves(&self) -> Vec<Move> {
-        self.generate_pseudolegal_moves()
+        let mut legal_moves: Vec<Move> = self
+            .generate_pseudolegal_moves()
             .into_iter()
             .filter(|m| !self.leaves_king_in_check(m))
-            .collect()
+            .collect();
+
+        // Sort by victim value - attacker value
+        legal_moves.sort_by(|a, b| {
+            let score_a: i32 = self.squares[a.to].value() - self.squares[a.from].value();
+            let score_b: i32 = self.squares[b.to].value() - self.squares[b.from].value();
+            score_b.cmp(&score_a)
+        });
+
+        legal_moves
     }
 }
 

@@ -1,7 +1,7 @@
-use crate::chess::utils::*;
-use crate::chess::{castling_rights::CastlingRights, color::Color, square::Square};
+use crate::utils::*;
+use crate::{castling_rights::CastlingRights, color::Color, square::Square};
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Chess {
     pub squares: [Square; 64],
 
@@ -24,25 +24,14 @@ pub struct Chess {
     pub black_rooks: BitBoard,
     pub black_queens: BitBoard,
     pub black_king: BitBoard,
+
+    pub hash: u64,
 }
 
 impl Chess {
     pub fn new() -> Chess {
         Chess::from_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
     }
-
-    // pub fn to_string(&self) -> String {
-    //     let mut out: String = String::new();
-    //     for row in (0..8).rev() {
-    //         for col in 0..8 {
-    //             let sq: usize = row * 8 + col;
-    //             out.push(self.squares[sq].to_char());
-    //             out.push(' ');
-    //         }
-    //         out.push('\n');
-    //     }
-    //     out
-    // }
 
     pub fn from_fen(fen: &str) -> Chess {
         let mut chess = Chess {
@@ -66,6 +55,8 @@ impl Chess {
             black_rooks: 0,
             black_queens: 0,
             black_king: 0,
+
+            hash: 0,
         };
 
         let (position, rest): (&str, &str) = split_on(fen, ' ');
@@ -185,6 +176,8 @@ impl Chess {
             Ok(number) => chess.fullmove_number = number,
             Err(_) => panic!("Invalid full move number: {}", fullmove_number),
         }
+
+        chess.hash = chess.zobrist_hash();
 
         chess
     }

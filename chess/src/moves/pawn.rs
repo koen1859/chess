@@ -1,4 +1,4 @@
-use crate::chess::utils::{BitBoard, set_bit};
+use crate::utils::{BitBoard, set_bit};
 
 pub const WHITE_PAWN_ATTACKS: [BitBoard; 64] = generate_diagonal(true);
 pub const BLACK_PAWN_ATTACKS: [BitBoard; 64] = generate_diagonal(false);

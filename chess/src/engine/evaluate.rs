@@ -1,11 +1,11 @@
-use crate::chess::{
+use crate::{
     chess::Chess,
     utils::{BitBoard, bit_scan, count_ones},
 };
 
 /* piece/sq tables */
 /* values from Rofchade: http://www.talkchess.com/forum3/viewtopic.php?f=2&t=68311&start=19 */
-const MQ_PAWN_TABLE: [i32; 64] = [
+const MG_PAWN_TABLE: [i32; 64] = [
     0, 0, 0, 0, 0, 0, 0, 0, 98, 134, 61, 95, 68, 126, 34, -11, -6, 7, 26, 31, 65, 56, 25, -20, -14,
     13, 6, 21, 23, 12, 17, -23, -27, -2, -5, 12, 17, 6, 10, -25, -26, -4, -4, -10, 3, 3, 33, -12,
     -35, -1, -20, -23, -15, 24, 38, -22, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -80,17 +80,20 @@ const EG_KING_TABLE: [i32; 64] = [
 ];
 
 impl Chess {
+    // Returns negative if black is better and positive if white is better
     pub fn evaluate(&self) -> i32 {
         let material_score = self.count_material() * 100;
 
+        // Calculate for both middle game and end game
         let mg_score = self.calculate_pst_score(true);
         let eg_score = self.calculate_pst_score(false);
 
-        // You would typically count non-pawn material to determine the phase (0 to 24)
+        // Current phase 0-24 where 0 is endgame and 24 is start of game
         let phase = self.get_game_phase();
 
         (mg_score * phase + eg_score * (24 - phase)) / 24 + material_score
     }
+    // Game phase (0-24)
     fn get_game_phase(&self) -> i32 {
         count_ones(self.white_knights | self.black_knights)
             + count_ones(self.white_bishops | self.black_bishops)
@@ -115,7 +118,7 @@ impl Chess {
     fn calculate_pst_score(&self, middlegame: bool) -> i32 {
         let (pawn_t, knight_t, bishop_t, rook_t, queen_t, king_t) = if middlegame {
             (
-                &MQ_PAWN_TABLE,
+                &MG_PAWN_TABLE,
                 &MG_KNIGHT_TABLE,
                 &MG_BISHOP_TABLE,
                 &MG_ROOK_TABLE,

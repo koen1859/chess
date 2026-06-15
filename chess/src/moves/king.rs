@@ -1,4 +1,4 @@
-use crate::chess::utils::{BitBoard, set_bit};
+use crate::utils::{BitBoard, set_bit};
 
 pub const KING_MOVES: [BitBoard; 64] = generate_king_moves();
 
