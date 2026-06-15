@@ -35,36 +35,35 @@ const G8: usize = 62;
 
 impl Chess {
     // Generate pseudo legal moves: Does not account for checks
-    fn generate_pseudolegal_moves(&self) -> Vec<Move> {
+    fn generate_pseudolegal_moves(&self, color: Color) -> Vec<Move> {
         let mut moves = Vec::new();
 
         if self.halfmove_clock >= 100 {
             return moves;
         }
 
-        let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) =
-            match self.active_color {
-                White => (
-                    self.white_rooks,
-                    self.white_knights,
-                    self.white_bishops,
-                    self.white_queens,
-                    self.white_king,
-                    self.white_pawns,
-                    self.white_occupancy(),
-                    self.black_occupancy(),
-                ),
-                Black => (
-                    self.black_rooks,
-                    self.black_knights,
-                    self.black_bishops,
-                    self.black_queens,
-                    self.black_king,
-                    self.black_pawns,
-                    self.black_occupancy(),
-                    self.white_occupancy(),
-                ),
-            };
+        let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) = match color {
+            White => (
+                self.white_rooks,
+                self.white_knights,
+                self.white_bishops,
+                self.white_queens,
+                self.white_king,
+                self.white_pawns,
+                self.white_occupancy(),
+                self.black_occupancy(),
+            ),
+            Black => (
+                self.black_rooks,
+                self.black_knights,
+                self.black_bishops,
+                self.black_queens,
+                self.black_king,
+                self.black_pawns,
+                self.black_occupancy(),
+                self.white_occupancy(),
+            ),
+        };
         let all_occ: BitBoard = own_occ | enemy_occ;
 
         generate_moves_for_piece_type(
@@ -111,9 +110,9 @@ impl Chess {
     }
 
     // Filters out any illegal moves
-    pub fn generate_moves(&self) -> Vec<Move> {
+    pub fn generate_moves(&self, color: Color) -> Vec<Move> {
         let mut legal_moves: Vec<Move> = self
-            .generate_pseudolegal_moves()
+            .generate_pseudolegal_moves(color)
             .into_iter()
             .filter(|m| !self.leaves_king_in_check(m))
             .collect();

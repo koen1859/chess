@@ -34,7 +34,7 @@ fn app() -> Html {
 
                 spawn_local(async move {
                     TimeoutFuture::new(0).await;
-                    if let Some(best_move) = engine_handle.get_best_move_in_time(&mut current, 1000)
+                    if let Some(best_move) = engine_handle.get_best_move_in_time(&mut current, 5000)
                     {
                         let mut next = (*game).clone();
                         next.chess = current;

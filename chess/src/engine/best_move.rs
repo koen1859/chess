@@ -10,7 +10,7 @@ use instant::Instant;
 
 impl Engine {
     pub fn get_best_move(&mut self, board: &mut Chess, depth: u8) -> Option<Move> {
-        let moves = board.generate_moves();
+        let moves = board.generate_moves(board.active_color);
         if moves.is_empty() {
             return None; // Game is over (checkmate or stalemate)
         }

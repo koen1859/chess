@@ -1,5 +1,6 @@
 use crate::{
     chess::Chess,
+    color::Color::{Black, White},
     utils::{BitBoard, bit_scan, count_ones},
 };
 
@@ -88,10 +89,13 @@ impl Chess {
         let mg_score = self.calculate_pst_score(true);
         let eg_score = self.calculate_pst_score(false);
 
+        // Mobility score
+        let mobility_score = self.mobility_score();
+
         // Current phase 0-24 where 0 is endgame and 24 is start of game
         let phase = self.get_game_phase();
 
-        (mg_score * phase + eg_score * (24 - phase)) / 24 + material_score
+        (mg_score * phase + eg_score * (24 - phase)) / 24 + 2 * material_score + 2 * mobility_score
     }
     // Game phase (0-24)
     fn get_game_phase(&self) -> i32 {
@@ -104,16 +108,15 @@ impl Chess {
         let mut score: i32 = 0;
 
         score += count_ones(self.white_pawns) - count_ones(self.black_pawns);
-
         score += 5 * (count_ones(self.white_rooks) - count_ones(self.black_rooks));
-
         score += 3 * (count_ones(self.white_knights) - count_ones(self.black_knights));
-
         score += 3 * (count_ones(self.white_bishops) - count_ones(self.black_bishops));
-
         score += 9 * (count_ones(self.white_queens) - count_ones(self.black_queens));
 
         score
+    }
+    fn mobility_score(&self) -> i32 {
+        self.generate_moves(White).len() as i32 - self.generate_moves(Black).len() as i32
     }
     fn calculate_pst_score(&self, middlegame: bool) -> i32 {
         let (pawn_t, knight_t, bishop_t, rook_t, queen_t, king_t) = if middlegame {

@@ -46,7 +46,7 @@ impl Engine {
         }
 
         // moves, sorted by victim value - attacker value
-        let moves: Vec<Move> = board.generate_moves();
+        let moves: Vec<Move> = board.generate_moves(board.active_color);
 
         // Checkmate and Stalemate
         if moves.is_empty() {
@@ -142,7 +142,7 @@ impl Engine {
         }
 
         let captures: Vec<Move> = board
-            .generate_moves()
+            .generate_moves(board.active_color)
             .into_iter()
             .filter(|m| m.flags.contains(MoveFlags::CAPTURE))
             .collect();

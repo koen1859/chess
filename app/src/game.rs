@@ -29,7 +29,7 @@ impl Game {
         *self = Self::new();
     }
     pub fn legal_moves(&self) -> Vec<Move> {
-        self.chess.generate_moves()
+        self.chess.generate_moves(self.chess.active_color)
     }
     pub fn destinations(&self) -> Vec<usize> {
         match self.selected {
@@ -43,7 +43,7 @@ impl Game {
         }
     }
     pub fn status(&self) -> String {
-        let legal_moves = self.chess.generate_moves();
+        // let legal_moves = self.legal_moves();
         let in_check = self.chess.is_color_in_check(self.chess.active_color);
         let no_moves = self.legal_moves().is_empty();
 
@@ -92,4 +92,3 @@ impl Game {
         }
     }
 }
-
