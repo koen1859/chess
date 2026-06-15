@@ -1,4 +1,5 @@
 mod chess;
+mod server;
 
 use crate::chess::{
     chess::Chess,
@@ -7,11 +8,12 @@ use crate::chess::{
     movegeneration::{Move, MoveFlags},
     square::Square,
 };
+use crate::server::server::serve;
 use gloo_timers::future::TimeoutFuture;
+use std::path::PathBuf;
 use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
 
-/// Returns the file path to the SVG representing a piece.
 fn piece_svg(square: Square) -> &'static str {
     match square {
         Square::WhitePawn => "pieces/pawn-w.svg",
@@ -30,7 +32,6 @@ fn piece_svg(square: Square) -> &'static str {
     }
 }
 
-/// Whether the piece on `square` belongs to `color`.
 fn is_own_piece(square: Square, color: Color) -> bool {
     use Square::*;
     match color {
@@ -62,7 +63,6 @@ fn app() -> Html {
 
     let legal_moves: Vec<Move> = game.generate_moves();
 
-    // Squares the currently selected piece can move to.
     let destinations: Vec<usize> = match *selected {
         Some(from) => legal_moves
             .iter()
@@ -85,7 +85,6 @@ fn app() -> Html {
         (false, false, Color::Black) => "Black to move".to_owned(),
     };
 
-    // Make computer move after user moves
     {
         let game = game.clone();
         let user_color = *user_color;
@@ -203,7 +202,6 @@ fn app() -> Html {
         Color::Black => "Black",
     };
 
-    // Render the promotion modal with SVG elements
     let promotion_modal = if let Some((from, _)) = *pending_promotion {
         let is_white = is_own_piece(game.squares[from], Color::White);
         let (q, r, b, n) = if is_white {
@@ -250,7 +248,6 @@ fn app() -> Html {
         html! {}
     };
 
-    // Set the rendering order of squares based on player color to flip the board
     let board_squares = {
         let mut sqs = Vec::with_capacity(64);
         if *user_color == Color::White {
@@ -323,6 +320,21 @@ fn app() -> Html {
     }
 }
 
-fn main() {
+use clap::Parser;
+
+#[derive(Parser)]
+#[command(name = "chess-server", about = "Serves the Rust Chess WASM app")]
+struct Args {
+    #[arg(short, long, default_value = "8080", env = "PORT")]
+    port: u16,
+
+    #[arg(short, long, default_value = "dist")]
+    dir: PathBuf,
+}
+
+#[tokio::main]
+async fn main() {
+    let args = Args::parse();
+    serve(args.port, args.dir).await;
     yew::Renderer::<App>::new().render();
 }
