@@ -1,16 +1,15 @@
 use std::time::Duration;
 
 use crate::{
-    apply_undo_move::{History, Move},
-    chess::Chess,
-    color::Color::White,
-    engine::engine::Engine,
+    apply_undo_move::Move, chess::Chess, color::Color::White, engine::engine::Engine,
+    movelist::MoveList,
 };
 use instant::Instant;
 
 impl Engine {
     pub fn get_best_move(&mut self, board: &mut Chess, depth: u8) -> Option<Move> {
-        let moves = board.generate_moves(board.active_color);
+        let mut moves = MoveList::new();
+        board.generate_moves_into(board.active_color, &mut moves);
         if moves.is_empty() {
             return None; // Game is over (checkmate or stalemate)
         }
@@ -19,8 +18,9 @@ impl Engine {
         let is_white: bool = board.active_color == White;
         let mut best_eval: i32 = if is_white { i32::MIN } else { i32::MAX };
 
-        for m in moves {
-            let history: History = board.apply_move(&m);
+        for i in 0..moves.len() {
+            let m: Move = *moves.get(i);
+            let history = board.apply_move(&m);
 
             // Find out what the opponent can achieve if we play this move
             let eval: i32 = self.minimax(board, depth - 1, i32::MIN, i32::MAX);
@@ -93,7 +93,7 @@ mod tests {
         let chess_2 = Chess::new();
         let mut engine = Engine::new();
 
-        let _m = engine.get_best_move_in_time(&mut chess_1, 15000);
+        let _m = engine.get_best_move_in_time(&mut chess_1, 6_000);
 
         assert_eq!(chess_1, chess_2);
     }

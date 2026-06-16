@@ -5,6 +5,7 @@ pub mod chess;
 pub mod color;
 pub mod engine;
 pub mod movegeneration;
+pub mod movelist;
 pub mod moves;
 pub mod square;
 pub mod utils;

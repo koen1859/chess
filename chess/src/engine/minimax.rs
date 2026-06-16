@@ -1,52 +1,51 @@
 use crate::{
-    apply_undo_move::{History, Move, MoveFlags},
+    apply_undo_move::{Move, MoveFlags},
     chess::Chess,
     color::Color::{Black, White},
     engine::engine::{
         Engine, TTFlag,
         TTFlag::{Alpha, Beta, Exact},
     },
+    movelist::MoveList,
 };
-use instant::Instant;
 
 impl Engine {
     pub fn minimax(&mut self, board: &mut Chess, depth: u8, mut alpha: i32, mut beta: i32) -> i32 {
-        // Increment node count and check time periodically
         self.nodes += 1;
         if self.nodes % 2048 == 0 {
             if let Some(deadline) = self.deadline {
-                if Instant::now() >= deadline {
+                if instant::Instant::now() >= deadline {
                     self.time_up = true;
                 }
             }
         }
 
         if self.time_up {
-            return 0; // does not matter what we return, will be discarded
+            return 0;
         }
 
-        let hash: u64 = board.hash;
-
-        if let Some(&(score, stored_depth, flag)) = self.tt.get(&hash) {
-            if stored_depth >= depth {
-                match flag {
-                    Exact => return score,
+        // TT probe
+        if let Some(entry) = self.tt_probe(board.hash) {
+            if entry.depth >= depth {
+                match entry.flag {
+                    Exact => return entry.score,
                     Alpha => {
-                        if score <= alpha {
-                            return score;
+                        if entry.score <= alpha {
+                            return entry.score;
                         }
                     }
                     Beta => {
-                        if score >= beta {
-                            return score;
+                        if entry.score >= beta {
+                            return entry.score;
                         }
                     }
                 }
             }
         }
 
-        // moves, sorted by victim value - attacker value
-        let moves: Vec<Move> = board.generate_moves(board.active_color);
+        // Generate moves into stack-allocated buffer (no heap alloc)
+        let mut moves = MoveList::new();
+        board.generate_moves_into(board.active_color, &mut moves);
 
         // Checkmate and Stalemate
         if moves.is_empty() {
@@ -61,8 +60,24 @@ impl Engine {
             }
         }
 
+        // Check extension: at depth 0, if king is in check, search 1 ply deeper
         if depth == 0 {
+            if board.is_color_in_check(board.active_color) {
+                return self.minimax(board, 1, alpha, beta);
+            }
             return self.quiescence(board, alpha, beta);
+        }
+
+        // Move ordering: bring TT best move to front
+        if let Some(entry) = self.tt_probe(board.hash) {
+            if let Some(bm) = entry.best_move {
+                for i in 0..moves.len() {
+                    if *moves.get(i) == bm {
+                        moves.swap(0, i);
+                        break;
+                    }
+                }
+            }
         }
 
         let original_alpha = alpha;
@@ -72,18 +87,30 @@ impl Engine {
         } else {
             i32::MAX
         };
+        let mut best_move: Option<Move> = None;
 
-        for m in moves {
-            let history: History = board.apply_move(&m);
+        for i in 0..moves.len() {
+            let m: Move = *moves.get(i);
+            let history = board.apply_move(&m);
             let eval: i32 = self.minimax(board, depth - 1, alpha, beta);
             board.undo_move(&history);
 
+            if self.time_up {
+                return 0;
+            }
+
             if board.active_color == White {
-                best_eval = best_eval.max(eval);
-                alpha = alpha.max(best_eval);
+                if eval > best_eval {
+                    best_eval = eval;
+                    best_move = Some(m);
+                    alpha = alpha.max(best_eval);
+                }
             } else {
-                best_eval = best_eval.min(eval);
-                beta = beta.min(best_eval);
+                if eval < best_eval {
+                    best_eval = eval;
+                    best_move = Some(m);
+                    beta = beta.min(best_eval);
+                }
             }
 
             if beta <= alpha {
@@ -99,15 +126,12 @@ impl Engine {
             } else {
                 TTFlag::Exact
             };
-            self.tt.insert(hash, (best_eval, depth, flag));
+            self.tt_store(board.hash, best_eval, depth, flag, best_move);
         }
         best_eval
     }
 
-    // Given a position, for all captures, play out all future trades until the position is "quiet" that no captures can be made.
-    // This ensures that the engine does not see at the end of the minimax that it can take a queen, evaluate it very high while
-    // its own queen can just be taken after
-    fn quiescence(&mut self, board: &Chess, mut alpha: i32, mut beta: i32) -> i32 {
+    fn quiescence(&mut self, board: &mut Chess, mut alpha: i32, mut beta: i32) -> i32 {
         self.nodes += 1;
         if self.nodes % 2048 == 0 {
             if let Some(deadline) = self.deadline {
@@ -141,34 +165,57 @@ impl Engine {
             }
         }
 
-        let captures: Vec<Move> = board
-            .generate_moves(board.active_color)
-            .into_iter()
-            .filter(|m| m.flags.contains(MoveFlags::CAPTURE))
-            .collect();
-
+        let mut moves = MoveList::new();
+        board.generate_moves_into(board.active_color, &mut moves);
         let mut best_eval: i32 = stand_pat;
 
-        for m in captures {
-            let mut next_board: Chess = *board;
-            next_board.apply_move(&m);
-            let score: i32 = self.quiescence(&next_board, alpha, beta);
+        match board.active_color {
+            White => {
+                for i in 0..moves.len() {
+                    let m: Move = *moves.get(i);
+                    if !m.flags.contains(MoveFlags::CAPTURE) {
+                        continue;
+                    }
+                    let history = board.apply_move(&m);
+                    let score: i32 = self.quiescence(board, alpha, beta);
+                    board.undo_move(&history);
 
-            match board.active_color {
-                White => {
+                    if self.time_up {
+                        return 0;
+                    }
+
                     best_eval = best_eval.max(score);
                     alpha = alpha.max(best_eval);
+
+                    if beta <= alpha {
+                        break;
+                    }
                 }
-                Black => {
+            }
+            Black => {
+                for i in 0..moves.len() {
+                    let m: Move = *moves.get(i);
+                    if !m.flags.contains(MoveFlags::CAPTURE) {
+                        continue;
+                    }
+                    let history = board.apply_move(&m);
+                    let score: i32 = self.quiescence(board, alpha, beta);
+                    board.undo_move(&history);
+
+                    if self.time_up {
+                        return 0;
+                    }
+
                     best_eval = best_eval.min(score);
                     beta = beta.min(best_eval);
+
+                    if beta <= alpha {
+                        break;
+                    }
                 }
             }
-
-            if beta <= alpha {
-                break;
-            }
         }
+
         best_eval
     }
 }

@@ -21,7 +21,7 @@ fn app() -> Html {
     let legal_moves: Vec<Move> = game.legal_moves();
     let destinations: Vec<usize> = game.destinations();
     let status: String = game.status();
-    let advantage: i32 = game.chess.count_material();
+    let advantage: i32 = game.count_material();
     let board_squares: Vec<(usize, usize)> = game.board_squares();
     let user_color_str: &'static str = game.user_color_str();
 

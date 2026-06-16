@@ -4,6 +4,7 @@ use chess::{
     color::Color::{self, Black, White},
     engine::engine::Engine,
     square::{Square, Square::*},
+    utils::count_ones,
 };
 
 #[derive(Clone)]
@@ -90,5 +91,16 @@ impl Game {
         } else {
             Black
         }
+    }
+    pub fn count_material(&self) -> i32 {
+        let mut score: i32 = 0;
+
+        score += 1 * (count_ones(self.chess.white_pawns) - count_ones(self.chess.black_pawns));
+        score += 3 * (count_ones(self.chess.white_knights) - count_ones(self.chess.black_knights));
+        score += 3 * (count_ones(self.chess.white_bishops) - count_ones(self.chess.black_bishops));
+        score += 5 * (count_ones(self.chess.white_rooks) - count_ones(self.chess.black_rooks));
+        score += 9 * (count_ones(self.chess.white_queens) - count_ones(self.chess.black_queens));
+
+        score
     }
 }

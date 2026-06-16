@@ -4,10 +4,14 @@ use crate::{
     color::Color::{self, Black, White},
     square::Square,
     utils::BitBoard,
+    zobrist_hash::{
+        get_en_passant_index, square_to_piece_index, black_to_move_hash, castling_hash,
+        en_passant_hash, piece_hash,
+    },
 };
 use bitflags::bitflags;
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Move {
     pub from: usize,
     pub to: usize,
@@ -62,6 +66,13 @@ impl Chess {
         history.previous_hash = self.hash;
 
         let moving_piece: Square = self.squares[m.from];
+        debug_assert!(
+            !matches!(moving_piece, Square::Empty),
+            "apply_move: moving_piece is Empty at from={} active_color={:?} hash={:#x}",
+            m.from,
+            self.active_color,
+            self.hash,
+        );
         let mut result_piece: Square = moving_piece;
 
         // Update halfmove clock: if pawn move / capture, reset else + 1
@@ -73,6 +84,9 @@ impl Chess {
             self.halfmove_clock + 1
         };
 
+        // XOR out old en passant hash
+        self.hash ^= en_passant_hash(get_en_passant_index(history.en_passent));
+
         // Handle en passent: reset and set if double push
         self.en_passent = 0;
         if matches!(moving_piece, Square::WhitePawn | Square::BlackPawn) {
@@ -80,6 +94,9 @@ impl Chess {
                 self.en_passent = 1u64 << ((m.from + m.to) / 2);
             }
         }
+
+        // XOR in new en passant hash
+        self.hash ^= en_passant_hash(get_en_passant_index(self.en_passent));
 
         // Handle captures
         let mut target_sq: usize = m.to;
@@ -92,6 +109,18 @@ impl Chess {
                 };
             }
             history.captured_square = self.squares[target_sq];
+            // XOR out captured piece
+            if let Some((c, p)) = square_to_piece_index(history.captured_square) {
+                self.hash ^= piece_hash(c, target_sq, p);
+            }
+            // Clear castling rights if a rook is captured on its starting square
+            match target_sq {
+                0 => self.castling_rights.remove(CastlingRights::WHITEQUEENSIDE),
+                7 => self.castling_rights.remove(CastlingRights::WHITEKINGSIDE),
+                56 => self.castling_rights.remove(CastlingRights::BLACKQUEENSIDE),
+                63 => self.castling_rights.remove(CastlingRights::BLACKKINGSIDE),
+                _ => {}
+            }
             self.remove_piece_at(target_sq);
         }
 
@@ -122,10 +151,15 @@ impl Chess {
             _ => {}
         }
 
+        // XOR out old castling rights hash
+        self.hash ^= castling_hash(history.castling_rights.bits() as usize);
+
         // Handle Castling
         if m.flags.contains(MoveFlags::CASTLE_KINGSIDE) {
             match moving_piece.color() {
                 Some(White) => {
+                    self.hash ^= piece_hash(0, 7, 3);
+                    self.hash ^= piece_hash(0, 5, 3);
                     self.squares[7] = Square::Empty;
                     self.squares[5] = Square::WhiteRook;
 
@@ -133,6 +167,8 @@ impl Chess {
                     self.white_rooks |= 1u64 << 5;
                 }
                 Some(Black) => {
+                    self.hash ^= piece_hash(1, 63, 9);
+                    self.hash ^= piece_hash(1, 61, 9);
                     self.squares[63] = Square::Empty;
                     self.squares[61] = Square::BlackRook;
 
@@ -145,6 +181,8 @@ impl Chess {
         if m.flags.contains(MoveFlags::CASTLE_QUEENSIDE) {
             match moving_piece.color() {
                 Some(White) => {
+                    self.hash ^= piece_hash(0, 0, 3);
+                    self.hash ^= piece_hash(0, 3, 3);
                     self.squares[0] = Square::Empty;
                     self.squares[3] = Square::WhiteRook;
 
@@ -152,6 +190,8 @@ impl Chess {
                     self.white_rooks |= 1u64 << 3;
                 }
                 Some(Black) => {
+                    self.hash ^= piece_hash(1, 56, 9);
+                    self.hash ^= piece_hash(1, 59, 9);
                     self.squares[56] = Square::Empty;
                     self.squares[59] = Square::BlackRook;
 
@@ -186,8 +226,22 @@ impl Chess {
             }
         }
 
+        // XOR in new castling rights hash
+        self.hash ^= castling_hash(self.castling_rights.bits() as usize);
+
+        // XOR out moving piece from source
+        if let Some((c, p)) = square_to_piece_index(moving_piece) {
+            self.hash ^= piece_hash(c, m.from, p);
+        }
+
         // Move piece on board
         self.remove_piece_at(m.from);
+
+        // XOR in result piece at destination
+        if let Some((c, p)) = square_to_piece_index(result_piece) {
+            self.hash ^= piece_hash(c, m.to, p);
+        }
+
         self.add_piece_at(m.to, result_piece);
 
         self.active_color = match self.active_color {
@@ -198,7 +252,8 @@ impl Chess {
             }
         };
 
-        self.hash = self.zobrist_hash();
+        // XOR side to move hash
+        self.hash ^= black_to_move_hash();
 
         history
     }

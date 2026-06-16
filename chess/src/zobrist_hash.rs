@@ -55,7 +55,7 @@ lazy_static! {
 
 /// Convert a Square enum to a piece index (0-11)
 /// White pieces: 0-5, Black pieces: 6-11
-fn square_to_piece_index(square: Square) -> Option<(usize, usize)> {
+pub fn square_to_piece_index(square: Square) -> Option<(usize, usize)> {
     // (color_index: 0 for white, 1 for black, piece_index: 0-5)
     match square {
         Square::WhitePawn => Some((0, 0)),
@@ -76,7 +76,7 @@ fn square_to_piece_index(square: Square) -> Option<(usize, usize)> {
 
 /// Get the en passant file from a bitboard
 /// Returns 0-7 for files a-h, or 8 if no en passant
-fn get_en_passant_index(en_passant: BitBoard) -> usize {
+pub fn get_en_passant_index(en_passant: BitBoard) -> usize {
     if en_passant == 0 {
         return 8; // no en passant
     }
@@ -112,4 +112,20 @@ impl Chess {
 
         hash
     }
+}
+
+pub fn piece_hash(color: usize, square: usize, piece: usize) -> u64 {
+    PIECE_HASHES[color][square][piece]
+}
+
+pub fn castling_hash(rights: usize) -> u64 {
+    CASTLING_HASHES[rights]
+}
+
+pub fn en_passant_hash(idx: usize) -> u64 {
+    EN_PASSANT_HASHES[idx]
+}
+
+pub fn black_to_move_hash() -> u64 {
+    *BLACK_TO_MOVE_HASH
 }

@@ -6,6 +6,7 @@ use crate::{
         Color,
         Color::{Black, White},
     },
+    movelist::MoveList,
     moves::{
         king::KING_MOVES,
         knight::KNIGHT_MOVES,
@@ -34,12 +35,56 @@ const F8: usize = 61;
 const G8: usize = 62;
 
 impl Chess {
-    // Generate pseudo legal moves: Does not account for checks
-    fn generate_pseudolegal_moves(&self, color: Color) -> Vec<Move> {
-        let mut moves = Vec::new();
+    // Engine hot path - no heap allocation, uses apply/undo for legality
+    pub fn generate_moves_into(&mut self, color: Color, moves: &mut MoveList) {
+        moves.clear();
+        self.generate_pseudolegal_moves_into(color, moves);
 
+        let mut write = 0;
+        for read in 0..moves.len() {
+            let m = moves.get(read);
+            let history = self.apply_move(m);
+            if !self.is_color_in_check(color) {
+                if write != read {
+                    moves.swap(write, read);
+                }
+                write += 1;
+            }
+            self.undo_move(&history);
+        }
+        moves.truncate(write);
+
+        // Sort by victim value - attacker value (MVV-LVA)
+        let squares = &self.squares;
+        moves.sort_by(|a, b| {
+            let score_a: i32 = squares[a.to].value() - squares[a.from].value();
+            let score_b: i32 = squares[b.to].value() - squares[b.from].value();
+            score_b.cmp(&score_a)
+        });
+    }
+
+    // Public API for UI/tests - returns Vec (heap alloc, not hot path)
+    pub fn generate_moves(&self, color: Color) -> Vec<Move> {
+        let mut buf = MoveList::new();
+        self.generate_pseudolegal_moves_into(color, &mut buf);
+        let mut legal: Vec<Move> = buf
+            .as_slice()
+            .iter()
+            .filter(|m| !self.leaves_king_in_check(m))
+            .copied()
+            .collect();
+        legal.sort_by(|a, b| {
+            let score_a: i32 = self.squares[a.to].value() - self.squares[a.from].value();
+            let score_b: i32 = self.squares[b.to].value() - self.squares[b.from].value();
+            score_b.cmp(&score_a)
+        });
+        legal
+    }
+
+    // Generate pseudo legal moves: Does not account for checks
+    fn generate_pseudolegal_moves_into(&self, color: Color, moves: &mut MoveList) {
         if self.halfmove_clock >= 100 {
-            return moves;
+            return;
         }
 
         let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) = match color {
@@ -66,20 +111,14 @@ impl Chess {
         };
         let all_occ: BitBoard = own_occ | enemy_occ;
 
-        generate_moves_for_piece_type(
-            knights,
-            own_occ,
-            enemy_occ,
-            |sq| KNIGHT_MOVES[sq],
-            &mut moves,
-        );
+        generate_moves_for_piece_type(knights, own_occ, enemy_occ, |sq| KNIGHT_MOVES[sq], moves);
 
         generate_moves_for_piece_type(
             bishops,
             own_occ,
             enemy_occ,
             |sq| diagonal_attacks(sq, all_occ),
-            &mut moves,
+            moves,
         );
 
         generate_moves_for_piece_type(
@@ -87,7 +126,7 @@ impl Chess {
             own_occ,
             enemy_occ,
             |sq| straight_attacks(sq, all_occ),
-            &mut moves,
+            moves,
         );
 
         generate_moves_for_piece_type(
@@ -95,36 +134,16 @@ impl Chess {
             own_occ,
             enemy_occ,
             |sq| straight_attacks(sq, all_occ) | diagonal_attacks(sq, all_occ),
-            &mut moves,
+            moves,
         );
 
-        generate_moves_for_piece_type(king, own_occ, enemy_occ, |sq| KING_MOVES[sq], &mut moves);
+        generate_moves_for_piece_type(king, own_occ, enemy_occ, |sq| KING_MOVES[sq], moves);
 
-        generate_pawn_moves(pawns, own_occ, enemy_occ, self.active_color, &mut moves);
+        generate_pawn_moves(pawns, own_occ, enemy_occ, self.active_color, moves);
 
-        generate_en_passent_moves(pawns, self.en_passent, self.active_color, &mut moves);
+        generate_en_passent_moves(pawns, self.en_passent, self.active_color, moves);
 
-        generate_castling_moves(self, &mut moves);
-
-        moves
-    }
-
-    // Filters out any illegal moves
-    pub fn generate_moves(&self, color: Color) -> Vec<Move> {
-        let mut legal_moves: Vec<Move> = self
-            .generate_pseudolegal_moves(color)
-            .into_iter()
-            .filter(|m| !self.leaves_king_in_check(m))
-            .collect();
-
-        // Sort by victim value - attacker value
-        legal_moves.sort_by(|a, b| {
-            let score_a: i32 = self.squares[a.to].value() - self.squares[a.from].value();
-            let score_b: i32 = self.squares[b.to].value() - self.squares[b.from].value();
-            score_b.cmp(&score_a)
-        });
-
-        legal_moves
+        generate_castling_moves(self, moves);
     }
 }
 
@@ -133,7 +152,7 @@ pub fn generate_moves_for_piece_type<F>(
     own_occ: BitBoard,
     enemy_occ: BitBoard,
     attack_fn: F,
-    moves: &mut Vec<Move>,
+    moves: &mut MoveList,
 ) where
     F: Fn(usize) -> BitBoard,
 {
@@ -161,7 +180,7 @@ pub fn generate_moves_for_piece_type<F>(
 }
 
 fn push_pawn_move(
-    moves: &mut Vec<Move>,
+    moves: &mut MoveList,
     from: usize,
     to: usize,
     active_color: Color,
@@ -213,7 +232,7 @@ fn generate_pawn_moves(
     own_occ: BitBoard,
     enemy_occ: BitBoard,
     active_color: Color,
-    moves: &mut Vec<Move>,
+    moves: &mut MoveList,
 ) {
     let all_occ = own_occ | enemy_occ;
 
@@ -284,7 +303,7 @@ fn generate_en_passent_moves(
     mut pawns: BitBoard,
     en_passent: BitBoard,
     active_color: Color,
-    moves: &mut Vec<Move>,
+    moves: &mut MoveList,
 ) {
     if en_passent == 0 {
         return;
@@ -302,14 +321,14 @@ fn generate_en_passent_moves(
             moves.push(Move {
                 from: from,
                 to: ep_square,
-                flags: MoveFlags::EN_PASSENT | MoveFlags::CAPTURE, // Capture in theory should not do anything, since target square must be empty
+                flags: MoveFlags::EN_PASSENT | MoveFlags::CAPTURE,
             });
         }
         pawns &= pawns - 1;
     }
 }
 
-fn generate_castling_moves(chess: &Chess, moves: &mut Vec<Move>) {
+fn generate_castling_moves(chess: &Chess, moves: &mut MoveList) {
     if chess.white_king == 0 || chess.black_king == 0 {
         return;
     }
@@ -320,13 +339,12 @@ fn generate_castling_moves(chess: &Chess, moves: &mut Vec<Move>) {
     };
 
     if chess.is_square_attacked_by_color(king_sq, enemy_color) {
-        return; // Can't castle out of check
+        return;
     }
 
     let all_occ = chess.white_occupancy() | chess.black_occupancy();
     match chess.active_color {
         White => {
-            // White King side
             if chess
                 .castling_rights
                 .contains(CastlingRights::WHITEKINGSIDE)
@@ -343,7 +361,6 @@ fn generate_castling_moves(chess: &Chess, moves: &mut Vec<Move>) {
                     }
                 }
             }
-            // White Queen side
             if chess
                 .castling_rights
                 .contains(CastlingRights::WHITEQUEENSIDE)
@@ -362,7 +379,6 @@ fn generate_castling_moves(chess: &Chess, moves: &mut Vec<Move>) {
             }
         }
         Black => {
-            // Black King side
             if chess
                 .castling_rights
                 .contains(CastlingRights::BLACKKINGSIDE)
@@ -379,7 +395,6 @@ fn generate_castling_moves(chess: &Chess, moves: &mut Vec<Move>) {
                     }
                 }
             }
-            // Black Queen side
             if chess
                 .castling_rights
                 .contains(CastlingRights::BLACKQUEENSIDE)
