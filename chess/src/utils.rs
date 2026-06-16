@@ -59,11 +59,18 @@ pub fn pos_to_bit(pos: &str) -> Result<BitBoard, String> {
     Ok(bit)
 }
 
-// pub fn index_to_pos(index: usize) -> String {
-//     let column: usize = index % 8;
-//     let row: usize = index / 8 + 1;
-//     format!("{}{}", char::from_u32((97 + column) as u32).unwrap(), row)
-// }
+pub fn index_to_algebraic(idx: usize) -> String {
+    let file = (idx % 8) as u8;
+    let rank = (idx / 8) as u8;
+    format!("{}{}", (b'a' + file) as char, rank + 1)
+}
+
+pub fn algebraic_to_index(s: &str) -> usize {
+    let bytes = s.as_bytes();
+    let file = (bytes[0] - b'a') as usize;
+    let rank = (bytes[1] - b'1') as usize;
+    rank * 8 + file
+}
 
 // Returns the number of trailing zeros of a BitBoard
 // So: 00101110 -> 1

@@ -14,6 +14,13 @@ use crate::{
     utils::{BitBoard, bit_scan, count_ones},
 };
 
+const D4: usize = 27;
+const E4: usize = 28;
+const D5: usize = 35;
+const E5: usize = 36;
+
+const CENTER: BitBoard = (1u64 << D4) | (1u64 << E4) | (1u64 << D5) | (1u64 << E5);
+
 const PAWN_TABLE: [i32; 64] = [
     0, 0, 0, 0, 0, 0, 0, 0, 50, 50, 50, 50, 50, 50, 50, 50, 10, 10, 20, 30, 30, 20, 10, 10, 5, 5,
     10, 25, 25, 10, 5, 5, 0, 0, 0, 20, 20, 0, 0, 0, 5, -5, -10, 0, 0, -10, -5, 5, 5, 10, 10, -20,
@@ -61,19 +68,38 @@ const EG_KING_TABLE: [i32; 64] = [
 impl Chess {
     // Returns negative if black is better and positive if white is better
     pub fn evaluate(&self) -> i32 {
-        let material_score = self.material_score();
+        let mut score = 0;
+        score += self.material_score();
 
         // Calculate for both middle game and end game
         let mg_score = self.calculate_pst_score(true);
         let eg_score = self.calculate_pst_score(false);
+        let phase = self.get_game_phase();
+        score += (mg_score * phase + eg_score * (24 - phase)) / 24;
 
         // Mobility score
-        let mobility_score = self.mobility_score();
+        score += self.mobility_score() / 2;
 
-        // Current phase 0-24 where 0 is endgame and 24 is start of game
-        let phase = self.get_game_phase();
+        // Development bonus in opening
+        if phase > 18 {
+            score += 10 * count_ones(self.white_knights & (1 << 1 | 1 << 6)) as i32;
+            score += 10 * count_ones(self.white_bishops & (1 << 2 | 1 << 5)) as i32;
+            score -= 10 * count_ones(self.black_knights & (1 << 57 | 1 << 62)) as i32;
+            score -= 10 * count_ones(self.black_bishops & (1 << 58 | 1 << 61)) as i32;
 
-        (mg_score * phase + eg_score * (24 - phase)) / 24 + material_score + mobility_score
+            score += 20 * count_ones(self.white_pawns & CENTER) as i32;
+            score -= 20 * count_ones(self.black_pawns & CENTER) as i32;
+        }
+
+        // bonus for bishop pair
+        if count_ones(self.white_bishops) >= 2 {
+            score += 30;
+        }
+        if count_ones(self.black_bishops) >= 2 {
+            score -= 30;
+        }
+
+        score
     }
     // Game phase (0-24)
     fn get_game_phase(&self) -> i32 {
@@ -142,7 +168,9 @@ impl Chess {
         // Rooks
         count += count_attacks(rooks, own_occ, |sq| straight_attacks(sq, all_occ));
         // Queens
-        count += count_attacks(queens, own_occ, |sq| straight_attacks(sq, all_occ) | diagonal_attacks(sq, all_occ));
+        count += count_attacks(queens, own_occ, |sq| {
+            straight_attacks(sq, all_occ) | diagonal_attacks(sq, all_occ)
+        });
         // King
         count += count_attacks(king, own_occ, |sq| KING_MOVES[sq]);
         // Pawns
@@ -205,7 +233,6 @@ impl Chess {
         }
         score
     }
-
 }
 
 fn count_attacks<F>(mut pieces: BitBoard, own_occ: BitBoard, attack_fn: F) -> i32
@@ -221,7 +248,12 @@ where
     count
 }
 
-fn count_pawn_moves(mut pawns: BitBoard, own_occ: BitBoard, enemy_occ: BitBoard, color: Color) -> i32 {
+fn count_pawn_moves(
+    mut pawns: BitBoard,
+    own_occ: BitBoard,
+    enemy_occ: BitBoard,
+    color: Color,
+) -> i32 {
     let all_occ = own_occ | enemy_occ;
     let mut count = 0i32;
 
@@ -296,5 +328,17 @@ fn is_promotion_rank(sq: usize, color: Color) -> bool {
     match color {
         White => sq >= 56,
         Black => sq < 8,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_evaluate_starting_position() {
+        let chess = Chess::new();
+        let score = chess.evaluate();
+        assert_eq!(score, 0, "Starting position should be evaluated as 0");
     }
 }

@@ -32,13 +32,16 @@ fn app() -> Html {
                 let mut current = game.chess.clone();
                 let mut engine_handle = game.engine.clone();
 
+                let game_history = game.game_history.clone();
                 spawn_local(async move {
                     TimeoutFuture::new(0).await;
-                    if let Some(best_move) = engine_handle.get_best_move_in_time(&mut current, 5000)
+                    if let Some(best_move) =
+                        engine_handle.get_best_move(&mut current, 7, &game_history)
                     {
                         let mut next = (*game).clone();
                         next.chess = current;
                         next.chess.apply_move(&best_move);
+                        next.push_position();
                         next.engine = engine_handle;
                         game.set(next);
                     }
@@ -79,6 +82,7 @@ fn app() -> Html {
                             next.pending_promotion = Some((from, idx));
                         } else {
                             next.chess.apply_move(matching_moves[0]);
+                            next.push_position();
                             next.selected = None;
                         }
                     } else if idx != from
@@ -114,6 +118,7 @@ fn app() -> Html {
                 {
                     let mut next = current.clone();
                     next.chess.apply_move(mv);
+                    next.push_position();
                     next.selected = None;
                     next.pending_promotion = None;
                     game.set(next);

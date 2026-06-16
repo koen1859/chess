@@ -404,8 +404,123 @@ impl Chess {
     }
 }
 
+pub fn uci_to_move(s: &str, board: &Chess) -> Option<Move> {
+    if s.len() < 4 {
+        return None;
+    }
+    let from = crate::utils::algebraic_to_index(&s[0..2]);
+    let to = crate::utils::algebraic_to_index(&s[2..4]);
+
+    let mut flags = MoveFlags::empty();
+
+    let moving_piece = board.squares[from];
+    if moving_piece == Square::Empty {
+        return None;
+    }
+
+    // Check en passant
+    if board.en_passent != 0 && moving_piece.color() == Some(Color::White) && to == crate::utils::bit_scan(board.en_passent) && matches!(moving_piece, Square::WhitePawn) {
+        flags |= MoveFlags::EN_PASSENT | MoveFlags::CAPTURE;
+    } else if board.en_passent != 0 && moving_piece.color() == Some(Color::Black) && to == crate::utils::bit_scan(board.en_passent) && matches!(moving_piece, Square::BlackPawn) {
+        flags |= MoveFlags::EN_PASSENT | MoveFlags::CAPTURE;
+    } else if board.squares[to] != Square::Empty {
+        flags |= MoveFlags::CAPTURE;
+    }
+
+    // Check castling
+    if matches!(moving_piece, Square::WhiteKing) {
+        if from == 4 && to == 6 { flags |= MoveFlags::CASTLE_KINGSIDE; }
+        if from == 4 && to == 2 { flags |= MoveFlags::CASTLE_QUEENSIDE; }
+    }
+    if matches!(moving_piece, Square::BlackKing) {
+        if from == 60 && to == 62 { flags |= MoveFlags::CASTLE_KINGSIDE; }
+        if from == 60 && to == 58 { flags |= MoveFlags::CASTLE_QUEENSIDE; }
+    }
+
+    // Check promotion
+    if s.len() >= 5 {
+        match s.as_bytes()[4] {
+            b'q' => flags |= MoveFlags::PROMOTION_QUEEN,
+            b'r' => flags |= MoveFlags::PROMOTION_ROOK,
+            b'b' => flags |= MoveFlags::PROMOTION_BISHOP,
+            b'n' => flags |= MoveFlags::PROMOTION_KNIGHT,
+            _ => {}
+        }
+        if board.squares[to] != Square::Empty && !flags.contains(MoveFlags::CAPTURE) {
+            flags |= MoveFlags::CAPTURE;
+        }
+    }
+
+    Some(Move { from, to, flags })
+}
+
+pub fn move_to_uci(m: &Move) -> String {
+    let mut s = String::with_capacity(5);
+    s.push_str(&crate::utils::index_to_algebraic(m.from));
+    s.push_str(&crate::utils::index_to_algebraic(m.to));
+    if m.flags.contains(MoveFlags::PROMOTION_QUEEN) {
+        s.push('q');
+    } else if m.flags.contains(MoveFlags::PROMOTION_ROOK) {
+        s.push('r');
+    } else if m.flags.contains(MoveFlags::PROMOTION_BISHOP) {
+        s.push('b');
+    } else if m.flags.contains(MoveFlags::PROMOTION_KNIGHT) {
+        s.push('n');
+    }
+    s
+}
+
 #[cfg(test)]
 mod tests {
+    use crate::chess::Chess;
+
+    use super::*;
+
+    #[test]
+    fn test_uci_to_move_regular() {
+        let board = Chess::new();
+        let m = uci_to_move("e2e4", &board).unwrap();
+        assert_eq!(m.from, 12);
+        assert_eq!(m.to, 28);
+        assert_eq!(m.flags, MoveFlags::empty());
+    }
+
+    #[test]
+    fn test_uci_to_move_en_passant() {
+        let board = Chess::from_fen("rnbqkbnr/pppppppp/8/8/3Pp3/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1");
+        let m = uci_to_move("e4d3", &board).unwrap();
+        assert_eq!(m.from, 28);
+        assert_eq!(m.to, 19);
+        assert!(m.flags.contains(MoveFlags::EN_PASSENT));
+        assert!(m.flags.contains(MoveFlags::CAPTURE));
+    }
+
+    #[test]
+    fn test_move_to_uci() {
+        let m = Move { from: 12, to: 28, flags: MoveFlags::empty() };
+        assert_eq!(move_to_uci(&m), "e2e4");
+    }
+
+    #[test]
+    fn test_move_to_uci_promotion() {
+        let m = Move { from: 55, to: 63, flags: MoveFlags::PROMOTION_QUEEN };
+        assert_eq!(move_to_uci(&m), "h7h8q");
+    }
+
+    #[test]
+    fn test_to_fen_roundtrip() {
+        let board = Chess::new();
+        let fen = board.to_fen();
+        let board2 = Chess::from_fen(&fen);
+        assert_eq!(board, board2);
+    }
+
+    #[test]
+    fn test_to_fen_kiwipete() {
+        let fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1";
+        let board = Chess::from_fen(fen);
+        assert_eq!(board.to_fen(), fen);
+    }
     use super::*;
 
     #[test]

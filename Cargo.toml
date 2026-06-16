@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["chess", "server", "app"]
+members = ["chess", "server", "app", "engine-uci"]
 default-members = ["server"]
 
 [workspace.package]

@@ -10,6 +10,7 @@ use chess::{
 #[derive(Clone)]
 pub struct Game {
     pub chess: Chess,
+    pub game_history: Vec<u64>,
     pub selected: Option<usize>,
     pub pending_promotion: Option<(usize, usize)>,
     pub user_color: Color,
@@ -18,8 +19,10 @@ pub struct Game {
 
 impl Game {
     pub fn new() -> Self {
+        let chess = Chess::new();
         Self {
-            chess: Chess::new(),
+            game_history: vec![chess.hash],
+            chess,
             selected: None,
             pending_promotion: None,
             user_color: if rand::random::<bool>() { White } else { Black },
@@ -31,6 +34,13 @@ impl Game {
     }
     pub fn legal_moves(&self) -> Vec<Move> {
         self.chess.generate_moves(self.chess.active_color)
+    }
+    pub fn push_position(&mut self) {
+        self.game_history.push(self.chess.hash);
+    }
+    pub fn is_threefold_repetition(&self) -> bool {
+        let current = self.chess.hash;
+        self.game_history.iter().filter(|&&h| h == current).count() >= 3
     }
     pub fn destinations(&self) -> Vec<usize> {
         match self.selected {
@@ -44,19 +54,35 @@ impl Game {
         }
     }
     pub fn status(&self) -> String {
-        // let legal_moves = self.legal_moves();
-        let in_check = self.chess.is_color_in_check(self.chess.active_color);
         let no_moves = self.legal_moves().is_empty();
+        let in_check = self.chess.is_color_in_check(self.chess.active_color);
 
-        match (no_moves, in_check, self.chess.active_color) {
-            (true, true, White) => "Checkmate — Black wins".to_owned(),
-            (true, true, Black) => "Checkmate — White wins".to_owned(),
-            (true, false, _) => "Stalemate — draw".to_owned(),
-            (false, true, White) => "White to move — check!".to_owned(),
-            (false, true, Black) => "Black to move — check!".to_owned(),
-            (false, false, White) => "White to move".to_owned(),
-            (false, false, Black) => "Black to move".to_owned(),
+        match (no_moves, in_check) {
+            (true, true) => {
+                return match self.chess.active_color {
+                    White => "Checkmate — Black wins",
+                    Black => "Checkmate — White wins",
+                }
+                .to_owned();
+            }
+            (true, false) => return "Stalemate — draw".to_owned(),
+            (false, _) => {}
         }
+
+        if self.is_threefold_repetition() {
+            return "Draw by threefold repetition".to_owned();
+        }
+        if self.chess.halfmove_clock >= 100 {
+            return "Draw by fifty-move rule".to_owned();
+        }
+
+        match (in_check, self.chess.active_color) {
+            (true, White) => "White to move — check!",
+            (true, Black) => "Black to move — check!",
+            (false, White) => "White to move",
+            (false, Black) => "Black to move",
+        }
+        .to_owned()
     }
     pub fn user_color_str(&self) -> &'static str {
         match self.user_color {

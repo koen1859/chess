@@ -181,6 +181,101 @@ impl Chess {
 
         chess
     }
+    pub fn to_fen(&self) -> String {
+        let mut fen = String::new();
+
+        for rank in (0..8).rev() {
+            let mut empty = 0;
+            for file in 0..8 {
+                let idx = rank * 8 + file;
+                match self.squares[idx] {
+                    Square::Empty => empty += 1,
+                    Square::WhitePawn => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('P');
+                    }
+                    Square::WhiteKnight => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('N');
+                    }
+                    Square::WhiteBishop => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('B');
+                    }
+                    Square::WhiteRook => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('R');
+                    }
+                    Square::WhiteQueen => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('Q');
+                    }
+                    Square::WhiteKing => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('K');
+                    }
+                    Square::BlackPawn => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('p');
+                    }
+                    Square::BlackKnight => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('n');
+                    }
+                    Square::BlackBishop => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('b');
+                    }
+                    Square::BlackRook => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('r');
+                    }
+                    Square::BlackQueen => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('q');
+                    }
+                    Square::BlackKing => {
+                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        fen.push('k');
+                    }
+                }
+            }
+            if empty > 0 {
+                fen.push_str(&empty.to_string());
+            }
+            if rank > 0 {
+                fen.push('/');
+            }
+        }
+
+        fen.push(' ');
+        fen.push(if self.active_color == Color::White { 'w' } else { 'b' });
+        fen.push(' ');
+
+        let mut castling = String::new();
+        if self.castling_rights.contains(CastlingRights::WHITEKINGSIDE) { castling.push('K'); }
+        if self.castling_rights.contains(CastlingRights::WHITEQUEENSIDE) { castling.push('Q'); }
+        if self.castling_rights.contains(CastlingRights::BLACKKINGSIDE) { castling.push('k'); }
+        if self.castling_rights.contains(CastlingRights::BLACKQUEENSIDE) { castling.push('q'); }
+        if castling.is_empty() { castling.push('-'); }
+        fen.push_str(&castling);
+        fen.push(' ');
+
+        if self.en_passent == 0 {
+            fen.push('-');
+        } else {
+            let ep_idx = crate::utils::bit_scan(self.en_passent);
+            fen.push_str(&crate::utils::index_to_algebraic(ep_idx));
+        }
+
+        fen.push(' ');
+        fen.push_str(&self.halfmove_clock.to_string());
+        fen.push(' ');
+        fen.push_str(&self.fullmove_number.to_string());
+
+        fen
+    }
+
     pub fn white_occupancy(&self) -> BitBoard {
         self.white_pawns
             | self.white_knights

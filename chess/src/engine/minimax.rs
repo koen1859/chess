@@ -10,7 +10,15 @@ use crate::{
 };
 
 impl Engine {
-    pub fn minimax(&mut self, board: &mut Chess, depth: u8, mut alpha: i32, mut beta: i32) -> i32 {
+    pub fn minimax(
+        &mut self,
+        board: &mut Chess,
+        depth: u8,
+        mut alpha: i32,
+        mut beta: i32,
+        game_history: &[u64],
+        search_stack: &mut Vec<u64>,
+    ) -> i32 {
         self.nodes += 1;
         if self.nodes % 2048 == 0 {
             if let Some(deadline) = self.deadline {
@@ -21,6 +29,19 @@ impl Engine {
         }
 
         if self.time_up {
+            return 0;
+        }
+
+        // Draw detection: 50-move rule
+        if board.halfmove_clock >= 100 {
+            return 0;
+        }
+        // Draw detection: threefold repetition with game history
+        if game_history.iter().filter(|&&h| h == board.hash).count() >= 2 {
+            return 0;
+        }
+        // Draw detection: repetition within the search line
+        if search_stack.contains(&board.hash) {
             return 0;
         }
 
@@ -43,7 +64,15 @@ impl Engine {
             }
         }
 
-        // Generate moves into stack-allocated buffer (no heap alloc)
+        // Check extension: at depth 0, if king is in check, search 1 ply deeper
+        if depth == 0 {
+            if board.is_color_in_check(board.active_color) {
+                return self.minimax(board, 1, alpha, beta, game_history, search_stack);
+            }
+            return self.quiescence(board, alpha, beta);
+        }
+
+        // Generate moves into stack-allocated buffer
         let mut moves = MoveList::new();
         board.generate_moves_into(board.active_color, &mut moves);
 
@@ -58,14 +87,6 @@ impl Engine {
             } else {
                 return 0;
             }
-        }
-
-        // Check extension: at depth 0, if king is in check, search 1 ply deeper
-        if depth == 0 {
-            if board.is_color_in_check(board.active_color) {
-                return self.minimax(board, 1, alpha, beta);
-            }
-            return self.quiescence(board, alpha, beta);
         }
 
         // Move ordering: bring TT best move to front
@@ -91,9 +112,11 @@ impl Engine {
 
         for i in 0..moves.len() {
             let m: Move = *moves.get(i);
+            search_stack.push(board.hash);
             let history = board.apply_move(&m);
-            let eval: i32 = self.minimax(board, depth - 1, alpha, beta);
+            let eval: i32 = self.minimax(board, depth - 1, alpha, beta, game_history, search_stack);
             board.undo_move(&history);
+            search_stack.pop();
 
             if self.time_up {
                 return 0;
