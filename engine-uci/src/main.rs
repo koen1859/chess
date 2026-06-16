@@ -138,7 +138,7 @@ fn main() {
                         }
                         "movetime" => {
                             i += 1;
-                            movetime = Some(parts[i].parse().unwrap_or(10_000));
+                            movetime = Some(parts[i].parse().unwrap_or(100)); // 0.1 sec per move
                         }
                         "wtime" => {
                             i += 1;

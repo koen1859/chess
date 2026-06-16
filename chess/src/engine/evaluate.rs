@@ -69,6 +69,12 @@ impl Chess {
     // Returns negative if black is better and positive if white is better
     pub fn evaluate(&self) -> i32 {
         let mut score = 0;
+
+        // Draw detection: 50-move rule
+        if self.halfmove_clock >= 100 {
+            return 0;
+        }
+
         score += self.material_score();
 
         // Calculate for both middle game and end game

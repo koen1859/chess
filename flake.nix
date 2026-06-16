@@ -11,10 +11,16 @@
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
+      python =
+        pkgs.python314.withPackages
+        (ps:
+          with ps; [
+            chess
+          ]);
       nativeBuildInputs = with pkgs; [rustc cargo rustfmt cargo-watch rustup trunk lld pkg-config wasm-bindgen-cli cutechess stockfish];
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = nativeBuildInputs;
+        buildInputs = nativeBuildInputs ++ [python];
       };
     });
 }

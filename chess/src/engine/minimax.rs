@@ -32,10 +32,6 @@ impl Engine {
             return 0;
         }
 
-        // Draw detection: 50-move rule
-        if board.halfmove_clock >= 100 {
-            return 0;
-        }
         // Draw detection: threefold repetition with game history
         if game_history.iter().filter(|&&h| h == board.hash).count() >= 2 {
             return 0;

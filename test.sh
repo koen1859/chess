@@ -1,10 +1,11 @@
 #!/bin/sh
 
 cutechess-cli \
-  -engine cmd=./target/release/engine-uci proto=uci depth=7 \
-  -engine cmd=stockfish proto=uci depth=3 \
+  -engine cmd=./releases/v0.1.0 proto=uci \
+  -engine cmd=./releases/v0.1.0 proto=uci \
   -each tc=40/10 \
-  -games 16 \
+  -games 277 \
   -repeat \
   -concurrency $(nproc) \
-  -pgnout games.pgn
+  -pgnout results/games.pgn \
+  -openings file=positions/balanced.epd format=epd
