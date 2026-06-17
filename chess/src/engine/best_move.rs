@@ -18,6 +18,11 @@ impl Engine {
             return None;
         }
 
+        // Threefold repetition is a draw
+        if board.history.is_repetition(board) {
+            return None;
+        }
+
         // Initialize the search
         let mut best_move: Option<Move> = None;
         let is_white: bool = board.active_color == White;

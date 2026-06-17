@@ -1,14 +1,14 @@
 use crate::{
-    apply_undo_move::{History, Move},
+    apply_undo_move::{Move, UndoMove},
     chess::Chess,
     color::Color::{self, Black, White},
+    movelist::MoveList,
     moves::{
         king::KING_MOVES,
         knight::KNIGHT_MOVES,
         pawn::{BLACK_PAWN_ATTACKS, WHITE_PAWN_ATTACKS},
         ray::{diagonal_attacks, straight_attacks},
     },
-    movelist::MoveList,
     utils::{BitBoard, bit_scan},
 };
 
@@ -21,20 +21,20 @@ impl Chess {
     }
     pub fn leaves_king_in_check(&mut self, m: &Move) -> bool {
         let king_color: Color = self.active_color;
-        let history: History = self.apply_move(m);
+        let history: UndoMove = self.apply_move(m);
         let check: bool = self.is_color_in_check(king_color);
         self.undo_move(&history);
         check
     }
     pub fn is_check(&mut self, m: &Move) -> bool {
-        let history: History = self.apply_move(m);
+        let history: UndoMove = self.apply_move(m);
         let check: bool = self.is_color_in_check(self.active_color);
         self.undo_move(&history);
         check
     }
     pub fn is_check_slow(&self, m: &Move) -> bool {
         let mut clone = self.clone();
-        let history: History = clone.apply_move(m);
+        let history: UndoMove = clone.apply_move(m);
         let check: bool = clone.is_color_in_check(clone.active_color);
         clone.undo_move(&history);
         check

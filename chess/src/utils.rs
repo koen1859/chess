@@ -88,6 +88,20 @@ pub fn split_on(s: &str, sep: char) -> (&str, &str) {
         .unwrap_or((&s[..], ""))
 }
 
+pub const FILE_A: BitBoard = 0x0101010101010101;
+pub const FILE_B: BitBoard = FILE_A << 1;
+pub const FILE_C: BitBoard = FILE_A << 2;
+pub const FILE_D: BitBoard = FILE_A << 3;
+pub const FILE_E: BitBoard = FILE_A << 4;
+pub const FILE_F: BitBoard = FILE_A << 5;
+pub const FILE_G: BitBoard = FILE_A << 6;
+pub const FILE_H: BitBoard = FILE_A << 7;
+
+pub const FILES: [BitBoard; 8] = [
+    FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H,
+];
+
+
 pub const fn set_bit(bitboard: BitBoard, row: i32, col: i32) -> BitBoard {
     if row < 1 || row > 8 || col < 1 || col > 8 {
         return bitboard;

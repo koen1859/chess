@@ -1,5 +1,5 @@
 use crate::utils::*;
-use crate::{castling_rights::CastlingRights, color::Color, square::Square};
+use crate::{castling_rights::CastlingRights, color::Color, history::History, square::Square};
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Chess {
@@ -29,7 +29,7 @@ pub struct Chess {
 
     // Track the current search path positions (push in apply_move, pop in undo_move)
     // Used for repetition detection during search
-    pub search_path: Vec<u64>,
+    pub history: History,
 }
 
 impl Chess {
@@ -61,7 +61,7 @@ impl Chess {
             black_king: 0,
 
             hash: 0,
-            search_path: Vec::with_capacity(200),
+            history: History::new(),
         };
 
         let (position, rest): (&str, &str) = split_on(fen, ' ');

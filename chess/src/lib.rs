@@ -8,6 +8,7 @@ pub mod movegeneration;
 pub mod movelist;
 pub mod moves;
 pub mod perft;
+pub mod history;
 pub mod square;
 pub mod utils;
 pub mod zobrist_hash;

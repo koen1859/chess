@@ -43,11 +43,16 @@ impl Move {
 
         // Disambiguation: when two pieces of the same type can move to the same
         // square, disambiguate by file, then rank, then both.
-        if !matches!(moving_piece, Square::WhitePawn | Square::BlackPawn | Square::Empty) {
+        if !matches!(
+            moving_piece,
+            Square::WhitePawn | Square::BlackPawn | Square::Empty
+        ) {
             let all_moves = board.generate_moves(board.active_color);
             let ambiguous: Vec<&Move> = all_moves
                 .iter()
-                .filter(|m| m.to == self.to && m.from != self.from && board.squares[m.from] == moving_piece)
+                .filter(|m| {
+                    m.to == self.to && m.from != self.from && board.squares[m.from] == moving_piece
+                })
                 .collect();
 
             if !ambiguous.is_empty() {
@@ -116,7 +121,7 @@ bitflags! {
     }
 }
 
-pub struct History {
+pub struct UndoMove {
     pub m: Move,
     pub captured_square: Square,
 
@@ -127,9 +132,9 @@ pub struct History {
     pub previous_hash: u64,
 }
 
-impl History {
+impl UndoMove {
     pub fn new(m: Move) -> Self {
-        History {
+        UndoMove {
             m: m,
             captured_square: Square::Empty,
             castling_rights: CastlingRights::NONE,
@@ -142,15 +147,15 @@ impl History {
 
 impl Chess {
     // Move the piece on square idx from to square idx to
-    pub fn apply_move(&mut self, m: &Move) -> History {
-        let mut history: History = History::new(*m);
+    pub fn apply_move(&mut self, m: &Move) -> UndoMove {
+        let mut history: UndoMove = UndoMove::new(*m);
         history.castling_rights = self.castling_rights;
         history.en_passent = self.en_passent;
         history.halfmove_clock = self.halfmove_clock;
         history.previous_hash = self.hash;
 
         // Track this position on the search path (for threefold repetition detection)
-        self.search_path.push(self.hash);
+        self.history.push(self.hash);
 
         let moving_piece: Square = self.squares[m.from];
         debug_assert!(
@@ -344,13 +349,9 @@ impl Chess {
 
         history
     }
-    pub fn undo_move(&mut self, history: &History) {
+    pub fn undo_move(&mut self, history: &UndoMove) {
+        self.history.pop();
         let m: Move = history.m;
-
-        // Remove the final entry from the search path
-        let hash = self.search_path.pop().unwrap();
-        // If the hashes are not equal, we are trying to undo a move that is not the last move made
-        debug_assert_eq!(hash, history.previous_hash);
 
         let moving_piece: Square = self.squares[m.to];
 

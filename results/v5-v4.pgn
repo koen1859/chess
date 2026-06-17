@@ -3326,3 +3326,3316 @@ Ra2 22. c5 Be7 23. Ke3 g5 24. g4 Bf6 25. f5 exf5 26. gxf5 Re8+ 27. Kd3 Bb5+
 Bf7 27. Rb6+ Ke7 28. Rb7+ Kf6 29. Rb6+ Ke7 30. Rb7+
 Kf6 {Draw by 3-fold repetition} 1/2-1/2
 
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rnbq1rk1/bp3pp1/p1pp3p/4p3/1PP1n3/P4NP1/2QPPPBP/R1B2RK1 w - - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:43:32.817 CEST"]
+[GameStartTime "2026-06-17T23:43:11.532 CEST"]
+[PlyCount "109"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qxe4 f5 2. Qh4 Nd7 3. Qxd8 Rxd8 4. Bb2 e4 5. Nd4 Ne5 6. Rac1 c5 7. bxc5 dxc5
+8. Nxf5 Bxf5 9. Bxe5 Rxd2 10. g4 Bg6 11. Rb1 b5 12. cxb5 axb5 13. Rxb5 Rxe2
+14. Rb7 Bf7 15. h4 c4 16. a4 Bc5 17. Rc7 Ra5 18. Bc3 Bb6 19. Bxa5 Bxa5 20. Rc8+
+Kh7 21. Kh2 Bc3 22. Kg3 Be6 23. Rc5 Bd4 24. Rb5 Kg8 25. f3 e3 26. f4 Rf2
+27. Rxf2 exf2 28. f5 Bf7 29. Kf4 c3 30. Ke4 Bf6 31. Rb8+ Kh7 32. Rc8 g6 33. a5
+gxf5+ 34. gxf5 Kg7 35. a6 Bb3 36. a7 Bc2+ 37. Kf4 f1=Q+ 38. Bxf1 Bg5+ 39. hxg5
+hxg5+ 40. Ke5 Bb1 41. a8=Q Bxf5 42. Kxf5 Kh6 43. Kf6 Kh5 44. Kf5 Kh4 45. Ke5 Kg3
+46. Qg2+ Kh4 47. Kd4 Kh5 48. Rg8 Kh4 49. Kxc3 Kh5 50. Kb2 Kh4 51. Ka1 Kh5
+52. Kb1 Kh4 53. Ka1 Kh5 54. Kb1 Kh4 55. Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/1ppn1ppp/p1pb4/4p2b/4P3/3PBN1P/PPPN1PP1/R2QR1K1 w - - 0 1"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-06-17T23:43:28.991 CEST"]
+[GameStartTime "2026-06-17T23:43:12.558 CEST"]
+[PlyCount "91"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. d4 f5 2. a4 Qf6 3. c3 Bf7 4. a5 f4 5. dxe5 Nxe5 6. Bd4 Be6 7. h4 Kh8 8. Bxe5
+Bxe5 9. Nxe5 Qxe5 10. Nf3 Qb5 11. Nd4 Qc4 12. Ra4 Bg4 13. Rxc4 Bxd1 14. Rxd1 Kg8
+15. e5 Kf7 16. g3 fxg3 17. e6+ Kf6 18. fxg3 Ke5 19. g4 Kd5 20. b3 c5 21. e7 Rf7
+22. Nb5+ Ke5 23. Nxc7 Rc8 24. Rxc5+ Ke4 25. Rd8 Rxe7 26. Rxc8 Re5 27. Rxe5+ Kxe5
+28. Rh8 h6 29. Rh7 g5 30. Rxh6 gxh4 31. Rxh4 Ke4 32. Ne6 Kd3 33. Rh7 b5 34. axb6
+Ke4 35. b7 Ke5 36. Rh6 Kd5 37. Ng5 Kc5 38. Kf1 Kb5 39. Ke1 Ka5 40. Kd1 Kb5
+41. Kc1 Ka5 42. Kb1 Kb5 43. Ka1 Ka5 44. Kb1 Kb5 45. Ka1 Ka5
+46. Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r2q1rk1/1ppn1ppp/p1pb4/4p2b/4P3/3PBN1P/PPPN1PP1/R2QR1K1 w - - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:43:26.946 CEST"]
+[GameStartTime "2026-06-17T23:43:16.164 CEST"]
+[PlyCount "60"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc4 b5 2. Nxd6 Bxf3 3. Qxf3 cxd6 4. Kh2 a5 5. g4 a4 6. b4 c5 7. c4 g5 8. Rab1
+cxb4 9. Rxb4 bxc4 10. dxc4 Nc5 11. Qf5 h6 12. Rd1 Qc7 13. Rb2 a3 14. Rbd2 Rfd8
+15. Bxc5 Qxc5 16. Rc1 Kg7 17. Rcc2 Rab8 18. Rd5 Qc6 19. Rd3 Rb2 20. Rdd2 Rdb8
+21. Kg3 Rxc2 22. Rxc2 Rb4 23. Qf3 Rb2 24. Qd1 Qa4 25. Rc1 Qb4 26. Ra1 Qxc4
+27. Qxd6 Qxe4 28. Qxa3 Qf4+ 29. Kg2 Rxf2+ 30. Kg1 Qh2# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/ppp3p1/2npp2p/2b1p2n/4P3/2PP2QN/PP3PPP/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:43:35.080 CEST"]
+[GameStartTime "2026-06-17T23:43:16.887 CEST"]
+[PlyCount "97"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qg4 Nf6 2. Qxe6+ Kh7 3. Nd2 d5 4. O-O Re8 5. Qf5+ g6 6. Qf3 Rf8 7. exd5 Nxd5
+8. Qe4 b5 9. c4 bxc4 10. dxc4 Ndb4 11. a3 Qd6 12. axb4 Bxb4 13. g4 a5 14. f4
+Bc5+ 15. Kg2 Rfb8 16. Nf3 Bd4 17. Nf2 a4 18. fxe5 Bxe5 19. Nd3 Re8 20. c5 Qe6
+21. Rxa4 Rxa4 22. Qxa4 Rd8 23. Qe4 Qd5 24. Qxd5 Rxd5 25. Ndxe5 Nxe5 26. Nxe5
+Rxe5 27. Rf7+ Kg8 28. Rxc7 Re2+ 29. Kh3 h5 30. g5 Rc2 31. Rc8+ Kf7 32. Be3 Rxb2
+33. Rc7+ Ke6 34. Kg3 Kd5 35. Re7 Rb8 36. h4 Rb4 37. Kh3 Re4 38. Rxe4 Kxe4 39. c6
+Kxe3 40. c7 Kd3 41. Kg2 Kc2 42. c8=Q+ Kb1 43. Qc4 Ka1 44. Kf1 Kb1 45. Ke1 Ka1
+46. Kd1 Kb1 47. Ke1 Ka1 48. Kd1 Kb1 49. Ke1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/ppp3p1/2npp2p/2b1p2n/4P3/2PP2QN/PP3PPP/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:43:29.240 CEST"]
+[GameStartTime "2026-06-17T23:43:18.922 CEST"]
+[PlyCount "56"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qg4 Nf6 2. Qxe6+ Kh7 3. Be3 Bxe3 4. fxe3 Re8 5. Qb3 b6 6. c4 Ng4 7. Kd2 Na5
+8. Qc3 Nc6 9. Na3 Qf6 10. Rhf1 Qd8 11. Rh1 a5 12. Nb5 Qd7 13. a4 g5 14. Raf1 Rf8
+15. Rxf8 Rxf8 16. d4 Kg7 17. d5 Nb4 18. Ke2 c6 19. dxc6 Qxc6 20. Rd1 Qxe4
+21. Rg1 Rf6 22. Nc7 Qc6 23. Nb5 Rf8 24. b3 Rd8 25. Na7 Qb7 26. Nb5 Qc6 27. Na7
+Qb7 28. Nb5 Qc6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "r1bqkbr1/pp4p1/2n2nNp/2p1pp2/2Pp4/P2P2P1/1P1BPPBP/RN1QK2R w KQq - 0 1"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-06-17T23:43:31.528 CEST"]
+[GameStartTime "2026-06-17T23:43:19.947 CEST"]
+[PlyCount "67"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bxc6+ bxc6 2. Nxe5 Qd6 3. f4 Be6 4. Qa4 Bd7 5. Nxd7 Qxd7 6. Bc1 Kf7 7. Nd2
+Bd6 8. Nf3 Rge8 9. Bd2 h5 10. b4 Re7 11. bxc5 Bc7 12. Ba5 Bb8 13. Bb6 Qb7
+14. Bd8 Rd7 15. Bxf6 Kxf6 16. O-O Bc7 17. Rab1 Qc8 18. Qxc6+ Ke7 19. Qg6 a5
+20. Qg5+ Ke6 21. c6 Rd6 22. Qxg7 Rxc6 23. Nxd4+ Kd6 24. Qf6+ Kd7 25. Qxc6+ Ke7
+26. Rb7 Kf8 27. Rxc7 Qxc7 28. Qxc7 Re8 29. Qxa5 Kg7 30. Qxf5 Rh8 31. Ne6+ Kh6
+32. Qg5+ Kh7 33. Kh1 Ra8 34. Qg7# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqkbr1/pp4p1/2n2nNp/2p1pp2/2Pp4/P2P2P1/1P1BPPBP/RN1QK2R w KQq - 0 1"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-06-17T23:43:33.410 CEST"]
+[GameStartTime "2026-06-17T23:43:20.888 CEST"]
+[PlyCount "76"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bxc6+ bxc6 2. Nxe5 Qd6 3. f4 Nd7 4. Qa4 Bb7 5. Qb3 Rb8 6. Nxd7 Kxd7 7. e4 Qe6
+8. e5 h5 9. Qa4 a6 10. Qd1 Rh8 11. Kf2 Be7 12. a4 Ba8 13. Ra2 g5 14. h4 gxf4
+15. gxf4 Bb7 16. Na3 Rbd8 17. Qf3 Kc8 18. a5 Kb8 19. Nc2 Qg6 20. b4 cxb4
+21. Bxb4 c5 22. Qh3 Bxh1 23. Bxc5 Bxc5 24. Qxh1 Ka7 25. Qg2 Qg4 26. Qg3 Rhg8
+27. Qxg4 Rxg4 28. Kf3 Rxh4 29. Rb2 Rh2 30. Nb4 Rxb2 31. Nc6+ Ka8 32. Nxd8 Rd2
+33. Ne6 Bb4 34. Ng7 Rxd3+ 35. Ke2 Rd2+ 36. Kf3 Rd3+ 37. Ke2 Rd2+ 38. Kf3
+Rd3+ {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/pp2bpp1/2p2n1p/2n1p3/4P3/2P2Q1P/PPB1NPP1/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:54"]
+[GameEndTime "2026-06-17T23:44:19.587 CEST"]
+[GameStartTime "2026-06-17T23:43:25.204 CEST"]
+[PlyCount "254"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nd2 Be6 2. b4 Na6 3. O-O Kh7 4. a4 h5 5. h4 c5 6. b5 Nc7 7. c4 Qd6 8. a5 Ng4
+9. g3 g5 10. hxg5 Bxg5 11. Qd3 Rfd8 12. Qxd6 Rxd6 13. f4 Bf6 14. f5 Ne3 15. fxe6
+Nxc2 16. Rxf6 fxe6 17. Rf7+ Kg6 18. Rxc7 Nxa1 19. Rxc5 Kf6 20. Rc7 b6 21. c5
+bxc5 22. Rxc5 a6 23. b6 Rd3 24. b7 Rb8 25. Rc7 Nb3 26. Nxb3 Rxb3 27. Rh7 R3xb7
+28. Rxh5 Rg7 29. Rh6+ Ke7 30. Ba3+ Kd7 31. Bc5 Rc8 32. Be3 Rc4 33. Rh4 Kd6
+34. Kf2 Rf7+ 35. Ke1 Ra4 36. Bb6 Ra2 37. Rh8 Rb2 38. g4 Rg7 39. Rh4 Rb4 40. Nc3
+Rb2 41. Bc5+ Kc6 42. Bb6 Rg2 43. Be3 R2xg4 44. Rxg4 Rxg4 45. Kf1 Kd6 46. Ke2 Kc6
+47. Kf2 Kd6 48. Kf1 Ke7 49. Ke2 Kd6 50. Kf1 Ke7 51. Ke2 Kd6 52. Kd3 Rg2 53. Nd1
+Rg7 54. Nb2 Rd7 55. Ke2 Rc7 56. Kd3 Rd7 57. Kc2 Ke7 58. Bb6 Kf7 59. Nd3 Kf6
+60. Kd2 Kg5 61. Ke2 Rh7 62. Nxe5 Kf4 63. Nf3 Rb7 64. e5 Ke4 65. Bd4 Rg7 66. Bf2
+Rg4 67. Bb6 Rg8 68. Bg1 Rf8 69. Nd2+ Kxe5 70. Bc5 Rc8 71. Nc4+ Kf6 72. Bd4+ Ke7
+73. Kd3 Re8 74. Ke3 Kd7 75. Kd3 Kc6 76. Ne5+ Kd5 77. Ng4 Re7 78. Ne3+ Kc6
+79. Nc4 Rh7 80. Ne5+ Kd5 81. Ng4 Rb7 82. Nf6+ Kd6 83. Ne4+ Kd5 84. Ke3 Rb3+
+85. Bc3 Kc4 86. Kd2 Ra3 87. Kc2 Ra2+ 88. Bb2 Rxa5 89. Bc3 Ra2+ 90. Bb2 e5
+91. Kb1 Ra5 92. Bc3 Rb5+ 93. Kc2 Rd5 94. Nf6 Rb5 95. Ne8 Rb6 96. Nc7 e4 97. Ne8
+e3 98. Nf6 Re6 99. Ng4 e2 100. Be1 a5 101. Nf2 a4 102. Nd3 Rd6 103. Nb2+ Kb5
+104. Nd3 a3 105. Bc3 a2 106. Kd2 Kc4 107. Be5 e1=Q+ 108. Kxe1 Rd4 109. Bxd4 Kxd4
+110. Nf4 Ke4 111. Ng2 a1=Q+ 112. Kf2 Qa3 113. Kf1 Qb3 114. Kg1 Qd1+ 115. Kf2 Qb3
+116. Kg1 Kf3 117. Nh4+ Ke2 118. Kg2 Qe3 119. Nf5 Qf2+ 120. Kh3 Qxf5+ 121. Kg2
+Kd1 122. Kg1 Kc1 123. Kh1 Kb1 124. Kg1 Ka1 125. Kh1 Kb1 126. Kg1 Ka1 127. Kh1
+Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/pp2bpp1/2p2n1p/2n1p3/4P3/2P2Q1P/PPB1NPP1/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:43:48.907 CEST"]
+[GameStartTime "2026-06-17T23:43:26.946 CEST"]
+[PlyCount "112"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. b4 Ne6 2. Qg3 a5 3. bxa5 Qxa5 4. Bxh6 Kh7 5. Be3 Bd7 6. f4 Nh5 7. Qf3 Nhxf4
+8. Nxf4 Nxf4 9. Bxf4 exf4 10. e5+ Kg8 11. Qxf4 g5 12. Qd4 Be6 13. a4 f6 14. exf6
+Bxf6 15. Qe3 Bc4 16. Bg6 Bb3 17. g4 Bxa4 18. Ra2 Qd5 19. Rhh2 Qd1+ 20. Kf2 Bd4+
+21. Bf5 Bxe3+ 22. Kxe3 Rxf5 23. gxf5 Qxb1 24. f6 Qc1+ 25. Kd4 Qf4+ 26. Kc5 Qxf6
+27. c4 b5 28. cxb5 Qc3+ 29. Kd6 cxb5 30. Rhg2 Ra6+ 31. Kd5 Bb3+ 32. Ke4 Qc4+
+33. Ke3 Qf4+ 34. Kd3 Bc4+ 35. Kc3 Qe5+ 36. Kb4 Bxa2 37. Rxa2 Rxa2 38. Kb3 Rb2+
+39. Ka3 Kf7 40. h4 Ke6 41. hxg5 Kd5 42. g6 Kc4 43. g7 b4+ 44. Ka4 Qxg7 45. Ka5
+Kd4 46. Ka4 Ke3 47. Ka5 Kd4 48. Ka4 Kc3 49. Ka5 Kc4 50. Ka4 Kc3 51. Ka5 Kc2
+52. Ka4 Kb1 53. Ka5 Kc2 54. Ka4 Kb1 55. Ka5 Kc1 56. Ka4
+Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn1qk2r/3bnpbp/3pp1p1/1pp5/p3P3/P1PP1N1P/BP1N1PP1/R1BQK2R w KQkq - 0 1"]
+[GameDuration "00:00:27"]
+[GameEndTime "2026-06-17T23:43:56.232 CEST"]
+[GameStartTime "2026-06-17T23:43:28.993 CEST"]
+[PlyCount "139"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. c4 e5 2. cxb5 Bxb5 3. Bc4 Qd7 4. Bxb5 Qxb5 5. Nc4 Kd7 6. Ng5 f5 7. Nf7 Rf8
+8. Nfxd6 Qb3 9. Qxb3 axb3 10. Nb6+ Kxd6 11. Nxa8 Nd7 12. Ke2 fxe4 13. dxe4 Rxa8
+14. Rd1+ Ke6 15. Be3 c4 16. Rac1 Rc8 17. g4 h5 18. g5 h4 19. a4 Rc6 20. a5 Nc8
+21. Rd5 Nd6 22. Rcd1 Ke7 23. f4 Ke6 24. f5+ gxf5 25. exf5+ Nxf5 26. Rxd7 e4
+27. R7d2 c3 28. bxc3 Rxc3 29. Bf4 Rxh3 30. a6 Rf3 31. Bd6 Bc3 32. a7 Re3+
+33. Kf1 Rf3+ 34. Kg1 Bxd2 35. a8=Q Be3+ 36. Kh1 Nxd6 37. Qd5+ Ke7 38. Qxd6+ Kf7
+39. Qd5+ Kg7 40. Qxe4 Rh3+ 41. Kg2 Rg3+ 42. Kh2 Bxg5 43. Rb1 Kf6 44. Qc4 Ke5
+45. Rxb3 Rxb3 46. Qxb3 Bf4+ 47. Kg2 Bg3 48. Qd3 Kf4 49. Qg6 Ke3 50. Qg4 Kd2
+51. Qc8 Ke2 52. Qc3 Be1 53. Qa1 Kd2 54. Qa2+ Kd3 55. Qb1+ Kd2 56. Kf3 Bg3
+57. Qb3 Bc7 58. Qe3+ Kd1 59. Qd3+ Kc1 60. Qc3+ Kb1 61. Qxc7 Kb2 62. Qh2+ Kb3
+63. Qxh4 Kc3 64. Ke2 Kb2 65. Kd2 Ka1 66. Kc1 Ka2 67. Kd1 Ka1 68. Kc1 Ka2 69. Kd1
+Ka1 70. Kc1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn1qk2r/3bnpbp/3pp1p1/1pp5/p3P3/P1PP1N1P/BP1N1PP1/R1BQK2R w KQkq - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:43:54.167 CEST"]
+[GameStartTime "2026-06-17T23:43:29.241 CEST"]
+[PlyCount "126"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. d4 Nbc6 2. d5 exd5 3. exd5 Ne5 4. Ne4 Bf5 5. Nxe5 Bxe4 6. Qe2 Bxd5 7. Nxg6
+Bxg2 8. Nxh8 Bxh1 9. Qxb5+ Bc6 10. Qc4 d5 11. Nxf7 Kxf7 12. Qxc5 Qd7 13. Bg5 h6
+14. Bh4 Nf5 15. Bg3 Nxg3 16. fxg3 Qe7+ 17. Qxe7+ Kxe7 18. Kd2 h5 19. g4 h4
+20. b3 Be5 21. bxa4 Rxa4 22. Bb3 Rf4 23. a4 Rf2+ 24. Ke3 Rh2 25. Rd1 Rxh3+
+26. Ke2 d4 27. Rc1 Bf3+ 28. Kf2 Bxg4 29. Re1 Kd6 30. Re4 Bf5 31. Re2 Rxc3
+32. Rb2 h3 33. Bf7 h2 34. Rb6+ Kc7 35. Rh6 Be4 36. Ke2 Bf3+ 37. Kf2 Bf4 38. Rxh2
+Bxh2 39. a5 Be4 40. Ke2 Ra3 41. a6 Bd3+ 42. Kf2 Kd6 43. Be8 Be5 44. Bf7 Rxa6
+45. Bb3 Rb6 46. Bd1 Rb2+ 47. Kf3 Bc4 48. Ba4 Bd5+ 49. Kg4 d3 50. Kh5 d2 51. Kg5
+Rb1 52. Kf5 Rc1 53. Kg6 Bf3 54. Kf5 d1=Q 55. Bxd1 Rxd1 56. Kg5 Ke6 57. Kh4 Kf5
+58. Kh3 Ke4 59. Kh4 Kf4 60. Kh3 Ke3 61. Kh4 Kf4 62. Kh3 Ke3 63. Kh4
+Kf4 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "0-1"]
+[FEN "2rq1rk1/pp2bppp/2n2p2/3p1b2/3P4/P1N1PN1P/1P3PP1/R2QKB1R w KQ - 0 1"]
+[GameDuration "00:00:09"]
+[GameEndTime "2026-06-17T23:43:40.997 CEST"]
+[GameStartTime "2026-06-17T23:43:31.529 CEST"]
+[PlyCount "50"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qb3 Be4 2. Qxb7 Rc7 3. Qb5 Qd7 4. Bd3 Rb8 5. Qa6 Rb6 6. Qxb6 axb6 7. Bxe4
+dxe4 8. Nxe4 f5 9. Nc3 Bf6 10. Kd2 g5 11. b4 f4 12. b5 Ne5 13. Nxe5 Bxe5 14. Ne4
+Qd5 15. Nxg5 Bxd4 16. exd4 Qxg5 17. a4 f3+ 18. Kd3 fxg2 19. Rhd1 Qf5+ 20. Ke3
+Rc3+ 21. Kd2 Qc2+ 22. Ke1 Rd3 23. Rxd3 Qxd3 24. Rd1 Qc2 25. f3
+g1=Q# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "2rq1rk1/pp2bppp/2n2p2/3p1b2/3P4/P1N1PN1P/1P3PP1/R2QKB1R w KQ - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:43:54.332 CEST"]
+[GameStartTime "2026-06-17T23:43:32.819 CEST"]
+[PlyCount "110"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qb3 Be4 2. Qxb7 Rc7 3. Qb5 Qd7 4. Bd3 Rb7 5. Qa6 Rb6 6. Qxb6 axb6 7. Bxe4
+dxe4 8. Nxe4 f5 9. Nc3 Bf6 10. Ke2 g5 11. d5 Ne7 12. h4 gxh4 13. d6 Qxd6
+14. Nxh4 Qc6 15. Kd2 Rd8+ 16. Kc2 Bxh4 17. Rxh4 Qxg2 18. Rf4 Nd5 19. Nxd5 Qxd5
+20. Rg1+ Kf8 21. Rd4 Rc8+ 22. Kd2 Qb3 23. Ke2 Qxb2+ 24. Kf3 Qxa3 25. Rd5 Rc5
+26. Rd8+ Ke7 27. Rh8 Qb2 28. Rxh7 Rc2 29. Rg2 b5 30. Rh6 Qb4 31. Rb6 Qe4+
+32. Kg3 b4 33. Rh6 b3 34. Rh4 Qc6 35. Rhh2 b2 36. Rh1 Rc1 37. Rgg1 b1=Q 38. Rxc1
+Qbxc1 39. Rxc1 Qxc1 40. Kf4 Ke6 41. Kf3 Qf1 42. e4 Qd3+ 43. Kg2 fxe4 44. Kh2 f5
+45. Kg1 Qe2 46. Kh1 Qg4 47. Kh2 Kd5 48. Kh1 Kc4 49. Kh2 Kb3 50. Kh1 Ka2 51. Kh2
+Ka1 52. Kh1 Kb1 53. Kh2 Ka1 54. Kh1 Kb1 55. Kh2 Ka1 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "0-1"]
+[FEN "rnb1k2r/2ppq2p/p4np1/1p3p2/1P2pP2/2N1P1P1/P1PPB2P/R2QK1NR w KQkq - 0 1"]
+[GameDuration "00:00:03"]
+[GameEndTime "2026-06-17T23:43:36.942 CEST"]
+[GameStartTime "2026-06-17T23:43:33.411 CEST"]
+[PlyCount "14"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. a4 d5 2. axb5 Qxb4 3. Nh3 Bb7 4. Ng5 c6 5. Rb1 Qd6 6. bxa6 Bxa6 7. d3
+h6 {White makes an illegal move: 0000} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rnb1k2r/2ppq2p/p4np1/1p3p2/1P2pP2/2N1P1P1/P1PPB2P/R2QK1NR w KQkq - 0 1"]
+[GameDuration "00:00:20"]
+[GameEndTime "2026-06-17T23:43:55.368 CEST"]
+[GameStartTime "2026-06-17T23:43:35.081 CEST"]
+[PlyCount "105"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. a3 Nc6 2. d4 d5 3. Kf2 Be6 4. Nh3 Ng4+ 5. Bxg4 fxg4 6. Ng5 O-O 7. Nxe6 Qxe6
+8. a4 bxa4 9. Rxa4 Rab8 10. Rxa6 Rxb4 11. Ra2 g5 12. Kg2 Rc4 13. Qd2 gxf4
+14. gxf4 h5 15. h3 Rd8 16. hxg4 Qxg4+ 17. Kh2 h4 18. Rg1 Qxg1+ 19. Kxg1 Kg7
+20. Qe1 h3 21. Kh2 Nb4 22. Rb2 Rh8 23. Qd2 Kf6 24. Rxb4 Rxb4 25. Nxd5+ Ke6
+26. Nxb4 Rh6 27. Qc3 Kd7 28. Qc5 Rb6 29. Kxh3 Rh6+ 30. Kg4 Re6 31. Qd5+ Rd6
+32. Qf5+ Ke7 33. Nd5+ Kd8 34. Qxe4 Kc8 35. Kf5 Kb7 36. c4 Rh6 37. Qe7 Rh5+
+38. Ke4 Rxd5 39. cxd5 Ka8 40. Qd8+ Kb7 41. f5 c6 42. d6 c5 43. d7 Kc6 44. Qc8+
+Kb5 45. d8=Q Ka4 46. Qxc5 Kb3 47. Kd3 Ka2 48. Kc2 Ka1 49. Kc1 Ka2 50. Kd1 Ka1
+51. Kc1 Ka2 52. Kd1 Ka1 53. Kc1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/ppp1bppp/n4n2/3p4/4PB2/P1NP4/1PPQ2PP/1K1R1BNR w - - 0 1"]
+[GameDuration "00:00:20"]
+[GameEndTime "2026-06-17T23:43:57.222 CEST"]
+[GameStartTime "2026-06-17T23:43:36.942 CEST"]
+[PlyCount "105"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nf3 d4 2. Ne2 c5 3. c3 Bg4 4. cxd4 Bxf3 5. gxf3 cxd4 6. e5 Nh5 7. Bg2 g5
+8. Bg3 Nxg3 9. hxg3 Qd5 10. Rhe1 f6 11. e6 Nc7 12. Bh3 Qxf3 13. Nxd4 Qxg3
+14. Nf5 Qxh3 15. Nxe7+ Kg7 16. Qe2 Rfe8 17. Qe3 Qxe3 18. Nf5+ Kg6 19. Nxe3 Nxe6
+20. d4 f5 21. d5 Nf4 22. d6 Kf6 23. d7 Rg8 24. Rd6+ Kf7 25. b4 Ne6 26. Nxf5 Rg6
+27. Rexe6 Rxe6 28. d8=Q Rxd8 29. Rxd8 Kf6 30. Rf8+ Ke5 31. a4 Rb6 32. b5 a6
+33. Ng3 axb5 34. Rf5+ Kd4 35. a5 Re6 36. Rxg5 Rg6 37. Ne2+ Kc4 38. Rxg6 hxg6
+39. Nf4 g5 40. Ne6 Kb4 41. Nxg5 Kxa5 42. Kc2 Kb6 43. Kb3 Kc5 44. Nf7 b6 45. Ng5
+b4 46. Nf3 Kb5 47. Ne1 Ka5 48. Nc2 Kb5 49. Nxb4 Kc5 50. Ka4 Kc4 51. Na6 Kc3
+52. Kb5 Kd3 53. Kxb6 {Draw by insufficient mating material} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/ppp1bppp/n4n2/3p4/4PB2/P1NP4/1PPQ2PP/1K1R1BNR w - - 0 1"]
+[GameDuration "00:00:23"]
+[GameEndTime "2026-06-17T23:44:04.328 CEST"]
+[GameStartTime "2026-06-17T23:43:40.997 CEST"]
+[PlyCount "118"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. e5 Nh5 2. d4 Nxf4 3. Qxf4 g5 4. Qf3 Be6 5. Bxa6 bxa6 6. Qd3 a5 7. Qb5 f6
+8. Qxa5 fxe5 9. dxe5 c6 10. Qxd8 Raxd8 11. Nf3 c5 12. h3 a5 13. a4 h5 14. Kc1 h4
+15. Kd2 Kg7 16. Kd3 c4+ 17. Ke3 Rf5 18. Ne2 Bc5+ 19. Ned4 Rb8 20. Rb1 Rb4 21. c3
+Rxa4 22. b4 axb4 23. Rxb4 Bxd4+ 24. Kxd4 Rf4+ 25. Kc5 Rxb4 26. cxb4 Rf5 27. Kd6
+Bg8 28. b5 Bf7 29. e6 Bg6 30. Nd4 Rf2 31. Kxd5 c3 32. Rg1 Kf6 33. g3 Bf5 34. g4
+Bd3 35. Re1 Ke7 36. Nc6+ Ke8 37. Ra1 Kf8 38. e7+ Kf7 39. Ne5+ Kxe7 40. Ra7+ Kf8
+41. Ra8+ Ke7 42. Ra7+ Kd8 43. Nxd3 c2 44. Ra8+ Kc7 45. Ra7+ Kb6 46. Ra2 Kxb5
+47. Rb2+ Ka4 48. Ra2+ Kb3 49. Ra8 Rd2 50. Ke5 Rxd3 51. Rb8+ Kc3 52. Rc8+ Kb2
+53. Rb8+ Rb3 54. Rc8 Rc3 55. Rb8+ Ka1 56. Ra8+ Kb1 57. Rb8+ Ka1 58. Ra8+ Kb1
+59. Rb8+ Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pp1n1ppp/4pn2/3pN3/3P4/4P3/PP1N1PPP/R2QK2R w KQ - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:43:59.684 CEST"]
+[GameStartTime "2026-06-17T23:43:48.908 CEST"]
+[PlyCount "60"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O Nxe5 2. dxe5 Ne4 3. f3 Nc5 4. Qc2 Rc8 5. f4 a5 6. a4 f5 7. Nf3 Ne4 8. Qb3
+Rf7 9. h4 h5 10. Rfd1 Qe7 11. Qd3 Rc7 12. Ng5 Nxg5 13. hxg5 Kh7 14. Qe2 Kg6
+15. g3 Qb4 16. Kg2 Qe4+ 17. Kg1 Rc4 18. Ra3 Rxa4 19. Rad3 b5 20. b3 Rb4 21. Re1
+a4 22. bxa4 bxa4 23. Rc3 Rc4 24. Rd3 Rb7 25. Rd2 a3 26. Ra2 Ra7 27. Rd2 Rd7
+28. Ra2 Ra7 29. Rd2 Rd7 30. Ra2 Ra7 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pp1n1ppp/4pn2/3pN3/3P4/4P3/PP1N1PPP/R2QK2R w KQ - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:44:15.656 CEST"]
+[GameStartTime "2026-06-17T23:43:54.168 CEST"]
+[PlyCount "110"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. a4 Qc7 2. Ndf3 Nxe5 3. dxe5 Ne4 4. Rc1 Qa5+ 5. Ke2 b5 6. Ra1 Rab8 7. Kf1 bxa4
+8. Qxa4 Qxa4 9. Rxa4 Rxb2 10. Rxa7 f6 11. exf6 Rxf2+ 12. Kg1 gxf6 13. h4 h5
+14. Re7 e5 15. Rd7 Ra2 16. Rxd5 Nf2 17. Rh2 Ng4 18. Rd1 Nxh2 19. Kxh2 Re2
+20. Re1 Rxe1 21. Nxe1 f5 22. Nd3 Re8 23. Kg3 Kf7 24. Nb4 Ke6 25. Kf3 Rb8 26. Na6
+Rc8 27. g3 e4+ 28. Kf4 Kf6 29. Nb4 Rc5 30. g4 fxg4 31. Na6 Rc4 32. Nb8 Ke6
+33. Na6 Kd6 34. Nb8 Ra4 35. Na6 Rxa6 36. Kxe4 Ra2 37. Kf4 Re2 38. e4 Ke6 39. Kg3
+Kd6 40. Kf4 Ke6 41. Kg3 Rxe4 42. Kf2 Kf5 43. Kg2 Kf4 44. Kf1 Ke3 45. Ke1 Kd3+
+46. Kd1 Kc3 47. Kc1 Kb3 48. Kb1 Kc3 49. Ka1 Kc2 50. Ka2 Kc1 51. Ka1 Kd1 52. Kb1
+Ke1 53. Ka1 Kd1 54. Kb1 Ke1 55. Ka1 Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r3kbnr/1b3ppp/p1p1p3/8/4B3/8/PPP2PPP/R1BNK2R w KQkq - 0 1"]
+[GameDuration "00:00:27"]
+[GameEndTime "2026-06-17T23:44:22.206 CEST"]
+[GameStartTime "2026-06-17T23:43:54.332 CEST"]
+[PlyCount "143"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc3 f5 2. Bd3 c5 3. O-O Bd6 4. Re1 Kf7 5. Bc4 Re8 6. Rd1 Ke7 7. Re1 Kf6 8. h4
+f4 9. Bd2 h5 10. a4 Re7 11. Ne4+ Bxe4 12. Rxe4 e5 13. Bxa6 Nh6 14. Bc3 g5
+15. hxg5+ Kxg5 16. g3 f3 17. Re3 Rf8 18. Bd2 Kg6 19. Rd3 Rf6 20. a5 e4 21. Rd5
+Be5 22. Bc4 Bxb2 23. Rb1 Be5 24. Rxc5 Kf5 25. a6 Ng4 26. Rb7 Rxb7 27. axb7 Rb6
+28. Rb5 Rxb5 29. Bxb5 Nf6 30. Bc3 Bd6 31. Bc6 Ng4 32. Be8 Kg5 33. Bd2+ e3
+34. Bc1 Kf5 35. fxe3 Nf6 36. Bc6 Ne4 37. Bd7+ Ke5 38. Bb2+ Kd5 39. g4 h4 40. Bf5
+Ng3 41. Bd3 h3 42. c4+ Kc6 43. c5 Bc7 44. e4 h2+ 45. Kxh2 Nxe4+ 46. Kg1 Nxc5
+47. Bf5 Bg3 48. Bd4 Kd5 49. Bxc5 Kxc5 50. g5 Kd4 51. g6 Ke3 52. g7 Ke2 53. Bd3+
+Kxd3 54. g8=Q f2+ 55. Kf1 Bf4 56. Kxf2 Be5 57. Kf3 Kd4 58. b8=Q Bxb8 59. Qxb8
+Kd5 60. Kf4 Kc4 61. Qe5 Kb4 62. Ke4 Ka3 63. Kd3 Ka2 64. Kc2 Ka3 65. Kb1 Kb3
+66. Kc1 Ka2 67. Kd1 Kb1 68. Ke1 Kc1 69. Kf1 Kb1 70. Ke1 Kc1 71. Kf1 Kb1
+72. Ke1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r3kbnr/1b3ppp/p1p1p3/8/4B3/8/PPP2PPP/R1BNK2R w KQkq - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:44:17.114 CEST"]
+[GameStartTime "2026-06-17T23:43:55.370 CEST"]
+[PlyCount "111"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be3 f5 2. Bf3 Nf6 3. Kd2 O-O-O+ 4. Kc3 Ne4+ 5. Kc4 Nd2+ 6. Bxd2 Rxd2 7. Kc3
+Rd6 8. Ne3 g5 9. Rad1 g4 10. Be2 Bg7+ 11. Kc4 Rxd1 12. Nxd1 Rd8 13. b4 a5
+14. Kb3 axb4 15. Kxb4 c5+ 16. Kxc5 Bd4+ 17. Kb5 Bxg2 18. Rg1 Be4 19. Bd3 Bxd3+
+20. cxd3 Be5 21. Re1 Bxh2 22. Kc4 Kd7 23. Rh1 Rc8+ 24. Kd4 e5+ 25. Kd5 g3
+26. fxg3 Bxg3 27. Rxh7+ Kd8 28. Ne3 Rc7 29. Rh8+ Kd7 30. Rh7+ Kc8 31. Rxc7+ Kxc7
+32. Nxf5 Bh2 33. Ne3 Kb7 34. a4 Ka6 35. Nc4 Bg3 36. Ke4 Ka7 37. Kf3 Bh2 38. Ke4
+Ka6 39. Kf5 Kb7 40. Ke6 Kc6 41. Nxe5+ Bxe5 42. Kxe5 Kc5 43. d4+ Kb4 44. d5 Kxa4
+45. d6 Ka5 46. d7 Ka4 47. d8=Q Kb5 48. Kd4 Ka4 49. Kc3 Ka3 50. Kc2 Ka2 51. Kc1
+Ka1 52. Kd1 Kb1 53. Ke1 Ka1 54. Kd1 Kb1 55. Ke1 Ka1
+56. Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn3rk1/ppq2pb1/3pbnpp/2p1p3/4P3/1QPPBNP1/PP3PBP/RN3RK1 w - - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:44:07.019 CEST"]
+[GameStartTime "2026-06-17T23:43:56.233 CEST"]
+[PlyCount "60"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. c4 Ng4 2. Nc3 Nxe3 3. fxe3 Nc6 4. Nd5 Qd7 5. a4 a5 6. Nb6 Qe7 7. Nxa8 Rxa8
+8. h4 Kh7 9. Qb6 f5 10. Nd2 Ra6 11. Qb5 h5 12. exf5 Bxf5 13. Bxc6 Rxc6 14. e4
+Bh3 15. Rfe1 Qc7 16. Nb3 b6 17. Nd2 Be6 18. Nf3 Kh6 19. Ng5 Bg4 20. Rf1 Qb7
+21. Rae1 Rc7 22. Rf2 Bd7 23. Qb3 Bg4 24. Kg2 Re7 25. Kg1 Qc7 26. Qb5 Bd7 27. Qb3
+Bg4 28. Qb5 Bd7 29. Qb3 Qc6 30. Qb5 Qc7 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "rn3rk1/ppq2pb1/3pbnpp/2p1p3/4P3/1QPPBNP1/PP3PBP/RN3RK1 w - - 0 1"]
+[GameDuration "00:00:04"]
+[GameEndTime "2026-06-17T23:44:01.577 CEST"]
+[GameStartTime "2026-06-17T23:43:57.222 CEST"]
+[PlyCount "18"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. c4 Nc6 2. Nc3 Nd4 3. Qa4 Qb6 4. Rab1 Qb4 5. h4 Qxa4 6. Nxa4 Ne2+ 7. Kh1 Ng4
+8. Bd2 f5 9. b4 b6 {White makes an illegal move: 0000} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1k2r/2p1q1pp/2pb1n2/pp4B1/2BPp3/2P4P/PP3PP1/RN1Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:44:17.277 CEST"]
+[GameStartTime "2026-06-17T23:43:59.685 CEST"]
+[PlyCount "95"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be2 Be6 2. Nd2 Bd5 3. c4 bxc4 4. Nxc4 Kf7 5. Nxd6+ Qxd6 6. f3 h6 7. Be3 Qg3
+8. Bf2 Qf4 9. fxe4 Nxe4 10. Be3 Qf6 11. Rxf6+ Kxf6 12. Bd3 Nd6 13. a4 Nf5
+14. Qf1 g6 15. g4 Rae8 16. Bd2 Be4 17. gxf5 Bxd3 18. Qxd3 gxf5 19. Bxa5 Rhg8+
+20. Kh2 Re7 21. Rc1 Ra8 22. Rxc6+ Re6 23. Qb5 Rxa5 24. Rxe6+ Kxe6 25. Qxa5 Kf6
+26. Qxc7 Ke6 27. Qe5+ Kd7 28. Qxf5+ Kc6 29. b4 Kd6 30. h4 Kc7 31. d5 Kb6 32. Qf7
+h5 33. d6 Kc6 34. d7 Kb6 35. d8=Q+ Ka6 36. a5 Kb5 37. Qb3 Ka6 38. b5+ Ka7
+39. Kg1 Kb7 40. Kf1 Ka7 41. Ke1 Kb7 42. Kd1 Ka7 43. Kc1 Kb7 44. Kb1 Ka7 45. Ka1
+Kb7 46. Kb1 Ka7 47. Ka1 Kb7 48. Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1k2r/2p1q1pp/2pb1n2/pp4B1/2BPp3/2P4P/PP3PP1/RN1Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-06-17T23:44:17.716 CEST"]
+[GameStartTime "2026-06-17T23:44:01.579 CEST"]
+[PlyCount "90"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb3 a4 2. Bc2 h6 3. Bxf6 gxf6 4. Nd2 f5 5. f3 e3 6. Re1 O-O 7. Qe2 Re8 8. Nf1
+f4 9. Bg6 Rf8 10. c4 Bf5 11. Bxf5 Rxf5 12. c5 Bxc5 13. dxc5 Qxc5 14. Rac1 Qd6
+15. Qc2 Rf6 16. Rcd1 Qe6 17. b4 Qc4 18. Qxc4+ bxc4 19. Rc1 h5 20. Kh2 h4
+21. Rxc4 Rd8 22. Rc2 Kg7 23. Rec1 Rdd6 24. Rb2 a3 25. Re2 Rd4 26. Rc3 Rxb4
+27. Rxa3 Rb1 28. Kg1 c5 29. Rc2 Rb5 30. Rac3 Rf5 31. a4 Ra5 32. Kh2 Re5 33. Rd3
+Re7 34. Rd5 e2 35. Rxe2 Rxe2 36. Rd7+ Kf6 37. Rxc7 Rxa4 38. Rc6+ Ke5 39. Rxc5+
+Kd6 40. Rc8 Raa2 41. Rd8+ Ke5 42. Re8+ Kd4 43. Rd8+ Ke5 44. Re8+ Kd5 45. Rd8+
+Ke5 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "0-1"]
+[FEN "r3kb1r/1ppn1ppp/p1q1pn2/5b2/3P1B2/2NQ1NPP/PPP2PB1/R3K2R w KQkq - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:44:25.388 CEST"]
+[GameStartTime "2026-06-17T23:44:04.329 CEST"]
+[PlyCount "108"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qe2 Bb4 2. Qd2 Ne4 3. Ne5 Nxe5 4. dxe5 Qc4 5. Bxe4 Bxe4 6. Rg1 Rd8 7. Qe3
+Bxc2 8. Qf3 Be4 9. Qe3 Rd3 10. Qe2 Bxc3+ 11. bxc3 Qxc3+ 12. Bd2 Qxa1+ 13. Qd1
+Qxe5 14. Kf1 Qa5 15. Bxa5 Rxd1+ 16. Be1 Ra1 17. f4 Kd7 18. g4 Kc6 19. g5 Rxa2
+20. Bc3 Rg8 21. h4 Kd5 22. h5 Rh2 23. Be5 c5 24. Rg3 c4 25. Rc3 Bd3+ 26. Kg1
+Rxh5 27. Ra3 f6 28. Ra5+ b5 29. Ba1 fxg5 30. Be5 Ke4 31. Bd6 gxf4 32. Rxa6 g5
+33. Ra7 Rd8 34. Be7 Re8 35. Bd6 g4 36. Rf7 e5 37. Bb4 Kf3 38. Rg7 e4 39. Rf7 Ra8
+40. Bc3 Ra2 41. Bb2 e3 42. Re7 Rh3 43. Re5 b4 44. Re6 c3 45. Rd6 cxb2 46. Rxd3
+b1=Q+ 47. Rd1 Kg3 48. Rxb1 Rc2 49. Kf1 Kf3 50. Ke1 Kg2 51. Rxb4 Ra2 52. Rc4 Kf3
+53. Kd1 e2+ 54. Kc1 e1=Q# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r3kb1r/1ppn1ppp/p1q1pn2/5b2/3P1B2/2NQ1NPP/PPP2PB1/R3K2R w KQkq - 0 1"]
+[GameDuration "00:00:13"]
+[GameEndTime "2026-06-17T23:44:20.584 CEST"]
+[GameStartTime "2026-06-17T23:44:07.019 CEST"]
+[PlyCount "82"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qe2 Bb4 2. Qd2 Ne4 3. Ne5 Nxe5 4. dxe5 Qc4 5. Bxe4 Bxe4 6. Rh2 Rd8 7. Qe3
+Bxc2 8. g4 Rd3 9. Qe2 Bxc3+ 10. bxc3 Qxc3+ 11. Kf1 Qxa1+ 12. Kg2 Qxa2 13. h4
+Qd5+ 14. f3 Bd1 15. Qf2 Rxf3 16. Qd2 Rxf4+ 17. Qxd5 Rxg4+ 18. Kf2 exd5 19. Rh1
+Bb3 20. Kf3 h5 21. Rc1 Kd7 22. Rb1 Bc4 23. Rxb7 Re8 24. Rb2 Rxe5 25. Rc2 Rxh4
+26. Rd2 d4 27. Rc2 d3 28. Rb2 Re2 29. Rxe2 dxe2 30. Kf2 f5 31. Ke1 Re4 32. Kd2
+e1=Q+ 33. Kc2 Qa1 34. Kd2 Kc6 35. Kc2 Kb5 36. Kd2 Ka4 37. Kc2 Ka3 38. Kd2 Ka2
+39. Kc2 Ka3 40. Kd2 Ka2 41. Kc2 Ka3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/ppq3bp/2n1pnp1/2pp1p2/5P2/1P1PPNP1/PBP1Q1BP/RN3RK1 w - - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:44:34.398 CEST"]
+[GameStartTime "2026-06-17T23:44:15.657 CEST"]
+[PlyCount "99"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc3 d4 2. exd4 cxd4 3. Nb5 Qe7 4. Ba3 Nb4 5. Nbxd4 Nfd5 6. c4 Nc3 7. Qd2
+Bxd4+ 8. Nxd4 Ncxa2 9. Rxa2 Qc5 10. Qe3 Rd8 11. Bxb4 Qxd4 12. Qxd4 Rxd4 13. Rd1
+Rd7 14. h4 Kf7 15. d4 Kf6 16. c5 Rc7 17. Ba5 Rd7 18. Bb6 a6 19. b4 h6 20. Bf3 g5
+21. b5 g4 22. Be2 h5 23. Bc4 Ke7 24. Kf2 Kf6 25. Ke3 Rb8 26. bxa6 bxa6 27. Bxa6
+Bxa6 28. Rxa6 Rc8 29. Rda1 Re7 30. Kd3 Rg8 31. c6 Rc8 32. c7 Rf7 33. Re1 Rh7
+34. Ra7 Re7 35. Rb7 Ra8 36. d5 e5 37. Bd4 Ra3+ 38. Bc3 Ra8 39. fxe5+ Kg6
+40. c8=Q Rxc8 41. Rxe7 Rc5 42. Ra1 Rxc3+ 43. Kxc3 Kh6 44. Kb2 Kg6 45. Kc2 Kh6
+46. Kb1 Kg6 47. Kc1 Kh6 48. Kb1 Kg6 49. Kc1 Kh6
+50. Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r1b2rk1/ppq3bp/2n1pnp1/2pp1p2/5P2/1P1PPNP1/PBP1Q1BP/RN3RK1 w - - 0 1"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-06-17T23:44:19.769 CEST"]
+[GameStartTime "2026-06-17T23:44:17.116 CEST"]
+[PlyCount "10"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. d4 cxd4 2. exd4 Bd7 3. Nc3 Ne4 4. Qd3 a5 5. Ne5
+h5 {White makes an illegal move: 0000} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn3b1r/pbpkqQp1/1p1pp2p/5p2/3P4/3BP3/PPP2PPP/RNB2RK1 w - - 0 1"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-06-17T23:44:19.928 CEST"]
+[GameStartTime "2026-06-17T23:44:17.278 CEST"]
+[PlyCount "11"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qh5 Nc6 2. Nc3 Qg5 3. Qf7+ Qe7 4. Qh5 Qg5 5. Qf7+ Qe7
+6. Qh5 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn3b1r/pbpkqQp1/1p1pp2p/5p2/3P4/3BP3/PPP2PPP/RNB2RK1 w - - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:44:42.649 CEST"]
+[GameStartTime "2026-06-17T23:44:17.717 CEST"]
+[PlyCount "126"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qh5 Nc6 2. g4 fxg4 3. Qxg4 h5 4. Qf3 Qg5+ 5. Kh1 Qf6 6. Qg2 Kc8 7. f3 e5
+8. d5 Nb4 9. Qh3+ Kb8 10. e4 Nxd3 11. cxd3 Bc8 12. Qg2 Ba6 13. Bg5 Qf7 14. Qc2
+Be7 15. Bxe7 Qxe7 16. Nc3 h4 17. b4 Bb7 18. a4 a5 19. b5 g5 20. h3 Re8 21. Kh2
+Qf6 22. Rf2 Qf4+ 23. Kg1 Qg3+ 24. Kf1 Bc8 25. Ke2 Bxh3 26. Qd2 Bg2 27. d4 h3
+28. Qd3 Rf8 29. dxe5 Bxf3+ 30. Rxf3 Qg2+ 31. Ke1 Rxf3 32. Qe2 Rxc3 33. Qxg2 hxg2
+34. Kf2 Rc2+ 35. Kf3 dxe5 36. Rg1 Ra2 37. Rxg2 Rxg2 38. Kxg2 Kc8 39. Kf2 Kd7
+40. Kf3 Kd6 41. Ke2 Rb8 42. Kf3 Rf8+ 43. Kg4 Rf4+ 44. Kxg5 Rxe4 45. Kf5 Rxa4
+46. Kg5 Ra3 47. Kg4 a4 48. Kh4 Rb3 49. Kg4 a3 50. Kh4 a2 51. Kg4 a1=Q 52. Kf5
+Rf3+ 53. Ke4 Rf2 54. Kd3 Kxd5 55. Ke3 Rf1 56. Kd2 Kc4 57. Kc2 Kxb5 58. Kd2 Kb4
+59. Kc2 Ka3 60. Kd2 Ka2 61. Kc2 Ka3 62. Kd2 Ka2 63. Kc2
+Ka3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "r1bq1rk1/ppp1ppbp/1n4p1/3P4/2BP1B2/2N2Q2/PP3PPP/R3K2R w KQ - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:44:29.980 CEST"]
+[GameStartTime "2026-06-17T23:44:19.589 CEST"]
+[PlyCount "57"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qd3 Bf5 2. Qe2 Bxd4 3. Rd1 Bxc3+ 4. bxc3 Nxc4 5. Qxc4 Rc8 6. O-O c6 7. d6 b5
+8. Qc5 exd6 9. Bxd6 Bc2 10. Rde1 Re8 11. Rxe8+ Qxe8 12. Rc1 a5 13. Qa3 a4 14. c4
+Qe4 15. c5 Bd3 16. h4 f5 17. Rd1 Bc2 18. Rc1 b4 19. Qb2 Bd3 20. f4 a3 21. Qb3+
+Kg7 22. Be5+ Kh6 23. Rd1 Bc2 24. Qg3 Qxe5 25. Qg5+ Kg7 26. Rd7+ Kg8 27. fxe5 Bb3
+28. Qf6 Rc7 29. Rd8# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/ppp1ppbp/1n4p1/3P4/2BP1B2/2N2Q2/PP3PPP/R3K2R w KQ - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:44:43.886 CEST"]
+[GameStartTime "2026-06-17T23:44:19.770 CEST"]
+[PlyCount "122"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qd3 Bf5 2. Qe2 Bxd4 3. Bh6 Re8 4. Bb5 Bd7 5. O-O-O Bxb5 6. Nxb5 e5 7. Nxd4
+exd4 8. Qf3 Qxd5 9. Qxd5 Nxd5 10. Rxd4 Rad8 11. Rhd1 c6 12. Be3 f5 13. Kc2 a5
+14. a4 Kg7 15. h4 h5 16. Kd3 c5 17. Rxd5 Rxd5+ 18. Kc2 Rxd1 19. Kxd1 b6 20. b3
+Re4 21. Bg5 c4 22. f3 Rd4+ 23. Kc2 cxb3+ 24. Kxb3 f4 25. Be7 Kf7 26. Bg5 Ke6
+27. Ka3 Ke5 28. Kb3 Kf5 29. Bh6 Rd3+ 30. Kc4 Ra3 31. Kb5 Rb3+ 32. Kc6 Rb4
+33. Bg7 Ke6 34. Kb7 Rxa4 35. Kxb6 Ra2 36. Bh6 Kf5 37. Kc5 Rxg2 38. Kb5 Ra2
+39. Bg7 a4 40. Kb4 g5 41. hxg5 Kxg5 42. Be5 h4 43. Bd6 h3 44. Be7+ Kf5 45. Bc5
+h2 46. Bd4 h1=Q 47. Kc4 Rc2+ 48. Kb5 a3 49. Ka5 a2 50. Kb5 a1=Q 51. Bxa1 Qxa1
+52. Kb4 Ke5 53. Kb3 Rc1 54. Kb4 Kd4 55. Kb3 Kd3 56. Kb4 Kd2 57. Kb3 Kd1 58. Kb4
+Ke1 59. Kb3 Kd1 60. Kb4 Ke1 61. Kb3 Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1k1nr/pp3ppp/3p4/2b5/3qPB2/3B2P1/PPP4P/RN1QK2R w KQkq - 0 1"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-06-17T23:44:32.204 CEST"]
+[GameStartTime "2026-06-17T23:44:19.930 CEST"]
+[PlyCount "74"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb5+ Bd7 2. Bxd7+ Kxd7 3. Qg4+ Kc6 4. Nc3 Bb4 5. Qf3 Nf6 6. e5+ Nd5 7. Rd1
+Bxc3+ 8. bxc3 Qxc3+ 9. Qxc3+ Nxc3 10. Rxd6+ Kc5 11. Rd7 Nxa2 12. Be3+ Kc4
+13. Rxb7 Rhe8 14. Kf2 Rxe5 15. Rxf7 Nb4 16. Rxg7 Nxc2 17. Rc7+ Kb3 18. Bxa7 Rf8+
+19. Kg2 Ne1+ 20. Kh3 h5 21. Bd4 Re4 22. Bc5 Rf5 23. Rb7+ Kc2 24. Rc7 Nf3 25. Ra1
+Ne5 26. Bd4+ Kd3 27. Bxe5 Rfxe5 28. Rd7+ Kc2 29. Ra2+ Kb3 30. Raa7 Kc3 31. Rab7
+Rg4 32. Ra7 Rge4 33. Kg2 Re2+ 34. Kg1 Re1+ 35. Kg2 R1e2+ 36. Kg1 Re1+ 37. Kg2
+R1e2+ {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r1b1k1nr/pp3ppp/3p4/2b5/3qPB2/3B2P1/PPP4P/RN1QK2R w KQkq - 0 1"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-06-17T23:44:22.087 CEST"]
+[GameStartTime "2026-06-17T23:44:20.585 CEST"]
+[PlyCount "6"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qc1 Qf2+ 2. Kd1 Bg4+ 3. Be2 Qxe2# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pp2ppbp/2n3p1/3n4/3P2b1/2NB1N2/PP3PPP/R1BQR1K1 w - - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:44:44.272 CEST"]
+[GameStartTime "2026-06-17T23:44:22.088 CEST"]
+[PlyCount "113"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qb3 e6 2. Nxd5 exd5 3. Be3 Bxf3 4. gxf3 Nxd4 5. Bxd4 Bxd4 6. Qxb7 Rb8 7. Qc6
+Rxb2 8. Bc2 Rb6 9. Qa4 Bxa1 10. Rxa1 Qf6 11. Re1 Rb7 12. f4 h5 13. Rd1 Rd8
+14. Qd4 Qxd4 15. Rxd4 Kg7 16. Be4 Rbd7 17. Bd3 f5 18. h4 Kf6 19. Kg2 Ke6 20. Ra4
+Rb7 21. Ra6+ Rd6 22. Rxd6+ Kxd6 23. Kf3 d4 24. a4 Rb3 25. Ke2 a5 26. Bc4 Rh3
+27. Bf7 Rxh4 28. Bxg6 Kd5 29. Bxf5 Rxf4 30. Bb1 Ke5 31. f3 h4 32. Kf2 h3 33. Kg3
+h2 34. Kxh2 Rxf3 35. Bg6 d3 36. Kg2 d2 37. Bc2 Rc3 38. Bd1 Rc1 39. Bg4 Kf4
+40. Be2 Ke3 41. Bh5 d1=Q 42. Bxd1 Rxd1 43. Kh2 Kd2 44. Kg2 Ke2 45. Kh2 Ke1
+46. Kg3 Rd4 47. Kg2 Kd1 48. Kf1 Kc2 49. Ke1 Kb2 50. Ke2 Kb1 51. Ke3 Rb4 52. Kd2
+Ka1 53. Kc1 Ka2 54. Kd1 Ka1 55. Kc1 Ka2 56. Kd1 Ka1
+57. Kc1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pp2ppbp/2n3p1/3n4/3P2b1/2NB1N2/PP3PPP/R1BQR1K1 w - - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:44:40.931 CEST"]
+[GameStartTime "2026-06-17T23:44:22.207 CEST"]
+[PlyCount "99"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qb3 e6 2. Nxd5 exd5 3. Be3 Bxf3 4. gxf3 Nxd4 5. Bxd4 Bxd4 6. Qxb7 Rb8 7. Qe7
+Rxb2 8. Qxd8 Bxf2+ 9. Kf1 Rxd8 10. Re2 Bd4 11. Rd1 Rxe2 12. Kxe2 Re8+ 13. Be4
+Bb6 14. Rxd5 f5 15. Kd3 fxe4+ 16. fxe4 a5 17. Rd7 a4 18. Rd6 Bc7 19. Ra6 Bxh2
+20. Rxa4 Bf4 21. Ra7 Rd8+ 22. Ke2 h5 23. Kf3 g5 24. a4 Rd3+ 25. Kf2 Rd2+ 26. Kf3
+h4 27. Kg4 Re2 28. Kf5 h3 29. Ra8+ Kg7 30. Ra7+ Kh6 31. Ra6+ Kg7 32. Ra7+ Kh6
+33. Ra6+ Kh5 34. Ra8 Kh4 35. a5 Kg3 36. Rc8 h2 37. Rh8 Re1 38. e5 h1=Q 39. Rxh1
+Rxh1 40. e6 Ra1 41. e7 Rxa5+ 42. Ke6 Ra6+ 43. Kf5 Ra8 44. Ke6 Kg4 45. Kd7 Ra7+
+46. Ke6 Ra6+ 47. Kf7 Ra7 48. Ke6 Ra6+ 49. Kf7 Ra7
+50. Ke6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r3kb1r/ppqn1pp1/2p1b2p/4p3/2P1P1n1/2N1BN2/PP2BPPP/R2Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:19"]
+[GameEndTime "2026-06-17T23:44:44.933 CEST"]
+[GameStartTime "2026-06-17T23:44:25.389 CEST"]
+[PlyCount "102"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qd2 Nxe3 2. fxe3 Bd6 3. Rfd1 Ke7 4. a4 f5 5. Bd3 fxe4 6. Nxe4 Nc5 7. Nxd6
+Qxd6 8. Qc3 Kf6 9. b4 Nxd3 10. c5 Qd5 11. Rxd3 Qe4 12. Rf1 Bf5 13. Rd6+ Ke7
+14. a5 g5 15. Nxe5 Qc2 16. Ng6+ Kf7 17. Qxc2 Rh7 18. Ne5+ Kg8 19. Qc4+ Kg7
+20. Qf7+ Kh8 21. Qxf5 Re8 22. g4 a6 23. e4 Ra8 24. Nf7+ Kg8 25. Nxh6+ Kh8
+26. Nf7+ Kg8 27. e5 Rg7 28. Nxg5 Rc7 29. Rg6+ Kh8 30. Qf6+ Rg7 31. Rxg7 b6
+32. Kh1 bxa5 33. Kg1 axb4 34. Kh1 b3 35. Kg1 b2 36. Kh1 b1=Q 37. Rxb1 a5 38. Kg1
+a4 39. Kf1 a3 40. Ke1 a2 41. Ke2 axb1=Q 42. Ra7+ Kg8 43. Rxa8+ Qb8 44. Kd1 Qxa8
+45. Qf7+ Kh8 46. Qh5+ Kg7 47. Ne6+ Kg8 48. Qg6+ Kh8 49. Qh5+ Kg8 50. Qg6+ Kh8
+51. Qh5+ Kg8 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r3kb1r/ppqn1pp1/2p1b2p/4p3/2P1P1n1/2N1BN2/PP2BPPP/R2Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:34"]
+[GameEndTime "2026-06-17T23:45:04.791 CEST"]
+[GameStartTime "2026-06-17T23:44:29.981 CEST"]
+[PlyCount "173"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qd2 Nxe3 2. fxe3 Bd6 3. a4 O-O 4. Rfd1 Bc5 5. a5 Bb4 6. a6 bxa6 7. Rxa6 Nc5
+8. Ra2 Nxe4 9. Qd3 Nc5 10. Qd6 Qxd6 11. Rxd6 Bxc3 12. bxc3 Ne4 13. Rxc6 Nxc3
+14. Rc2 Nxe2+ 15. Rxe2 e4 16. Nd4 Rac8 17. c5 Bc4 18. Rb2 Bd5 19. Rxc8 Rxc8
+20. Rc2 g5 21. Kf2 g4 22. Kg3 h5 23. Kh4 Rf8 24. Kxh5 f5 25. Kg5 a5 26. Kf4 a4
+27. c6 Bb3 28. Rc5 Bd1 29. Nxf5 Bb3 30. c7 Be6 31. Kxe4 Bxf5+ 32. Rxf5 Rc8
+33. Rc5 Kg7 34. Kf5 a3 35. Rc4 a2 36. Rxg4+ Kh7 37. Ra4 Rxc7 38. Rxa2 Kg7 39. g4
+Re7 40. e4 Rf7+ 41. Ke5 Rf8 42. h4 Re8+ 43. Kd5 Rd8+ 44. Ke6 Rh8 45. h5 Kh6
+46. e5 Kg5 47. Ra4 Rf8 48. Kd5 Rd8+ 49. Kc5 Kh4 50. e6 Rg8 51. Kd6 Rd8+ 52. Ke5
+Re8 53. Rb4 Kg5 54. Kd5 Rd8+ 55. Ke5 Re8 56. Kd5 Rd8+ 57. Ke5 Rd1 58. Re4 Rd8
+59. e7 Ra8 60. Kd5 Ra5+ 61. Ke6 Ra6+ 62. Kf7 Ra7 63. Rb4 Rc7 64. Ke6 Rc1
+65. Rb5+ Kxg4 66. e8=Q Re1+ 67. Re5 Ra1 68. Qg6+ Kh3 69. Re3+ Kh2 70. Re2+ Kh3
+71. Re3+ Kh2 72. Qg3+ Kh1 73. Re1+ Rxe1+ 74. Qxe1+ Kg2 75. h6 Kf3 76. h7 Kg2
+77. Kf5 Kh2 78. Ke4 Kg2 79. Kd3 Kh2 80. Kc2 Kg2 81. Kd2 Kh2 82. Kc1 Kg2 83. Kb1
+Kh2 84. Ka1 Kg2 85. Kb1 Kh2 86. Ka1 Kg2 87. Kb1 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2qk2r/pppb1ppp/2nbp3/3n4/8/2NBBN2/PPPQ1PPP/2KR3R w kq - 0 1"]
+[GameDuration "00:00:07"]
+[GameEndTime "2026-06-17T23:44:39.802 CEST"]
+[GameStartTime "2026-06-17T23:44:32.206 CEST"]
+[PlyCount "37"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Ne4 e5 2. Nxd6+ cxd6 3. Kb1 Be6 4. c4 Nxe3 5. Qxe3 f5 6. Ng5 Bd7 7. h4 f4
+8. Qf3 h6 9. Ne4 Be6 10. Qh5+ Kd7 11. g3 Qf8 12. gxf4 Qxf4 13. Qg6 Rhg8 14. a4
+Nd4 15. a5 Nb3 16. Be2 Nd4 17. Bd3 Nb3 18. Be2 Nd4
+19. Bd3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2qk2r/pppb1ppp/2nbp3/3n4/8/2NBBN2/PPPQ1PPP/2KR3R w kq - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:44:57.057 CEST"]
+[GameStartTime "2026-06-17T23:44:34.399 CEST"]
+[PlyCount "115"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Ne4 e5 2. Nxd6+ cxd6 3. h4 Nxe3 4. Qxe3 O-O 5. Be4 Qf6 6. Qd2 d5 7. Bxd5 a5
+8. Qe3 Rfe8 9. Rde1 a4 10. Bxc6 Bxc6 11. Nxe5 Bxg2 12. Rh2 Bf3 13. h5 Qf5
+14. Qxf3 Rxe5 15. Qxf5 Rxf5 16. Kd2 Rd8+ 17. Ke2 b5 18. Rg1 Re5+ 19. Kf3 g5
+20. Rhg2 h6 21. b3 a3 22. b4 Rd2 23. Rc1 f5 24. Rg3 Ree2 25. Kg2 Rxf2+ 26. Kg1
+Rf4 27. Rxa3 Rxb4 28. Rf3 Rg4+ 29. Kf1 Rf4 30. Rxf4 gxf4 31. Rb1 Rh2 32. Rxb5
+Rxh5 33. Ke2 Rh2+ 34. Kf3 Rxc2 35. a4 Ra2 36. Kxf4 Rxa4+ 37. Kxf5 Ra7 38. Kf6
+Kh7 39. Rb2 Rg7 40. Rh2 Rg6+ 41. Ke5 Rg8 42. Kf5 Rf8+ 43. Ke5 Re8+ 44. Kf6 Ra8
+45. Ke6 Re8+ 46. Kf6 Ra8 47. Ke6 Ra5 48. Rg2 h5 49. Kd6 h4 50. Rh2 Rh5 51. Ke6
+h3 52. Kf6 Kh6 53. Rb2 h2 54. Rb8 Kh7 55. Rb7+ Kh6 56. Rb8 Kh7 57. Rb7+ Kh6
+58. Rb8 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "2kr3r/ppp1q1pp/2np1n2/4pb2/8/P1BP1N2/1PP1BPPP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:28"]
+[GameEndTime "2026-06-17T23:45:08.732 CEST"]
+[GameStartTime "2026-06-17T23:44:39.803 CEST"]
+[PlyCount "150"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. d4 Nd5 2. h4 e4 3. Ng5 Nxc3 4. bxc3 d5 5. Bb5 Kd7 6. Bxc6+ Kxc6 7. Qe2 b5
+8. a4 bxa4 9. g4 Be6 10. Nxe6 Qxe6 11. f4 Kb6 12. Rfb1+ Kc6 13. f5 Qf6 14. Rxa4
+Rb8 15. Re1 h5 16. Ra6+ Rb6 17. Rxa7 hxg4 18. Qxg4 Qxh4 19. Qg6+ Qf6 20. Qxf6+
+gxf6 21. c4 dxc4 22. Rxe4 Kd5 23. Re7 Kxd4 24. Raxc7 Rb5 25. Rg7 Rxf5 26. Rg4+
+Ke3 27. Re7+ Kf3 28. Reg7 Rc8 29. Rg3+ Ke4 30. Re7+ Kd5 31. Kg2 Rh8 32. Rgg7 Rb8
+33. Rd7+ Ke4 34. Rc7 Rb4 35. Rge7+ Re5 36. Rg7 f5 37. c3 Ra4 38. Rgd7 Rd5
+39. Kg1 Rd3 40. Rxd3 Kxd3 41. Rc5 f4 42. Rf5 Ke4 43. Rc5 f3 44. Kh2 Ra2+ 45. Kh3
+Ke3 46. Kg3 Rg2+ 47. Kh3 Rc2 48. Kg4 f2 49. Re5+ Kd2 50. Rd5+ Ke1 51. Re5+ Re2
+52. Ra5 Re4+ 53. Kg5 f1=Q 54. Ra1+ Ke2 55. Rxf1 Kxf1 56. Kf5 Re3 57. Kf4 Rxc3
+58. Ke4 Rh3 59. Kf4 c3 60. Ke4 Ke2 61. Kf4 Re3 62. Kg4 Kd3 63. Kf4 c2 64. Kf5
+c1=Q 65. Kf4 Qc5 66. Kg4 Ke4 67. Kh4 Kf3 68. Kh3 Ke2+ 69. Kg2 Kd1 70. Kf1 Kc1
+71. Kg1 Kb1 72. Kf1 Ka1 73. Kg1 Kb1 74. Kf1 Ka1 75. Kg1
+Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "2kr3r/ppp1q1pp/2np1n2/4pb2/8/P1BP1N2/1PP1BPPP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:44:51.085 CEST"]
+[GameStartTime "2026-06-17T23:44:40.932 CEST"]
+[PlyCount "55"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. d4 Nd5 2. h4 e4 3. Ng5 Nxc3 4. bxc3 d5 5. g4 Be6 6. Nxe6 Qxe6 7. f4 exf3
+8. Bxf3 Qe3+ 9. Rf2 Qxc3 10. Rd2 Qe3+ 11. Kh2 Kb8 12. g5 Qf4+ 13. Kh3 Rhf8
+14. Bg4 h6 15. g6 b5 16. a4 bxa4 17. Rxa4 a5 18. c4 dxc4 19. Rxc4 Ne5 20. Rb2+
+Ka8 21. Ra4 Qe3+ 22. Kh2 Rf2+ 23. Rxf2 Qxf2+ 24. Kh3 Nxg6 25. Rxa5+ Kb7 26. Qb3+
+Kc6 27. Rc5+ Kd6 28. Qe6# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn1q1rk1/pp3pbp/2p1pnp1/8/2BP2b1/2N1BN2/PPP1QPPP/R2R2K1 w - - 0 1"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-06-17T23:44:59.103 CEST"]
+[GameStartTime "2026-06-17T23:44:42.651 CEST"]
+[PlyCount "91"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. h3 Bxf3 2. gxf3 Qb6 3. Na4 Qb4 4. Bb3 Nbd7 5. Nc5 e5 6. a3 Qb5 7. Qxb5 cxb5
+8. Nxb7 exd4 9. Bxd4 a5 10. Nc5 Nxc5 11. Bxc5 Rfc8 12. Bd4 a4 13. Bd5 Nxd5
+14. Bxg7 Nf4 15. Be5 Ne2+ 16. Kg2 Rc5 17. f4 g5 18. b4 axb3 19. cxb3 Nxf4+
+20. Bxf4 gxf4 21. Kf3 Rc3+ 22. Kxf4 Rxb3 23. Rg1+ Kf8 24. Rg3 Rb2 25. Rg2 Rb3
+26. Rg3 Rxg3 27. fxg3 Ra4+ 28. Ke3 b4 29. g4 Ke7 30. Rb1 bxa3 31. g5 Rh4
+32. Rb7+ Kf8 33. Kf2 Rxh3 34. Kg2 Rh5 35. Rb5 a2 36. Rb8+ Ke7 37. Rb7+ Kd6
+38. Ra7 Rxg5+ 39. Kf2 Rf5+ 40. Ke1 Re5+ 41. Kd2 Rd5+ 42. Kc3 Rc5+ 43. Kd3 Rd5+
+44. Kc3 Rc5+ 45. Kd3 Rd5+ 46. Kc3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn1q1rk1/pp3pbp/2p1pnp1/8/2BP2b1/2N1BN2/PPP1QPPP/R2R2K1 w - - 0 1"]
+[GameDuration "00:00:23"]
+[GameEndTime "2026-06-17T23:45:07.845 CEST"]
+[GameStartTime "2026-06-17T23:44:43.888 CEST"]
+[PlyCount "121"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Kh1 Nbd7 2. h3 Bxf3 3. Qxf3 Nd5 4. a4 Qf6 5. Qe2 Nxe3 6. Qxe3 e5 7. Ne4 Qh4
+8. c3 Nf6 9. Nd6 Ng4 10. Qe1 Nxf2+ 11. Kg1 Qe7 12. Kxf2 Qf6+ 13. Ke2 Qxd6
+14. Qg3 Rfe8 15. dxe5 Rxe5+ 16. Qxe5 Qxe5+ 17. Kf3 b5 18. axb5 Qc5 19. Bd3 cxb5
+20. Be4 Re8 21. Rd2 f5 22. Bd5+ Kf8 23. Rd3 Qe7 24. Kf4 Be5+ 25. Kf3 Kg7 26. Bc6
+Rb8 27. Rd7 Qxd7 28. Bxd7 a6 29. Rxa6 b4 30. Re6 Bf6 31. Re3 b3 32. Kf4 h5
+33. Bc6 Rb6 34. Bd5 h4 35. Re2 Bd8 36. Re6 Rxe6 37. Bxe6 Bc7+ 38. Kg5 Bd8+
+39. Kf4 Kh6 40. Ke5 Bg5 41. Kd4 Bc1 42. Kc4 Bxb2 43. Kxb3 Bc1 44. Kc4 Kg7
+45. Kc5 Kf6 46. Kd5 g5 47. c4 Ba3 48. Bd7 f4 49. c5 Ke7 50. c6 Bd6 51. Kc4 Kf6
+52. Kd4 Kf7 53. Kc3 Kf6 54. Kd4 Ke7 55. Kc4 Bc7 56. Kc5 Kf6 57. Kd4 Kg6 58. Kd3
+Kf6 59. Kd4 Ke7 60. Kc5 Kf6 61. Kd4 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rnbqr1k1/ppp2ppp/1b6/8/1P2n3/P2P1N2/2PB1PPP/R2QKB1R w KQ - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:45:06.920 CEST"]
+[GameStartTime "2026-06-17T23:44:44.272 CEST"]
+[PlyCount "115"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. dxe4 Rxe4+ 2. Be2 Be6 3. Ng5 Re5 4. Nxe6 Rxe6 5. b5 Qd4 6. O-O Nd7 7. Bg4 Re7
+8. Bb4 Qxd1 9. Raxd1 Nc5 10. Bf3 Rae8 11. a4 a6 12. Bxc5 Bxc5 13. Bxb7 axb5
+14. axb5 Rb8 15. Bc6 Kf8 16. c4 Bd6 17. g4 g5 18. Kg2 Kg7 19. Rfe1 Rxe1 20. Rxe1
+Kf6 21. Rc1 Bf4 22. Rd1 Ke6 23. c5 Rh8 24. Bd5+ Kf6 25. c6 Rd8 26. Rd3 Ke5
+27. Bc4 Rxd3 28. Bxd3 h6 29. b6 cxb6 30. c7 Kd4 31. c8=Q Kxd3 32. Qd8+ Ke4
+33. Qxb6 Ke5 34. Qxh6 f6 35. Qg6 Ke6 36. h4 Ke7 37. h5 Be5 38. h6 f5 39. Qxg5+
+Ke6 40. gxf5+ Kd5 41. f6 Ke6 42. f7 Bd6 43. Qd8 Ba3 44. f8=Q Bxf8 45. Qxf8 Kd5
+46. h7 Kc4 47. Qd6 Kc3 48. f4 Kb2 49. h8=Q+ Kc2 50. Qa1 Kb3 51. Qb1+ Kc3 52. Kf1
+Kc4 53. Ke1 Kc3 54. Kd1 Kc4 55. Kc1 Kc3 56. Kd1 Kc4 57. Kc1 Kc3
+58. Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rnbqr1k1/ppp2ppp/1b6/8/1P2n3/P2P1N2/2PB1PPP/R2QKB1R w KQ - 0 1"]
+[GameDuration "00:00:20"]
+[GameEndTime "2026-06-17T23:45:05.216 CEST"]
+[GameStartTime "2026-06-17T23:44:44.934 CEST"]
+[PlyCount "105"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. dxe4 Rxe4+ 2. Be2 Nc6 3. b5 Nd4 4. Nxd4 Qxd4 5. O-O Be6 6. Bf3 Bg4 7. h3 Bxf3
+8. Qxf3 a5 9. Be3 Qc4 10. Bxb6 cxb6 11. Qd3 Qxd3 12. cxd3 Rd4 13. f4 Rxd3
+14. Kf2 a4 15. h4 Rd2+ 16. Ke3 Rxg2 17. f5 h5 18. Rg1 Re8+ 19. Kd3 Rf2 20. Rgf1
+Rxf1 21. Rxf1 Re5 22. Kc4 Re4+ 23. Kd5 Rxh4 24. Re1 Rf4 25. Re8+ Kh7 26. Ke5 Rc4
+27. Rd8 f6+ 28. Ke6 Rc5 29. Rd5 Rxd5 30. Kxd5 Kh6 31. Kd4 Kg5 32. Kd3 Kxf5
+33. Kd4 Kf4 34. Kd5 h4 35. Kc4 h3 36. Kb4 h2 37. Kxa4 h1=Q 38. Kb3 Qf3+ 39. Ka4
+Qe3 40. Kb4 Qd3 41. a4 g5 42. a5 Qd4+ 43. Kb3 bxa5 44. Kc2 a4 45. b6 g4 46. Kb1
+Ke3 47. Kc1 Ke2 48. Kb1 Kd1 49. Ka2 Kc1 50. Ka3 Kd1 51. Ka2 Kc1 52. Ka3 Kd1
+53. Ka2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn3rk1/pbp2pp1/1p1ppq1p/4N3/3PP3/2PB4/P1P2PPP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:13"]
+[GameEndTime "2026-06-17T23:45:04.633 CEST"]
+[GameStartTime "2026-06-17T23:44:51.085 CEST"]
+[PlyCount "82"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Ng4 Qe7 2. c4 f5 3. exf5 exf5 4. Ne3 f4 5. Nf5 Qg5 6. g4 h5 7. f3 d5 8. h4
+Qd8 9. gxh5 Bc8 10. Nxg7 Kxg7 11. cxd5 Qxh4 12. Qe2 Qxh5 13. Qg2+ Kf6 14. Qd2
+Rg8+ 15. Bg6 Qxg6+ 16. Kf2 Qg2+ 17. Ke1 Re8+ 18. Qe3 Rxe3+ 19. Kd1 Qxf1+ 20. Kd2
+Qxa1 21. a3 Bf5 22. c3 Kg5 23. a4 Kh4 24. c4 Kg3 25. a5 Kxf3 26. axb6 Kf2
+27. bxa7 Kf1 28. axb8=Q Rxb8 29. c5 Kg1 30. c6 Kf1 31. d6 Kg1 32. dxc7 Kf1
+33. cxb8=Q Rd3+ 34. Kc2 Ra3+ 35. Kd2 Ra2+ 36. Qb2 Qxb2+ 37. Kd1 Kg1 38. Ke1 Kh1
+39. Kd1 Kg1 40. Ke1 Kh1 41. Kd1 Kg1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn3rk1/pbp2pp1/1p1ppq1p/4N3/3PP3/2PB4/P1P2PPP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:28"]
+[GameEndTime "2026-06-17T23:45:25.571 CEST"]
+[GameStartTime "2026-06-17T23:44:57.060 CEST"]
+[PlyCount "147"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Ng4 Qe7 2. Ne3 Nc6 3. Qf3 Qf6 4. Qg4 Qg5 5. Qf3 Qf6 6. Qh5 e5 7. d5 Ne7 8. a4
+a5 9. c4 Rfd8 10. h4 g5 11. Ng4 Qg6 12. Nxh6+ Kh7 13. Qxg5 f6 14. Qxg6+ Nxg6
+15. Nf5 Nf4 16. Kh2 Nxd3 17. cxd3 c6 18. f4 cxd5 19. cxd5 Rac8 20. h5 exf4
+21. Rxf4 Rc3 22. d4 Rc2 23. Kg3 Rg8+ 24. Kf3 Rgxg2 25. Nxd6 Rcf2+ 26. Ke3 Re2+
+27. Kf3 Rgf2+ 28. Kg4 Ba6 29. Rb1 Rxf4+ 30. Kxf4 Rf2+ 31. Kg3 Bd3 32. Rxb6 Ra2
+33. Rb3 Bc2 34. Rc3 Bxa4 35. Kf4 Bd1 36. Rh3 a4 37. h6 Bb3 38. Rh1 a3 39. Rb1
+Bc2 40. Rh1 Bb3 41. Nf5 Rf2+ 42. Ke3 Rg2 43. d6 Be6 44. d5 Bd7 45. Kd4 a2
+46. Ne3 Rh2 47. Rg1 Kxh6 48. Nf5+ Bxf5 49. exf5 Rg2 50. Ra1 Kg5 51. d7 Rd2+
+52. Kc4 Rc2+ 53. Kd3 Rf2 54. d8=Q Kxf5 55. Qa5 Rf3+ 56. Kc4 Kg5 57. Rxa2 f5
+58. Qc7 f4 59. Qe5+ Kh4 60. d6 Rf1 61. d7 Rc1+ 62. Kb3 Rb1+ 63. Kc2 Rf1
+64. d8=Q+ Kh3 65. Qd3+ Kg2 66. Qg5+ Kh1 67. Qxf1+ Kh2 68. Kb2 f3 69. Ka1+ f2
+70. Qb1 Kh3 71. Kb2 Kh2 72. Ka1 Kh3 73. Kb2 Kh2
+74. Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r3kb1r/pbp1qppp/2p2n2/4p3/1N1pP3/P2P1N1P/1PP2PP1/R1BQK2R w KQkq - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:45:21.536 CEST"]
+[GameStartTime "2026-06-17T23:44:59.104 CEST"]
+[PlyCount "114"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O c5 2. Na2 Qe6 3. Bg5 Bd6 4. Bxf6 Qxf6 5. Nc1 a5 6. Ne2 h5 7. c4 a4 8. b3
+Bc6 9. bxa4 h4 10. Qd2 Rxa4 11. Qg5 Qxg5 12. Nxg5 Ke7 13. f4 f6 14. fxe5 Bxe5
+15. Nf3 Ke6 16. Nxe5 fxe5 17. Nc1 Rha8 18. Nb3 Kd6 19. Rf7 Rxa3 20. Rxa3 Rxa3
+21. Nc1 Rc3 22. Rf1 Rc2 23. Nb3 Rb2 24. Na5 Rd2 25. Nxc6 Kxc6 26. Rf7 Rd1+
+27. Kh2 Rxd3 28. Rxg7 Rc3 29. Re7 Kd6 30. Rh7 Rxc4 31. Rxh4 d3 32. Rg4 Rxe4
+33. Rg6+ Kd5 34. Rg7 Kc6 35. Rg6+ Kd5 36. Rg7 Kc6 37. Rg6+ Kb5 38. Rg3 Rd4
+39. Rg4 Kc4 40. Rxd4+ Kxd4 41. g4 d2 42. Kg1 Kc3 43. Kf2 d1=Q 44. Kg3 Qc1
+45. Kh4 Qh6+ 46. Kg3 Kd3 47. Kg2 Qf4 48. g5 Qxg5+ 49. Kf2 e4 50. h4 e3+ 51. Kf3
+Qxh4 52. Kg2 Kc2 53. Kf1 Kb1 54. Kg1 Ka1 55. Kf1 Kb1 56. Kg1 Ka1 57. Kf1
+Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r3kb1r/pbp1qppp/2p2n2/4p3/1N1pP3/P2P1N1P/1PP2PP1/R1BQK2R w KQkq - 0 1"]
+[GameDuration "00:00:27"]
+[GameEndTime "2026-06-17T23:45:32.545 CEST"]
+[GameStartTime "2026-06-17T23:45:04.635 CEST"]
+[PlyCount "143"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bg5 a5 2. Bxf6 Qxf6 3. Na2 Bd6 4. c4 O-O 5. Qb3 Bc8 6. a4 Be6 7. h4 Rfb8
+8. Qc2 h5 9. c5 Bb3 10. Qc1 Be7 11. Qg5 Bxc5 12. Qxh5 Bxa4 13. Qxe5 Qxe5
+14. Nxe5 Rxb2 15. Nc4 Rc2 16. Nc1 Bb4+ 17. Kf1 Bb5 18. Ne5 f6 19. Nf3 Bc3
+20. Rb1 Bb2 21. Nb3 Bxd3+ 22. Kg1 Rd8 23. Ne1 Rb8 24. Nxd4 Rd2 25. Nxd3 Rxd3
+26. Nxc6 Rb6 27. Nxa5 Be5 28. Rf1 Rc3 29. f4 Bd4+ 30. Kh2 Rc2 31. Rc1 Rbb2
+32. Rxc2 Rxc2 33. Nb3 Be3 34. Kg3 g5 35. fxg5 Rb2 36. Na5 fxg5 37. Kf3 Bb6
+38. Nc4 Rf2+ 39. Kg3 gxh4+ 40. Rxh4 Bc5 41. Rh5 Bd4 42. Rd5 Ba7 43. Ra5 Rc2
+44. Na3 Rc3+ 45. Kf4 Be3+ 46. Kf5 c5 47. Ra4 Rc1 48. Nc4 Rf1+ 49. Ke6 Bd4
+50. Ra7 Rg1 51. Ra2 Kg7 52. e5 Kg6 53. Nb6 Kg5 54. Re2 Kf4 55. Kd6 Kg3 56. Na4
+Rc1 57. Nb6 Bf2 58. e6 Kxg2 59. e7 Rb1 60. Kc7 Rxb6 61. Kxb6 Kf3 62. e8=Q Bd4
+63. Qe4+ Kg3 64. Rg2+ Kh3 65. Kb5 c4 66. Kxc4 Ba1 67. Kb3 Bb2 68. Ka2 Ba1
+69. Kb1 Bb2 70. Ka2 Ba1 71. Kb1 Bb2 72. Ka2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/ppp1b1pp/2n1b3/3n1p2/2B2P2/3Q1N2/PPP3PP/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:45:28.943 CEST"]
+[GameStartTime "2026-06-17T23:45:04.792 CEST"]
+[PlyCount "122"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc3 Ncb4 2. Qe2 Qd6 3. Ng5 Bf7 4. Nxf7 Rxf7 5. Be3 Kf8 6. Nxd5 Nxd5 7. O-O
+Nxe3 8. Qxe3 Qc5 9. Qxc5 Bxc5+ 10. Kh1 Re7 11. a4 a5 12. h4 h5 13. Kh2 g6
+14. Bd5 c6 15. Bc4 Kg7 16. Rad1 Rb8 17. Rfe1 Be3 18. g3 b5 19. axb5 cxb5 20. Bd5
+Kf6 21. Kg2 a4 22. Kf3 Bc5 23. Rxe7 Kxe7 24. Bc6 Rb6 25. Rd7+ Ke6 26. Bxb5 Rxb5
+27. Rg7 Kd5 28. Rxg6 Rxb2 29. Rf6 Kd4 30. Rxf5 Rxc2 31. Rxh5 Rc3+ 32. Kg4 a3
+33. Rh7 a2 34. Rd7+ Ke4 35. Rd1 Bf2 36. Ra1 Rxg3+ 37. Kh5 Rh3 38. Rxa2 Rxh4+
+39. Kg5 Rh2 40. Ra4+ Bd4 41. f5 Rg2+ 42. Kh5 Rg8 43. Kh4 Rf8 44. Kg4 Rf6 45. Rb4
+Rf7 46. Rc4 Ke5 47. Ra4 Ke4 48. Rb4 Rg7+ 49. Kh4 Ke5 50. f6 Rf7 51. Kg4 Rxf6
+52. Rb5+ Ke4 53. Rb7 Rg6+ 54. Kh3 Be5 55. Rf7 Rg3+ 56. Kh4 Rg1 57. Kh5 Bf4
+58. Re7+ Kf5 59. Rf7+ Ke4 60. Kh4 Be5 61. Kh5 Bf4 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/ppp1b1pp/2n1b3/3n1p2/2B2P2/3Q1N2/PPP3PP/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:45:16.079 CEST"]
+[GameStartTime "2026-06-17T23:45:05.217 CEST"]
+[PlyCount "61"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc3 Ncb4 2. Qe2 Qd6 3. Nd4 Bh4+ 4. g3 Nxc2+ 5. Qxc2 Be7 6. Qe2 Bf7 7. Nxf5
+Nxc3 8. bxc3 Qc5 9. Nxe7+ Kh8 10. Be3 Qxc4 11. Qxc4 Bxc4 12. Kf2 Rae8 13. Bc5 b6
+14. Ba3 c5 15. Rhe1 g5 16. Kf3 Rd8 17. h4 Rd3+ 18. Re3 g4+ 19. Ke2 Rxe3+
+20. Kxe3 Re8 21. f5 Rxe7+ 22. Kf4 h5 23. f6 Re2 24. Kg5 Bf7 25. Kf5 Kh7 26. Bc1
+Bxa2 27. Kg5 Re5+ 28. Kf4 Re2 29. Kg5 Re5+ 30. Kf4 Re2
+31. Kg5 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1r1k1/pp1n1pp1/2pb1q1p/3pp3/8/1PPP1NP1/P2NPPBP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:45:31.895 CEST"]
+[GameStartTime "2026-06-17T23:45:06.922 CEST"]
+[PlyCount "126"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. e4 Nc5 2. c4 Be6 3. Qc2 d4 4. b4 Na6 5. a3 c5 6. b5 Nc7 7. h4 Kh7 8. h5 Bg4
+9. a4 Ne6 10. a5 Re7 11. a6 Bxh5 12. Rfe1 Bg4 13. Qb2 bxa6 14. bxa6 Rb8 15. Qc2
+h5 16. Nh2 Ng5 17. Nxg4 hxg4 18. Rab1 Ra8 19. Rb7 Bc7 20. Qa4 Ne6 21. f3 Qg5
+22. Nf1 Kh6 23. fxg4 Qxg4 24. Kh2 Qh5+ 25. Bh3 g5 26. g4 Qg6 27. Ng3 Kh7 28. Nf5
+Ree8 29. Qc6 Bb6 30. Nd6 Nf4 31. Rxf7+ Kh8 32. Rd1 Qh6 33. Rxf4 Qg6 34. Rf5 Rab8
+35. Nf7+ Kh7 36. Qxg6+ Kxg6 37. Nxe5+ Rxe5 38. Rxe5 Bc7 39. Kg1 Bxe5 40. Bg2 Rb3
+41. Rf1 Rxd3 42. Rf5 Rd1+ 43. Bf1 Bf6 44. Rxc5 d3 45. Rd5 d2 46. Kg2 Bc3 47. e5
+Re1 48. Bd3+ Kf7 49. Bc2 Rxe5 50. Rd3 Ba5 51. Rd7+ Kf6 52. Rxa7 Rc5 53. Bb3 Rxc4
+54. Rf7+ Kxf7 55. Bxc4+ Kf6 56. Be2 Bb6 57. Kf1 Ke5 58. Bd1 Ke4 59. Ke2 Be3
+60. Bc2+ Kf4 61. Bd1 Ke4 62. Bc2+ Kf4 63. Bd1 Ke4 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1r1k1/pp1n1pp1/2pb1q1p/3pp3/8/1PPP1NP1/P2NPPBP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:45:32.801 CEST"]
+[GameStartTime "2026-06-17T23:45:07.846 CEST"]
+[PlyCount "126"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. a4 h5 2. Qc2 Nc5 3. b4 Ne6 4. e4 Bd7 5. Qb3 d4 6. Nc4 Bc7 7. cxd4 Nxd4
+8. Nxd4 exd4 9. f4 b5 10. Ne5 Be6 11. Qc2 bxa4 12. Qxa4 c5 13. Qc6 Bxe5 14. fxe5
+Qxe5 15. Qxc5 Qxc5 16. bxc5 Rac8 17. Rfc1 Rc7 18. Kf2 Rec8 19. Kf3 g5 20. h4 g4+
+21. Kf4 Rxc5 22. Rxc5 Rxc5 23. Rxa7 Rc2 24. Bh1 Rd2 25. Ra5 Rh2 26. Ra1 Rd2
+27. Ra3 Rh2 28. Ra1 Rd2 29. Ra3 Kg7 30. e5 Rf2+ 31. Ke4 Rf1 32. Bg2 Rg1 33. Bf3
+Re1+ 34. Be2 Rxe2+ 35. Kxd4 Rg2 36. Ra1 Rxg3 37. Rh1 Bf5 38. Rd1 Rh3 39. Rf1
+Bxd3 40. Rf2 Bg6 41. Kd5 Rxh4 42. Rg2 Rh3 43. Rd2 h4 44. Kc4 Rf3 45. Kd4 g3
+46. Kd5 h3 47. Rd1 g2 48. e6 h2 49. e7 g1=Q 50. e8=N+ Kf8 51. Rxg1 Rd3+ 52. Kc6
+Be4+ 53. Kb5 hxg1=Q 54. Nc7 Qb1+ 55. Kc5 Qc1+ 56. Kb6 Qc6+ 57. Ka5 Qc5+ 58. Ka4
+Bc6+ 59. Nb5 Bxb5+ 60. Ka5 Bc4+ 61. Ka4 Bb5+ 62. Ka5 Bc4+ 63. Ka4
+Bb5+ {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqkb1r/pp3pp1/2np3p/2Pp4/3P4/5N2/PP3PPP/RNBQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:45:33.269 CEST"]
+[GameStartTime "2026-06-17T23:45:08.734 CEST"]
+[PlyCount "124"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc3 dxc5 2. dxc5 Bxc5 3. Qxd5 Qxd5 4. Nxd5 Kd7 5. Be3 Kd6 6. Rfd1 Bxe3
+7. Nb6+ Bd4 8. Nxa8 Bg4 9. Nxd4 Bxd1 10. Rxd1 Rxa8 11. Nf5+ Ke5 12. Nxg7 b5
+13. Ne8 Rd8 14. Rxd8 Nxd8 15. Nc7 b4 16. f4+ Kxf4 17. Nd5+ Ke4 18. Nxb4 a5
+19. Na6 Ne6 20. a4 Ke3 21. b4 axb4 22. Nxb4 h5 23. a5 h4 24. a6 Nc7 25. a7 Na8
+26. Nd5+ Kd4 27. Ne7 Ke4 28. Kf2 Kf4 29. g3+ hxg3+ 30. hxg3+ Ke4 31. g4 Kf4
+32. Nf5 Kxg4 33. Nh6+ Kf4 34. Nxf7 Ke4 35. Ng5+ Kd5 36. Ke3 Kc6 37. Ne6 Kb6
+38. Nd4 Kxa7 39. Nc6+ Kb6 40. Nd4 Nc7 41. Ke4 Kc5 42. Ke5 Kc4 43. Nf5 Nd5
+44. Ke4 Nf6+ 45. Ke5 Ng4+ 46. Kd6 Kd3 47. Kd5 Nf2 48. Ke5 Kc3 49. Kf4 Kd3
+50. Kf3 Nd1 51. Kf4 Kc4 52. Nd6+ Kd5 53. Ne4 Nb2 54. Ke3 Ke5 55. Nd2 Nd1+
+56. Ke2 Nb2 57. Kf2 Kd4 58. Ke2 Nd3 59. Nb3+ Ke4 60. Nd2+ Kd4 61. Nb3+ Ke4
+62. Nd2+ Kd4 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "r1bqkb1r/pp3pp1/2np3p/2Pp4/3P4/5N2/PP3PPP/RNBQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:45:24.295 CEST"]
+[GameStartTime "2026-06-17T23:45:16.080 CEST"]
+[PlyCount "41"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be3 dxc5 2. dxc5 d4 3. Bxd4 Nxd4 4. Nxd4 Bxc5 5. Qe2+ Qe7 6. Qb5+ Kf8 7. Nb3
+Bd6 8. Nc3 a6 9. Qd3 Be6 10. Nd4 Kg8 11. Nxe6 Qxe6 12. Rfe1 Be5 13. Nd5 Qd6
+14. Re2 Bxh2+ 15. Kh1 Be5 16. a4 a5 17. g4 h5 18. g5 h4 19. Rae1 Bf4 20. Re8+
+Qf8 21. Ne7# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "r2q1rk1/p1p1bppp/2p2n2/3p2B1/3PP1b1/5N2/PP3PPP/RN1QR1K1 w - - 0 1"]
+[GameDuration "00:00:06"]
+[GameEndTime "2026-06-17T23:45:28.121 CEST"]
+[GameStartTime "2026-06-17T23:45:21.537 CEST"]
+[PlyCount "31"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc3 Qd6 2. Qd3 a5 3. e5 Qb4 4. exf6 gxf6 5. Bf4 Qxb2 6. Rab1 Bf5 7. Qxf5 Qxc3
+8. Rxe7 Qc4 9. Rxc7 Kg7 10. Rc1 Qxa2 11. R7xc6 h5 12. Qxf6+ Kh7 13. Qf5+ Kg7
+14. Bh6+ Kg8 15. Qg5+ Kh7 16. Qg7# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/p1p1bppp/2p2n2/3p2B1/3PP1b1/5N2/PP3PPP/RN1QR1K1 w - - 0 1"]
+[GameDuration "00:00:15"]
+[GameEndTime "2026-06-17T23:45:39.805 CEST"]
+[GameStartTime "2026-06-17T23:45:24.297 CEST"]
+[PlyCount "88"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. e5 Ne4 2. Bxe7 Qxe7 3. Nc3 Bxf3 4. Qxf3 f5 5. Nxe4 fxe4 6. Qc3 Qh4 7. g3 Qh6
+8. Rac1 Rab8 9. Re2 Qh5 10. Rcc2 Rb6 11. b4 Qf3 12. Re3 Qf5 13. a4 h5 14. a5 Ra6
+15. h4 g5 16. hxg5 Rf7 17. Kh2 Kg7 18. g4 hxg4 19. Ree2 Qf4+ 20. Kg2 Qxg5 21. e6
+Re7 22. Qg3 Qf5 23. Qe5+ Qxe5 24. dxe5 Rxe6 25. Kg3 Rxe5 26. Kxg4 Re8 27. Kf5
+Rb8 28. Rb2 c5 29. bxc5 Rxb2 30. Rxb2 Rxa5 31. Rc2 Ra1 32. Ke5 c6 33. Kd6 Ra6
+34. Kc7 Kf6 35. Kb7 Ra1 36. Kxc6 Ke5 37. Re2 d4 38. f4+ Kxf4 39. Kd5 d3
+40. Rxe4+ Kf3 41. Rd4 Ke2 42. Re4+ Kf3 43. Rd4 Ke2 44. Re4+
+Kf3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "r1q1k2r/pp1bppb1/2np1np1/7p/3NP3/2N1B1PP/PPP2PB1/R2Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-06-17T23:45:42.024 CEST"]
+[GameStartTime "2026-06-17T23:45:25.573 CEST"]
+[PlyCount "91"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. h4 e5 2. Ndb5 O-O 3. Qd2 Be6 4. Nxd6 Qc7 5. f4 Kh7 6. fxe5 Nxe5 7. a4 Rfd8
+8. Rad1 Nc4 9. Ncb5 Nxd2 10. Nxc7 Nxf1 11. Rxf1 Ng4 12. Bc5 b6 13. e5 bxc5
+14. Bxa8 Nxe5 15. Rd1 Bf5 16. Rd5 Bxc2 17. Rxc5 Bxa4 18. Ra5 Rxd6 19. Rxa4 Rd3
+20. Rxa7 Rxg3+ 21. Bg2 Rg4 22. Nd5 Rxh4 23. b4 f5 24. b5 Rc4 25. b6 f4 26. b7
+Nc6 27. Nf6+ Kh6 28. Bxc6 Rc1+ 29. Kh2 Rc2+ 30. Bg2 Rxg2+ 31. Kxg2 Bxf6 32. b8=Q
+Kg5 33. Kf3 Kf5 34. Qxf4+ Ke6 35. Ra6+ Kd5 36. Rxf6 g5 37. Qc7 Kd4 38. Rd6+ Ke5
+39. Ra6+ Kd4 40. Rd6+ Ke5 41. Ke3 Kf5 42. Qc4 Ke5 43. Ra6 Kf5 44. Kf2 g4
+45. Qb5+ Kf4 46. Ra4# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1q1k2r/pp1bppb1/2np1np1/7p/3NP3/2N1B1PP/PPP2PB1/R2Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:29"]
+[GameEndTime "2026-06-17T23:45:57.615 CEST"]
+[GameStartTime "2026-06-17T23:45:28.123 CEST"]
+[PlyCount "154"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Kh2 e5 2. Ndb5 O-O 3. a4 Be6 4. a5 Qd7 5. Nxd6 Nd4 6. Bxd4 Qxd6 7. Be3 Qb4
+8. Qb1 Rfd8 9. f4 Bc4 10. Ra4 Qxa4 11. Nxa4 Bxf1 12. Qxf1 exf4 13. Qxf4 Nd7
+14. Qc7 Rac8 15. Qxb7 Rxc2 16. b3 Ne5 17. Qxa7 Nf3+ 18. Kh1 Rd1+ 19. Bg1 Rxg1+
+20. Qxg1 Nxg1 21. Kxg1 Bd4+ 22. Kh2 f5 23. exf5 gxf5 24. b4 Be5 25. h4 Kh7
+26. Nb6 Rc3 27. Nd5 Bxg3+ 28. Kh3 Rb3 29. Bf1 Bd6+ 30. Kg2 Rb2+ 31. Kf3 Rb3+
+32. Ke2 Bxb4 33. a6 Bc5 34. Kd2 Bd4 35. Be2 Ra3 36. Bxh5 Rxa6 37. Bf7 Kg7
+38. Nc7 Bc3+ 39. Kxc3 Rc6+ 40. Kd4 Rxc7 41. Bd5 Kf6 42. h5 Rd7 43. Kc5 Kg5
+44. Bc6 Rd8 45. Bf3 Rd2 46. Kc4 f4 47. Kc3 Rf2 48. Be4 Kxh5 49. Kd4 Kg4 50. Ke5
+f3 51. Bf5+ Kg5 52. Bd3 Ra2 53. Kd4 f2 54. Ke4 Ra4+ 55. Ke5 Ra3 56. Bc4 Ra1
+57. Kd5 Kf4 58. Kd6 Rc1 59. Bb5 Kf5 60. Bd3+ Kf6 61. Be2 Re1 62. Bb5 f1=Q
+63. Bxf1 Rxf1 64. Kd5 Rf4 65. Kc5 Ke6 66. Kb5 Kd6 67. Ka5 Kc5 68. Ka6 Kd5
+69. Ka5 Kc5 70. Ka6 Kb4 71. Kb6 Rc4 72. Ka6 Ka3 73. Kb5 Kb3 74. Ka5 Ka2 75. Kb5
+Kb3 76. Ka5 Ka2 77. Kb5 Kb3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/pp3pbp/1qn1pnp1/3p4/3P4/1QPB1N2/PP3PPP/RNB2RK1 w - - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:45:50.473 CEST"]
+[GameStartTime "2026-06-17T23:45:28.944 CEST"]
+[PlyCount "110"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qxb6 axb6 2. Bf4 h5 3. Nbd2 Kh7 4. a4 Bd7 5. Ne5 Nxe5 6. dxe5 Ng4 7. Rfe1
+Rxa4 8. Rxa4 Bxa4 9. f3 Nh6 10. Be3 Nf5 11. Bxb6 h4 12. b4 Rc8 13. Bc5 b6
+14. Bd4 Nxd4 15. cxd4 Rc3 16. Be2 Rc2 17. Nb1 Rb2 18. Nc3 Rxb4 19. Nxa4 Rxa4
+20. Rd1 f6 21. f4 g5 22. Bd3+ Kh6 23. fxg5+ Kxg5 24. Bc2 Rb4 25. g3 hxg3
+26. exf6 Bxf6 27. hxg3 b5 28. Bd3 Kg4 29. Kg2 Rb2+ 30. Kf1 Kxg3 31. Bg6 Kf4
+32. Kg1 Rb4 33. Kg2 Rxd4 34. Bd3 Ke3 35. Rf1 Rxd3 36. Rf3+ Kd4 37. Rxf6 e5
+38. Rb6 Rb3 39. Rg6 b4 40. Kg1 Rb2 41. Rg2 Rxg2+ 42. Kxg2 b3 43. Kf1 b2 44. Ke1
+b1=Q+ 45. Kd2 Kc4 46. Ke2 Kd4 47. Kd2 Kc4 48. Ke2 Kc3 49. Kf2 Qd3 50. Ke1 Kb2
+51. Kf2 Kb1 52. Ke1 Ka1 53. Kf2 Kb1 54. Ke1 Ka1 55. Kf2
+Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "r1b2rk1/pp3pbp/1qn1pnp1/3p4/3P4/1QPB1N2/PP3PPP/RNB2RK1 w - - 0 1"]
+[GameDuration "00:00:26"]
+[GameEndTime "2026-06-17T23:45:58.115 CEST"]
+[GameStartTime "2026-06-17T23:45:31.895 CEST"]
+[PlyCount "133"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qxb6 axb6 2. a4 h5 3. h4 Ne4 4. Kh2 e5 5. Be3 Be6 6. Rd1 exd4 7. cxd4 Nb4
+8. Bxe4 dxe4 9. Ng5 Bb3 10. Rd2 Nc2 11. Rxc2 Bxc2 12. Nc3 Rfe8 13. b4 f6 14. Nh3
+Rec8 15. Nd5 Rxa4 16. Rxa4 Bxa4 17. Ne7+ Kh8 18. Nxc8 b5 19. Nd6 f5 20. Nxb7 Bf8
+21. Nc5 Kg7 22. Ne6+ Kf7 23. Nhg5+ Ke8 24. Nxf8 Kxf8 25. Kg3 Ke7 26. Kf4 Bc2
+27. Ke5 Bb1 28. d5 Ba2 29. Bc5+ Ke8 30. d6 Bb3 31. Kf6 Bd1 32. Kxg6 Bc2 33. Kxf5
+e3+ 34. Kf4 e2 35. Nf3 Bb3 36. Ke3 Bc4 37. Kd2 Kd7 38. Nd4 e1=Q+ 39. Kxe1 Kc8
+40. Kd2 Bf1 41. g3 Bc4 42. Ke3 Kd8 43. Kf4 Kd7 44. Kg5 Kc8 45. Kxh5 Kd7 46. Kg4
+Be6+ 47. Kf4 Bc4 48. h5 Kc8 49. h6 Bd3 50. Ke3 Bb1 51. Nxb5 Kd7 52. Nd4 Bh7
+53. b5 Kc8 54. f4 Kd7 55. b6 Kc8 56. Nc6 Kd7 57. Ne5+ Kc8 58. d7+ Kb7 59. d8=Q
+Ka6 60. b7 Kxb7 61. Qd7+ Ka6 62. Qc6+ Ka5 63. Qb6+ Ka4 64. Kd2 Bb1 65. Kc1 Ba2
+66. Kd1 Bc4 67. Qb4# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pppn1ppp/5n2/3p4/3P4/P1bQPN2/1P3PPP/R1B2RK1 w - - 0 1"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-06-17T23:45:49.248 CEST"]
+[GameStartTime "2026-06-17T23:45:32.546 CEST"]
+[PlyCount "92"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. bxc3 Ne4 2. c4 Nb6 3. c5 Nc4 4. Nd2 Ncxd2 5. Bxd2 Qf6 6. f3 Nxd2 7. Qxd2 a5
+8. e4 Qe6 9. exd5 Qxd5 10. a4 f5 11. g4 b6 12. Qe3 Rfe8 13. Qc3 bxc5 14. Qxc5
+Qxc5 15. dxc5 Kf7 16. Rfd1 Ke6 17. gxf5+ Kxf5 18. Rd7 Kf6 19. Rxc7 Rac8 20. Rxc8
+Rxc8 21. Rc1 Ke5 22. Rc2 g6 23. Rc4 Kd5 24. Rc2 Rxc5 25. Rb2 g5 26. Rb5 Rxb5
+27. axb5 a4 28. Kf2 a3 29. b6 Kc6 30. f4 a2 31. Kf3 gxf4 32. Kxf4 a1=Q 33. h4
+Qa4+ 34. Kg5 Kxb6 35. Kh5 Kb5 36. Kg5 Qe4 37. h5 Kc4 38. Kf6 Qd5 39. h6 Qh5
+40. Kg7 Qf5 41. Kg8 Qf6 42. Kxh7 Qf7+ 43. Kh8 Qf8+ 44. Kh7 Qf7+ 45. Kh8 Qf8+
+46. Kh7 Qf7+ {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pppn1ppp/5n2/3p4/3P4/P1bQPN2/1P3PPP/R1B2RK1 w - - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:45:54.069 CEST"]
+[GameStartTime "2026-06-17T23:45:32.803 CEST"]
+[PlyCount "109"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. bxc3 Ne4 2. c4 c6 3. a4 Qf6 4. Ba3 Rfe8 5. Bb4 a5 6. Bc3 h5 7. Ne5 Nxc3
+8. Nxd7 Qd6 9. Nb6 Ra6 10. c5 Ne2+ 11. Qxe2 Qg6 12. f4 Qe4 13. Kf2 h4 14. g4 f5
+15. g5 g6 16. Nd7 Kg7 17. Nf6 Qe6 18. Nxe8+ Qxe8 19. Rfb1 Ra7 20. Rb2 Qe7
+21. Qd3 Qe4 22. Qb1 Qe7 23. Kf3 h3 24. Qf1 Ra8 25. Qxh3 Qe4+ 26. Kf2 Rb8
+27. Qh6+ Kf7 28. Qh7+ Ke6 29. Rab1 b5 30. cxb6 Rd8 31. Qxg6+ Kd7 32. Qf7+ Qe7
+33. Qxf5+ Qe6 34. Qh7+ Qe7 35. Qxe7+ Kxe7 36. Kf3 Ke6 37. b7 Rb8 38. Rc1 Kd6
+39. Rb6 Kc7 40. Rcxc6+ Kd7 41. Rc5 Kd8 42. g6 Ke7 43. Rc7+ Kd8 44. Rbc6 Ke8
+45. g7 Kd8 46. Ke2 Ke8 47. Kd1 Kd8 48. Kc1 Ke8 49. Kd1 Kd8 50. Kc1 Ke8 51. Kb1
+Kd8 52. Ka1 Ke8 53. Kb1 Kd8 54. Ka1 Ke8 55. Kb1 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "rnbq1rk1/pp2ppb1/2p3pp/3P1nB1/2B5/2N2N1P/PPP2PP1/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-06-17T23:45:35.703 CEST"]
+[GameStartTime "2026-06-17T23:45:33.270 CEST"]
+[PlyCount "9"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. Bf4 b5 2. Bb3 b4 3. Na4 Ba6 4. Re1 Bb5
+5. g4 {Black makes an illegal move: 0000} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rnbq1rk1/pp2ppb1/2p3pp/3P1nB1/2B5/2N2N1P/PPP2PP1/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:45:54.691 CEST"]
+[GameStartTime "2026-06-17T23:45:35.704 CEST"]
+[PlyCount "100"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bf4 Nd7 2. Kh1 Nb6 3. Bb3 Bxc3 4. bxc3 g5 5. Be5 cxd5 6. g4 f6 7. Bh2 Ng7
+8. Bg3 Ne6 9. a4 Nc4 10. Qe2 Nb6 11. a5 Nc4 12. Bxc4 dxc4 13. Rfd1 Bd7 14. Qxc4
+b5 15. Qd5 h5 16. Qxd7 Qxd7 17. Rxd7 h4 18. Rxe7 hxg3 19. Rxe6 gxf2 20. Re2 Rac8
+21. Rxf2 Rxc3 22. Kg2 Rd8 23. Rb1 a6 24. h4 gxh4 25. Nxh4 Rd4 26. Nf3 Rxg4+
+27. Kh2 Rc7 28. Kh3 f5 29. Ng5 Rxg5 30. Rb4 Rh7+ 31. Rh4 b4 32. Rf4 Rc7 33. Rc4
+Rgg7 34. Rxc7 Rxc7 35. Rxb4 Rc3+ 36. Kh4 Rxc2 37. Rb6 Rg2 38. Rf6 f4 39. Rxf4
+Ra2 40. Rf5 Kg7 41. Kg5 Rb2 42. Kf4 Rf2+ 43. Ke4 Rd2 44. Rc5 Ra2 45. Kd4 Kf7
+46. Ke5 Ke7 47. Rc7+ Kd8 48. Rc5 Ke7 49. Kd5 Kd7 50. Ke5
+Ke7 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn1q1rk1/p1p2pbp/1p2pnp1/8/3P4/1P2P1P1/P2NNPbP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:25"]
+[GameEndTime "2026-06-17T23:46:05.516 CEST"]
+[GameStartTime "2026-06-17T23:45:39.805 CEST"]
+[PlyCount "130"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Kxg2 Qd5+ 2. f3 e5 3. e4 Qe6 4. d5 Qe7 5. Nc4 b5 6. Ba3 b4 7. d6 cxd6 8. Bxb4
+Nc6 9. Bxd6 Qe6 10. Bxf8 Bxf8 11. g4 Bc5 12. g5 Rd8 13. Qb1 Nh5 14. Qc1 Bd4
+15. Rb1 a5 16. Qa3 Ra8 17. Qc1 f6 18. a4 fxg5 19. Qxg5 Nf6 20. h4 Kg7 21. Nxd4
+exd4 22. e5 Nd5 23. h5 h6 24. Qxg6+ Qxg6+ 25. hxg6 Kxg6 26. Rbc1 Rb8 27. Rb1 Kf5
+28. Rfe1 d3 29. Nd6+ Ke6 30. Nc4 Rg8+ 31. Kf2 Rg7 32. Rbd1 Nf4 33. Rd2 h5
+34. Rdd1 h4 35. Rd2 h3 36. Rdd1 h2 37. Rd2 Rg1 38. Rdd1 h1=Q 39. Rxg1 Nh3+
+40. Kg3 Nxg1 41. Rxd3 Ne2+ 42. Kf2 Ncd4 43. Ke3 Qxf3+ 44. Kd2 Nxb3+ 45. Kc2
+Nbd4+ 46. Kd2 Qc6 47. Rxd4 Nxd4 48. Kd3 Nf5 49. Nd2 Qg2 50. Nc4 Qc6 51. Nb2 Qd5+
+52. Kc2 Qxe5 53. Kb1 Qc3 54. Ka1 Nd4 55. Kb1 Qe1+ 56. Ka2 Qf1 57. Ka3 Qb1
+58. Nd1 Ke5 59. Ne3 Ke4 60. Nd1 Kd3 61. Nb2+ Kc2 62. Nd1 Kc1 63. Nb2 Kc2 64. Nd1
+Kc1 65. Nb2 Kc2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn1q1rk1/p1p2pbp/1p2pnp1/8/3P4/1P2P1P1/P2NNPbP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:15"]
+[GameEndTime "2026-06-17T23:45:57.844 CEST"]
+[GameStartTime "2026-06-17T23:45:42.025 CEST"]
+[PlyCount "89"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Kxg2 Qd5+ 2. Nf3 Nc6 3. Nf4 Qf5 4. Ba3 Rfd8 5. Rc1 Qe4 6. Qc2 Qxc2 7. Rxc2
+Nb8 8. Rxc7 Na6 9. Rc2 Nd5 10. Ne5 Bxe5 11. dxe5 g5 12. Nxd5 exd5 13. Kf3 h5
+14. Bd6 g4+ 15. Kf4 f6 16. Rd1 fxe5+ 17. Kxe5 Nc5 18. b4 Ne4 19. Rxd5 Nxd6
+20. Rxd6 Rxd6 21. Kxd6 a5 22. b5 Re8 23. Kc7 Re6 24. Rc6 Rxc6+ 25. bxc6 Kf7
+26. Kd6 h4 27. gxh4 Kg6 28. c7 Kh5 29. c8=Q Kxh4 30. Qa6 Kh3 31. Qxb6 a4 32. Qa7
+Kxh2 33. Qxa4 Kg1 34. Qf4 Kf1 35. Kd5 Ke1 36. Kd4 Kf1 37. Kd3 Kg1 38. Qg3+ Kh1
+39. Qxg4 Kh2 40. Kc2 Kh1 41. Kb1 Kh2 42. Ka1 Kh1 43. Kb1 Kh2 44. Ka1 Kh1
+45. Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "r2qk2r/pp2bppp/2n1pn2/3p2B1/3P4/2NBPQ2/PP3PPP/R3K2R w KQkq - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:45:59.406 CEST"]
+[GameStartTime "2026-06-17T23:45:49.248 CEST"]
+[PlyCount "55"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O e5 2. Bxf6 gxf6 3. Nxd5 exd4 4. Qe4 dxe3 5. Nxf6+ Kf8 6. Nxh7+ Kg7
+7. fxe3 Qd6 8. Qg4+ Kh6 9. Rad1 Ne5 10. Qf4+ Kg7 11. Qg3+ Kh6 12. Bf5 Qc5 13. b4
+Qc3 14. Rc1 Qb2 15. Rc2 Qxb4 16. Qxe5 Rxh7 17. Bxh7 f6 18. Qf5 Kg7 19. Bg6 a5
+20. Rc7 Kf8 21. Qd5 Kg7 22. Qf7+ Kh6 23. Rxe7 a4 24. Rxb7 Qc3 25. Qh7+ Kg5
+26. Rf5+ Kg4 27. h3+ Kg3 28. Rf3# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r2qk2r/pp2bppp/2n1pn2/3p2B1/3P4/2NBPQ2/PP3PPP/R3K2R w KQkq - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:45:59.420 CEST"]
+[GameStartTime "2026-06-17T23:45:50.474 CEST"]
+[PlyCount "46"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O-O O-O 2. a4 Nb4 3. Bb5 a6 4. Be2 h6 5. Bxf6 Bxf6 6. e4 Nc6 7. e5 Bg5+
+8. Kc2 f6 9. Qg3 Qb6 10. Qg4 f5 11. a5 Qb4 12. Qh5 Nxd4+ 13. Kb1 Nxe2 14. Qxe2
+Rac8 15. Kc2 d4 16. h4 Be7 17. h5 dxc3 18. bxc3 Rxc3+ 19. Kd2 Rd8+ 20. Ke1 Rh3+
+21. Qd2 Rxh1+ 22. Ke2 Rxd2+ 23. Rxd2 Qe4# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pp1nbpp1/4bn1p/2pp4/3P1B2/2NBPN2/PPQ2PPP/R3K2R w KQ - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:46:15.335 CEST"]
+[GameStartTime "2026-06-17T23:45:54.070 CEST"]
+[PlyCount "109"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O g5 2. Bg3 g4 3. Ne5 c4 4. Bf5 Nxe5 5. dxe5 Nh5 6. Bxe6 Nxg3 7. Qg6+ Kh8
+8. Qxh6+ Kg8 9. fxg3 fxe6 10. Qxe6+ Kh7 11. Rf7+ Rxf7 12. Qxf7+ Kh6 13. Nxd5 Bg5
+14. Qxb7 Qc8 15. Qxc8 Rxc8 16. h3 Re8 17. h4 Bd8 18. b3 cxb3 19. axb3 a5 20. Nf6
+Bxf6 21. exf6 Rxe3 22. Rf1 Re8 23. Rf4 Kg6 24. f7 Rf8 25. b4 axb4 26. Rxg4+ Kxf7
+27. Rxb4 Ke6 28. g4 Ke5 29. g5 Rf5 30. g6 Rf6 31. g7 Rg6 32. h5 Rxg7 33. g4 Kd5
+34. h6 Rg6 35. h7 Rh6 36. Rb7 Kc6 37. Rg7 Kd5 38. g5 Rh5 39. Kf1 Ke4 40. Kg1 Kf3
+41. g6 Rg5+ 42. Kf1 Rh5 43. Rf7+ Ke3 44. g7 Rxh7 45. g8=Q Rxf7+ 46. Qxf7 Kd4
+47. Qf5 Kc4 48. Ke2 Kb3 49. Kd3 Ka2 50. Kc2 Ka1 51. Kc1 Ka2 52. Kd1 Ka1 53. Kc1
+Ka2 54. Kd1 Ka1 55. Kc1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r2q1rk1/pp1nbpp1/4bn1p/2pp4/3P1B2/2NBPN2/PPQ2PPP/R3K2R w KQ - 0 1"]
+[GameDuration "00:00:07"]
+[GameEndTime "2026-06-17T23:46:01.767 CEST"]
+[GameStartTime "2026-06-17T23:45:54.693 CEST"]
+[PlyCount "34"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. e4 cxd4 2. Nxd4 dxe4 3. Nxe4 Nxe4 4. Bxe4 Qa5+ 5. Bd2 Qe5 6. Nxe6 Rfc8 7. f4
+Qxe6 8. f5 Qe5 9. Bc3 Bb4 10. Kd2 Nc5 11. Bd3 Rd8 12. Bxb4 Nxd3 13. Qc3 Nxb4+
+14. Kc1 Rac8 15. Qxc8 Rxc8+ 16. Kb1 Nd3 17. Rc1 Rxc1# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/ppp1bpp1/4pn1p/3pn3/3P1N2/4P1B1/PPP2PPP/R2QKB1R w KQ - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:46:15.822 CEST"]
+[GameStartTime "2026-06-17T23:45:57.616 CEST"]
+[PlyCount "97"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. dxe5 Bb4+ 2. c3 g5 3. Nd3 Be7 4. exf6 Bxf6 5. Qh5 Kg7 6. Be2 Bd7 7. O-O a5
+8. a4 b5 9. axb5 Bxb5 10. Ne5 Bxe2 11. Qxe2 a4 12. e4 Bxe5 13. Bxe5+ f6 14. Bd4
+e5 15. Bc5 Rf7 16. Rfd1 c6 17. g4 Kh7 18. Qc2 Qa5 19. exd5+ Kg7 20. Bb4 Qb5
+21. d6 c5 22. Qe4 Raa7 23. Rd5 Qb6 24. Qe3 e4 25. Rad1 f5 26. Bxc5 Qxb2 27. Bxa7
+fxg4 28. Bd4+ Kh7 29. Qxe4+ Rf5 30. d7 Kg6 31. d8=Q Kh5 32. Qde8+ Kh4 33. Rxf5
+Qb3 34. Qd3 Qxd1+ 35. Qxd1 Kh3 36. Kf1 Kxh2 37. c4 Kh1 38. c5 Kh2 39. c6 Kh1
+40. c7 Kh2 41. c8=Q Kh1 42. Ba1 Kh2 43. Bb2 Kh1 44. f3 Kh2 45. Ba1 Kh1 46. Kf2+
+Kh2 47. Kf1 Kh1 48. Kf2+ Kh2 49. Kf1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/ppp1bpp1/4pn1p/3pn3/3P1N2/4P1B1/PPP2PPP/R2QKB1R w KQ - 0 1"]
+[GameDuration "00:00:26"]
+[GameEndTime "2026-06-17T23:46:24.769 CEST"]
+[GameStartTime "2026-06-17T23:45:57.844 CEST"]
+[PlyCount "137"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. dxe5 Bb4+ 2. c3 g5 3. Nd3 Be7 4. exf6 Bxf6 5. Ne5 a5 6. Bb5 c6 7. Bd3 Qb6
+8. Qb3 Qc5 9. a4 h5 10. Kf1 h4 11. Ng4 Bg7 12. Be5 f5 13. Bxg7 Kxg7 14. Ne5 f4
+15. exf4 Rxf4 16. f3 Qe3 17. Re1 Qc5 18. g3 Rf8 19. Qa3 Qxa3 20. bxa3 h3 21. Kf2
+c5 22. Ke3 c4 23. Bg6 Rf6 24. Bb1 b6 25. f4 gxf4+ 26. gxf4 Kf8 27. Re2 Rb8
+28. Bg6 Rb7 29. Rg1 Bd7 30. Rg3 Bxa4 31. Rxh3 Bb3 32. Rh7 Rxh7 33. Bxh7 Kg7
+34. Bc2 Bxc2 35. Rxc2 Rh6 36. Rb2 a4 37. Rxb6 Rxh2 38. Rxe6 Rc2 39. Rg6+ Kh7
+40. Kd4 Rd2+ 41. Kc5 Rc2 42. Ra6 Rd2 43. f5 Kg7 44. f6+ Kh7 45. f7 Rf2 46. Ra8
+d4 47. f8=Q Rxf8 48. Rxf8 dxc3 49. Rf2 Kg7 50. Nxc4 Kg6 51. Nb6 c2 52. Rxc2 Kf5
+53. Kd4 Kf6 54. Nxa4 Ke6 55. Nc5+ Kf5 56. a4 Kf4 57. a5 Kf5 58. a6 Kf4 59. a7
+Kf5 60. a8=Q Kg4 61. Qg2+ Kf4 62. Kd3 Ke5 63. Qg6 Kf4 64. Kd2 Kf3 65. Kc1 Ke3
+66. Kd1 Kf3 67. Kc1 Ke3 68. Kd1 Kf3 69. Kc1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "0-1"]
+[FEN "r1bq1rk1/p3ppbp/3p1np1/1np3B1/2B1PP2/3P2N1/PPP3PP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:05"]
+[GameEndTime "2026-06-17T23:46:03.648 CEST"]
+[GameStartTime "2026-06-17T23:45:58.116 CEST"]
+[PlyCount "24"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. Bxb5 d5 2. e5 Bg4 3. Ne2 Nh5 4. d4 c4 5. Bc6 Rc8 6. Bb7 Rb8 7. Bc6 Rxb2 8. a4
+c3 9. h3 Bf5 10. Nxc3 Rxc2 11. Qf3 Kh8 12. a5
+Qc7 {White makes an illegal move: 0000} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/p3ppbp/3p1np1/1np3B1/2B1PP2/3P2N1/PPP3PP/R2Q1RK1 w - - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:46:17.873 CEST"]
+[GameStartTime "2026-06-17T23:45:59.407 CEST"]
+[PlyCount "98"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bxb5 d5 2. e5 Bg4 3. Ne2 Nd7 4. Bc6 Rb8 5. Bxd5 Rxb2 6. Bc6 h5 7. a4 Be6
+8. d4 c4 9. d5 Qb6+ 10. Rf2 Bf5 11. Bxd7 Bxd7 12. Bxe7 Re8 13. Ba3 c3 14. Nxc3
+Bg4 15. Qd2 h4 16. a5 Qb7 17. a6 Qb6 18. Bxb2 Qxb2 19. Rb1 Qa3 20. h3 Bf5 21. g3
+hxg3 22. Rg2 Qc5+ 23. Kh1 Qc4 24. h4 f6 25. e6 g5 26. fxg5 Qxh4+ 27. Kg1 fxg5
+28. Rb2 Bd4+ 29. Kf1 Qh1+ 30. Ke2 Qxg2+ 31. Ke1 Qf2+ 32. Qxf2 gxf2+ 33. Ke2 Bg4+
+34. Kd3 f1=Q+ 35. Kxd4 Qxa6 36. Ne4 Qf1 37. c4 Qf4 38. Rg2 a5 39. c5 Rb8
+40. Rxg4 Qxg4 41. c6 Rb4+ 42. Kc5 Qxe4 43. c7 Rc4+ 44. Kb6 Qxd5 45. c8=Q+ Rxc8
+46. Ka6 Kh7 47. Kb6 Kg8 48. Ka6 Kh7 49. Kb6 Kg8 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "rnbq1rk1/1p1nbpp1/p1p1p2p/2Pp4/3P4/2N1P1P1/PP2NPBP/R1BQ1R1K w - - 0 1"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-06-17T23:46:00.929 CEST"]
+[GameStartTime "2026-06-17T23:45:59.421 CEST"]
+[PlyCount "5"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. e4 e5 2. b4 a5 3. Ba3 {Black makes an illegal move: 0000} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "rnbq1rk1/1p1nbpp1/p1p1p2p/2Pp4/3P4/2N1P1P1/PP2NPBP/R1BQ1R1K w - - 0 1"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-06-17T23:46:02.412 CEST"]
+[GameStartTime "2026-06-17T23:46:00.929 CEST"]
+[PlyCount "5"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. e4 e5 2. b4 a5 3. Ba3 {Black makes an illegal move: 0000} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2qk2r/1p1n1pp1/p3bn1p/2bpB3/8/2NB1N2/PPP2PPP/R2Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:46:19.360 CEST"]
+[GameStartTime "2026-06-17T23:46:01.769 CEST"]
+[PlyCount "95"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. a4 Nxe5 2. Nxe5 d4 3. Ne4 Nxe4 4. Bxe4 Qb6 5. Qf3 Qxb2 6. Rab1 Qc3 7. Qxc3
+dxc3 8. Bxb7 Rd8 9. Bxa6 Ra8 10. Bb5+ Ke7 11. Bc6 Ra6 12. Rfd1 h5 13. Rb7+ Kf6
+14. Nd7+ Bxd7 15. Bxd7 Rd6 16. Rxd6+ Bxd6 17. Bc6 Rc8 18. Bd5 Rc7 19. Rxc7 Bxc7
+20. h4 Bf4 21. g3 Bc1 22. a5 g5 23. a6 Be3 24. fxe3 Ke5 25. a7 Kxd5 26. a8=Q+
+Ke5 27. Qa5+ Ke4 28. Qxg5 Kf3 29. Qf4+ Ke2 30. Qf1+ Kd2 31. Qd3+ Kc1 32. Qxc3
+Kb1 33. Qb3+ Kc1 34. Qxf7 Kxc2 35. Qxh5 Kd2 36. Kf2 Kc2 37. e4 Kc3 38. Ke3 Kc2
+39. Qb5 Kc3 40. e5 Kc2 41. Qb4 Kc1 42. Ke2 Kc2 43. Ke1 Kc1 44. Kf1 Kd1 45. Kg1
+Kc1 46. Kf1 Kd1 47. Kg1 Kc1 48. Kf1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2qk2r/1p1n1pp1/p3bn1p/2bpB3/8/2NB1N2/PPP2PPP/R2Q1RK1 w kq - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:46:11.331 CEST"]
+[GameStartTime "2026-06-17T23:46:02.414 CEST"]
+[PlyCount "46"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bd4 Qb6 2. Na4 Qd6 3. Nxc5 Nxc5 4. Be5 Qb6 5. a4 Nxd3 6. Qxd3 O-O 7. Bxf6
+gxf6 8. Ra2 d4 9. b3 Rfd8 10. Rd1 Bg4 11. Rd2 Bxf3 12. a5 Qe6 13. gxf3 f5
+14. Re2 Qg6+ 15. Kf1 Qf6 16. f4 Re8 17. h4 h5 18. b4 Kg7 19. Rb2 Rac8 20. Qg3+
+Qg6 21. Qd3 Qf6 22. Qg3+ Qg6 23. Qd3 Qf6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/ppqpbppp/2n5/1Bp1P3/2Pp1P2/3P1N2/PP4PP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:46:21.516 CEST"]
+[GameStartTime "2026-06-17T23:46:03.648 CEST"]
+[PlyCount "96"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bd2 d6 2. Bxc6 Qxc6 3. f5 Qb6 4. exd6 Bxd6 5. Qb1 Bxf5 6. Nxd4 Bxd3 7. Qxd3
+cxd4 8. b4 Be5 9. c5 Qg6 10. Qxg6 fxg6 11. b5 d3 12. Rxf8+ Rxf8 13. Re1 Bd4+
+14. Kh1 Bxc5 15. a4 Kf7 16. a5 h5 17. h4 Bf2 18. Rf1 Ke8 19. Bg5 Rf5 20. Rb1 Kd7
+21. Rd1 Ke6 22. Rxd3 Rxb5 23. Rd2 Be1 24. Re2+ Re5 25. Rxe5+ Kxe5 26. Bc1 Bc3
+27. Be3 Bxa5 28. Bxa7 Bd2 29. g3 g5 30. hxg5 Bxg5 31. Bb6 Ke4 32. Kg1 Be3+
+33. Bxe3 Kxe3 34. Kf1 Kf3 35. Ke1 Kxg3 36. Kf1 h4 37. Kg1 b5 38. Kf1 h3 39. Ke1
+h2 40. Kd1 h1=Q+ 41. Kd2 Qf3 42. Kc1 Qe2 43. Kb1 Kf2 44. Ka1 Ke1 45. Kb1 Kd1
+46. Ka1 Ke1 47. Kb1 Kd1 48. Ka1 Ke1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/ppqpbppp/2n5/1Bp1P3/2Pp1P2/3P1N2/PP4PP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:46:23.112 CEST"]
+[GameStartTime "2026-06-17T23:46:05.518 CEST"]
+[PlyCount "95"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bd2 d6 2. Bxc6 Qxc6 3. f5 Qb6 4. exd6 Bxd6 5. Qb1 Bxf5 6. Nxd4 Bxd3 7. Qxd3
+cxd4 8. b4 Be5 9. c5 Qg6 10. Qxg6 fxg6 11. b5 d3 12. Rxf8+ Rxf8 13. Re1 Bd4+
+14. Kh1 Bxc5 15. g4 Rf2 16. Be3 Bxe3 17. Rxe3 d2 18. Re8+ Rf8 19. Rxf8+ Kxf8
+20. Kg2 d1=Q 21. g5 Qg4+ 22. Kf2 Qxg5 23. Kf3 Qxb5 24. Kf4 Ke7 25. Ke3 g5
+26. Kd2 Qb2+ 27. Kd3 Qxa2 28. h3 Qa3+ 29. Ke4 Qxh3 30. Kd4 b5 31. Ke4 Ke6
+32. Kd4 Qf3 33. Kc5 Qd3 34. Kc6 Qd5+ 35. Kc7 b4 36. Kc8 b3 37. Kc7 b2 38. Kb8
+b1=Q+ 39. Kxa7 Ke5 40. Ka6 Kd4 41. Ka7 Kc3 42. Ka6 Kb2 43. Kb6 Ka1+ 44. Ka6 Ka2
+45. Ka7 Ka1 46. Ka6 Ka2 47. Ka7 Ka1 48. Ka6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqkn1r/ppp2ppp/5n2/3p4/1P1P1b2/NNP1pP2/P3P1PP/R1BQKB1R w KQkq - 0 1"]
+[GameDuration "00:00:26"]
+[GameEndTime "2026-06-17T23:46:37.916 CEST"]
+[GameStartTime "2026-06-17T23:46:11.332 CEST"]
+[PlyCount "135"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. g3 Bh6 2. Qd3 a5 3. bxa5 b6 4. Bxe3 bxa5 5. Bxh6 gxh6 6. Qe3+ Ne6 7. Qxh6 a4
+8. Nc5 Nxc5 9. dxc5 Bb7 10. Bg2 Qe7 11. Qg5 Rg8 12. Qf4 Qxc5 13. Qxf6 Qxa3
+14. e4 Qb2 15. O-O Qb6+ 16. Qxb6 cxb6 17. Rfd1 dxe4 18. fxe4 Rc8 19. Rab1 Rg6
+20. Rb4 a3 21. Rb3 Rc4 22. Rxa3 Bxe4 23. Bxe4 Rxe4 24. Ra7 Rc6 25. Rd3 Re2
+26. g4 Rg6 27. h3 b5 28. Rd5 Rb6 29. h4 Re4 30. Rd4 Rxd4 31. cxd4 Rd6 32. Ra8+
+Kd7 33. a4 Rxd4 34. Ra7+ Ke6 35. axb5 Rxg4+ 36. Kf2 Rxh4 37. b6 Rh3 38. b7 Rb3
+39. Ra6+ Kd5 40. Ra7 h5 41. Kg1 Kc6 42. b8=Q Rxb8 43. Rxf7 h4 44. Kg2 Rb3
+45. Rh7 Rg3+ 46. Kh2 Rg4 47. Kh3 Rg3+ 48. Kxh4 Rg1 49. Ra7 Kd5 50. Kh3 Kc4
+51. Kh2 Rg5 52. Ra2 Kd3 53. Ra4 Rg6 54. Rb4 Kc3 55. Rf4 Kd3 56. Kh3 Ke3 57. Rf1
+Rg7 58. Kh2 Kd4 59. Ra1 Ke4 60. Rd1 Kf3 61. Rf1+ Ke3 62. Kh3 Ke4 63. Rf2 Ke3
+64. Rg2 Rb7 65. Kg4 Rg7+ 66. Kh3 Rb7 67. Kg4 Rg7+
+68. Kh3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqkn1r/ppp2ppp/5n2/3p4/1P1P1b2/NNP1pP2/P3P1PP/R1BQKB1R w KQkq - 0 1"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-06-17T23:46:26.456 CEST"]
+[GameStartTime "2026-06-17T23:46:15.337 CEST"]
+[PlyCount "63"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. g3 Bh6 2. Qd3 Ne6 3. Bxe3 Bxe3 4. Qxe3 O-O 5. Bg2 Bd7 6. Qd3 h5 7. e4 g5
+8. e5 Ne8 9. Nc5 b6 10. Nxe6 Bxe6 11. f4 gxf4 12. gxf4 Ng7 13. c4 Nf5 14. cxd5
+Bxd5 15. Bxd5 Qxd5 16. Rg1+ Ng7 17. Nc4 c5 18. bxc5 bxc5 19. O-O-O Rfd8 20. Nd6
+cxd4 21. Qxd4 Qxa2 22. h4 Rac8+ 23. Qc4 Rxc4+ 24. Nxc4 Qxc4+ 25. Kb1 Rb8+
+26. Ka1 Qc3+ 27. Ka2 Rb2+ 28. Ka1 Rc2+ 29. Kb1 Rb2+ 30. Ka1 Rc2+ 31. Kb1 Rb2+
+32. Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/p1p2p2/1pnppn1p/6p1/2PPP2B/P1P2N2/2Q2PPP/R3KB1R w KQ - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:46:34.537 CEST"]
+[GameStartTime "2026-06-17T23:46:15.823 CEST"]
+[PlyCount "99"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bg3 d5 2. Bd3 Ba6 3. Nd2 Na5 4. exd5 exd5 5. cxd5 Bxd3 6. Qxd3 Qxd5 7. O-O c5
+8. Be5 Qc6 9. a4 g4 10. Qf5 Nh7 11. dxc5 bxc5 12. Qxg4+ Ng5 13. h4 Qe6 14. Qg3
+Rfd8 15. Bf4 Rxd2 16. Bxg5 hxg5 17. Qxg5+ Kf8 18. Qxd2 Nb3 19. Qg5 Nxa1
+20. Qxc5+ Kg7 21. Rxa1 a5 22. Qd4+ Kg6 23. c4 Rc8 24. c5 f5 25. f4 Kh5 26. g3
+Qb3 27. Qf2 Kg4 28. Rf1 Qxg3+ 29. Qxg3+ Kxg3 30. Rc1 Rh8 31. c6 Kf3 32. c7 Rc8
+33. h5 Kxf4 34. h6 Ke3 35. h7 f4 36. h8=Q Rxh8 37. c8=Q Rxc8 38. Rxc8 Ke2
+39. Kg2 f3+ 40. Kg3 f2 41. Rc2+ Kd3 42. Rxf2 Kc3 43. Rf4 Kb3 44. Kf2 Ka2 45. Ke2
+Ka1 46. Kd1 Kb1 47. Ke1 Ka1 48. Kd1 Kb1 49. Ke1 Ka1
+50. Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r1bq1rk1/p1p2p2/1pnppn1p/6p1/2PPP2B/P1P2N2/2Q2PPP/R3KB1R w KQ - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:46:26.818 CEST"]
+[GameStartTime "2026-06-17T23:46:17.874 CEST"]
+[PlyCount "46"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bg3 d5 2. Bd3 dxe4 3. Bxe4 Nxe4 4. Qxe4 Bb7 5. d5 Ne7 6. c5 bxc5 7. Qe3 g4
+8. Ne5 Qxd5 9. Nxg4 Qxg2 10. Nxh6+ Kh7 11. Kd2 Nd5 12. Qg5 f5 13. c4 Nb6 14. Qh4
+Rad8+ 15. Kc2 Be4+ 16. Kb2 Nxc4+ 17. Kc3 Qf3+ 18. Kxc4 Qd3+ 19. Kxc5 Qd4+
+20. Kb5 Bd3+ 21. Ka5 Qc5+ 22. Ka4 Rd4+ 23. Qxd4 Bc2# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rnbqk2r/p3bpp1/2p1p2p/1p6/P1pP4/2P1PNB1/5PPP/R2QKB1R w KQkq - 0 1"]
+[GameDuration "00:00:28"]
+[GameEndTime "2026-06-17T23:46:47.720 CEST"]
+[GameStartTime "2026-06-17T23:46:19.360 CEST"]
+[PlyCount "146"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bxb8 Rxb8 2. axb5 cxb5 3. Rxa7 Rb7 4. Ra8 f5 5. Be2 h5 6. Ne5 h4 7. Bh5+ g6
+8. Nxg6 Rh7 9. Nxh4+ Kf8 10. Ng6+ Kg7 11. Bf3 Rc7 12. Ne5 Bd6 13. O-O Qf6 14. h4
+Bxe5 15. dxe5 Qxh4 16. Bh5 Qxh5 17. Qxh5 Rxh5 18. f4 Bb7 19. Ra7 Rd7 20. Rb1 Bc6
+21. Rxd7+ Bxd7 22. Rd1 Be8 23. Rd6 Kf7 24. Rb6 Ke7 25. g3 Rh7 26. Kg2 Rf7
+27. Kf1 Bd7 28. Kf2 Kd8 29. Ra6 Kc7 30. Ke2 Rg7 31. Kf2 Bc6 32. Ra7+ Bb7 33. Ra1
+Kb6 34. Rd1 Kc5 35. Rd8 Bh1 36. Rc8+ Kd5 37. Ra8 Kc5 38. Rc8+ Kd5 39. Ra8 Kc5
+40. Rd8 Be4 41. Rc8+ Kd5 42. Rd8+ Kc5 43. Rd6 Bd5 44. Ra6 Rh7 45. Ke1 Rh1+
+46. Kf2 Rh2+ 47. Kf1 Rc2 48. Ra7 Rxc3 49. Ke2 Rc2+ 50. Kd1 Rg2 51. Rc7+ Kb4
+52. Rg7 Kc3 53. Ra7 Kd3 54. Ke1 Rxg3 55. Ra3+ c3 56. Kf2 Rf3+ 57. Kg2 Rxf4+
+58. Kg1 Re4 59. Kf2 Kd2 60. Ra1 c2 61. Kf1 Rxe3 62. Kg1 Re1+ 63. Rxe1 Kxe1
+64. Kh2 Kf2 65. Kh3 c1=Q 66. Kh2 Ke1 67. Kg1 Kd1 68. Kf1 Kc2+ 69. Ke2 Kb1
+70. Kf2 Kc2 71. Ke2 Kb1 72. Kf2 Ka1 73. Ke2 Kb1 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rnbqk2r/p3bpp1/2p1p2p/1p6/P1pP4/2P1PNB1/5PPP/R2QKB1R w KQkq - 0 1"]
+[GameDuration "00:00:20"]
+[GameEndTime "2026-06-17T23:46:42.329 CEST"]
+[GameStartTime "2026-06-17T23:46:21.517 CEST"]
+[PlyCount "107"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bxb8 Rxb8 2. axb5 cxb5 3. Rxa7 Qb6 4. Ra2 Bb7 5. Be2 O-O 6. Rb2 Ba3 7. Ra2
+Bd6 8. h4 Ra8 9. Rb2 Bxf3 10. Bxf3 Ra3 11. Kd2 f5 12. Qe2 Rb3 13. Rhb1 Rxb2+
+14. Rxb2 Rb8 15. e4 Bf4+ 16. Kc2 g5 17. g3 fxe4 18. Qxe4 Bd6 19. Qg6+ Kf8
+20. Qxh6+ Kf7 21. hxg5 Ke7 22. Qg7+ Kd8 23. Bg4 Ba3 24. Ra2 Be7 25. Qe5 Bd6
+26. Qxe6 Qc7 27. f4 Qe7 28. d5 Qxe6 29. dxe6 Kc7 30. Kd2 Bc5 31. Ke2 Rh8 32. Kf3
+Rd8 33. Ke4 Kb7 34. g6 Bd6 35. Bf5 Bc5 36. g7 Rg8 37. Rd2 Rxg7 38. Rd7+ Rxd7
+39. exd7 Kc7 40. Ke5 Bf8 41. Ke6 Kd8 42. Be4 Bg7 43. Bc6 Bxc3 44. Bxb5 Be1
+45. Bxc4 Bxg3 46. f5 Be1 47. f6 Bd2 48. f7 Bb4 49. Bd3 Kc7 50. Bb1 Kd8 51. Ba2
+Kc7 52. Bb1 Kd8 53. Ba2 Kc7 54. Bb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn1q1rk1/pp3pbp/2p1b1p1/3n4/3P4/1BN1BN2/PP3PPP/R2QK2R w KQ - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:46:41.010 CEST"]
+[GameStartTime "2026-06-17T23:46:23.113 CEST"]
+[PlyCount "96"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nxd5 cxd5 2. Bg5 Bf6 3. Bxf6 Qxf6 4. O-O Nc6 5. Qd3 g5 6. a4 g4 7. Ne5 Nxe5
+8. dxe5 Qxe5 9. f4 gxf3 10. gxf3 d4 11. Bxe6 fxe6 12. Rfe1 Qd6 13. a5 Rf7 14. b4
+Raf8 15. Qe4 d3 16. b5 d2 17. Qg4+ Rg7 18. Re4 d1=Q+ 19. Rxd1 Qxd1+ 20. Kf2 Rxg4
+21. Rxg4+ Kh8 22. Rg3 Qd2+ 23. Kg1 Qxa5 24. h4 Qxb5 25. Kf2 Qc4 26. h5 Qc5+
+27. Kf1 Qxh5 28. Kf2 a5 29. Kg2 e5 30. Rh3 Rg8+ 31. Rg3 Rg7 32. Rxg7 Kxg7
+33. Kf2 Qh2+ 34. Ke3 Kf6 35. Kd3 Qf2 36. Kc3 b5 37. Kd3 Qxf3+ 38. Kc2 b4 39. Kb1
+Qe2 40. Ka1 Kf5 41. Kb1 Ke4 42. Ka1 Kd3 43. Kb1 Kd2 44. Ka1 Kd1 45. Kb1 Ke1
+46. Ka1 Kd1 47. Kb1 Ke1 48. Ka1 Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn1q1rk1/pp3pbp/2p1b1p1/3n4/3P4/1BN1BN2/PP3PPP/R2QK2R w KQ - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:46:49.720 CEST"]
+[GameStartTime "2026-06-17T23:46:24.770 CEST"]
+[PlyCount "126"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qd3 Nd7 2. h4 Nxe3 3. Qxe3 Bg4 4. a4 Qb6 5. Ne2 Rae8 6. Qc3 c5 7. a5 Qd6
+8. Ne5 cxd4 9. Bxf7+ Rxf7 10. Nxf7 Rxe2+ 11. Kf1 Rxf2+ 12. Kxf2 Qf4+ 13. Qf3
+Bxf3 14. Nh6+ Bxh6 15. gxf3 Ne5 16. Rh3 Qd2+ 17. Kg1 Be3+ 18. Kh1 Qxb2 19. Rf1
+Qb5 20. Ra1 Bd2 21. Kg2 Bc3 22. Ra2 Qd5 23. Re2 d3 24. Re3 h5 25. Kg3 d2 26. Rh1
+Qxa5 27. f4 Nc4 28. Rd3 Nb2 29. Rd6 d1=Q 30. Rhxd1 Nxd1 31. Rxd1 Be1+ 32. Kf3
+Qc3+ 33. Ke2 Bxh4 34. Rd6 Bf6 35. Rd3 Qc2+ 36. Ke3 Qc5+ 37. Ke4 h4 38. Rd2 h3
+39. Rh2 a5 40. Rd2 a4 41. Re2 a3 42. Kf3 a2 43. Rxa2 Qd5+ 44. Kg3 Qxa2 45. f5 h2
+46. fxg6 h1=Q 47. Kf4 Qhg2 48. Ke3 Kg7 49. Kd3 Kxg6 50. Ke3 Kf5 51. Kd3 Kg4
+52. Ke3 Kg3 53. Kd3 Kh2 54. Ke3 Kg1 55. Kd3 Kf1 56. Ke3 Ke1 57. Kd3 Kd1 58. Ke3
+Kc1 59. Kd3 Kb1 60. Ke3 Ka1 61. Kd3 Kb1 62. Ke3 Ka1 63. Kd3
+Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rnbqr1k1/1p3ppp/1p3n2/3pp3/2B5/2PP1N2/PP3PPP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-06-17T23:46:39.130 CEST"]
+[GameStartTime "2026-06-17T23:46:26.458 CEST"]
+[PlyCount "78"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb5 Bd7 2. c4 Bxb5 3. cxb5 Qd7 4. Re1 e4 5. dxe4 Nxe4 6. Qd3 Ra5 7. Nd4 g5
+8. f3 Nc5 9. Rxe8+ Qxe8 10. Qe3 Qxe3+ 11. Bxe3 Ne6 12. Nxe6 fxe6 13. a4 Kf7
+14. Bxb6 Ra8 15. Be3 Kf6 16. g4 e5 17. Bc5 Nd7 18. b4 Rc8 19. Rc1 Nxc5 20. Rxc5
+Rxc5 21. bxc5 Ke6 22. a5 d4 23. a6 bxa6 24. bxa6 d3 25. Kf2 d2 26. Ke2 e4
+27. fxe4 Ke5 28. a7 d1=Q+ 29. Kxd1 Kxe4 30. a8=Q+ Kd4 31. Qf8 Kc4 32. c6 Kd4
+33. c7 Kc3 34. c8=Q+ Kb3 35. Qa6 Kb2 36. Kd2 Kb1 37. Kd1 Kb2 38. Ke1 Kb1 39. Kd1
+Kb2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rnbqr1k1/1p3ppp/1p3n2/3pp3/2B5/2PP1N2/PP3PPP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:46:37.084 CEST"]
+[GameStartTime "2026-06-17T23:46:26.818 CEST"]
+[PlyCount "56"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb5 Bd7 2. c4 Na6 3. Be3 d4 4. Bg5 Bxb5 5. Bxf6 Qxf6 6. cxb5 Nc7 7. Qb3 Ne6
+8. h4 g5 9. hxg5 Nxg5 10. Qd5 Nxf3+ 11. Qxf3 Qxf3 12. gxf3 f5 13. Kg2 f4 14. Rh1
+Re6 15. Rh5 Kg7 16. a4 Rg6+ 17. Kf1 Re8 18. Ke2 Rc8 19. Rd1 Rc2+ 20. Rd2 Rxd2+
+21. Kxd2 Re6 22. b3 Kg6 23. Rh2 h5 24. Rg2+ Kf6 25. Rh2 Kg5 26. Rg2+ Kf6 27. Rh2
+Kg5 28. Rg2+ Kf6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/pp1nq1pp/2pbp3/3pNp2/2PPnP2/1PN3P1/P3P1BP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:07"]
+[GameEndTime "2026-06-17T23:46:41.801 CEST"]
+[GameStartTime "2026-06-17T23:46:34.538 CEST"]
+[PlyCount "35"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb2 a5 2. Qd3 h5 3. c5 Nxe5 4. fxe5 Bc7 5. Bf3 g6 6. a4 b6 7. Nxe4 dxe4
+8. Bxe4 fxe4 9. Rxf8+ Kxf8 10. Qxe4 Rb8 11. Rf1+ Kg7 12. Ba3 bxc5 13. Bxc5 Qd7
+14. Rf6 Qe8 15. Rf8 Qd7 16. Rf6 Qe8 17. Rf8 Qd7
+18. Rf6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/pp1nq1pp/2pbp3/3pNp2/2PPnP2/1PN3P1/P3P1BP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:27"]
+[GameEndTime "2026-06-17T23:47:04.513 CEST"]
+[GameStartTime "2026-06-17T23:46:37.085 CEST"]
+[PlyCount "140"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb2 a5 2. Qd3 h5 3. c5 Nxe5 4. fxe5 Bc7 5. Bf3 h4 6. gxh4 Qxh4 7. a4 b6
+8. Nxe4 fxe4 9. Qc2 exf3 10. exf3 Bb7 11. Rf2 bxc5 12. Qxc5 g5 13. Qe7 Rf7
+14. Qxe6 Rd8 15. Bc3 Qf4 16. Kh1 Qf5 17. Qxf5 Rxf5 18. b4 axb4 19. Bxb4 Bb6
+20. Bc3 Bc7 21. Rb1 Ba6 22. Kg2 Kg7 23. a5 Bd3 24. Rd1 Bc4 25. Kg3 Bb3 26. Rb1
+Bc4 27. h4 gxh4+ 28. Kxh4 Bd3 29. Rg1+ Kf7 30. f4 Rh8+ 31. Kg3 Ke6 32. Rd1 Rg8+
+33. Kf3 Be4+ 34. Ke2 Ra8 35. Ra1 Raf8 36. Ke3 Rh5 37. Kd2 Rhf5 38. Ke3 Rh5
+39. a6 Rh3+ 40. Kd2 Rd3+ 41. Ke1 Rxc3 42. a7 Ra8 43. Ra6 Bd3 44. Ra4 Bb6 45. Kd2
+Rc2+ 46. Kxd3 Rxf2 47. Ra6 Rxa7 48. Rxa7 Bxa7 49. Ke3 Rf1 50. Ke2 Rxf4 51. Ke3
+Re4+ 52. Kf2 Bxd4+ 53. Kg3 c5 54. Kf3 c4 55. Kg2 c3 56. Kf1 c2 57. Kg2 c1=Q
+58. Kh2 Kxe5 59. Kg2 Kf4 60. Kh2 Ke3 61. Kg2 Kd2 62. Kh2 Kd1 63. Kh1 Ke1 64. Kg2
+Kd1 65. Kf1 Kc2+ 66. Kg2 Kb1 67. Kh2 Ka1 68. Kg2 Kb1 69. Kh2 Ka1 70. Kg2
+Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1k2r/ppp2p1p/1qn1pp2/8/3P4/2bQ1N2/PPP2PPP/R3KB1R w KQkq - 0 1"]
+[GameDuration "00:00:18"]
+[GameEndTime "2026-06-17T23:46:56.103 CEST"]
+[GameStartTime "2026-06-17T23:46:37.917 CEST"]
+[PlyCount "97"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qxc3 Qb4 2. Qxb4 Nxb4 3. Kd2 Nd5 4. c4 Nb4 5. Bd3 Ke7 6. a4 Bd7 7. h4 Rhg8
+8. g3 Bc6 9. Be2 f5 10. a5 b6 11. a6 Be4 12. h5 Kd6 13. h6 c5 14. Rhd1 Nc6
+15. dxc5+ Kxc5 16. Ke3 Rg6 17. Rd7 Rxh6 18. Rxf7 e5 19. Rd1 Rg8 20. Rdd7 Bxf3
+21. Bxf3 Na5 22. Rd5+ Kxc4 23. Rxe5 Kb3 24. Rb5+ Kc2 25. Kf4 Nb3 26. Rbxf5 Kxb2
+27. Rxa7 Nd4 28. Rff7 Rh2 29. Ke3 Nxf3 30. Kxf3 h5 31. Rab7 Kc3 32. a7 Kd4
+33. Rb8 Rxg3+ 34. Kxg3 Rh1 35. a8=Q Rb1 36. Rd8+ Kc3 37. Qc6+ Kb2 38. Qxb6+ Ka1
+39. Qa5+ Kb2 40. Rb7+ Kc1 41. Rc7+ Kb2 42. Kf3 Kb3 43. Kf4 Kb2 44. Kf3 Kb3
+45. Kg2 Kb2 46. Kh2 Kb3 47. Kg2 Kb2 48. Kh2 Kb3
+49. Kg2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "r1b1k2r/ppp2p1p/1qn1pp2/8/3P4/2bQ1N2/PPP2PPP/R3KB1R w KQkq - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:47:03.883 CEST"]
+[GameStartTime "2026-06-17T23:46:39.131 CEST"]
+[PlyCount "125"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qxc3 O-O 2. a4 Bd7 3. Bd3 f5 4. a5 Qb4 5. Qxb4 Nxb4 6. Kd2 Nxd3 7. Kxd3 Bc6
+8. h4 Be4+ 9. Kc3 h5 10. b4 b5 11. Ne5 Kg7 12. Rh2 f6 13. Nd3 Bxd3 14. Kxd3 e5
+15. d5 Rad8 16. c4 e4+ 17. Kd4 bxc4 18. b5 Rd6 19. Kxc4 a6 20. bxa6 Rxa6 21. f3
+Re8 22. fxe4 fxe4 23. g3 f5 24. Kc5 e3 25. Rb2 e2 26. Rbb1 Rg6 27. Rg1 Re3
+28. Rae1 Ra6 29. Ra1 Rg6 30. Rae1 Rg4 31. Kc6 Rc3+ 32. Kd7 Re4 33. Rg2 Rc2
+34. a6 Re5 35. a7 Ra2 36. Rgxe2 Rexe2 37. Rxe2 Rxa7 38. Rc2 Ra3 39. Rg2 Rc3
+40. Ke6 Kg6 41. Ke7 c5 42. Kd6 Kf6 43. Re2 Rxg3 44. Re6+ Kf7 45. Re5 Rf3
+46. Kxc5 Kf6 47. Re6+ Kg7 48. Kd4 Rf2 49. Re7+ Kf6 50. Re6+ Kf7 51. Ke5 Rh2
+52. Rf6+ Kg7 53. Rxf5 Rxh4 54. d6 Rh2 55. d7 Rd2 56. Ke6 h4 57. Rd5 Re2+ 58. Kd6
+h3 59. d8=Q h2 60. Qg5+ Kh7 61. Qh4+ Kg6 62. Qg4+ Kh7 63. Rh5# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1r2/ppp2ppk/3p1n1p/2b1p3/2B1P3/P1NP2Q1/1PP2PPP/R1B2RK1 w - - 0 1"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-06-17T23:46:53.211 CEST"]
+[GameStartTime "2026-06-17T23:46:41.011 CEST"]
+[PlyCount "73"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be3 Bxe3 2. Qxe3 Be6 3. Bxe6 fxe6 4. f4 Rf7 5. d4 exf4 6. Rxf4 g5 7. Rff1 e5
+8. Nd5 c6 9. Nxf6+ Rxf6 10. d5 cxd5 11. exd5 h5 12. b4 h4 13. a4 a5 14. b5 g4
+15. Qe4+ Rg6 16. Rf7+ Kh6 17. Rxb7 Qg5 18. g3 h3 19. Rc7 Qd2 20. c3 Kg5 21. b6
+Rb8 22. b7 Rbg8 23. Rc8 Qg2+ 24. Qxg2 hxg2 25. b8=Q Rxc8 26. Qxc8 Rg7 27. Kxg2
+Rg6 28. Qd8+ Kf5 29. Rf1+ Ke4 30. Qxa5 Rg7 31. Rf6 Rb7 32. Rxd6 Rb2+ 33. Kg1
+Rb1+ 34. Kf2 Rb2+ 35. Kg1 Rb1+ 36. Kf2 Rb2+ 37. Kg1 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1r2/ppp2ppk/3p1n1p/2b1p3/2B1P3/P1NP2Q1/1PP2PPP/R1B2RK1 w - - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:46:58.824 CEST"]
+[GameStartTime "2026-06-17T23:46:41.802 CEST"]
+[PlyCount "93"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be3 Bxe3 2. Qxe3 Be6 3. Bxe6 fxe6 4. b4 Ng4 5. Qg3 h5 6. a4 a5 7. bxa5 Rxa5
+8. f4 Rc5 9. Ra3 Qf6 10. f5 exf5 11. Rxf5 Qe7 12. Rxh5+ Nh6 13. h4 Qe6 14. Kh2
+Kg8 15. Rg5 Qd7 16. a5 b5 17. Rb3 b4 18. Nd5 Nf5 19. Qh3 Rxa5 20. Ne3 d5
+21. Rxf5 Rxf5 22. Nxf5 Kf7 23. Rxb4 c5 24. Rb2 dxe4 25. dxe4 c4 26. Rb7 Qxb7
+27. Nd6+ Ke7 28. Nxb7 Rb5 29. Qa3+ Kd7 30. Qd6+ Kc8 31. Qc6+ Kb8 32. Qxb5 Kc7
+33. Na5 c3 34. Qxe5+ Kd7 35. h5 Kd8 36. Qxg7 Kc8 37. h6 Kb8 38. Kg1 Ka8 39. Kf1
+Kb8 40. Ke1 Ka8 41. Kd1 Kb8 42. Kc1 Ka8 43. Kb1 Kb8 44. Ka1 Ka8 45. Kb1 Kb8
+46. Ka1 Ka8 47. Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "r2q1rk1/1pp1bpp1/p1n1bn1p/3pp3/4P3/P1NPBN1P/1PP1BPP1/R2QR1K1 w - - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:46:52.715 CEST"]
+[GameStartTime "2026-06-17T23:46:42.330 CEST"]
+[PlyCount "57"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. g4 d4 2. g5 hxg5 3. Nxg5 dxe3 4. fxe3 Qd6 5. Nxe6 fxe6 6. Bg4 Kh7 7. Qf3 Nxg4
+8. Qxg4 g5 9. Qh5+ Kg7 10. b4 Nd4 11. Rec1 Nb5 12. Nxb5 axb5 13. Qg4 Rf7 14. h4
+Kh6 15. hxg5+ Bxg5 16. Kg2 Ra7 17. Rh1+ Kg6 18. c4 bxc4 19. Rh5 Qd8 20. dxc4
+Qd2+ 21. Kh1 Qxe3 22. Rg1 Rxa3 23. Rxg5+ Kf6 24. Rg6+ Ke7 25. Qxe6+ Kd8 26. Rg8+
+Rf8 27. Rd1+ Rd3 28. Rxd3+ Qxd3 29. Rxf8# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "r2q1rk1/1pp1bpp1/p1n1bn1p/3pp3/4P3/P1NPBN1P/1PP1BPP1/R2QR1K1 w - - 0 1"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-06-17T23:46:50.592 CEST"]
+[GameStartTime "2026-06-17T23:46:47.721 CEST"]
+[PlyCount "11"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. Kh1 d4 2. Bd2 dxc3 3. Bxc3 Qd6 4. g4 Nd4 5. a4 a5
+6. Qd2 {Black makes an illegal move: 0000} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqk2r/p3npb1/1pn1p1p1/2p4p/3pP2P/3P2P1/PPPNNPB1/R1BQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:46:58.388 CEST"]
+[GameStartTime "2026-06-17T23:46:49.723 CEST"]
+[PlyCount "44"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. f4 Bb7 2. e5 Nd5 3. c4 Ne3 4. Qa4 Nxf1 5. Bxc6+ Bxc6 6. Qxc6+ Ke7 7. Kxf1 Rc8
+8. Qb5 f5 9. a4 Kf7 10. Kg1 Rc7 11. b4 cxb4 12. Bb2 g5 13. Bxd4 gxf4 14. gxf4
+Rg8 15. Kf1 Qe7 16. Rb1 Rd8 17. Nf3 Bf8 18. Ng3 Rcd7 19. Ne2 Rc7 20. Ng3 Rcd7
+21. Ne2 Rb7 22. Ng3 Rbd7 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqk2r/p3npb1/1pn1p1p1/2p4p/3pP2P/3P2P1/PPPNNPB1/R1BQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-06-17T23:47:14.929 CEST"]
+[GameStartTime "2026-06-17T23:46:50.592 CEST"]
+[PlyCount "123"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. f4 O-O 2. e5 Bb7 3. Ne4 f5 4. Nd6 Qc7 5. Nxb7 Qxb7 6. c4 b5 7. b4 bxc4
+8. bxc5 Qb4 9. dxc4 Qxc5 10. Qd3 a5 11. Ba3 Nxe5 12. fxe5 Qa7 13. Bxa8 Rxa8
+14. Bxe7 Qxe7 15. Qxd4 Qc7 16. Nc3 Bxe5 17. Qe3 Bxc3 18. Qxc3 Qc5+ 19. Kg2 a4
+20. Kf3 e5 21. Rae1 e4+ 22. Kf4 Qd6+ 23. Kg5 a3 24. c5 Qc6 25. Kf4 Qc7+ 26. Qe5
+Qxe5+ 27. Kxe5 Rc8 28. Kd4 Kg7 29. Re3 Rd8+ 30. Kc4 Ra8 31. Kb4 g5 32. Rxf5 gxh4
+33. gxh4 Kg6 34. Rf2 Rd8 35. Kc4 Kh6 36. Rxa3 Kg7 37. Ra7+ Kh8 38. Re7 Kg8
+39. a4 Ra8 40. Ra2 Rd8 41. c6 e3 42. Rg2+ Kf8 43. Rxe3 Rd6 44. Kc5 Rd1 45. Rc2
+Rd8 46. Rf2+ Kg7 47. c7 Ra8 48. Re7+ Kg8 49. Rd7 Ra5+ 50. Kc6 Ra8 51. Rd8+ Kg7
+52. Rxa8 Kg6 53. c8=Q Kh6 54. Kb5 Kg6 55. Kb4 Kh6 56. Ka3 Kg6 57. Ka2 Kh6
+58. Ka1 Kg6 59. Kb1 Kh6 60. Ka1 Kg6 61. Kb1 Kh6
+62. Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqnrk1/ppp2pp1/1bnp3p/4p3/4P3/1QPPBN2/PP2BPPP/RN3RK1 w - - 0 1"]
+[GameDuration "00:00:23"]
+[GameEndTime "2026-06-17T23:47:16.231 CEST"]
+[GameStartTime "2026-06-17T23:46:52.716 CEST"]
+[PlyCount "119"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nbd2 Be6 2. Nc4 d5 3. Nxb6 axb6 4. exd5 Bxd5 5. c4 Bxf3 6. Bxf3 Nd6 7. a4 Nd4
+8. Bxd4 exd4 9. g4 Qg5 10. Rfe1 Kh7 11. Be4+ f5 12. Bd5 fxg4 13. Be4+ g6 14. Bd5
+h5 15. Rad1 h4 16. Qb4 h3 17. b3 Rae8 18. Be6 Re7 19. Bd5 Rfe8 20. Rxe7+ Rxe7
+21. Kf1 Qf6 22. c5 Qe5 23. Re1 Qxe1+ 24. Qxe1 Rxe1+ 25. Kxe1 bxc5 26. f3 gxf3
+27. Bxf3 Kh6 28. Bg4 Kg5 29. Bxh3 Kf4 30. Kd2 g5 31. Be6 Ke5 32. Bd7 Kd5 33. a5
+Ke5 34. Bg4 Kf4 35. h3 Ke5 36. Ke2 Ne8 37. Kf2 Ng7 38. Bf3 b5 39. a6 g4 40. hxg4
+Ne6 41. a7 Nf4 42. Kg3 Nxd3 43. a8=Q c4 44. Qd5+ Kf6 45. Qxd4+ Ke7 46. bxc4 bxc4
+47. g5 c5 48. Qd5 Ke8 49. Qxc4 Ne1 50. g6 Nxf3 51. Qf7+ Kd8 52. Kxf3 Kc8 53. Ke2
+Kb8 54. Kd1 Ka8 55. Kc1 Kb8 56. Kb1 Ka8 57. Ka1 Kb8 58. Kb1 Ka8 59. Ka1 Kb8
+60. Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bqnrk1/ppp2pp1/1bnp3p/4p3/4P3/1QPPBN2/PP2BPPP/RN3RK1 w - - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:47:15.855 CEST"]
+[GameStartTime "2026-06-17T23:46:53.212 CEST"]
+[PlyCount "115"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bxb6 axb6 2. d4 Be6 3. d5 Na5 4. Qc2 Bg4 5. Nbd2 Nf6 6. b4 c6 7. bxa5 cxd5
+8. exd5 Nxd5 9. c4 Nf4 10. Ne4 f5 11. Nc3 bxa5 12. Nd5 g5 13. a4 e4 14. Nxf4
+gxf4 15. Nd4 Qf6 16. Qc3 Bxe2 17. Nxe2 Qxc3 18. Nxc3 h5 19. Nd5 f3 20. gxf3 Kf7
+21. fxe4 Rg8+ 22. Kh1 fxe4 23. f3 exf3 24. Rxf3+ Kg7 25. Rg1+ Kh8 26. Rxg8+ Rxg8
+27. Rf5 h4 28. Rf4 h3 29. Rf3 Rg4 30. Rxh3+ Kg7 31. Rg3 Rxg3 32. hxg3 Kg6
+33. Kg2 Kg5 34. Kf3 Kf5 35. g4+ Kg5 36. Kg3 Kg6 37. Kf4 Kf7 38. Kf5 Kg7 39. Nb6
+Kh6 40. Nc8 Kg7 41. Nxd6 b6 42. Nc8 Kh6 43. Nxb6 Kg7 44. c5 Kf7 45. c6 Ke7
+46. c7 Kd6 47. c8=Q Ke7 48. Ke4 Kd6 49. Ke3 Ke5 50. Kf3 Kd4 51. Ke2 Ke4 52. Kf2
+Kd3 53. Kf3 Kd2 54. Kf2 Kd1 55. Kf1 Kd2 56. Kf2 Kd1 57. Kf1 Kd2
+58. Kf2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1b1r/ppp2kpp/2n2p2/4p3/8/7Q/PPPP1PPP/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:47:13.976 CEST"]
+[GameStartTime "2026-06-17T23:46:56.103 CEST"]
+[PlyCount "96"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qb3+ Kg6 2. Qxb7 Nd4 3. Kd1 Bd6 4. Nc3 Qd7 5. d3 Qg4+ 6. Kd2 Qf4+ 7. Kd1 Qxf2
+8. Bd2 Rab8 9. Qe4+ f5 10. Qe3 Qxe3 11. Bxe3 Rxb2 12. Bxd4 exd4 13. Nd5 f4
+14. a4 Kf5 15. h4 c6 16. g4+ Ke6 17. Nxf4+ Bxf4 18. a5 c5 19. g5 Kd5 20. a6 h5
+21. g6 Bg3 22. Rf1 Bxh4 23. Rf7 Bf6 24. Rxa7 h4 25. Rb7 Rxb7 26. axb7 Rb8
+27. c4+ dxc3 28. Rb1 Kc6 29. Ke2 Bd4 30. Rh1 Bf6 31. Rb1 Bg5 32. d4 c2 33. Ra1
+c1=Q 34. Rxc1 Bxc1 35. dxc5 Kxc5 36. Kf3 Rxb7 37. Kg4 Rb6 38. Kxh4 Rxg6 39. Kh3
+Kd4 40. Kh2 Bf4+ 41. Kh1 Be3 42. Kh2 Kc3 43. Kh1 Kb2 44. Kh2 Ka1 45. Kh1 Kb1
+46. Kh2 Ka1 47. Kh1 Kb1 48. Kh2 Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1b1r/ppp2kpp/2n2p2/4p3/8/7Q/PPPP1PPP/RNB1K2R w KQ - 0 1"]
+[GameDuration "00:00:21"]
+[GameEndTime "2026-06-17T23:47:19.893 CEST"]
+[GameStartTime "2026-06-17T23:46:58.389 CEST"]
+[PlyCount "110"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Qb3+ Ke8 2. Qxb7 Nd4 3. Qe4 Bd6 4. c3 Ne6 5. d4 c5 6. d5 Ng5 7. Bxg5 fxg5
+8. Nd2 a5 9. Nc4 Qf6 10. Ke2 a4 11. Nb6 Ra7 12. Nxa4 Qf4 13. Qxf4 exf4 14. Nb6
+g4 15. Kd3 Ke7 16. Rhe1+ Kf7 17. Nc4 Rd8 18. a4 Bc7 19. Ne5+ Bxe5 20. Rxe5 Kf6
+21. Ke4 g5 22. Re6+ Kg7 23. b4 cxb4 24. cxb4 h5 25. f3 gxf3 26. Re5 Rb7
+27. Rxg5+ Kh6 28. h4 f2 29. b5 Ra8 30. d6 Rxa4+ 31. Rxa4 f1=Q 32. Ra8 Qe1+
+33. Kd4 Qxh4 34. Rag8 Qxg5 35. Rxg5 Kxg5 36. Ke4 Kg4 37. Kd4 Rxb5 38. d7 Rb8
+39. Ke5 Kg3 40. Kd6 Rg8 41. Kc7 Kxg2 42. d8=Q Rxd8 43. Kxd8 Kg3 44. Ke7 f3
+45. Kf6 f2 46. Kg5 f1=Q 47. Kg6 h4 48. Kg7 h3 49. Kg6 h2 50. Kg5 Kg2 51. Kg4 Kg1
+52. Kg3 Kh1 53. Kg4 Kg1 54. Kg3 Kh1 55. Kg4 Kg1 {Draw by 3-fold repetition}
+1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r3kbnr/pp3ppp/2np4/8/1P4b1/P4N2/1BP2KPP/RN3B1R w kq - 0 1"]
+[GameDuration "00:00:20"]
+[GameEndTime "2026-06-17T23:47:18.860 CEST"]
+[GameStartTime "2026-06-17T23:46:58.825 CEST"]
+[PlyCount "104"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. b5 Nce7 2. Nc3 Nf6 3. h4 a6 4. b6 Ned5 5. Nxd5 Nxd5 6. Bd4 Kd7 7. Bd3 Kc6
+8. Rab1 Nf4 9. Be4+ d5 10. Ne5+ Kd6 11. Nxf7+ Ke6 12. Nxh8 dxe4 13. Ke3 Nh5
+14. Rhf1 Bxa3 15. Nf7 Ng3 16. Rf4 Bf5 17. Ng5+ Kd5 18. Bxg7 Bc5+ 19. Kd2 Rg8
+20. Bf6 Rf8 21. Bg7 e3+ 22. Ke1 Bxc2 23. Bxf8 Bxb1 24. Bxc5 Kxc5 25. Ne6+ Kd5
+26. Rf3 Nf5 27. Nf4+ Ke5 28. h5 Be4 29. Ke2 a5 30. Nd3+ Kd4 31. Nf4 Bxf3+
+32. Kxf3 Nh4+ 33. Kg3 Ke4 34. Ne6 Nf5+ 35. Kg4 e2 36. Nc5+ Ke3 37. Kxf5 e1=Q
+38. h6 Qb4 39. Ne6 a4 40. g4 a3 41. Nc7 Qe4+ 42. Kf6 a2 43. Kg7 a1=Q+ 44. Kf7
+Qae5 45. Ne6 Qxe6+ 46. Kg7 Kd2 47. Kf8 Kc1 48. Kg7 Kb1 49. Kf8 Ka1 50. Kg7 Kb1
+51. Kf8 Ka1 52. Kg7 Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r3kbnr/pp3ppp/2np4/8/1P4b1/P4N2/1BP2KPP/RN3B1R w kq - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:47:26.118 CEST"]
+[GameStartTime "2026-06-17T23:47:03.885 CEST"]
+[PlyCount "113"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. b5 Nce7 2. Nc3 Nf6 3. h4 a6 4. Bd3 axb5 5. Nd4 Kd7 6. Bxb5+ Nc6 7. a4 Kc7
+8. Ke3 Nxd4 9. Kxd4 Be7 10. Bc4 Be6 11. Rhe1 Kd7 12. Bb5+ Kc8 13. Bd3 d5 14. a5
+Bb4 15. a6 bxa6 16. Rxa6 Rb8 17. Re2 Bc5+ 18. Kxc5 Rxb2 19. Ra8+ Rb8 20. Rxb8+
+Kxb8 21. Nb5 h6 22. Nd4 Re8 23. Kd6 Rd8+ 24. Kc5 Re8 25. Kd6 Rd8+ 26. Ke7 Rd7+
+27. Kf8 g5 28. Nxe6 fxe6 29. Rxe6 Ng4 30. Bf5 Nf2 31. Re2 Rd8+ 32. Ke7 Kc7
+33. Rxf2 gxh4 34. Be6 d4 35. Rf4 h3 36. gxh3 Rd6 37. Kf6 h5 38. Ke5 Rc6 39. Bf5
+Rc5+ 40. Kxd4 Kd6 41. c4 h4 42. Be4 Rh5 43. Bd5 Rh7 44. c5+ Ke7 45. c6 Kd6
+46. Rg4 Kc7 47. Kc5 Kb8 48. Kd6 Rh6+ 49. Be6 Ka7 50. c7 Rxe6+ 51. Kxe6 Kb7
+52. Kd7 Ka6 53. Kc6 Ka5 54. Kc5 Ka6 55. Kc6 Ka5 56. Kc5 Ka6
+57. Kc6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "r2qk2r/pp2bppp/2p1pn2/6B1/2BP4/5Q1P/PPP2PP1/R3K2R w KQkq - 0 1"]
+[GameDuration "00:00:09"]
+[GameEndTime "2026-06-17T23:47:13.587 CEST"]
+[GameStartTime "2026-06-17T23:47:04.513 CEST"]
+[PlyCount "47"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O-O Nd5 2. Be3 Bg5 3. Kb1 Bxe3 4. fxe3 b5 5. Bxd5 cxd5 6. e4 dxe4 7. Qxe4
+Qd5 8. Qe5 Qxe5 9. dxe5 Ke7 10. b4 f6 11. Rhe1 h5 12. h4 Rac8 13. Kb2 Rc4 14. a3
+Rxh4 15. exf6+ Kxf6 16. Rd6 Re8 17. Rd7 Rg4 18. Rg1 Ra8 19. Rb7 a6 20. Rf1+ Ke5
+21. Re1+ Kd4 22. Rd7+ Kc4 23. Re3 Rxg2 24. Rc3# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r2qk2r/pp2bppp/2p1pn2/6B1/2BP4/5Q1P/PPP2PP1/R3K2R w KQkq - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:47:21.626 CEST"]
+[GameStartTime "2026-06-17T23:47:13.589 CEST"]
+[PlyCount "40"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O-O Nd5 2. Bd2 Bg5 3. a4 Bxd2+ 4. Rxd2 O-O 5. Bxd5 Qxd5 6. h4 Qa2 7. Qa3
+Qc4 8. a5 b5 9. h5 f5 10. f4 Rad8 11. Qc5 Qa4 12. Kb1 Qxa5 13. Re2 Qc7 14. Rxe6
+Qxf4 15. Qxc6 Qxd4 16. c3 Qd3+ 17. Ka2 f4 18. b4 Qc2+ 19. Ka1 Rd2 20. Rb1
+Qa2# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/p2nbpp1/2p2n1p/1p1pp3/1P2P3/2NB1N1P/P1PP1PP1/R1BQR1K1 w - - 0 1"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-06-17T23:47:26.276 CEST"]
+[GameStartTime "2026-06-17T23:47:13.977 CEST"]
+[PlyCount "74"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. exd5 Nxd5 2. Nxd5 cxd5 3. Nxe5 Nxe5 4. Rxe5 Bf6 5. Qh5 Bxe5 6. Qxe5 Re8
+7. Qf4 g5 8. Qd4 Re1+ 9. Kh2 Qd6+ 10. g3 a5 11. bxa5 Rxa5 12. Qc3 Qd8 13. Qc6
+Re6 14. Qc5 Qd7 15. Bb2 Rc6 16. Qe3 Qxh3+ 17. Kg1 Qe6 18. Bc3 Ra8 19. Bxb5 Qxe3
+20. fxe3 Rc7 21. Bd3 Be6 22. a4 f5 23. a5 Kf7 24. Rf1 Kg6 25. g4 Rf7 26. a6 h5
+27. gxh5+ Kxh5 28. Bd4 Kg4 29. Kg2 f4 30. Be2+ Kf5 31. Bd3+ Kg4 32. Be2+ Kf5
+33. Re1 fxe3 34. Bd3+ Kg4 35. Be2+ Kf5 36. Bd3+ Kg4 37. Be2+
+Kf5 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/p2nbpp1/2p2n1p/1p1pp3/1P2P3/2NB1N1P/P1PP1PP1/R1BQR1K1 w - - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:47:31.958 CEST"]
+[GameStartTime "2026-06-17T23:47:14.930 CEST"]
+[PlyCount "93"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. exd5 Nxd5 2. Nxd5 cxd5 3. Nxe5 Nxe5 4. Rxe5 Bf6 5. Qh5 Bxe5 6. Qxe5 Re8
+7. Qd4 Re1+ 8. Kh2 Qd6+ 9. g3 a5 10. bxa5 Rxa5 11. Ba3 Qe5 12. Qc5 Rxa3
+13. Qxc8+ Qe8 14. Qxe8+ Rxe8 15. Bxb5 Rea8 16. Bc6 R8a5 17. g4 g5 18. Kg2 Rxa2
+19. Rxa2 Rxa2 20. d4 Rxc2 21. Bxd5 Rd2 22. Kf3 Rxd4 23. Be4 Kg7 24. Ke3 Rb4
+25. Bd5 Rb5 26. Kd4 Kf6 27. Ke4 Rc5 28. f3 Rc1 29. Kd3 Rh1 30. Ke4 Rxh3 31. Kd4
+h5 32. gxh5 Rxh5 33. Be4 Rh2 34. Bd3 Ke6 35. Bc4+ Ke7 36. Ke5 Rc2 37. Bb3 Rc5+
+38. Kd4 Ra5 39. Bc4 f5 40. Bb3 Ra3 41. Bd5 Kd6 42. Kc4 Ra1 43. Bb7 Rb1 44. Ba6
+Ra1 45. Bb7 Rb1 46. Ba6 Ra1 47. Bb7 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/1p2npbp/p1n1p1pB/3p4/3P4/P1N2N2/1PPQBPPP/R3K2R w KQ - 0 1"]
+[GameDuration "00:00:29"]
+[GameEndTime "2026-06-17T23:47:45.333 CEST"]
+[GameStartTime "2026-06-17T23:47:15.857 CEST"]
+[PlyCount "154"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O Nf5 2. Bxg7 Kxg7 3. g4 Nd6 4. Qf4 f5 5. Bd3 e5 6. dxe5 fxg4 7. Qg5 gxf3
+8. Qxd8 Rxd8 9. exd6 Be6 10. Rfe1 Rxd6 11. h4 Kf6 12. b4 Rc8 13. Rab1 Nd4
+14. Na4 Nxc2 15. Bxc2 Rxc2 16. Rb3 Bg4 17. Nc5 b5 18. Rd3 Re2 19. Red1 Ke5
+20. Nb7 Rd7 21. Nc5 Rd6 22. Nb3 h5 23. Nd4 Re4 24. Nxf3+ Bxf3 25. Rxf3 Rxh4
+26. Rf7 g5 27. Re7+ Re6 28. Rd7 Rd4 29. Rxd4 Kxd4 30. Rh7 h4 31. Rg7 Re5 32. Kg2
+Ke4 33. Rg6 d4 34. Rxa6 g4 35. Rg6 Kf4 36. Rd6 Ke4 37. Kh2 d3 38. Rg6 Kf3
+39. Rd6 Ke4 40. Rg6 Kf3 41. Rd6 g3+ 42. Kh3 gxf2 43. Rf6+ Ke3 44. Kg2 d2
+45. Rf3+ Ke4 46. Rxf2 d1=Q 47. Kh3 Rh5 48. Rf6 Qc1 49. Rf8 Qxa3+ 50. Kg4 Rf5
+51. Re8+ Re5 52. Rxe5+ Kxe5 53. Kxh4 Kf4 54. Kh5 Ke5 55. Kg4 Ke6 56. Kf4 Kf6
+57. Ke4 Ke6 58. Kd4 Kf6 59. Kc5 Qa6 60. Kd4 Kf5 61. Kc3 Qa2 62. Kd3 Ke5 63. Kc3
+Kd5 64. Kd3 Ke5 65. Kc3 Kf4 66. Kd4 Kf3 67. Ke5 Qa6 68. Kd5 Kf2 69. Kd4 Ke2
+70. Kc3 Kd1 71. Kd3 Qb6 72. Kc3 Kc1 73. Kb3 Kb1 74. Ka3 Ka1 75. Kb3 Kb1 76. Ka3
+Ka1 77. Kb3 Kb1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/1p2npbp/p1n1p1pB/3p4/3P4/P1N2N2/1PPQBPPP/R3K2R w KQ - 0 1"]
+[GameDuration "00:00:23"]
+[GameEndTime "2026-06-17T23:47:39.960 CEST"]
+[GameStartTime "2026-06-17T23:47:16.232 CEST"]
+[PlyCount "120"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bxg7 Kxg7 2. Ne5 Nf5 3. Nxc6 bxc6 4. g4 Nd6 5. h4 Bb7 6. f4 a5 7. Qe3 a4
+8. b3 axb3 9. cxb3 Qf6 10. Kf2 Rfe8 11. g5 Qf5 12. Bd3 Ne4+ 13. Bxe4 dxe4
+14. Nxe4 c5 15. Kf3 Rad8 16. Rad1 Bxe4+ 17. Qxe4 Qxe4+ 18. Kxe4 cxd4 19. Rxd4
+f5+ 20. Ke5 Rxd4 21. Kxd4 h6 22. a4 hxg5 23. hxg5 Rd8+ 24. Ke5 Rd3 25. Rc1 Re3+
+26. Kd6 Re4 27. Rc4 Kf7 28. a5 Re3 29. Rc7+ Kg8 30. b4 Re4 31. b5 Rxf4 32. a6
+Rf2 33. a7 Rd2+ 34. Ke7 Ra2 35. Rc8+ Kg7 36. a8=Q Rxa8 37. Rxa8 f4 38. Kxe6 f3
+39. b6 f2 40. Ra1 Kg8 41. b7 Kg7 42. b8=Q Kh7 43. Kd5 Kg7 44. Kc4 Kf7 45. Kd5
+Ke7 46. Ke4 Ke6 47. Rc1 Kd7 48. Kd5 Ke7 49. Ke4 Ke6 50. Rf1 Kd7 51. Kd3 Kc6
+52. Kc4 Kd7 53. Kd3 Kc6 54. Ke3 Kc5 55. Ke4 Kc4 56. Ke3 Kc3 57. Ke4 Kc2 58. Ke3
+Kc3 59. Ke4 Kc2 60. Ke3 Kc3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/ppqn1pbp/2p2np1/3p2B1/3P4/1B3Q2/PPP1NPPP/RN2R1K1 w - - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:47:41.751 CEST"]
+[GameStartTime "2026-06-17T23:47:18.861 CEST"]
+[PlyCount "116"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nbc3 h6 2. Bf4 Qb6 3. a4 a5 4. h4 Kh7 5. g4 c5 6. Rad1 c4 7. Nxd5 Nxd5
+8. Qxd5 cxb3 9. cxb3 Nf6 10. Qd6 Qxb3 11. g5 Ne4 12. Qe7 Be6 13. gxh6 Bxh6
+14. Bxh6 Rfe8 15. Qc7 b5 16. Qf4 bxa4 17. Qxe4 Bc4 18. Qc6 Rac8 19. Qd6 Rxe2
+20. Bc1 Qb4 21. Qxb4 axb4 22. Bd2 b3 23. f4 f5 24. Rxe2 Bxe2 25. Re1 Bb5 26. d5
+Rd8 27. Re5 Bc4 28. Re7+ Kh6 29. Ra7 Rxd5 30. Rxa4 Bb5 31. Rb4 Rxd2 32. Rxb5
+Rxb2 33. Rb7 Kh5 34. Rb6 Kg4 35. Rxg6+ Kxf4 36. h5 Rd2 37. h6 b2 38. Rb6 Rd1+
+39. Kf2 b1=Q 40. Rxb1 Rxb1 41. Kg2 Rb6 42. h7 Rh6 43. Kf1 Ke3 44. Kg2 f4 45. Kf1
+f3 46. Ke1 Rxh7 47. Kd1 Kd3 48. Kc1 Kc3 49. Kb1 Kb3 50. Ka1 Kc2 51. Ka2 Kc3
+52. Ka1 Kc2 53. Ka2 Kd2 54. Ka1 Kc1 55. Ka2 Kc2 56. Ka1 Kc1 57. Ka2 Kc2 58. Ka1
+Kc1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1b2rk1/ppqn1pbp/2p2np1/3p2B1/3P4/1B3Q2/PPP1NPPP/RN2R1K1 w - - 0 1"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-06-17T23:47:31.009 CEST"]
+[GameStartTime "2026-06-17T23:47:19.895 CEST"]
+[PlyCount "63"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nbc3 b5 2. Bf4 Qb6 3. Bd6 Re8 4. a4 b4 5. a5 Qb7 6. a6 Qb6 7. Na4 Qb5 8. c4
+dxc4 9. Bc2 Bxa6 10. Nc5 Nxc5 11. Bxc5 c3 12. Ba4 Qxe2 13. Rxe2 Bxe2 14. Qxc6
+Rac8 15. Qd6 Ne4 16. Qf4 cxb2 17. Rb1 g5 18. Qe3 Re6 19. Bxb4 Nc3 20. Qxc3 Rxc3
+21. Bxc3 Rd6 22. Rxb2 Bxd4 23. Bxd4 Rxd4 24. Rxe2 Rxa4 25. f3 h5 26. Kf2 f5
+27. Re5 Ra2+ 28. Kf1 Ra1+ 29. Ke2 Ra2+ 30. Kf1 Ra1+ 31. Ke2 Ra2+
+32. Kf1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1-0"]
+[FEN "rn1qkb1r/1p2pp1p/2p2np1/3pN3/8/4P3/PBPPNPPP/R2QK2R w KQkq - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:47:30.133 CEST"]
+[GameStartTime "2026-06-17T23:47:21.626 CEST"]
+[PlyCount "43"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. O-O Qb6 2. Bd4 c5 3. Bc3 Nc6 4. d4 Bg7 5. Rb1 Qc7 6. Nxc6 Qxc6 7. dxc5 Qxc5
+8. Bxf6 Bxf6 9. Nf4 e6 10. Rxb7 Rxa2 11. Rb8+ Kd7 12. Rb7+ Ke8 13. Qf3 Rxc2
+14. Nxe6 fxe6 15. Qxf6 h5 16. Qxh8+ Qf8 17. Rb8+ Kd7 18. Qxf8 Rc4 19. Qd8+ Kc6
+20. Rb6+ Kc5 21. Kh1 Rc1 22. Rxc1# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn1qkb1r/1p2pp1p/2p2np1/3pN3/8/4P3/PBPPNPPP/R2QK2R w KQkq - 0 1"]
+[GameDuration "00:00:28"]
+[GameEndTime "2026-06-17T23:47:54.159 CEST"]
+[GameStartTime "2026-06-17T23:47:26.119 CEST"]
+[PlyCount "144"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. d4 Qb6 2. Bc3 Nbd7 3. Rb1 Qc7 4. Rb2 Nxe5 5. dxe5 Ne4 6. Qd4 Bg7 7. f4 f6
+8. e6 Qd6 9. a4 c5 10. Qd3 Qxe6 11. a5 c4 12. Nd4 Qd7 13. Qe2 Nxc3 14. Qd2 Ne4
+15. Qb4 e5 16. Qxb7 Qxb7 17. Rxb7 exd4 18. Rxg7 dxe3 19. Ke2 d4 20. Ra1 Rb8
+21. Kf3 f5 22. a6 g5 23. fxg5 Kf8 24. Rd7 Nxg5+ 25. Kf4 Ke8 26. Rb7 Rxb7
+27. axb7 Ne6+ 28. Kxf5 Kd7 29. Ra8 Ng7+ 30. Kf6 Ne8+ 31. Ke5 e2 32. b8=N+ Kc7
+33. Na6+ Kb6 34. Rb8+ Kxa6 35. Rb1 Rg8 36. Kxd4 Rxg2 37. Kxc4 Rxh2 38. Kd3 Nd6
+39. Re1 Kb7 40. Rxe2 Rxe2 41. Kxe2 Kc6 42. Kd2 Kd5 43. Kc3 h5 44. Kd3 Nc4
+45. Ke2 Ke4 46. Kf2 Ne3 47. Kg3 Nf5+ 48. Kf2 Kd4 49. Kf3 Ke5 50. c3 Nd6 51. Ke3
+h4 52. Kf3 Kf5 53. Kg2 Kg4 54. Kg1 h3 55. Kf2 Nc4 56. Ke2 h2 57. Kd3 Na3 58. Ke3
+h1=Q 59. Kd4 Nb5+ 60. Kc5 Nxc3 61. Kc4 Qc1 62. Kd4 Kf5 63. Kc5 Qa3+ 64. Kb6 Ne4
+65. Kc6 Qb3 66. Kc7 Qb5 67. Kc8 Ke5 68. Kc7 Kd5 69. Kc8 Kc5 70. Kc7 Kd5 71. Kc8
+Kc5 72. Kc7 Kd5 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/pp2bppp/2n2n2/2pp4/2B5/2NP1N1P/PPP2PP1/R1BQR1K1 w - - 0 1"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-06-17T23:47:39.193 CEST"]
+[GameStartTime "2026-06-17T23:47:26.277 CEST"]
+[PlyCount "80"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb5 a6 2. Bxc6 bxc6 3. d4 Bf5 4. Be3 cxd4 5. Nxd4 Qd7 6. Qf3 Be4 7. Nxe4 Nxe4
+8. a4 c5 9. Qf5 Qb7 10. Nb3 a5 11. Nd2 g6 12. Qf3 f5 13. Nxe4 dxe4 14. Qd1 f4
+15. Bd2 c4 16. Qe2 Qd5 17. Bc3 e3 18. fxe3 Bc5 19. Bd2 Rae8 20. Rad1 fxe3
+21. Bb4 Bd4 22. Bxf8 Rxf8 23. c3 Rf2 24. Qg4 Rd2 25. cxd4 Rxd1 26. Qxd1 Qe4
+27. Qg4 Qe8 28. d5 Qxa4 29. Qe6+ Kg7 30. Qe5+ Kh6 31. g4 Qc2 32. Rxe3 a4 33. d6
+g5 34. Re1 Qd3 35. Ra1 Kg6 36. Qe6+ Kg7 37. Qe7+ Kg6 38. Qe6+ Kg7 39. Qd7+ Kh6
+40. Qe6+ Kg7 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "r1bq1rk1/pp2bppp/2n2n2/2pp4/2B5/2NP1N1P/PPP2PP1/R1BQR1K1 w - - 0 1"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-06-17T23:47:41.893 CEST"]
+[GameStartTime "2026-06-17T23:47:30.133 CEST"]
+[PlyCount "69"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bb5 a6 2. Bxc6 bxc6 3. d4 Bf5 4. Be3 cxd4 5. Nxd4 Qd7 6. Bg5 Rfe8 7. Nxf5
+Qxf5 8. Bxf6 Bxf6 9. Rxe8+ Rxe8 10. g4 Qe6 11. Na4 Qd6 12. Qd3 Rb8 13. Rb1 a5
+14. Kg2 Qb4 15. b3 g5 16. Kf3 Qa3 17. Nc3 Bxc3 18. Qxc3 Qxa2 19. Ra1 d4 20. Rxa2
+dxc3 21. Rxa5 Rb5 22. Rxb5 cxb5 23. b4 f5 24. gxf5 Kf7 25. Ke3 Kf6 26. Ke4 Kf7
+27. Ke5 h5 28. f6 Ke8 29. Ke6 Kf8 30. f7 h4 31. Kf6 g4 32. hxg4 h3 33. g5 h2
+34. g6 h1=Q 35. g7# {White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/ppp2ppp/5b2/2n1pP2/4P3/P1N4P/1PP3P1/R2QKBNR w KQ - 0 1"]
+[GameDuration "00:00:27"]
+[GameEndTime "2026-06-17T23:47:58.401 CEST"]
+[GameStartTime "2026-06-17T23:47:31.009 CEST"]
+[PlyCount "140"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nf3 Qxd1+ 2. Rxd1 a5 3. Rd5 Nd7 4. Bd3 c6 5. Rd6 Be7 6. Rxd7 Bxd7 7. Nxe5 Bc8
+8. Kd2 Bf6 9. Nf3 Re8 10. b4 a4 11. Re1 Bd7 12. e5 Be7 13. g4 b5 14. h4 Kf8
+15. h5 Ra7 16. g5 h6 17. f6 Bd8 18. gxh6 gxh6 19. Ne2 Bg4 20. Ned4 Bxh5 21. Nxc6
+Rd7 22. Nfd4 Bb6 23. Nxb5 Bf3 24. Ne7 Ra8 25. Nd6 Bd4 26. Nef5 Bb2 27. Nc4 Bd4
+28. Nxh6 Bd5 29. Bf5 Rc7 30. c3 Bxc3+ 31. Kxc3 Rxc4+ 32. Kd3 Rc7 33. Ng4 Rd8
+34. Ke2 Rc3 35. Ra1 Bc4+ 36. Kf2 Rd2+ 37. Ke1 Rd4 38. Rd1 Rxd1+ 39. Kxd1 Rxa3
+40. Bc2 Rg3 41. Nf2 a3 42. e6 fxe6 43. Bb1 Rg2 44. Ne4 Bb3+ 45. Kc1 Rg1+ 46. Kd2
+Rxb1 47. Ng5 Rh1 48. Kc3 a2 49. Nh7+ Rxh7 50. Kxb3 a1=Q 51. Kc4 Rb7 52. b5 Qxf6
+53. Kd3 Qf4 54. Kc2 Qe3 55. Kb1 Rd7 56. Ka1 Ke7 57. Kb1 Kf6 58. Ka1 Ke5 59. Kb1
+Ke4 60. Ka1 Kf3 61. Kb1 Ke4 62. Ka1 Kf3 63. Kb1 Ke2 64. Ka1 Kf1 65. Kb1 Ke2
+66. Ka1 Kd1 67. Kb1 Ke1 68. Ka1 Kd1 69. Kb1 Ke1 70. Ka1
+Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1bq1rk1/ppp2ppp/5b2/2n1pP2/4P3/P1N4P/1PP3P1/R2QKBNR w KQ - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:47:54.164 CEST"]
+[GameStartTime "2026-06-17T23:47:31.959 CEST"]
+[PlyCount "113"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nf3 a5 2. Qxd8 Rxd8 3. Bc4 g5 4. Ke2 a4 5. b3 axb3 6. cxb3 h5 7. b4 Na4
+8. Nd5 Rxd5 9. Bxd5 Nc3+ 10. Kd3 Nxd5 11. exd5 Bxf5+ 12. Kc4 Rd8 13. b5 h4
+14. a4 Kg7 15. a5 e4 16. Nd4 Bg6 17. Rhe1 Be5 18. Rf1 e3 19. Rfe1 Be4 20. Rxe3
+Bxd5+ 21. Kd3 Bxd4 22. Kxd4 Bc6+ 23. Kc4 Bxg2 24. Rg1 Bd5+ 25. Kc5 Kf6 26. Rf1+
+Kg7 27. Re7 c6 28. Rxb7 cxb5 29. Rxb5 Be4 30. Rf2 f5 31. a6 Rd3 32. Rh2 Rd5+
+33. Kc4 Rxb5 34. Kxb5 Bd3+ 35. Kb6 Kf6 36. a7 Be4 37. Ra2 Ba8 38. Rc2 g4 39. Rc8
+Bf3 40. hxg4 fxg4 41. Rc6+ Bxc6 42. Kxc6 Ke5 43. a8=Q h3 44. Qb8+ Ke4 45. Qg3
+Kf5 46. Kd5 Kg5 47. Ke6 h2 48. Qxh2 Kg6 49. Qb2 Kg5 50. Qf2 Kh5 51. Ke5 Kg5
+52. Ke6 Kh5 53. Kd5 Kg5 54. Ke5 Kh5 55. Kd5 Kg5 56. Ke5 Kh5
+57. Kd5 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pb1nbppp/1p2pn2/3p4/3P4/2NBPN2/PP1B1PPP/2RQ1RK1 w - - 0 1"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-06-17T23:47:55.915 CEST"]
+[GameStartTime "2026-06-17T23:47:39.195 CEST"]
+[PlyCount "92"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Ne5 Nxe5 2. dxe5 Ne4 3. f4 f5 4. a4 d4 5. Ne2 Nc5 6. Bc4 dxe3 7. Bxe3 Qxd1
+8. Rcxd1 Kf7 9. Nd4 Be4 10. b4 Nxa4 11. Bxe6+ Kg6 12. Bd2 Rad8 13. Be1 Nb2
+14. Rd2 Bxb4 15. Rxb2 Bxe1 16. Nb5 Rd2 17. Rxd2 Bxd2 18. Nxa7 Be3+ 19. Kh1 Re8
+20. Bc4 Rd8 21. Bb5 h6 22. Nc6 Rd2 23. Rg1 Rb2 24. Ba4 Bxg1 25. Kxg1 b5 26. Bxb5
+Rxb5 27. Ne7+ Kh5 28. g3 Rb8 29. h3 Re8 30. Nxf5 Bxf5 31. g4+ Bxg4 32. hxg4+
+Kxg4 33. Kf1 Kxf4 34. Ke1 Kxe5 35. Kd1 Kd4 36. Kc2 h5 37. Kd2 h4 38. Kc2 h3
+39. Kb2 h2 40. Ka1 Kc3 41. Kb1 Kd2 42. Ka1 Kc1 43. Ka2 Kc2 44. Ka1 Kc1 45. Ka2
+Kc2 46. Ka1 Kc1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pb1nbppp/1p2pn2/3p4/3P4/2NBPN2/PP1B1PPP/2RQ1RK1 w - - 0 1"]
+[GameDuration "00:00:20"]
+[GameEndTime "2026-06-17T23:48:00.281 CEST"]
+[GameStartTime "2026-06-17T23:47:39.963 CEST"]
+[PlyCount "105"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Kh1 Qb8 2. Qc2 Qc7 3. Nb5 Qxc2 4. Rxc2 Ne4 5. a4 Nxd2 6. Rxd2 a5 7. Nc3 Bd6
+8. g4 f5 9. g5 h5 10. g6 e5 11. Nb5 Bb4 12. Rc2 e4 13. Rc7 Bc8 14. Rxd7 Bxd7
+15. Ne5 Rfd8 16. Be2 h4 17. Nc7 Rab8 18. Nxd5 Bxa4 19. Nxb4 axb4 20. Kg2 Rbc8
+21. Kh3 Bb3 22. Rb1 Bd5 23. Bd1 b3 24. Kxh4 b5 25. Kg3 b4 26. Kf4 Rd6 27. h4 Rf6
+28. h5 Ra8 29. Nd7 Rc6 30. Nc5 Ra2 31. Nxb3 Bc4 32. Kxf5 Bd3 33. Ra1 Rxa1
+34. Nxa1 Rc1 35. Bb3+ Kh8 36. Nc2 Bxc2 37. Bxc2 Rxc2 38. Kxe4 Rxf2 39. b3 Rh2
+40. Kd3 Rxh5 41. Kc4 Rh4 42. Kxb4 Re4 43. Kc5 Rxe3 44. Kc4 Rg3 45. b4 Rxg6
+46. b5 Rg1 47. Kc5 Rc1+ 48. Kd6 g5 49. b6 Rb1 50. Kc7 Rc1+ 51. Kd6 Rb1 52. Kc7
+Rc1+ 53. Kd6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn1qkb1r/5ppp/b1p1p3/1p1pPn2/p2P4/P4N2/BPP2PPP/RNBQK2R w KQkq - 0 1"]
+[GameDuration "00:00:28"]
+[GameEndTime "2026-06-17T23:48:10.432 CEST"]
+[GameStartTime "2026-06-17T23:47:41.752 CEST"]
+[PlyCount "148"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. g4 Nh6 2. Bg5 f6 3. exf6 gxf6 4. Bxh6 Bxh6 5. Qe2 Kf7 6. Nbd2 b4 7. Qd1 bxa3
+8. bxa3 Bf4 9. c4 Bb7 10. Rb1 Ra7 11. cxd5 cxd5 12. Rb4 Bc6 13. Qc2 Qd6 14. Qc5
+Rc7 15. Qxd6 Bxd6 16. Rb1 Rg8 17. Ke2 Nd7 18. h3 Bxa3 19. Rhd1 Bd6 20. Nf1 f5
+21. Ne3 f4 22. Nc2 a3 23. Rb3 Ba4 24. Kd3 e5 25. Kd2 e4 26. Ne5+ Bxe5 27. dxe5
+Bxb3 28. Bxb3 Ke6 29. Nb4 Nb6 30. Ke2 f3+ 31. Kf1 Kxe5 32. Nxd5 e3 33. Nxe3 Rgg7
+34. Ra1 Ra7 35. Nc2 Ke4 36. Nxa3 Nd5 37. Re1+ Kf4 38. Bxd5 Rxa3 39. Kg1 Ra4
+40. Re3 Raa7 41. Rxf3+ Ke5 42. Rf5+ Kd4 43. f4 Ra5 44. Rf7 Rxf7 45. Bxf7 Ke4
+46. f5 Ra7 47. Be6 Kf3 48. Kh2 Rc7 49. Bb3 Rd7 50. Bc4 Rd2+ 51. Kg1 Kg3 52. Bf1
+Rf2 53. Bd3 Rg2+ 54. Kf1 Rh2 55. Ke1 Rxh3 56. Be2 Kf4 57. Kd2 Ke5 58. Bf1 Ra3
+59. Bd3 Kd4 60. Be2 Ra2+ 61. Kd1 Ke3 62. Bc4 Ra4 63. Bg8 Kd3 64. Kc1 h6 65. f6
+Rf4 66. f7 Kc3 67. Kb1 Rf1+ 68. Ka2 Rf2+ 69. Ka1 Rf3 70. Kb1 Rf4 71. Ka1 Rf2
+72. Kb1 Rf4 73. Ka1 Rf2 74. Kb1 Rf4 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "rn1qkb1r/5ppp/b1p1p3/1p1pPn2/p2P4/P4N2/BPP2PPP/RNBQK2R w KQkq - 0 1"]
+[GameDuration "00:00:17"]
+[GameEndTime "2026-06-17T23:47:59.227 CEST"]
+[GameStartTime "2026-06-17T23:47:41.893 CEST"]
+[PlyCount "94"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. g4 Ne7 2. Be3 f5 3. g5 Nd7 4. Nc3 Kf7 5. Qd3 b4 6. g6+ Nxg6 7. Qd2 bxc3
+8. Qxc3 f4 9. Bd2 c5 10. b4 cxd4 11. Qxd4 Qb6 12. Ng5+ Ke7 13. Qxb6 Nxb6 14. h4
+Nc4 15. h5 Nxa3 16. Bb1 Nxb1 17. hxg6 Nxd2 18. Kxd2 Bc4 19. Nf7 Rg8 20. gxh7
+Kxf7 21. hxg8=Q+ Kxg8 22. Kc3 a3 23. Rh4 Rb8 24. Kd4 g5 25. Rg1 Be7 26. Rxf4 a2
+27. Rf3 Ra8 28. Ra1 Bxb4 29. Rf6 Rf8 30. c3 Rxf6 31. exf6 e5+ 32. Ke3 Bxc3
+33. Rc1 a1=Q 34. Rxa1 Bxa1 35. Kf3 Kf7 36. Kg2 Kxf6 37. f3 d4 38. Kf2 d3 39. Ke3
+Bc3 40. Kf2 d2 41. Kg1 d1=Q+ 42. Kf2 Bd2 43. Kg2 Kf5 44. Kf2 Kf4 45. Kg2 Kf5
+46. Kf2 Kf4 47. Kg2 Kf5 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "rn1q1rk1/p2bbppp/1p1p1n2/4p3/2PBP3/1P6/P2N1PPP/1BRQK1NR w K - 0 1"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-06-17T23:47:57.964 CEST"]
+[GameStartTime "2026-06-17T23:47:45.334 CEST"]
+[PlyCount "77"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be3 Nc6 2. Ngf3 Ng4 3. O-O Nxe3 4. fxe3 a5 5. a4 g5 6. h3 h5 7. Bd3 Kh7
+8. Qc2 h4 9. Rfe1 Be6 10. Qc3 f5 11. exf5 Bxf5 12. Bxf5+ Rxf5 13. e4 Rf7 14. Nf1
+Qd7 15. Ne3 Bf6 16. Nd5 Qd8 17. Qe3 Nd4 18. Nxf6+ Rxf6 19. Nxd4 exd4 20. Qxd4
+Rf7 21. Rcd1 Qf6 22. e5 Qf4 23. Qd3+ Kg7 24. exd6 Raa7 25. Qc3+ Kg6 26. Rd4 Qf2+
+27. Kh2 Kf5 28. Rd5+ Kg6 29. Re6+ Kh5 30. Rd1 Qf4+ 31. Kg1 Qf2+ 32. Kh2 Qf4+
+33. Kg1 Qf2+ 34. Kh1 Rab7 35. Kh2 Qf4+ 36. Kg1 Qf2+ 37. Kh2 Qf4+ 38. Kg1 Qf2+
+39. Kh2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1-0"]
+[FEN "rn1q1rk1/p2bbppp/1p1p1n2/4p3/2PBP3/1P6/P2N1PPP/1BRQK1NR w K - 0 1"]
+[GameDuration "00:00:07"]
+[GameEndTime "2026-06-17T23:48:01.589 CEST"]
+[GameStartTime "2026-06-17T23:47:54.160 CEST"]
+[PlyCount "35"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. Bc3 Nc6 2. Ngf3 a5 3. Kf1 Be6 4. Bd3 Nb4 5. Bb1 Nc6 6. h4 h5 7. Bd3 Nb4
+8. Bb1 Qc7 9. a3 Nc6 10. Bd3 Rfe8 11. Ng5 Bg4 12. f3 Bd7 13. b4 Nd4 14. Nb3 Ba4
+15. Bxd4 exd4 16. Qc2 b5 17. f4 g6 18. Nf3 {Black makes an illegal move: 0000}
+1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "0-1"]
+[FEN "r2q1rk1/pb2ppbp/1pnp2p1/2p1P3/2N2Pn1/3P1NP1/PPP3BP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-06-17T23:48:05.203 CEST"]
+[GameStartTime "2026-06-17T23:47:54.168 CEST"]
+[PlyCount "62"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Bd2 d5 2. Ne3 Nxe3 3. Bxe3 d4 4. Bd2 f6 5. Qe2 Qc7 6. Rfe1 b5 7. h4 fxe5
+8. fxe5 b4 9. a4 a5 10. g4 h5 11. g5 Rf5 12. Bh3 Rff8 13. Be6+ Kh7 14. c3 Na7
+15. Nxd4 Qb6 16. cxb4 cxd4 17. Bc4 axb4 18. a5 Qc5 19. a6 Bf3 20. Qf2 Bxe5
+21. Bxb4 Qxb4 22. Rxe5 Nc6 23. Re6 Bg4 24. Qc2 Bxe6 25. Bxe6 Qd6 26. Bc4 Rf4
+27. Bb5 Ne5 28. a7 Rxh4 29. Ra6 Qd5 30. Bc4 Rh1+ 31. Kf2 Qf3# {Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "0-1"]
+[FEN "r2q1rk1/pb2ppbp/1pnp2p1/2p1P3/2N2Pn1/3P1NP1/PPP3BP/R1BQ1RK1 w - - 0 1"]
+[GameDuration "00:00:04"]
+[GameEndTime "2026-06-17T23:48:00.662 CEST"]
+[GameStartTime "2026-06-17T23:47:55.917 CEST"]
+[PlyCount "20"]
+[SetUp "1"]
+[Termination "illegal move"]
+[TimeControl "40/10"]
+
+1. Bd2 d5 2. Ne3 Nxe3 3. Bxe3 d4 4. Bd2 f6 5. Qe2 Qc7 6. Rfe1 b5 7. h4 h5 8. Kh2
+fxe5 9. fxe5 b4 10. a3 a5 {White makes an illegal move: 0000} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r3kb1r/ppp2ppp/2p1b3/4Pn2/8/1P3N2/P1P2PPP/RNBR2K1 w - - 0 1"]
+[GameDuration "00:00:25"]
+[GameEndTime "2026-06-17T23:48:23.633 CEST"]
+[GameStartTime "2026-06-17T23:47:57.964 CEST"]
+[PlyCount "130"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nc3 Bb4 2. Ne4 Bd5 3. c3 Be7 4. Re1 Kd7 5. g4 Nh4 6. Nxh4 Bxh4 7. Nc5+ Kc8
+8. Be3 b5 9. b4 Re8 10. Bd2 Be7 11. Be3 a5 12. bxa5 Rxa5 13. a3 g5 14. Bd4 Bf3
+15. h3 Bxc5 16. Bxc5 Kd7 17. Re3 Bd5 18. Rd1 Ke6 19. Rd4 Rg8 20. f4 gxf4
+21. Rxf4 h5 22. Rf6+ Kd7 23. Rg3 Ra4 24. g5 h4 25. e6+ fxe6 26. Rf7+ Kd8 27. Rg4
+Rxg4+ 28. hxg4 Rxg5 29. Be7+ Ke8 30. Bxg5 Kxf7 31. Bxh4 c5 32. Bg3 c6 33. Bd6 c4
+34. g5 Kg6 35. Be7 Kf5 36. Kf2 Ke4 37. g6 e5 38. g7 Kd3 39. Bb4 Kd2 40. Kg3 Kd3
+41. Kg4 e4 42. Kg3 e3 43. Bc5 e2 44. Bf2 Kd2 45. Kf4 e1=Q 46. Bxe1+ Kxe1 47. Ke3
+Kd1 48. Kd4 Kc2 49. Kc5 Kxc3 50. Kd6 Kb2 51. a4 bxa4 52. Ke7 c3 53. Kf8 c2
+54. g8=Q Bxg8 55. Kxg8 c1=Q 56. Kf7 a3 57. Ke6 a2 58. Ke5 a1=Q 59. Kd4 Qab1
+60. Ke5 Qg6 61. Kd4 Ka1 62. Ke5 Kb1 63. Kd4 Ka1 64. Ke5 Kb1 65. Kd4
+Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r3kb1r/ppp2ppp/2p1b3/4Pn2/8/1P3N2/P1P2PPP/RNBR2K1 w - - 0 1"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-06-17T23:48:10.376 CEST"]
+[GameStartTime "2026-06-17T23:47:58.402 CEST"]
+[PlyCount "71"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. g4 Ne7 2. g5 a5 3. c4 b5 4. Nd4 Bg4 5. f3 Bd7 6. Nc3 b4 7. Ne4 Nf5 8. Nxf5
+Bxf5 9. Be3 h5 10. c5 Be6 11. Kf2 h4 12. f4 h3 13. Kf3 Ke7 14. Rac1 g6 15. Rc2
+Bg7 16. Rdd2 Rad8 17. Rb2 Bd5 18. Bd4 Rh4 19. Bf2 Rh5 20. Rbc2 Ke6 21. Be3 Rhh8
+22. Rd3 Kf5 23. Rd4 Rhf8 24. Rb2 Rfe8 25. Rc2 f6 26. gxf6 Bxe4+ 27. Rxe4 Bxf6
+28. Rcc4 g5 29. fxg5 Bxe5 30. Rc2 Rd1 31. Re2 Rf1+ 32. Bf2 Rh1 33. Bg3 Rf1+
+34. Bf2 Rh1 35. Bg3 Rf1+ 36. Bf2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1k1nr/np2qpbp/p1pp2p1/3B4/2P5/1PN2NP1/PB2PP1P/R2QK2R w KQkq - 0 1"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-06-17T23:48:21.871 CEST"]
+[GameStartTime "2026-06-17T23:47:59.227 CEST"]
+[PlyCount "115"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be4 Nf6 2. Qd4 Bg4 3. O-O c5 4. Qd2 Nxe4 5. Nxe4 Qxe4 6. Bxg7 Rg8 7. Bf6 Nc6
+8. Ng5 Qf5 9. Nxh7 g5 10. f3 Bh3 11. Qe3+ Kd7 12. Rfd1 Qxh7 13. Qxc5 Qc2
+14. Qxd6+ Kc8 15. Rd2 Qf5 16. g4 Qe6 17. Qxe6+ fxe6 18. a4 Rg6 19. Bc3 Kc7
+20. Rad1 Rf8 21. Rd7+ Kb6 22. Rh7 Bxg4 23. fxg4 Rf4 24. h3 Rf8 25. Rdd7 Rb8
+26. a5+ Ka7 27. e4 e5 28. b4 Rf6 29. Kg2 Rf4 30. b5 axb5 31. cxb5 Nxa5 32. Bxa5
+Rxe4 33. Bd2 Kb6 34. Bxg5 Rb4 35. Be3+ Kxb5 36. Rxb7+ Kc4 37. Rxb4+ Rxb4 38. Rd7
+Rb8 39. h4 Rf8 40. h5 Rf6 41. h6 Rf8 42. h7 Kc3 43. g5 Kc4 44. g6 Rb8 45. g7
+Rb2+ 46. Kh3 Kc3 47. g8=Q Rb1 48. Qd5 Rb8 49. Qxe5+ Kb3 50. Qxb8+ Ka2 51. Kg2
+Ka1 52. Kf1 Ka2 53. Ke1 Ka1 54. Kd1 Ka2 55. Kc1 Ka1 56. Kd1 Ka2 57. Kc1 Ka1
+58. Kd1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r1b1k1nr/np2qpbp/p1pp2p1/3B4/2P5/1PN2NP1/PB2PP1P/R2QK2R w KQkq - 0 1"]
+[GameDuration "00:00:19"]
+[GameEndTime "2026-06-17T23:48:19.812 CEST"]
+[GameStartTime "2026-06-17T23:48:00.281 CEST"]
+[PlyCount "102"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Be4 Nf6 2. Qd4 c5 3. Qd2 Nc6 4. O-O-O Nxe4 5. Nxe4 Qxe4 6. Bxg7 Rg8 7. Ng5
+Qe7 8. Bc3 Bg4 9. f3 Be6 10. Ne4 Kf8 11. Bf6 Qc7 12. h4 Ne5 13. Qxd6+ Qxd6
+14. Rxd6 Nd7 15. Kd2 Nxf6 16. Nxf6 Ke7 17. Nxg8+ Kxd6 18. Nf6 b5 19. Kd3 h5
+20. Ne4+ Kc6 21. Rc1 Rd8+ 22. Ke3 b4 23. Nf6 a5 24. f4 Rd4 25. Rc2 Rd1 26. Rb2
+Rg1 27. Kf3 Rf1+ 28. Ke4 Rc1 29. Ke5 Rg1 30. Ne4 Bf5 31. Ng5 Rxg3 32. Nxf7 Re3+
+33. Kf6 Rh3 34. Ne5+ Kb7 35. Nf3 Bg4 36. Ne5 Bf5 37. Nf3 Bg4 38. Kxg6 Bxf3
+39. exf3 Rxh4 40. Kf5 Rh1 41. Rg2 h4 42. Rg7+ Kb8 43. Ke4 Ra1 44. Rg5 Rxa2
+45. Rxc5 h3 46. Rh5 h2 47. Rh7 Re2+ 48. Kd3 Rb2 49. Ke4 Re2+ 50. Kd3 Rb2 51. Ke4
+Re2+ {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pp3ppp/2nbpn2/3p4/3N4/1P2P3/PBPNQPPP/R4RK1 w - - 0 1"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-06-17T23:48:16.770 CEST"]
+[GameStartTime "2026-06-17T23:48:00.662 CEST"]
+[PlyCount "90"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nxc6 bxc6 2. e4 dxe4 3. Bxf6 Qxf6 4. Nxe4 Qe5 5. Ng3 Qxe2 6. Nxe2 e5 7. a4 f5
+8. a5 Kf7 9. c4 Rab8 10. Rfb1 Ke6 11. h4 Rf7 12. Re1 Kf6 13. Red1 Ke6 14. Rab1
+f4 15. h5 g5 16. g4 f3 17. Ng3 Rf4 18. Rbc1 Bb4 19. c5 Bxa5 20. Rd6+ Ke7 21. Ra1
+Rb5 22. Nf5+ Ke8 23. Re6+ Kf7 24. Rxe5 Kf6 25. Re3 Bd2 26. Rd3 Rxg4+ 27. Ng3 Bf4
+28. Rxf3 Rxc5 29. Rxa7 h6 30. Rh7 Ke5 31. Rxh6 Bxg3 32. fxg3 Rc2 33. Re3+ Re4
+34. Rxe4+ Kxe4 35. Rf6 c5 36. g4 Rb2 37. Rf5 Rxb3 38. Rxg5 c4 39. h6 Kf4 40. Rc5
+c3 41. Rc4+ Kg3 42. Kf1 Kf3 43. Kg1 Kg3 44. Kf1 Kf3 45. Kg1
+Kg3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.4.0"]
+[Black "v0.5.0"]
+[Result "1/2-1/2"]
+[FEN "r2q1rk1/pp3ppp/2nbpn2/3p4/3N4/1P2P3/PBPNQPPP/R4RK1 w - - 0 1"]
+[GameDuration "00:00:08"]
+[GameEndTime "2026-06-17T23:48:10.362 CEST"]
+[GameStartTime "2026-06-17T23:48:01.589 CEST"]
+[PlyCount "45"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Nxc6 bxc6 2. e4 dxe4 3. Bxf6 Qxf6 4. Nxe4 Qe5 5. Ng3 a5 6. Qe4 c5 7. f4 Qd4+
+8. Qxd4 cxd4 9. Ne4 Rfd8 10. Rad1 Bb4 11. Kf2 f5 12. Ng5 Ra6 13. a4 h5 14. Kf3
+Bc3 15. h4 Re8 16. Rf2 g6 17. Ke2 e5 18. fxe5 Rxe5+ 19. Kd3 Re3+ 20. Kc4 Re5
+21. Kd3 Re3+ 22. Kc4 Re5 23. Kd3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.06.17"]
+[Round "1"]
+[White "v0.5.0"]
+[Black "v0.4.0"]
+[Result "0-1"]
+[FEN "rnb1kb1r/1p3pp1/p2p3p/2pPp1q1/2P1P3/2NB4/PP3PPP/R2QK1NR w KQkq - 0 1"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-06-17T23:48:16.169 CEST"]
+[GameStartTime "2026-06-17T23:48:05.204 CEST"]
+[PlyCount "62"]
+[SetUp "1"]
+[TimeControl "40/10"]
+
+1. Kf1 Bd7 2. Nf3 Qf4 3. Qb3 Bc8 4. Ne2 Qf6 5. Kg1 Nd7 6. Ng3 h5 7. Nf5 g6
+8. Ne3 g5 9. a4 g4 10. Nd2 Bh6 11. h4 g3 12. Nf3 Bxe3 13. fxe3 a5 14. Rf1 Qg6
+15. Rd1 Nf6 16. Qb5+ Bd7 17. Qxb7 Rd8 18. Qb6 Bxa4 19. Ra1 Nd7 20. Qxa5 Bb3
+21. Qc3 Rb8 22. Nd2 Nf6 23. Nxb3 Nxe4 24. Bxe4 Qxe4 25. Nd2 Qg4 26. e4 Ke7
+27. Ra7+ Kf6 28. Qc2 Qe2 29. Rh3 Qf2+ 30. Kh1 Qe1+ 31. Nf1 Qxf1# {Black mates}
+0-1
+

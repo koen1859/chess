@@ -11,7 +11,7 @@ use crate::{
         },
         ray::{diagonal_attacks, straight_attacks},
     },
-    utils::{BitBoard, bit_scan, count_ones},
+    utils::{bit_scan, count_ones, BitBoard, FILES},
 };
 
 const D4: usize = 27;
@@ -99,6 +99,34 @@ const EG_KING_TABLE: [i32; 64] = [
 ];
 
 impl Chess {
+    fn evaluate_passed_pawns(&self) -> i32 {
+        let mut score = 0;
+        let mut white_passed = 0;
+        let mut black_passed = 0;
+
+        let mut white_pawns = self.white_pawns;
+        while white_pawns != 0 {
+            let sq = bit_scan(white_pawns);
+            if is_passed(sq, White, self.black_pawns) {
+                white_passed |= 1 << sq;
+            }
+            white_pawns &= white_pawns - 1;
+        }
+
+        let mut black_pawns = self.black_pawns;
+        while black_pawns != 0 {
+            let sq = bit_scan(black_pawns);
+            if is_passed(sq, Black, self.white_pawns) {
+                black_passed |= 1 << sq;
+            }
+            black_pawns &= black_pawns - 1;
+        }
+
+        score += count_ones(white_passed) * 50;
+        score -= count_ones(black_passed) * 50;
+        score
+    }
+
     // Returns negative if black is better and positive if white is better
     pub fn evaluate(&self) -> i32 {
         let mut score = 0;
@@ -109,7 +137,7 @@ impl Chess {
         }
 
         // Draw detection: threefold repetition
-        if self.search_path.iter().filter(|&&h| h == self.hash).count() >= 2 {
+        if self.history.is_repetition(self) {
             return 0;
         }
 
@@ -142,6 +170,8 @@ impl Chess {
         if count_ones(self.black_bishops) >= 2 {
             score -= 30;
         }
+
+        score += self.evaluate_passed_pawns();
 
         score
     }
@@ -276,6 +306,35 @@ impl Chess {
         }
         score
     }
+}
+
+fn is_passed(sq: usize, color: Color, opponent_pawns: BitBoard) -> bool {
+    let file_idx = sq % 8;
+    let rank_idx = sq / 8;
+
+    let mut check_mask: BitBoard = FILES[file_idx];
+    if file_idx > 0 {
+        check_mask |= FILES[file_idx - 1];
+    }
+    if file_idx < 7 {
+        check_mask |= FILES[file_idx + 1];
+    }
+
+    let mut forward_rank_mask: BitBoard = 0;
+    match color {
+        White => {
+            for r in (rank_idx + 1)..8 {
+                forward_rank_mask |= 0xFF << (r * 8);
+            }
+        }
+        Black => {
+            for r in 0..rank_idx {
+                forward_rank_mask |= 0xFF << (r * 8);
+            }
+        }
+    }
+
+    (opponent_pawns & check_mask & forward_rank_mask) == 0
 }
 
 fn count_attacks<F>(mut pieces: BitBoard, own_occ: BitBoard, attack_fn: F) -> i32
