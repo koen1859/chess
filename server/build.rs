@@ -15,24 +15,20 @@ fn main() {
     let wasm_target_dir = Path::new(&out_dir).join("wasm-target");
     let wasm_built = wasm_target_dir.join("wasm32-unknown-unknown/debug/app.wasm");
 
-    if !wasm_built.exists() {
-        println!("cargo::warning=Building WASM target (first build, this may take a while)...");
+    let status = Command::new("cargo")
+        .args([
+            "build",
+            "--target",
+            "wasm32-unknown-unknown",
+            "--target-dir",
+            wasm_target_dir.to_str().unwrap(),
+            "-p",
+            "app",
+        ])
+        .status()
+        .expect("Failed to spawn cargo build for WASM target");
 
-        let status = Command::new("cargo")
-            .args([
-                "build",
-                "--target",
-                "wasm32-unknown-unknown",
-                "--target-dir",
-                wasm_target_dir.to_str().unwrap(),
-                "-p",
-                "app",
-            ])
-            .status()
-            .expect("Failed to spawn cargo build for WASM target");
-
-        assert!(status.success(), "WASM build failed");
-    }
+    assert!(status.success(), "WASM build failed");
 
     let dist_dir = ws_root.join("dist");
     std::fs::create_dir_all(&dist_dir).unwrap();

@@ -1,6 +1,7 @@
 use chess::{
     color::{Color, Color::*},
     square::{Square, Square::*},
+    utils::BitBoard,
 };
 
 pub fn piece_svg(square: Square) -> &'static str {
@@ -32,4 +33,11 @@ pub fn is_own_piece(square: Square, color: Color) -> bool {
             BlackPawn | BlackKnight | BlackBishop | BlackRook | BlackQueen | BlackKing
         ),
     }
+}
+
+/// Turns a bitboard (u64) into the list of board indices (0..64) whose bit is set.
+/// Assumes bit `i` corresponds to `idx = rank * 8 + file`, matching the indexing
+/// already used for `chess.squares` / `board_squares()` elsewhere in this app.
+pub fn bitboard_squares(bitboard: BitBoard) -> Vec<usize> {
+    (0..64).filter(|i| (bitboard >> i) & 1 == 1).collect()
 }

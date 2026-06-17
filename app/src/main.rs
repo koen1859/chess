@@ -2,48 +2,47 @@ mod game;
 mod utils;
 
 use crate::{
-    game::Game,
+    game::{DebugBitboard, GameState},
     utils::{is_own_piece, piece_svg},
 };
-use chess::{
-    apply_undo_move::{Move, MoveFlags},
-    color::Color,
-    square::Square,
-};
+use chess::{apply_undo_move::MoveFlags, color::Color, square::Square};
 use gloo_timers::future::TimeoutFuture;
 use wasm_bindgen_futures::spawn_local;
+use web_sys::HtmlInputElement;
+use yew::TargetCast;
 use yew::prelude::*;
 
 #[function_component(App)]
 fn app() -> Html {
-    let game = use_state(Game::new);
+    let game_state = use_state(GameState::new);
+    let legal_moves = game_state.legal_moves();
+    let destinations = game_state.destinations();
+    let status = game_state.status();
+    let advantage = game_state.count_material();
+    let board_squares = game_state.board_squares();
+    let user_color_str = game_state.user_color_str();
+    let debug_squares = game_state.debug_overlay_squares();
+    let last_move = game_state.last_move;
 
-    let legal_moves: Vec<Move> = game.legal_moves();
-    let destinations: Vec<usize> = game.destinations();
-    let status: String = game.status();
-    let advantage: i32 = game.count_material();
-    let board_squares: Vec<(usize, usize)> = game.board_squares();
-    let user_color_str: &'static str = game.user_color_str();
-
+    // Engine move effect
     {
-        let game = game.clone();
+        let game_state = game_state.clone();
         use_effect(move || {
-            if game.chess.active_color != game.user_color {
-                let mut current = game.chess.clone();
-                let mut engine_handle = game.engine.clone();
-
-                let game_history = game.game_history.clone();
+            if game_state.chess.active_color != game_state.user_color {
+                let game_state = game_state.clone();
                 spawn_local(async move {
                     TimeoutFuture::new(0).await;
-                    if let Some(best_move) =
-                        engine_handle.get_best_move(&mut current, 6, &game_history)
-                    {
-                        let mut next = (*game).clone();
-                        next.chess = current;
-                        next.chess.apply_move(&best_move);
-                        next.push_position();
-                        next.engine = engine_handle;
-                        game.set(next);
+                    let mut new_state = (*game_state).clone();
+                    let think_time = new_state.engine_think_time_ms;
+                    if let Some(best_move) = new_state.engine.get_best_move_in_time(
+                        &mut new_state.chess,
+                        think_time,
+                        &new_state.game_history,
+                    ) {
+                        new_state.chess.apply_move(&best_move);
+                        new_state.last_move = Some((best_move.from, best_move.to));
+                        new_state.push_position();
+                        game_state.set(new_state);
                     }
                 });
             }
@@ -51,22 +50,20 @@ fn app() -> Html {
         });
     }
 
+    // Handle user click on a square
     let on_square_click = {
-        let game = game.clone();
+        let game = game_state.clone();
         let legal_moves = legal_moves.clone();
-
         Callback::from(move |idx: usize| {
-            let current = (*game).clone();
+            let mut new_state = (*game).clone();
 
-            if current.chess.active_color != current.user_color
-                || current.pending_promotion.is_some()
+            if new_state.chess.active_color != new_state.user_color
+                || new_state.pending_promotion.is_some()
             {
                 return;
             }
 
-            let mut next = current.clone();
-
-            match next.selected {
+            match new_state.selected {
                 Some(from) => {
                     let matching_moves: Vec<_> = legal_moves
                         .iter()
@@ -79,63 +76,92 @@ fn app() -> Html {
                             .any(|m| m.flags.contains(MoveFlags::PROMOTION_QUEEN));
 
                         if is_promotion {
-                            next.pending_promotion = Some((from, idx));
+                            new_state.pending_promotion = Some((from, idx));
                         } else {
-                            next.chess.apply_move(matching_moves[0]);
-                            next.push_position();
-                            next.selected = None;
+                            new_state.chess.apply_move(matching_moves[0]);
+                            new_state.last_move = Some((from, idx));
+                            new_state.push_position();
+                            new_state.selected = None;
                         }
                     } else if idx != from
-                        && is_own_piece(next.chess.squares[idx], next.chess.active_color)
+                        && is_own_piece(new_state.chess.squares[idx], new_state.chess.active_color)
                     {
-                        next.selected = Some(idx);
+                        new_state.selected = Some(idx);
                     } else {
-                        next.selected = None;
+                        new_state.selected = None;
                     }
                 }
                 None => {
-                    if is_own_piece(next.chess.squares[idx], next.chess.active_color) {
-                        next.selected = Some(idx);
+                    if is_own_piece(new_state.chess.squares[idx], new_state.chess.active_color) {
+                        new_state.selected = Some(idx);
                     }
                 }
             }
 
-            game.set(next);
+            game.set(new_state);
         })
     };
 
+    // Handle promotions
     let on_promote = {
-        let game = game.clone();
+        let game = game_state.clone();
         let legal_moves = legal_moves.clone();
-
         Callback::from(move |flag: MoveFlags| {
-            let current = (*game).clone();
+            let mut new_state = (*game).clone();
 
-            if let Some((from, to)) = current.pending_promotion {
+            if let Some((from, to)) = new_state.pending_promotion {
                 if let Some(mv) = legal_moves
                     .iter()
                     .find(|m| m.from == from && m.to == to && m.flags.contains(flag))
                 {
-                    let mut next = current.clone();
-                    next.chess.apply_move(mv);
-                    next.push_position();
-                    next.selected = None;
-                    next.pending_promotion = None;
-                    game.set(next);
+                    new_state.chess.apply_move(mv);
+                    new_state.last_move = Some((from, to));
+                    new_state.push_position();
+                    new_state.selected = None;
+                    new_state.pending_promotion = None;
+                    game.set(new_state);
                 }
             }
         })
     };
 
     let on_restart = {
-        let game = game.clone();
+        let game = game_state.clone();
         Callback::from(move |_| {
-            game.set(Game::new());
+            game.set(GameState::new());
         })
     };
 
-    let promotion_modal = if let Some((from, _)) = game.pending_promotion {
-        let is_white = is_own_piece(game.chess.squares[from], Color::White);
+    // Engine think-time slider
+    let on_think_time_input = {
+        let game = game_state.clone();
+        Callback::from(move |e: InputEvent| {
+            if let Some(input) = e.target_dyn_into::<HtmlInputElement>() {
+                if let Ok(value) = input.value().parse::<u64>() {
+                    let mut new_state = (*game).clone();
+                    new_state.engine_think_time_ms = value;
+                    game.set(new_state);
+                }
+            }
+        })
+    };
+
+    // Debug bitboard overlay buttons (click again to clear)
+    let on_debug_select = {
+        let game = game_state.clone();
+        Callback::from(move |bb: DebugBitboard| {
+            let mut new_state = (*game).clone();
+            new_state.debug_overlay = if new_state.debug_overlay == Some(bb) {
+                None
+            } else {
+                Some(bb)
+            };
+            game.set(new_state);
+        })
+    };
+
+    let promotion_modal = if let Some((from, _)) = game_state.pending_promotion {
+        let is_white = is_own_piece(game_state.chess.squares[from], Color::White);
         let (q, r, b, n) = if is_white {
             (
                 Square::WhiteQueen,
@@ -158,11 +184,11 @@ fn app() -> Html {
         let on_n = on_promote.reform(|_| MoveFlags::PROMOTION_KNIGHT);
 
         let on_cancel = {
-            let game = game.clone();
+            let game = game_state.clone();
             Callback::from(move |_| {
-                let mut next = (*game).clone();
-                next.pending_promotion = None;
-                game.set(next);
+                let mut new_state = (*game).clone();
+                new_state.pending_promotion = None;
+                game.set(new_state);
             })
         };
 
@@ -184,6 +210,39 @@ fn app() -> Html {
         html! {}
     };
 
+    let menu = html! {
+        <div class="menu">
+            <div class="menu-section">
+                <label for="think-time">
+                    { format!("Engine think time: {} ms", game_state.engine_think_time_ms) }
+                </label>
+                <input
+                    id="think-time"
+                    type="range"
+                    min="100"
+                    max="10000"
+                    step="100"
+                    value={game_state.engine_think_time_ms.to_string()}
+                    oninput={on_think_time_input}
+                />
+            </div>
+            <div class="menu-section">
+                <div class="menu-label">{ "Debug bitboards:" }</div>
+                <div class="debug-buttons">
+                    { for DebugBitboard::ALL.iter().map(|bb| {
+                        let bb = *bb;
+                        let onclick = on_debug_select.reform(move |_| bb);
+                        let active = game_state.debug_overlay == Some(bb);
+                        let class = if active { "debug-btn active" } else { "debug-btn" };
+                        html! {
+                            <button class={class} onclick={onclick}>{ bb.label() }</button>
+                        }
+                    }) }
+                </div>
+            </div>
+        </div>
+    };
+
     html! {
         <div class="page">
             <h1>{ "Chess" }</h1>
@@ -198,20 +257,29 @@ fn app() -> Html {
                     { "Material is equal" }
                 }
             </div>
+            { menu }
             <div class="board-container">
                 { promotion_modal }
                 <div class="board">
                     { for board_squares.into_iter().map(|(rank, file)| {
                         let idx = rank * 8 + file;
-                        let piece = game.chess.squares[idx];
+                        let piece = game_state.chess.squares[idx];
 
                         let mut classes = vec!["square".to_string()];
                         classes.push(if (rank + file) % 2 == 0 { "dark".to_string() } else { "light".to_string() });
-                        if game.selected == Some(idx) {
+                        if game_state.selected == Some(idx) {
                             classes.push("selected".to_string());
                         }
                         if destinations.contains(&idx) {
                             classes.push("highlight".to_string());
+                        }
+                        if let Some((from, to)) = last_move {
+                            if idx == from || idx == to {
+                                classes.push("last-move".to_string());
+                            }
+                        }
+                        if debug_squares.contains(&idx) {
+                            classes.push("debug-highlight".to_string());
                         }
 
                         let piece_html = match piece {
