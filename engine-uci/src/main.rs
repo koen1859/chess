@@ -78,7 +78,7 @@ fn main() {
         let parts: Vec<&str> = line.split_whitespace().collect();
         match parts[0] {
             "uci" => {
-                println!("id name v0.2.0");
+                println!("id name v0.3.0");
                 println!("id author KoenStevens");
                 println!("uciok");
             }
