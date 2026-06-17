@@ -1,27 +1,19 @@
 use crate::apply_undo_move::Move;
 use instant::Instant;
+use std::collections::HashMap;
 
-#[derive(Clone, Copy, PartialEq, Eq)]
-pub enum TTFlag {
+#[derive(Clone)]
+pub enum StorageFlag {
     Exact,
-    Alpha,
-    Beta,
-}
-
-const TT_SIZE: usize = 1 << 20; // ~1M entries
-
-#[derive(Clone, Copy)]
-pub struct TTEntry {
-    pub hash: u64,
-    pub score: i32,
-    pub depth: u8,
-    pub flag: TTFlag,
-    pub best_move: Option<Move>,
+    Lower,
+    Upper,
 }
 
 #[derive(Clone)]
 pub struct Engine {
-    pub tt: Vec<TTEntry>,
+    // Map hash of a position to the depth the position was analyzed on, the score and the best move given this position
+    pub storage: HashMap<u64, (u8, i32, Option<Move>, StorageFlag)>,
+
     pub deadline: Option<Instant>,
     pub time_up: bool,
     pub nodes: u64,
@@ -30,40 +22,10 @@ pub struct Engine {
 impl Engine {
     pub fn new() -> Self {
         Engine {
-            tt: vec![
-                TTEntry {
-                    hash: 0,
-                    score: 0,
-                    depth: 0,
-                    flag: TTFlag::Exact,
-                    best_move: None,
-                };
-                TT_SIZE
-            ],
+            storage: HashMap::with_capacity(1_000_000),
             deadline: None,
             time_up: false,
             nodes: 0,
         }
-    }
-
-    pub fn tt_probe(&self, hash: u64) -> Option<&TTEntry> {
-        let entry = &self.tt[hash as usize & (TT_SIZE - 1)];
-        if entry.hash == hash {
-            Some(entry)
-        } else {
-            None
-        }
-    }
-
-    pub fn tt_store(&mut self, hash: u64, score: i32, depth: u8, flag: TTFlag, best_move: Option<Move>) {
-        let idx = hash as usize & (TT_SIZE - 1);
-        // Always replace (simple strategy)
-        self.tt[idx] = TTEntry {
-            hash,
-            score,
-            depth,
-            flag,
-            best_move,
-        };
     }
 }

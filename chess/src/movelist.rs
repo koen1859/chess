@@ -1,16 +1,23 @@
 use crate::apply_undo_move::{Move, MoveFlags};
 
-const MAX_MOVES: usize = 256;
+// Maximum number of moves in any legal chess position is 218
+const MAX_MOVES: usize = 218;
 
+#[derive(Clone, Copy)]
 pub struct MoveList {
     moves: [Move; MAX_MOVES],
     len: usize,
 }
 
+// A buffer to put legal moves in persistent across chess positions to save on memory alloations
 impl MoveList {
     pub fn new() -> Self {
         Self {
-            moves: [Move { from: 0, to: 0, flags: MoveFlags::empty() }; MAX_MOVES],
+            moves: [Move {
+                from: 0,
+                to: 0,
+                flags: MoveFlags::empty(),
+            }; MAX_MOVES],
             len: 0,
         }
     }

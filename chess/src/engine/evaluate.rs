@@ -22,15 +22,25 @@ const E5: usize = 36;
 const CENTER: BitBoard = (1u64 << D4) | (1u64 << E4) | (1u64 << D5) | (1u64 << E5);
 
 const PAWN_TABLE: [i32; 64] = [
-    0, 0, 0, 0, 0, 0, 0, 0, 50, 50, 50, 50, 50, 50, 50, 50, 10, 10, 20, 30, 30, 20, 10, 10, 5, 5,
-    10, 25, 25, 10, 5, 5, 0, 0, 0, 20, 20, 0, 0, 0, 5, -5, -10, 0, 0, -10, -5, 5, 5, 10, 10, -20,
-    -20, 10, 10, 5, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, // First rank not possible
+    10, 10, 10, 10, 10, 10, 10, 10, // Second rank and
+    10, 10, 10, 10, 10, 10, 10, 10, // third rank are as far away from the end
+    20, 20, 20, 20, 20, 20, 20, 20, // 4th rank
+    30, 30, 30, 30, 30, 30, 30, 30, // 5th rank
+    40, 40, 40, 40, 40, 40, 40, 40, // 6th rank
+    50, 50, 50, 50, 50, 50, 50, 50, // 7th rank
+    0, 0, 0, 0, 0, 0, 0, 0, // Last rank not possible
 ];
 
 const KNIGHT_TABLE: [i32; 64] = [
-    -50, -40, -30, -30, -30, -30, -40, -50, -40, -20, 0, 0, 0, 0, -20, -40, -30, 0, 10, 15, 15, 10,
-    0, -30, -30, 5, 15, 20, 20, 15, 5, -30, -30, 0, 15, 20, 20, 15, 0, -30, -30, 5, 10, 15, 15, 10,
-    5, -30, -40, -20, 0, 5, 5, 0, -20, -40, -50, -40, -30, -30, -30, -30, -40, -50,
+    -5, -4, -3, -3, -3, -3, -4, -5, // 1st
+    -4, -2, 0, 0, 0, 0, -2, -4, // 2nd
+    -3, 0, 10, 15, 15, 10, 0, -3, // 3rd
+    -3, 5, 15, 20, 20, 15, 5, -3, // 4th
+    -3, 0, 15, 20, 20, 15, 0, -3, // 5th
+    -3, 5, 10, 15, 15, 10, 5, -3, // 6th
+    -4, -2, 0, 5, 5, 0, -2, -4, // 7th
+    -5, -4, -3, -3, -3, -3, -4, -5, // 8th
 ];
 
 const BISHOP_TABLE: [i32; 64] = [
@@ -75,6 +85,17 @@ impl Chess {
             return 0;
         }
 
+        // Draw detection: threefold repetition with game history
+        if self
+            .game_history
+            .iter()
+            .filter(|&&h| h == self.hash)
+            .count()
+            >= 2
+        {
+            return 0;
+        }
+
         score += self.material_score();
 
         // Calculate for both middle game and end game
@@ -88,10 +109,10 @@ impl Chess {
 
         // Development bonus in opening
         if phase > 18 {
-            score += 10 * count_ones(self.white_knights & (1 << 1 | 1 << 6)) as i32;
-            score += 10 * count_ones(self.white_bishops & (1 << 2 | 1 << 5)) as i32;
-            score -= 10 * count_ones(self.black_knights & (1 << 57 | 1 << 62)) as i32;
-            score -= 10 * count_ones(self.black_bishops & (1 << 58 | 1 << 61)) as i32;
+            score -= 10 * count_ones(self.white_knights & (1 << 1 | 1 << 6)) as i32;
+            score -= 10 * count_ones(self.white_bishops & (1 << 2 | 1 << 5)) as i32;
+            score += 10 * count_ones(self.black_knights & (1 << 57 | 1 << 62)) as i32;
+            score += 10 * count_ones(self.black_bishops & (1 << 58 | 1 << 61)) as i32;
 
             score += 20 * count_ones(self.white_pawns & CENTER) as i32;
             score -= 20 * count_ones(self.black_pawns & CENTER) as i32;
@@ -339,6 +360,8 @@ fn is_promotion_rank(sq: usize, color: Color) -> bool {
 
 #[cfg(test)]
 mod tests {
+    use crate::apply_undo_move::{Move, MoveFlags};
+
     use super::*;
 
     #[test]
@@ -346,5 +369,30 @@ mod tests {
         let chess = Chess::new();
         let score = chess.evaluate();
         assert_eq!(score, 0, "Starting position should be evaluated as 0");
+    }
+
+    #[test]
+    fn test_opening_move() {
+        let mut chess = Chess::new();
+
+        let move1 = Move {
+            from: 12,
+            to: 28,
+            flags: MoveFlags::empty(),
+        };
+        let history1 = chess.apply_move(&move1);
+        let score1 = chess.evaluate();
+        chess.undo_move(&history1);
+        println!("Score for King's pawn opening: {}", score1);
+
+        let move2 = Move {
+            from: 1,
+            to: 18,
+            flags: MoveFlags::empty(),
+        };
+        let history2 = chess.apply_move(&move2);
+        let score2 = chess.evaluate();
+        chess.undo_move(&history2);
+        println!("Score for Knight opening: {}", score2);
     }
 }

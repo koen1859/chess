@@ -1,7 +1,7 @@
 use crate::utils::*;
 use crate::{castling_rights::CastlingRights, color::Color, square::Square};
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Chess {
     pub squares: [Square; 64],
 
@@ -26,6 +26,9 @@ pub struct Chess {
     pub black_king: BitBoard,
 
     pub hash: u64,
+
+    // Store hashes of all previous positions (Required for keeping track of 3-time repetition)
+    pub game_history: Vec<u64>,
 }
 
 impl Chess {
@@ -57,6 +60,7 @@ impl Chess {
             black_king: 0,
 
             hash: 0,
+            game_history: Vec::with_capacity(200), // Initial capacity for 200 half-moves so 100 full moves
         };
 
         let (position, rest): (&str, &str) = split_on(fen, ' ');
@@ -191,51 +195,87 @@ impl Chess {
                 match self.squares[idx] {
                     Square::Empty => empty += 1,
                     Square::WhitePawn => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('P');
                     }
                     Square::WhiteKnight => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('N');
                     }
                     Square::WhiteBishop => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('B');
                     }
                     Square::WhiteRook => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('R');
                     }
                     Square::WhiteQueen => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('Q');
                     }
                     Square::WhiteKing => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('K');
                     }
                     Square::BlackPawn => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('p');
                     }
                     Square::BlackKnight => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('n');
                     }
                     Square::BlackBishop => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('b');
                     }
                     Square::BlackRook => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('r');
                     }
                     Square::BlackQueen => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('q');
                     }
                     Square::BlackKing => {
-                        if empty > 0 { fen.push_str(&empty.to_string()); empty = 0; }
+                        if empty > 0 {
+                            fen.push_str(&empty.to_string());
+                            empty = 0;
+                        }
                         fen.push('k');
                     }
                 }
@@ -249,15 +289,35 @@ impl Chess {
         }
 
         fen.push(' ');
-        fen.push(if self.active_color == Color::White { 'w' } else { 'b' });
+        fen.push(if self.active_color == Color::White {
+            'w'
+        } else {
+            'b'
+        });
         fen.push(' ');
 
         let mut castling = String::new();
-        if self.castling_rights.contains(CastlingRights::WHITEKINGSIDE) { castling.push('K'); }
-        if self.castling_rights.contains(CastlingRights::WHITEQUEENSIDE) { castling.push('Q'); }
-        if self.castling_rights.contains(CastlingRights::BLACKKINGSIDE) { castling.push('k'); }
-        if self.castling_rights.contains(CastlingRights::BLACKQUEENSIDE) { castling.push('q'); }
-        if castling.is_empty() { castling.push('-'); }
+        if self.castling_rights.contains(CastlingRights::WHITEKINGSIDE) {
+            castling.push('K');
+        }
+        if self
+            .castling_rights
+            .contains(CastlingRights::WHITEQUEENSIDE)
+        {
+            castling.push('Q');
+        }
+        if self.castling_rights.contains(CastlingRights::BLACKKINGSIDE) {
+            castling.push('k');
+        }
+        if self
+            .castling_rights
+            .contains(CastlingRights::BLACKQUEENSIDE)
+        {
+            castling.push('q');
+        }
+        if castling.is_empty() {
+            castling.push('-');
+        }
         fen.push_str(&castling);
         fen.push(' ');
 

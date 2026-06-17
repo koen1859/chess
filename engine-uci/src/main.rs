@@ -9,7 +9,6 @@ use chess::{
 
 struct UciState {
     board: Chess,
-    game_history: Vec<u64>,
     engine: Engine,
 }
 
@@ -17,7 +16,6 @@ impl UciState {
     fn new() -> Self {
         UciState {
             board: Chess::new(),
-            game_history: Vec::new(),
             engine: Engine::new(),
         }
     }
@@ -27,13 +25,10 @@ impl UciState {
             Some(fen) => Chess::from_fen(fen),
             None => Chess::new(),
         };
-        self.game_history.clear();
-        self.game_history.push(self.board.hash);
 
         for m_str in moves {
             if let Some(m) = uci_to_move(m_str, &self.board) {
                 self.board.apply_move(&m);
-                self.game_history.push(self.board.hash);
             }
         }
     }
@@ -48,10 +43,7 @@ impl UciState {
             self.engine.time_up = false;
             self.engine.nodes = 0;
 
-            if let Some(m) =
-                self.engine
-                    .get_best_move(&mut self.board, current_depth, &self.game_history)
-            {
+            if let Some(m) = self.engine.get_best_move(&mut self.board, current_depth) {
                 best_move = Some(move_to_uci(&m));
             } else {
                 break;
@@ -63,7 +55,7 @@ impl UciState {
 
     fn go_movetime(&mut self, ms: u64) -> Option<String> {
         self.engine
-            .get_best_move_in_time(&mut self.board, ms, &self.game_history)
+            .get_best_move_in_time(&mut self.board, ms)
             .map(|m| move_to_uci(&m))
     }
 }
@@ -86,7 +78,7 @@ fn main() {
         let parts: Vec<&str> = line.split_whitespace().collect();
         match parts[0] {
             "uci" => {
-                println!("id name KoenStevensChess");
+                println!("id name v0.2.0");
                 println!("id author KoenStevens");
                 println!("uciok");
             }

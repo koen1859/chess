@@ -5,8 +5,8 @@ use crate::{
     square::Square,
     utils::BitBoard,
     zobrist_hash::{
-        get_en_passant_index, square_to_piece_index, black_to_move_hash, castling_hash,
-        en_passant_hash, piece_hash,
+        black_to_move_hash, castling_hash, en_passant_hash, get_en_passant_index, piece_hash,
+        square_to_piece_index,
     },
 };
 use bitflags::bitflags;
@@ -64,6 +64,9 @@ impl Chess {
         history.en_passent = self.en_passent;
         history.halfmove_clock = self.halfmove_clock;
         history.previous_hash = self.hash;
+
+        // Store this game's hash before the move in the game_history
+        self.game_history.push(self.hash);
 
         let moving_piece: Square = self.squares[m.from];
         debug_assert!(
@@ -259,6 +262,12 @@ impl Chess {
     }
     pub fn undo_move(&mut self, history: &History) {
         let m: Move = history.m;
+
+        // Remove the final entry from the game's history
+        let hash = self.game_history.pop().unwrap();
+        // If the hashes are not equal, we are trying to undo a move that is not the last move made
+        debug_assert_eq!(hash, history.previous_hash);
+
         let moving_piece: Square = self.squares[m.to];
 
         // Handle Castling
@@ -419,9 +428,17 @@ pub fn uci_to_move(s: &str, board: &Chess) -> Option<Move> {
     }
 
     // Check en passant
-    if board.en_passent != 0 && moving_piece.color() == Some(Color::White) && to == crate::utils::bit_scan(board.en_passent) && matches!(moving_piece, Square::WhitePawn) {
+    if board.en_passent != 0
+        && moving_piece.color() == Some(Color::White)
+        && to == crate::utils::bit_scan(board.en_passent)
+        && matches!(moving_piece, Square::WhitePawn)
+    {
         flags |= MoveFlags::EN_PASSENT | MoveFlags::CAPTURE;
-    } else if board.en_passent != 0 && moving_piece.color() == Some(Color::Black) && to == crate::utils::bit_scan(board.en_passent) && matches!(moving_piece, Square::BlackPawn) {
+    } else if board.en_passent != 0
+        && moving_piece.color() == Some(Color::Black)
+        && to == crate::utils::bit_scan(board.en_passent)
+        && matches!(moving_piece, Square::BlackPawn)
+    {
         flags |= MoveFlags::EN_PASSENT | MoveFlags::CAPTURE;
     } else if board.squares[to] != Square::Empty {
         flags |= MoveFlags::CAPTURE;
@@ -429,12 +446,20 @@ pub fn uci_to_move(s: &str, board: &Chess) -> Option<Move> {
 
     // Check castling
     if matches!(moving_piece, Square::WhiteKing) {
-        if from == 4 && to == 6 { flags |= MoveFlags::CASTLE_KINGSIDE; }
-        if from == 4 && to == 2 { flags |= MoveFlags::CASTLE_QUEENSIDE; }
+        if from == 4 && to == 6 {
+            flags |= MoveFlags::CASTLE_KINGSIDE;
+        }
+        if from == 4 && to == 2 {
+            flags |= MoveFlags::CASTLE_QUEENSIDE;
+        }
     }
     if matches!(moving_piece, Square::BlackKing) {
-        if from == 60 && to == 62 { flags |= MoveFlags::CASTLE_KINGSIDE; }
-        if from == 60 && to == 58 { flags |= MoveFlags::CASTLE_QUEENSIDE; }
+        if from == 60 && to == 62 {
+            flags |= MoveFlags::CASTLE_KINGSIDE;
+        }
+        if from == 60 && to == 58 {
+            flags |= MoveFlags::CASTLE_QUEENSIDE;
+        }
     }
 
     // Check promotion
@@ -497,13 +522,21 @@ mod tests {
 
     #[test]
     fn test_move_to_uci() {
-        let m = Move { from: 12, to: 28, flags: MoveFlags::empty() };
+        let m = Move {
+            from: 12,
+            to: 28,
+            flags: MoveFlags::empty(),
+        };
         assert_eq!(move_to_uci(&m), "e2e4");
     }
 
     #[test]
     fn test_move_to_uci_promotion() {
-        let m = Move { from: 55, to: 63, flags: MoveFlags::PROMOTION_QUEEN };
+        let m = Move {
+            from: 55,
+            to: 63,
+            flags: MoveFlags::PROMOTION_QUEEN,
+        };
         assert_eq!(move_to_uci(&m), "h7h8q");
     }
 
@@ -521,7 +554,6 @@ mod tests {
         let board = Chess::from_fen(fen);
         assert_eq!(board.to_fen(), fen);
     }
-    use super::*;
 
     #[test]
     fn test_apply_undo_move() {

@@ -67,26 +67,15 @@ impl Chess {
     pub fn generate_moves(&self, color: Color) -> Vec<Move> {
         let mut buf = MoveList::new();
         self.generate_pseudolegal_moves_into(color, &mut buf);
-        let mut legal: Vec<Move> = buf
-            .as_slice()
+        buf.as_slice()
             .iter()
-            .filter(|m| !self.leaves_king_in_check(m))
+            .filter(|m| !self.leaves_king_in_check_slow(m))
             .copied()
-            .collect();
-        legal.sort_by(|a, b| {
-            let score_a: i32 = self.squares[a.to].value() - self.squares[a.from].value();
-            let score_b: i32 = self.squares[b.to].value() - self.squares[b.from].value();
-            score_b.cmp(&score_a)
-        });
-        legal
+            .collect()
     }
 
     // Generate pseudo legal moves: Does not account for checks
     fn generate_pseudolegal_moves_into(&self, color: Color, moves: &mut MoveList) {
-        if self.halfmove_clock >= 100 {
-            return;
-        }
-
         let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) = match color {
             White => (
                 self.white_rooks,

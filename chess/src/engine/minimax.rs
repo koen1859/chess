@@ -2,23 +2,12 @@ use crate::{
     apply_undo_move::{Move, MoveFlags},
     chess::Chess,
     color::Color::{Black, White},
-    engine::engine::{
-        Engine, TTFlag,
-        TTFlag::{Alpha, Beta, Exact},
-    },
+    engine::engine::{Engine, StorageFlag, StorageFlag::*},
     movelist::MoveList,
 };
 
 impl Engine {
-    pub fn minimax(
-        &mut self,
-        board: &mut Chess,
-        depth: u8,
-        mut alpha: i32,
-        mut beta: i32,
-        game_history: &[u64],
-        search_stack: &mut Vec<u64>,
-    ) -> i32 {
+    pub fn minimax(&mut self, board: &mut Chess, depth: u8, mut alpha: i32, mut beta: i32) -> i32 {
         self.nodes += 1;
         if self.nodes % 2048 == 0 {
             if let Some(deadline) = self.deadline {
@@ -29,31 +18,30 @@ impl Engine {
         }
 
         if self.time_up {
-            return 0;
+            return board.evaluate();
         }
 
-        // Draw detection: threefold repetition with game history
-        if game_history.iter().filter(|&&h| h == board.hash).count() >= 2 {
-            return 0;
-        }
-        // Draw detection: repetition within the search line
-        if search_stack.contains(&board.hash) {
-            return 0;
-        }
-
-        // TT probe
-        if let Some(entry) = self.tt_probe(board.hash) {
-            if entry.depth >= depth {
-                match entry.flag {
-                    Exact => return entry.score,
-                    Alpha => {
-                        if entry.score <= alpha {
-                            return entry.score;
+        // Check if we have already analyzed this position
+        if let Some((stored_depth, stored_score, _stored_best_move, flag)) =
+            self.storage.get(&board.hash)
+        {
+            // Check if we analyzed this position on a higher depth already
+            if *stored_depth >= depth {
+                match *flag {
+                    // If the stored score is exact, return it
+                    Exact => {
+                        return *stored_score;
+                    }
+                    // If the stored score is a lower bound, and it is lower than our current lower bound, return it
+                    Lower => {
+                        if *stored_score <= alpha {
+                            return *stored_score;
                         }
                     }
-                    Beta => {
-                        if entry.score >= beta {
-                            return entry.score;
+                    // If the stored score is an upper bound, and it is higher than our current lower bound, return it
+                    Upper => {
+                        if *stored_score >= beta {
+                            return *stored_score;
                         }
                     }
                 }
@@ -63,12 +51,12 @@ impl Engine {
         // Check extension: at depth 0, if king is in check, search 1 ply deeper
         if depth == 0 {
             if board.is_color_in_check(board.active_color) {
-                return self.minimax(board, 1, alpha, beta, game_history, search_stack);
+                return self.minimax(board, 1, alpha, beta);
             }
             return self.quiescence(board, alpha, beta);
         }
 
-        // Generate moves into stack-allocated buffer
+        // Generate moves
         let mut moves = MoveList::new();
         board.generate_moves_into(board.active_color, &mut moves);
 
@@ -85,11 +73,13 @@ impl Engine {
             }
         }
 
-        // Move ordering: bring TT best move to front
-        if let Some(entry) = self.tt_probe(board.hash) {
-            if let Some(bm) = entry.best_move {
+        // Move ordering: bring stored best move to front
+        if let Some((_stored_depth, _stored_score, stored_best_move, _flag)) =
+            self.storage.get(&board.hash)
+        {
+            if let Some(m) = stored_best_move {
                 for i in 0..moves.len() {
-                    if *moves.get(i) == bm {
+                    if *moves.get(i) == *m {
                         moves.swap(0, i);
                         break;
                     }
@@ -107,27 +97,29 @@ impl Engine {
         let mut best_move: Option<Move> = None;
 
         for i in 0..moves.len() {
-            let m: Move = *moves.get(i);
-            search_stack.push(board.hash);
-            let history = board.apply_move(&m);
-            let eval: i32 = self.minimax(board, depth - 1, alpha, beta, game_history, search_stack);
+            let m: &Move = moves.get(i);
+            let history = board.apply_move(m);
+            let eval: i32 = self.minimax(board, depth - 1, alpha, beta);
             board.undo_move(&history);
-            search_stack.pop();
 
             if self.time_up {
-                return 0;
+                return if best_eval == i32::MIN || best_eval == i32::MAX {
+                    board.evaluate()
+                } else {
+                    best_eval
+                };
             }
 
             if board.active_color == White {
                 if eval > best_eval {
                     best_eval = eval;
-                    best_move = Some(m);
+                    best_move = Some(*m);
                     alpha = alpha.max(best_eval);
                 }
             } else {
                 if eval < best_eval {
                     best_eval = eval;
-                    best_move = Some(m);
+                    best_move = Some(*m);
                     beta = beta.min(best_eval);
                 }
             }
@@ -137,16 +129,19 @@ impl Engine {
             }
         }
 
+        // If we are not out of time, store this position with the search depth, its eval and best move
         if !self.time_up {
-            let flag = if best_eval <= original_alpha {
-                TTFlag::Alpha
+            let flag: StorageFlag = if best_eval <= original_alpha {
+                Lower
             } else if best_eval >= original_beta {
-                TTFlag::Beta
+                Upper
             } else {
-                TTFlag::Exact
+                Exact
             };
-            self.tt_store(board.hash, best_eval, depth, flag, best_move);
+            self.storage
+                .insert(board.hash, (depth, best_eval, best_move, flag));
         }
+
         best_eval
     }
 
@@ -160,11 +155,11 @@ impl Engine {
             }
         }
 
-        if self.time_up {
-            return 0;
-        }
-
         let stand_pat: i32 = board.evaluate();
+
+        if self.time_up {
+            return stand_pat;
+        }
         match board.active_color {
             White => {
                 if stand_pat >= beta {
@@ -191,16 +186,16 @@ impl Engine {
         match board.active_color {
             White => {
                 for i in 0..moves.len() {
-                    let m: Move = *moves.get(i);
-                    if !m.flags.contains(MoveFlags::CAPTURE) {
+                    let m: &Move = moves.get(i);
+                    if !m.flags.contains(MoveFlags::CAPTURE) && !board.is_check(m) {
                         continue;
                     }
-                    let history = board.apply_move(&m);
+                    let history = board.apply_move(m);
                     let score: i32 = self.quiescence(board, alpha, beta);
                     board.undo_move(&history);
 
                     if self.time_up {
-                        return 0;
+                        return best_eval;
                     }
 
                     best_eval = best_eval.max(score);
@@ -213,16 +208,16 @@ impl Engine {
             }
             Black => {
                 for i in 0..moves.len() {
-                    let m: Move = *moves.get(i);
-                    if !m.flags.contains(MoveFlags::CAPTURE) {
+                    let m: &Move = moves.get(i);
+                    if !m.flags.contains(MoveFlags::CAPTURE) && !board.is_check(m) {
                         continue;
                     }
-                    let history = board.apply_move(&m);
+                    let history = board.apply_move(m);
                     let score: i32 = self.quiescence(board, alpha, beta);
                     board.undo_move(&history);
 
                     if self.time_up {
-                        return 0;
+                        return best_eval;
                     }
 
                     best_eval = best_eval.min(score);

@@ -1,10 +1,7 @@
 use crate::{
-    apply_undo_move::Move,
+    apply_undo_move::{History, Move},
     chess::Chess,
-    color::{
-        Color,
-        Color::{Black, White},
-    },
+    color::Color::{self, Black, White},
     moves::{
         king::KING_MOVES,
         knight::KNIGHT_MOVES,
@@ -15,11 +12,24 @@ use crate::{
 };
 
 impl Chess {
-    pub fn leaves_king_in_check(&self, m: &Move) -> bool {
-        let mut temp_board = self.clone();
-        let king_color = self.active_color;
-        temp_board.apply_move(m);
-        temp_board.is_color_in_check(king_color)
+    pub fn leaves_king_in_check_slow(&self, m: &Move) -> bool {
+        let mut clone = self.clone();
+        let king_color: Color = clone.active_color;
+        clone.apply_move(m);
+        clone.is_color_in_check(king_color)
+    }
+    pub fn leaves_king_in_check(&mut self, m: &Move) -> bool {
+        let king_color: Color = self.active_color;
+        let history: History = self.apply_move(m);
+        let check: bool = self.is_color_in_check(king_color);
+        self.undo_move(&history);
+        check
+    }
+    pub fn is_check(&mut self, m: &Move) -> bool {
+        let history: History = self.apply_move(m);
+        let check: bool = self.is_color_in_check(self.active_color);
+        self.undo_move(&history);
+        check
     }
     pub fn is_color_in_check(&self, color: Color) -> bool {
         let (own_king_bb, opp_color) = match color {

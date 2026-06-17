@@ -29,16 +29,14 @@ fn app() -> Html {
         let game_state = game_state.clone();
         use_effect(move || {
             if game_state.chess.active_color != game_state.user_color {
-                let game_state = game_state.clone();
                 spawn_local(async move {
                     TimeoutFuture::new(0).await;
                     let mut new_state = (*game_state).clone();
                     let think_time = new_state.engine_think_time_ms;
-                    if let Some(best_move) = new_state.engine.get_best_move_in_time(
-                        &mut new_state.chess,
-                        think_time,
-                        &new_state.game_history,
-                    ) {
+                    if let Some(best_move) = new_state
+                        .engine
+                        .get_best_move_in_time(&mut new_state.chess, think_time)
+                    {
                         new_state.chess.apply_move(&best_move);
                         new_state.last_move = Some((best_move.from, best_move.to));
                         new_state.push_position();
