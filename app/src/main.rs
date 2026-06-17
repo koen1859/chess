@@ -7,7 +7,10 @@ use crate::{
 };
 use chess::{apply_undo_move::MoveFlags, color::Color, square::Square};
 use gloo_timers::future::TimeoutFuture;
+use std::cell::RefCell;
+use std::rc::Rc;
 use wasm_bindgen_futures::spawn_local;
+use wasm_bindgen_futures::JsFuture;
 use web_sys::HtmlInputElement;
 use yew::TargetCast;
 use yew::prelude::*;
@@ -23,29 +26,39 @@ fn app() -> Html {
     let user_color_str = game_state.user_color_str();
     let debug_squares = game_state.debug_overlay_squares();
     let last_move = game_state.last_move;
+    let copied = use_state(|| false);
 
-    // Engine move effect
+    // Engine move effect — only fires when the turn changes, with a guard
+    // against concurrent searches if the component re-renders during search.
+    let is_searching: Rc<RefCell<bool>> = use_mut_ref(|| false);
     {
         let game_state = game_state.clone();
-        use_effect(move || {
-            if game_state.chess.active_color != game_state.user_color {
-                spawn_local(async move {
-                    TimeoutFuture::new(0).await;
-                    let mut new_state = (*game_state).clone();
-                    let think_time = new_state.engine_think_time_ms;
-                    if let Some(best_move) = new_state
-                        .engine
-                        .get_best_move_in_time(&mut new_state.chess, think_time)
-                    {
-                        new_state.chess.apply_move(&best_move);
-                        new_state.last_move = Some((best_move.from, best_move.to));
-                        new_state.push_position();
-                        game_state.set(new_state);
-                    }
-                });
-            }
-            || {}
-        });
+        let is_searching = is_searching.clone();
+        use_effect_with(
+            (game_state.chess.active_color, game_state.user_color),
+            move |_| {
+                if game_state.chess.active_color != game_state.user_color && !*is_searching.borrow()
+                {
+                    *is_searching.borrow_mut() = true;
+                    spawn_local(async move {
+                        TimeoutFuture::new(0).await;
+                        let mut new_state = (*game_state).clone();
+                        let think_time = new_state.engine_think_time_ms;
+                        if let Some(best_move) = new_state
+                            .engine
+                            .get_best_move_in_time(&mut new_state.chess, think_time)
+                        {
+                            new_state.chess.apply_move(&best_move);
+                            new_state.last_move = Some((best_move.from, best_move.to));
+                            new_state.push_position();
+                            game_state.set(new_state);
+                        }
+                        *is_searching.borrow_mut() = false;
+                    });
+                }
+                || {}
+            },
+        );
     }
 
     // Handle user click on a square
@@ -127,6 +140,24 @@ fn app() -> Html {
         let game = game_state.clone();
         Callback::from(move |_| {
             game.set(GameState::new());
+        })
+    };
+
+    let on_copy_pgn = {
+        let game_state = game_state.clone();
+        let copied = copied.clone();
+        Callback::from(move |_| {
+            let pgn = game_state.to_pgn();
+            let copied = copied.clone();
+            spawn_local(async move {
+                if let Some(window) = web_sys::window() {
+                    let promise = window.navigator().clipboard().write_text(&pgn);
+                    let _ = JsFuture::from(promise).await;
+                    copied.set(true);
+                    TimeoutFuture::new(1500).await;
+                    copied.set(false);
+                }
+            });
         })
     };
 
@@ -241,6 +272,8 @@ fn app() -> Html {
         </div>
     };
 
+    let pgn = game_state.to_pgn();
+
     html! {
         <div class="page">
             <h1>{ "Chess" }</h1>
@@ -295,6 +328,14 @@ fn app() -> Html {
                             </div>
                         }
                     }) }
+                </div>
+            </div>
+            <div class="pgn-section">
+                <textarea class="pgn-text" readonly={true} value={pgn} rows={4} spellcheck="false" />
+                <div class="pgn-actions">
+                    <button class="copy-pgn-btn" onclick={on_copy_pgn}>
+                        { if *copied { "Copied!" } else { "Copy PGN" } }
+                    </button>
                 </div>
             </div>
             <button onclick={on_restart}>{ "New Game" }</button>

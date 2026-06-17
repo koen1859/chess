@@ -27,8 +27,9 @@ pub struct Chess {
 
     pub hash: u64,
 
-    // Store hashes of all previous positions (Required for keeping track of 3-time repetition)
-    pub game_history: Vec<u64>,
+    // Track the current search path positions (push in apply_move, pop in undo_move)
+    // Used for repetition detection during search
+    pub search_path: Vec<u64>,
 }
 
 impl Chess {
@@ -60,7 +61,7 @@ impl Chess {
             black_king: 0,
 
             hash: 0,
-            game_history: Vec::with_capacity(200), // Initial capacity for 200 half-moves so 100 full moves
+            search_path: Vec::with_capacity(200),
         };
 
         let (position, rest): (&str, &str) = split_on(fen, ' ');

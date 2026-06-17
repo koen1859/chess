@@ -61,10 +61,6 @@ impl DebugBitboard {
     }
 
     /// Pulls the matching raw bitboard out of the Chess struct.
-    /// NOTE: assumes `Chess` exposes `white_king` / `black_king` bitboards in
-    /// addition to the pawn/knight/bishop/rook/queen ones already used in
-    /// `count_material`. If those fields don't exist (or are named
-    /// differently) under the hood, adjust these two arms accordingly.
     pub fn bitboard(&self, chess: &Chess) -> u64 {
         match self {
             DebugBitboard::WhitePawns => chess.white_pawns,
@@ -213,5 +209,30 @@ impl GameState {
             Some(bb) => bitboard_squares(bb.bitboard(&self.chess)),
             None => Vec::new(),
         }
+    }
+
+    pub fn to_pgn(&self) -> String {
+        let mut chess: Chess = Chess::new();
+        let mut pgn = String::new();
+
+        for (i, &hash) in self.game_history[1..].iter().enumerate() {
+            let legal_moves: Vec<Move> = chess.generate_moves(chess.active_color);
+            if let Some(mv) = legal_moves.into_iter().find(|m| {
+                let mut temp_chess: Chess = chess.clone();
+                temp_chess.apply_move(m);
+                temp_chess.hash == hash
+            }) {
+                if i % 2 == 0 {
+                    pgn.push_str(&format!("{}. ", i / 2 + 1));
+                }
+                pgn.push_str(&mv.to_san(&chess));
+                pgn.push(' ');
+                chess.apply_move(&mv);
+            } else {
+                break;
+            }
+        }
+
+        pgn.trim().to_owned()
     }
 }

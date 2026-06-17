@@ -18,6 +18,90 @@ pub struct Move {
     pub flags: MoveFlags,
 }
 
+impl Move {
+    pub fn to_san(&self, board: &Chess) -> String {
+        // Castling
+        if self.flags.contains(MoveFlags::CASTLE_KINGSIDE) {
+            return "O-O".to_string();
+        }
+        if self.flags.contains(MoveFlags::CASTLE_QUEENSIDE) {
+            return "O-O-O".to_string();
+        }
+
+        let moving_piece = board.squares[self.from];
+        let mut san = String::new();
+
+        // Add piece letter (except for pawns)
+        match moving_piece {
+            Square::WhiteKnight | Square::BlackKnight => san.push('N'),
+            Square::WhiteBishop | Square::BlackBishop => san.push('B'),
+            Square::WhiteRook | Square::BlackRook => san.push('R'),
+            Square::WhiteQueen | Square::BlackQueen => san.push('Q'),
+            Square::WhiteKing | Square::BlackKing => san.push('K'),
+            _ => {}
+        }
+
+        // Disambiguation: when two pieces of the same type can move to the same
+        // square, disambiguate by file, then rank, then both.
+        if !matches!(moving_piece, Square::WhitePawn | Square::BlackPawn | Square::Empty) {
+            let all_moves = board.generate_moves(board.active_color);
+            let ambiguous: Vec<&Move> = all_moves
+                .iter()
+                .filter(|m| m.to == self.to && m.from != self.from && board.squares[m.from] == moving_piece)
+                .collect();
+
+            if !ambiguous.is_empty() {
+                let from_file = (self.from % 8) as u8;
+                let from_rank = (self.from / 8) as u8;
+                let same_file = ambiguous.iter().any(|m| m.from % 8 == self.from % 8);
+                let same_rank = ambiguous.iter().any(|m| m.from / 8 == self.from / 8);
+
+                if !same_file {
+                    san.push((b'a' + from_file) as char);
+                } else if !same_rank {
+                    san.push((b'1' + from_rank) as char);
+                } else {
+                    san.push((b'a' + from_file) as char);
+                    san.push((b'1' + from_rank) as char);
+                }
+            }
+        }
+
+        // Add capture indicator
+        if self.flags.contains(MoveFlags::CAPTURE) {
+            if matches!(moving_piece, Square::WhitePawn | Square::BlackPawn) {
+                san.push_str(&crate::utils::index_to_algebraic(self.from)[0..1]);
+            }
+            san.push('x');
+        }
+
+        // Add destination square
+        san.push_str(&crate::utils::index_to_algebraic(self.to));
+
+        // Add promotion piece
+        if self.flags.contains(MoveFlags::PROMOTION_QUEEN) {
+            san.push_str("=Q");
+        } else if self.flags.contains(MoveFlags::PROMOTION_ROOK) {
+            san.push_str("=R");
+        } else if self.flags.contains(MoveFlags::PROMOTION_BISHOP) {
+            san.push_str("=B");
+        } else if self.flags.contains(MoveFlags::PROMOTION_KNIGHT) {
+            san.push_str("=N");
+        }
+
+        // Check / checkmate suffix
+        if board.is_check_slow(self) {
+            if board.gives_checkmate(self) {
+                san.push_str("#");
+            } else {
+                san.push_str("+");
+            }
+        }
+
+        san
+    }
+}
+
 bitflags! {
     #[derive(PartialEq, Eq, Debug, Clone, Copy)]
     pub struct MoveFlags: u8 {
@@ -65,8 +149,8 @@ impl Chess {
         history.halfmove_clock = self.halfmove_clock;
         history.previous_hash = self.hash;
 
-        // Store this game's hash before the move in the game_history
-        self.game_history.push(self.hash);
+        // Track this position on the search path (for threefold repetition detection)
+        self.search_path.push(self.hash);
 
         let moving_piece: Square = self.squares[m.from];
         debug_assert!(
@@ -263,8 +347,8 @@ impl Chess {
     pub fn undo_move(&mut self, history: &History) {
         let m: Move = history.m;
 
-        // Remove the final entry from the game's history
-        let hash = self.game_history.pop().unwrap();
+        // Remove the final entry from the search path
+        let hash = self.search_path.pop().unwrap();
         // If the hashes are not equal, we are trying to undo a move that is not the last move made
         debug_assert_eq!(hash, history.previous_hash);
 

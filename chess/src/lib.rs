@@ -7,6 +7,7 @@ pub mod engine;
 pub mod movegeneration;
 pub mod movelist;
 pub mod moves;
+pub mod perft;
 pub mod square;
 pub mod utils;
 pub mod zobrist_hash;

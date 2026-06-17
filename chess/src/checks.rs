@@ -8,6 +8,7 @@ use crate::{
         pawn::{BLACK_PAWN_ATTACKS, WHITE_PAWN_ATTACKS},
         ray::{diagonal_attacks, straight_attacks},
     },
+    movelist::MoveList,
     utils::{BitBoard, bit_scan},
 };
 
@@ -29,6 +30,13 @@ impl Chess {
         let history: History = self.apply_move(m);
         let check: bool = self.is_color_in_check(self.active_color);
         self.undo_move(&history);
+        check
+    }
+    pub fn is_check_slow(&self, m: &Move) -> bool {
+        let mut clone = self.clone();
+        let history: History = clone.apply_move(m);
+        let check: bool = clone.is_color_in_check(clone.active_color);
+        clone.undo_move(&history);
         check
     }
     pub fn is_color_in_check(&self, color: Color) -> bool {
@@ -81,6 +89,17 @@ impl Chess {
 
         straight_attackers != 0
     }
+    pub fn gives_checkmate(&self, m: &Move) -> bool {
+        let mut clone = self.clone();
+        clone.apply_move(m);
+        if !clone.is_color_in_check(clone.active_color) {
+            return false;
+        }
+        let mut moves = MoveList::new();
+        clone.generate_moves_into(clone.active_color, &mut moves);
+        moves.is_empty()
+    }
+
     pub fn is_attacked_by_king(&self, target: usize, att_color: Color) -> bool {
         let att_king: BitBoard = match att_color {
             White => self.white_king,

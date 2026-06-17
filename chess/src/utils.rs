@@ -1,15 +1,6 @@
 use std::char;
 pub type BitBoard = u64;
 
-// pub fn bit_to_pos(bit: BitBoard) -> Result<String, String> {
-//     if bit == 0 {
-//         Err("No piece present!".to_string())
-//     } else {
-//         let onebit_index = bit_scan(bit);
-//         Ok(index_to_pos(onebit_index))
-//     }
-// }
-
 pub fn pos_to_bit(pos: &str) -> Result<BitBoard, String> {
     if pos.len() != 2 {
         return Err(format!(
