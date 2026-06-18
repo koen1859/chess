@@ -2,7 +2,7 @@ use crate::{
     apply_undo_move::{Move, MoveFlags},
     chess::Chess,
     color::Color::{Black, White},
-    engine::engine::{Engine, StorageFlag, StorageFlag::*},
+    engine::engine::{Bound, Bound::*, Engine, TTEntry},
     movelist::MoveList,
 };
 
@@ -32,28 +32,18 @@ impl Engine {
         }
 
         // Check if we have already analyzed this position
-        if let Some((stored_depth, stored_score, _stored_best_move, flag)) =
-            self.storage.get(&board.hash)
-        {
+        let tt_entry = self.tt.get(&board.hash);
+        if let Some(entry) = tt_entry {
             // Check if we analyzed this position on a higher depth already
-            if *stored_depth >= depth {
-                match *flag {
-                    // If the stored score is exact, return it
-                    Exact => {
-                        return *stored_score;
-                    }
-                    // If the stored score is a lower bound, and it is lower than our current lower bound, return it
-                    Lower => {
-                        if *stored_score <= alpha {
-                            return *stored_score;
-                        }
-                    }
-                    // If the stored score is an upper bound, and it is higher than our current lower bound, return it
-                    Upper => {
-                        if *stored_score >= beta {
-                            return *stored_score;
-                        }
-                    }
+            if entry.depth >= depth {
+                match entry.flag {
+                    Exact => return entry.score,
+                    Lower => alpha = alpha.max(entry.score),
+                    Upper => beta = beta.min(entry.score),
+                }
+
+                if alpha >= beta {
+                    return entry.score;
                 }
             }
         }
@@ -85,12 +75,10 @@ impl Engine {
         }
 
         // Move ordering: bring stored best move to front
-        if let Some((_stored_depth, _stored_score, stored_best_move, _flag)) =
-            self.storage.get(&board.hash)
-        {
-            if let Some(m) = stored_best_move {
+        if let Some(entry) = tt_entry {
+            if let Some(m) = entry.best_move {
                 for i in 0..moves.len() {
-                    if *moves.get(i) == *m {
+                    if *moves.get(i) == m {
                         moves.swap(0, i);
                         break;
                     }
@@ -142,15 +130,22 @@ impl Engine {
 
         // If we are not out of time, store this position with the search depth, its eval and best move
         if !self.time_up {
-            let flag: StorageFlag = if best_eval <= original_alpha {
-                Lower
-            } else if best_eval >= original_beta {
+            let flag: Bound = if best_eval <= original_alpha {
                 Upper
+            } else if best_eval >= original_beta {
+                Lower
             } else {
                 Exact
             };
-            self.storage
-                .insert(board.hash, (depth, best_eval, best_move, flag));
+            self.tt.insert(
+                board.hash,
+                TTEntry {
+                    depth: depth,
+                    score: best_eval,
+                    best_move: best_move,
+                    flag: flag,
+                },
+            );
         }
 
         best_eval

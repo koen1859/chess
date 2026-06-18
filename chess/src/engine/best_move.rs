@@ -10,11 +10,11 @@ const MAX_DEPTH: u8 = 50;
 
 impl Engine {
     pub fn get_best_move(&mut self, board: &mut Chess, depth: u8) -> Option<Move> {
-        let mut movelist = MoveList::new();
-        board.generate_moves_into(board.active_color, &mut movelist);
+        let mut moves = MoveList::new();
+        board.generate_moves_into(board.active_color, &mut moves);
 
         // Game is over (checkmate or stalemate)
-        if movelist.is_empty() {
+        if moves.is_empty() {
             return None;
         }
 
@@ -23,13 +23,25 @@ impl Engine {
             return None;
         }
 
+        // Move ordering: bring stored best move to front
+        if let Some(entry) = self.tt.get(&board.hash) {
+            if let Some(m) = entry.best_move {
+                for i in 0..moves.len() {
+                    if *moves.get(i) == m {
+                        moves.swap(0, i);
+                        break;
+                    }
+                }
+            }
+        }
+
         // Initialize the search
         let mut best_move: Option<Move> = None;
         let is_white: bool = board.active_color == White;
         let mut best_eval: i32 = if is_white { i32::MIN } else { i32::MAX };
 
-        for i in 0..movelist.len() {
-            let m: &Move = movelist.get(i);
+        for i in 0..moves.len() {
+            let m: &Move = moves.get(i);
             let history = board.apply_move(m);
 
             // Find out what the opponent can achieve if we play this move
@@ -61,7 +73,7 @@ impl Engine {
         self.deadline = Some(start + Duration::from_millis(max_ms));
         self.time_up = false;
         self.nodes = 0;
-        self.storage.clear();
+        self.tt.clear();
         let mut best_move: Option<Move> = None;
 
         // Iterative deepening search
@@ -83,8 +95,7 @@ impl Engine {
 #[cfg(test)]
 mod tests {
     use crate::{
-        apply_undo_move::uci_to_move, chess::Chess, engine::engine::Engine,
-        movelist::MoveList,
+        apply_undo_move::uci_to_move, chess::Chess, engine::engine::Engine, movelist::MoveList,
     };
     use instant::Instant;
 

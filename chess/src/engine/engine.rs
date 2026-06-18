@@ -3,16 +3,25 @@ use instant::Instant;
 use std::collections::HashMap;
 
 #[derive(Clone)]
-pub enum StorageFlag {
+pub enum Bound {
     Exact,
     Lower,
     Upper,
 }
 
 #[derive(Clone)]
+// Entry to the transposition table
+pub struct TTEntry {
+    pub depth: u8,
+    pub score: i32,
+    pub flag: Bound,
+    pub best_move: Option<Move>,
+}
+
+#[derive(Clone)]
 pub struct Engine {
     // Map hash of a position to the depth the position was analyzed on, the score and the best move given this position
-    pub storage: HashMap<u64, (u8, i32, Option<Move>, StorageFlag)>,
+    pub tt: HashMap<u64, TTEntry>,
 
     pub deadline: Option<Instant>,
     pub time_up: bool,
@@ -22,7 +31,7 @@ pub struct Engine {
 impl Engine {
     pub fn new() -> Self {
         Engine {
-            storage: HashMap::with_capacity(1_000_000),
+            tt: HashMap::with_capacity(1_000_000),
             deadline: None,
             time_up: false,
             nodes: 0,
