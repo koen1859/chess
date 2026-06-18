@@ -21,6 +21,16 @@ impl Engine {
             return board.evaluate();
         }
 
+        // Draw detection: 50-move rule
+        if board.halfmove_clock >= 100 {
+            return 0;
+        }
+
+        // Draw detection: threefold repetition
+        if board.history.is_repetition(board) {
+            return 0;
+        }
+
         // Check if we have already analyzed this position
         if let Some((stored_depth, stored_score, _stored_best_move, flag)) =
             self.storage.get(&board.hash)
@@ -63,11 +73,12 @@ impl Engine {
         // Checkmate and Stalemate
         if moves.is_empty() {
             if board.is_color_in_check(board.active_color) {
-                return if board.active_color == White {
-                    -100000 + depth as i32
+                let score = if board.active_color == White {
+                    -100000 - depth as i32
                 } else {
-                    100000 - depth as i32
+                    100000 + depth as i32
                 };
+                return score;
             } else {
                 return 0;
             }
