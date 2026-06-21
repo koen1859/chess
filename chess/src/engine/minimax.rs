@@ -2,7 +2,10 @@ use crate::{
     apply_undo_move::{Move, MoveFlags},
     chess::Chess,
     color::Color::{Black, White},
-    engine::engine::{Bound, Bound::*, Engine, TTEntry},
+    engine::{
+        engine::{Bound, Bound::*, Engine},
+        move_ordering::sort_moves_mvv_lva,
+    },
     movelist::MoveList,
 };
 
@@ -32,7 +35,7 @@ impl Engine {
         }
 
         // Check if we have already analyzed this position
-        let tt_entry = self.tt.get(&board.hash);
+        let tt_entry = self.tt.probe(board.hash);
         if let Some(entry) = tt_entry {
             // Check if we analyzed this position on a higher depth already
             if entry.depth >= depth {
@@ -59,6 +62,7 @@ impl Engine {
         // Generate moves
         let mut moves = MoveList::new();
         board.generate_moves_into(board.active_color, &mut moves);
+        sort_moves_mvv_lva(&mut moves, board);
 
         // Checkmate and Stalemate
         if moves.is_empty() {
@@ -137,15 +141,8 @@ impl Engine {
             } else {
                 Exact
             };
-            self.tt.insert(
-                board.hash,
-                TTEntry {
-                    depth: depth,
-                    score: best_eval,
-                    best_move: best_move,
-                    flag: flag,
-                },
-            );
+            self.tt
+                .insert(board.hash, depth, best_eval, flag, best_move);
         }
 
         best_eval
@@ -187,6 +184,7 @@ impl Engine {
 
         let mut moves = MoveList::new();
         board.generate_moves_into(board.active_color, &mut moves);
+        sort_moves_mvv_lva(&mut moves, board);
         let mut best_eval: i32 = stand_pat;
 
         match board.active_color {

@@ -11,7 +11,7 @@ use crate::{
         },
         ray::{diagonal_attacks, straight_attacks},
     },
-    utils::{bit_scan, count_ones, BitBoard, FILES},
+    utils::{BitBoard, FILES, bit_scan, count_ones},
 };
 
 const D4: usize = 27;
@@ -35,7 +35,7 @@ const PAWN_TABLE: [i32; 64] = [
 const KNIGHT_TABLE: [i32; 64] = [
     -50, -40, -30, -30, -30, -30, -40, -50, // 1st
     -40, -20, 0, 5, 5, 0, -20, -40, // 2nd
-    -3, 0, 10, 15, 15, 10, 0, -30, // 3rd
+    -30, 0, 10, 15, 15, 10, 0, -30, // 3rd
     -30, 5, 15, 20, 20, 15, 5, -30, // 4th
     -30, 0, 15, 20, 20, 15, 0, -30, // 5th
     -30, 5, 10, 15, 15, 10, 5, -30, // 6th
@@ -90,12 +90,12 @@ const MG_KING_TABLE: [i32; 64] = [
 const EG_KING_TABLE: [i32; 64] = [
     -50, -40, -30, -20, -20, -30, -40, -50, // 1st
     -30, -20, -10, 0, 0, -10, -20, -30, // 2nd
-    -30, -10, 20, 30, 30, 20, -10, -10, -30, // 3rd
+    -30, -10, 20, 30, 30, 20, -10, -30, // 3rd
     -30, -10, 30, 40, 40, 30, -10, -30, // 4th
-    -30, -10, 30, 40, 40, 30, 30, -10, -30, // 5th
+    -30, -10, 30, 40, 40, 30, -10, -30, // 5th
     -30, -10, 20, 30, 30, 20, -10, -30, // 6th
     -30, -30, 0, 0, 0, 0, -30, -30, // 7th
-    -50, -30, -30, -30, -30, -50, // 8th
+    -50, -30, -30, -30, -30, -30, -30, -50, // 8th
 ];
 
 impl Chess {
@@ -177,12 +177,13 @@ impl Chess {
     }
     // Game phase (0-24)
     fn get_game_phase(&self) -> i32 {
-        i32::max(
+        i32::clamp(
             count_ones(self.white_knights | self.black_knights)
                 + count_ones(self.white_bishops | self.black_bishops)
                 + 2 * count_ones(self.white_rooks | self.black_rooks)
                 + 4 * count_ones(self.white_queens | self.black_queens),
-            12,
+            0,
+            24,
         )
     }
     pub fn material_score(&self) -> i32 {

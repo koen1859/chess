@@ -53,14 +53,6 @@ impl Chess {
             self.undo_move(&history);
         }
         moves.truncate(write);
-
-        // Sort by victim value - attacker value (MVV-LVA)
-        let squares = &self.squares;
-        moves.sort_by(|a, b| {
-            let score_a: i32 = squares[a.to].value() - squares[a.from].value();
-            let score_b: i32 = squares[b.to].value() - squares[b.from].value();
-            score_b.cmp(&score_a)
-        });
     }
 
     // Public API for UI/tests - returns Vec (heap alloc, not hot path)
