@@ -3,6 +3,9 @@ use instant::Instant;
 
 const TT_BUCKETS: usize = 1_048_576; // 2**20 = 16MB
 const BUCKET_SIZE: usize = 4;
+pub const MAX_PLY: usize = 100;
+pub const VALUE_MAX: i32 = 200_000;
+pub const VALUE_MIN: i32 = -200_000;
 
 #[derive(Clone, Copy)]
 pub enum Bound {
@@ -92,6 +95,18 @@ impl TranspositionTable {
     }
 }
 
+#[derive(Clone, Default)]
+pub struct SearchInfo {
+    pub depth: u8,
+    pub score: i32,
+    pub nodes: u64,
+    pub time_ms: u128,
+    pub nps: u64,
+    pub best_move_uci: String,
+    pub is_mate: bool,
+    pub mate_in: i32,
+}
+
 #[derive(Clone)]
 pub struct Engine {
     // Map hash of a position to the depth the position was analyzed on, the score and the best move given this position
@@ -100,6 +115,13 @@ pub struct Engine {
     pub deadline: Option<Instant>,
     pub time_up: bool,
     pub nodes: u64,
+    pub best_score: i32,
+
+    // Killer moves: two quiet moves per ply that caused beta cutoffs
+    pub killer_moves: [[Option<(usize, usize)>; 2]; MAX_PLY],
+
+    // History heuristic: [from_sq][to_sq] success score for quiet moves
+    pub history: Box<[[i32; 64]; 64]>,
 }
 
 impl Engine {
@@ -109,6 +131,14 @@ impl Engine {
             deadline: None,
             time_up: false,
             nodes: 0,
+            best_score: 0,
+            killer_moves: [[None; 2]; MAX_PLY],
+            history: Box::new([[0i32; 64]; 64]),
         }
+    }
+
+    pub fn clear_search_stats(&mut self) {
+        self.killer_moves = [[None; 2]; MAX_PLY];
+        self.history = Box::new([[0i32; 64]; 64]);
     }
 }

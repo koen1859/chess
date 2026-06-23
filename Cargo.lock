@@ -64,6 +64,7 @@ version = "0.1.0"
 dependencies = [
  "chess",
  "gloo-timers 0.4.0",
+ "instant",
  "rand",
  "wasm-bindgen-futures",
  "web-sys",

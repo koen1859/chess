@@ -1,16 +1,24 @@
 use crate::{
     apply_undo_move::{Move, MoveFlags},
     chess::Chess,
-    color::Color::{Black, White},
     engine::{
-        engine::{Bound, Bound::*, Engine},
-        move_ordering::sort_moves_mvv_lva,
+        engine::{Bound, Engine, MAX_PLY, VALUE_MIN},
+        move_ordering::order_moves,
     },
     movelist::MoveList,
 };
+use crate::zobrist_hash::{black_to_move_hash, en_passant_hash, get_en_passant_index};
 
 impl Engine {
-    pub fn minimax(&mut self, board: &mut Chess, depth: u8, mut alpha: i32, mut beta: i32) -> i32 {
+    pub fn negamax(
+        &mut self,
+        board: &mut Chess,
+        depth: u8,
+        ply: u8,
+        mut alpha: i32,
+        mut beta: i32,
+        can_null: bool,
+    ) -> i32 {
         self.nodes += 1;
         if self.nodes % 2048 == 0 {
             if let Some(deadline) = self.deadline {
@@ -19,127 +27,178 @@ impl Engine {
                 }
             }
         }
-
         if self.time_up {
-            return board.evaluate();
+            return board.evaluate_stm();
         }
 
-        // Draw detection: 50-move rule
         if board.halfmove_clock >= 100 {
             return 0;
         }
-
-        // Draw detection: threefold repetition
         if board.history.is_repetition(board) {
             return 0;
         }
 
-        // Check if we have already analyzed this position
         let tt_entry = self.tt.probe(board.hash);
+        let tt_best_move = tt_entry.and_then(|e| e.best_move);
+
         if let Some(entry) = tt_entry {
-            // Check if we analyzed this position on a higher depth already
             if entry.depth >= depth {
                 match entry.flag {
-                    Exact => return entry.score,
-                    Lower => alpha = alpha.max(entry.score),
-                    Upper => beta = beta.min(entry.score),
+                    Bound::Exact => return entry.score,
+                    Bound::Lower => alpha = alpha.max(entry.score),
+                    Bound::Upper => beta = beta.min(entry.score),
                 }
-
                 if alpha >= beta {
                     return entry.score;
                 }
             }
         }
 
-        // Check extension: at depth 0, if king is in check, search 1 ply deeper
         if depth == 0 {
             if board.is_color_in_check(board.active_color) {
-                return self.minimax(board, 1, alpha, beta);
+                return self.negamax(board, 1, ply + 1, alpha, beta, false);
             }
             return self.quiescence(board, alpha, beta);
         }
 
-        // Generate moves
-        let mut moves = MoveList::new();
-        board.generate_moves_into(board.active_color, &mut moves);
-        sort_moves_mvv_lva(&mut moves, board);
+        // Null move pruning
+        if can_null && depth >= 3 && !board.is_color_in_check(board.active_color) {
+            let old_en_passent = board.en_passent;
+            let old_halfmove = board.halfmove_clock;
 
-        // Checkmate and Stalemate
-        if moves.is_empty() {
-            if board.is_color_in_check(board.active_color) {
-                let score = if board.active_color == White {
-                    -100000 - depth as i32
-                } else {
-                    100000 + depth as i32
-                };
-                return score;
-            } else {
-                return 0;
+            board.hash ^= en_passant_hash(get_en_passant_index(board.en_passent));
+            board.en_passent = 0;
+            board.hash ^= en_passant_hash(8);
+            board.active_color = board.active_color.other();
+            board.hash ^= black_to_move_hash();
+
+            let null_alpha = beta.wrapping_neg();
+            let null_beta = -(beta.wrapping_sub(1));
+            let eval = -self.negamax(
+                board,
+                depth.saturating_sub(3),
+                ply + 1,
+                null_alpha,
+                null_beta,
+                false,
+            );
+
+            board.active_color = board.active_color.other();
+            board.hash ^= black_to_move_hash();
+            board.en_passent = old_en_passent;
+            board.hash ^= en_passant_hash(8);
+            board.hash ^= en_passant_hash(get_en_passant_index(old_en_passent));
+            board.halfmove_clock = old_halfmove;
+
+            if eval >= beta {
+                return beta;
             }
         }
 
-        // Move ordering: bring stored best move to front
-        if let Some(entry) = tt_entry {
-            if let Some(m) = entry.best_move {
-                for i in 0..moves.len() {
-                    if *moves.get(i) == m {
-                        moves.swap(0, i);
-                        break;
-                    }
-                }
+        let mut moves = MoveList::new();
+        board.generate_moves_into(board.active_color, &mut moves);
+
+        let (killer1, killer2) = if (ply as usize) < MAX_PLY {
+            (
+                self.killer_moves[ply as usize][0],
+                self.killer_moves[ply as usize][1],
+            )
+        } else {
+            (None, None)
+        };
+        order_moves(
+            &mut moves,
+            board,
+            tt_best_move,
+            killer1,
+            killer2,
+            &self.history,
+        );
+
+        if moves.is_empty() {
+            if board.is_color_in_check(board.active_color) {
+                return -100000 - depth as i32;
             }
+            return 0;
         }
 
         let original_alpha = alpha;
-        let original_beta = beta;
-        let mut best_eval: i32 = if board.active_color == White {
-            i32::MIN
-        } else {
-            i32::MAX
-        };
+        let mut best_eval = VALUE_MIN;
         let mut best_move: Option<Move> = None;
 
         for i in 0..moves.len() {
-            let m: &Move = moves.get(i);
-            let history = board.apply_move(m);
-            let eval: i32 = self.minimax(board, depth - 1, alpha, beta);
-            board.undo_move(&history);
+            let m = *moves.get(i);
+            let is_capture = m.flags.contains(MoveFlags::CAPTURE);
+
+            let reduction = if i >= 3 && depth >= 3 && !is_capture {
+                ((i - 3) as u8).min(3)
+            } else {
+                0
+            };
+
+            let hist = board.apply_move(&m);
+
+            let eval = if i == 0 {
+                -self.negamax(board, depth - 1, ply + 1, -beta, -alpha, true)
+            } else if reduction > 0 {
+                let rd = depth.saturating_sub(reduction);
+                let nd = rd.saturating_sub(1);
+                let score =
+                    -self.negamax(board, nd, ply + 1, -alpha - 1, -alpha, true);
+                if score > alpha {
+                    -self.negamax(board, depth - 1, ply + 1, -beta, -alpha, true)
+                } else {
+                    score
+                }
+            } else {
+                let score =
+                    -self.negamax(board, depth - 1, ply + 1, -alpha - 1, -alpha, true);
+                if score > alpha && score < beta {
+                    -self.negamax(board, depth - 1, ply + 1, -beta, -alpha, true)
+                } else {
+                    score
+                }
+            };
+
+            board.undo_move(&hist);
 
             if self.time_up {
-                return if best_eval == i32::MIN || best_eval == i32::MAX {
-                    board.evaluate()
+                return if best_move.is_none() {
+                    board.evaluate_stm()
                 } else {
                     best_eval
                 };
             }
 
-            if board.active_color == White {
-                if eval > best_eval {
-                    best_eval = eval;
-                    best_move = Some(*m);
-                    alpha = alpha.max(best_eval);
-                }
-            } else {
-                if eval < best_eval {
-                    best_eval = eval;
-                    best_move = Some(*m);
-                    beta = beta.min(best_eval);
-                }
+            if eval > best_eval {
+                best_eval = eval;
+                best_move = Some(m);
             }
 
-            if beta <= alpha {
+            if eval > alpha {
+                alpha = eval;
+            }
+
+            if alpha >= beta {
+                if !is_capture && (ply as usize) < MAX_PLY {
+                    if self.killer_moves[ply as usize][0] != Some((m.from, m.to)) {
+                        self.killer_moves[ply as usize][1] =
+                            self.killer_moves[ply as usize][0];
+                        self.killer_moves[ply as usize][0] = Some((m.from, m.to));
+                    }
+                    self.history[m.from][m.to] += depth as i32 * depth as i32;
+                }
                 break;
             }
         }
 
-        // If we are not out of time, store this position with the search depth, its eval and best move
         if !self.time_up {
-            let flag: Bound = if best_eval <= original_alpha {
-                Upper
-            } else if best_eval >= original_beta {
-                Lower
+            let flag = if best_eval <= original_alpha {
+                Bound::Upper
+            } else if best_eval >= beta {
+                Bound::Lower
             } else {
-                Exact
+                Bound::Exact
             };
             self.tt
                 .insert(board.hash, depth, best_eval, flag, best_move);
@@ -148,7 +207,7 @@ impl Engine {
         best_eval
     }
 
-    fn quiescence(&mut self, board: &mut Chess, mut alpha: i32, mut beta: i32) -> i32 {
+    fn quiescence(&mut self, board: &mut Chess, mut alpha: i32, beta: i32) -> i32 {
         self.nodes += 1;
         if self.nodes % 2048 == 0 {
             if let Some(deadline) = self.deadline {
@@ -158,79 +217,48 @@ impl Engine {
             }
         }
 
-        let stand_pat: i32 = board.evaluate();
+        let stand_pat = board.evaluate_stm();
 
         if self.time_up {
             return stand_pat;
         }
-        match board.active_color {
-            White => {
-                if stand_pat >= beta {
-                    return beta;
-                }
-                if stand_pat > alpha {
-                    alpha = stand_pat;
-                }
-            }
-            Black => {
-                if stand_pat <= alpha {
-                    return alpha;
-                }
-                if stand_pat < beta {
-                    beta = stand_pat;
-                }
-            }
+
+        if stand_pat >= beta {
+            return beta;
+        }
+        if stand_pat > alpha {
+            alpha = stand_pat;
         }
 
         let mut moves = MoveList::new();
         board.generate_moves_into(board.active_color, &mut moves);
-        sort_moves_mvv_lva(&mut moves, board);
-        let mut best_eval: i32 = stand_pat;
+        order_moves(&mut moves, board, None, None, None, &self.history);
 
-        match board.active_color {
-            White => {
-                for i in 0..moves.len() {
-                    let m: &Move = moves.get(i);
-                    if !m.flags.contains(MoveFlags::CAPTURE) && !board.is_check(m) {
-                        continue;
-                    }
-                    let history = board.apply_move(m);
-                    let score: i32 = self.quiescence(board, alpha, beta);
-                    board.undo_move(&history);
+        let mut best_eval = stand_pat;
 
-                    if self.time_up {
-                        return best_eval;
-                    }
-
-                    best_eval = best_eval.max(score);
-                    alpha = alpha.max(best_eval);
-
-                    if beta <= alpha {
-                        break;
-                    }
-                }
+        for i in 0..moves.len() {
+            let m = *moves.get(i);
+            if !m.flags.contains(MoveFlags::CAPTURE) {
+                continue;
             }
-            Black => {
-                for i in 0..moves.len() {
-                    let m: &Move = moves.get(i);
-                    if !m.flags.contains(MoveFlags::CAPTURE) && !board.is_check(m) {
-                        continue;
-                    }
-                    let history = board.apply_move(m);
-                    let score: i32 = self.quiescence(board, alpha, beta);
-                    board.undo_move(&history);
 
-                    if self.time_up {
-                        return best_eval;
-                    }
+            let hist = board.apply_move(&m);
+            let score = -self.quiescence(board, -beta, -alpha);
+            board.undo_move(&hist);
 
-                    best_eval = best_eval.min(score);
-                    beta = beta.min(best_eval);
+            if self.time_up {
+                return best_eval;
+            }
 
-                    if beta <= alpha {
-                        break;
-                    }
-                }
+            if score > best_eval {
+                best_eval = score;
+            }
+            if score > alpha {
+                alpha = score;
+            }
+
+            if alpha >= beta {
+                break;
             }
         }
 

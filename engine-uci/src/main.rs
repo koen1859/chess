@@ -1,10 +1,12 @@
 use std::io::{self, BufRead, Write};
+use std::time::Instant;
 
 use chess::{
     apply_undo_move::{move_to_uci, uci_to_move},
     chess::Chess,
     color::Color,
-    engine::engine::Engine,
+    engine::engine::{Engine, SearchInfo},
+    opening_book,
 };
 
 struct UciState {
@@ -34,7 +36,11 @@ impl UciState {
     }
 
     fn go_depth(&mut self, depth: u8) -> Option<String> {
+        if let Some(book_move) = opening_book::get_book_move(self.board.hash) {
+            return Some(move_to_uci(&book_move));
+        }
         let mut best_move = None;
+        let start = Instant::now();
         let mut current_depth = 1u8;
         while current_depth <= depth {
             // Set a generous deadline so time_up won't trigger
@@ -44,7 +50,26 @@ impl UciState {
             self.engine.nodes = 0;
 
             if let Some(m) = self.engine.get_best_move(&mut self.board, current_depth) {
-                best_move = Some(move_to_uci(&m));
+                let uci_move = move_to_uci(&m);
+                best_move = Some(uci_move.clone());
+
+                let elapsed = start.elapsed().as_millis();
+                let nps = if elapsed > 0 {
+                    (self.engine.nodes as u128 * 1000 / elapsed) as u64
+                } else {
+                    0
+                };
+
+                print_uci_info(SearchInfo {
+                    depth: current_depth,
+                    score: self.engine.best_score,
+                    nodes: self.engine.nodes,
+                    time_ms: elapsed,
+                    nps,
+                    best_move_uci: uci_move,
+                    is_mate: self.engine.best_score.abs() > 50000,
+                    mate_in: 0,
+                });
             } else {
                 break;
             }
@@ -54,10 +79,25 @@ impl UciState {
     }
 
     fn go_movetime(&mut self, ms: u64) -> Option<String> {
+        if let Some(book_move) = opening_book::get_book_move(self.board.hash) {
+            return Some(move_to_uci(&book_move));
+        }
         self.engine
-            .get_best_move_in_time(&mut self.board, ms)
+            .get_best_move_in_time(&mut self.board, ms, Some(&mut print_uci_info))
             .map(|m| move_to_uci(&m))
     }
+}
+
+fn print_uci_info(info: SearchInfo) {
+    let score_str = if info.is_mate {
+        format!("score mate {}", info.mate_in)
+    } else {
+        format!("score cp {}", info.score)
+    };
+    println!(
+        "info depth {} {} nodes {} nps {} time {} pv {}",
+        info.depth, score_str, info.nodes, info.nps, info.time_ms, info.best_move_uci
+    );
 }
 
 fn main() {
@@ -78,12 +118,13 @@ fn main() {
         let parts: Vec<&str> = line.split_whitespace().collect();
         match parts[0] {
             "uci" => {
-                println!("id name v0.9.0");
+                println!("id name v0.12.0");
                 println!("id author KoenStevens");
                 println!("uciok");
             }
             "debug" => {}
             "isready" => {
+                opening_book::init();
                 println!("readyok");
             }
             "setoption" => {}

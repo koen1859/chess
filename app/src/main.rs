@@ -5,10 +5,19 @@ use crate::{
     game::{DebugBitboard, GameState},
     utils::{is_own_piece, piece_svg},
 };
-use chess::{apply_undo_move::MoveFlags, color::Color, square::Square};
+use chess::{
+    apply_undo_move::{move_to_uci, MoveFlags},
+    color::Color,
+    engine::best_move::MAX_DEPTH,
+    engine::engine::SearchInfo,
+    opening_book,
+    square::Square,
+};
 use gloo_timers::future::TimeoutFuture;
+use instant::Instant;
 use std::cell::RefCell;
 use std::rc::Rc;
+use std::time::Duration;
 use wasm_bindgen_futures::spawn_local;
 use wasm_bindgen_futures::JsFuture;
 use web_sys::HtmlInputElement;
@@ -43,16 +52,69 @@ fn app() -> Html {
                     spawn_local(async move {
                         TimeoutFuture::new(0).await;
                         let mut new_state = (*game_state).clone();
-                        let think_time = new_state.engine_think_time_ms;
-                        if let Some(best_move) = new_state
-                            .engine
-                            .get_best_move_in_time(&mut new_state.chess, think_time)
+
+                        // Check opening book first
+                        if let Some(book_move) =
+                            opening_book::get_book_move(new_state.chess.hash)
                         {
-                            new_state.chess.apply_move(&best_move);
-                            new_state.last_move = Some((best_move.from, best_move.to));
+                            new_state.chess.apply_move(&book_move);
+                            new_state.last_move = Some((book_move.from, book_move.to));
                             new_state.push_position();
+                            new_state.engine.deadline = None;
+                            new_state.search_info = None;
                             game_state.set(new_state);
+                            *is_searching.borrow_mut() = false;
+                            return;
                         }
+
+                        let think_time = new_state.engine_think_time_ms;
+
+                        let start = Instant::now();
+                        new_state.engine.deadline = Some(start + Duration::from_millis(think_time));
+                        new_state.engine.time_up = false;
+                        new_state.engine.nodes = 0;
+                        new_state.engine.tt.new_generation();
+
+                        let mut best_move = None;
+                        let mut depth: u8 = 1;
+                        while depth <= MAX_DEPTH {
+                            let m = new_state.engine.get_best_move(&mut new_state.chess, depth);
+                            if new_state.engine.time_up {
+                                break;
+                            }
+                            best_move = m;
+
+                            let elapsed = start.elapsed().as_millis();
+                            let nps = if elapsed > 0 {
+                                (new_state.engine.nodes as u128 * 1000 / elapsed) as u64
+                            } else {
+                                0
+                            };
+
+                            new_state.search_info = Some(SearchInfo {
+                                depth,
+                                score: new_state.engine.best_score,
+                                nodes: new_state.engine.nodes,
+                                time_ms: elapsed,
+                                nps,
+                                best_move_uci: m.map(|m| move_to_uci(&m)).unwrap_or_default(),
+                                is_mate: new_state.engine.best_score.abs() > 50000,
+                                mate_in: 0,
+                            });
+                            game_state.set(new_state.clone());
+
+                            depth += 1;
+                            TimeoutFuture::new(0).await;
+                        }
+
+                        if let Some(m) = best_move {
+                            new_state.chess.apply_move(&m);
+                            new_state.last_move = Some((m.from, m.to));
+                            new_state.push_position();
+                        }
+                        new_state.engine.deadline = None;
+                        new_state.search_info = None;
+                        game_state.set(new_state);
                         *is_searching.borrow_mut() = false;
                     });
                 }
@@ -239,6 +301,30 @@ fn app() -> Html {
         html! {}
     };
 
+    let search_info_html = match &game_state.search_info {
+        Some(info) => {
+            let score_str = if info.is_mate {
+                format!("Mate in {}", info.mate_in.abs())
+            } else {
+                let sign = if info.score > 0 { "+" } else { "" };
+                format!("{}{}", sign, info.score)
+            };
+            html! {
+                <div class="search-info">
+                    <div class="search-stat">{ format!("Depth: {}", info.depth) }</div>
+                    <div class="search-stat">{ format!("Score: {}", score_str) }</div>
+                    <div class="search-stat">{ format!("Nodes: {}", info.nodes) }</div>
+                    <div class="search-stat">{ format!("NPS: {}", info.nps) }</div>
+                    <div class="search-stat">{ format!("Time: {} ms", info.time_ms) }</div>
+                    <div class="search-stat">{ format!("Best: {}", info.best_move_uci) }</div>
+                </div>
+            }
+        }
+        None => {
+            html! { <div class="search-info search-info-idle">{ "Idle" }</div> }
+        }
+    };
+
     let menu = html! {
         <div class="menu">
             <div class="menu-section">
@@ -254,6 +340,10 @@ fn app() -> Html {
                     value={game_state.engine_think_time_ms.to_string()}
                     oninput={on_think_time_input}
                 />
+            </div>
+            <div class="menu-section">
+                <div class="menu-label">{ "Search info:" }</div>
+                { search_info_html }
             </div>
             <div class="menu-section">
                 <div class="menu-label">{ "Debug bitboards:" }</div>

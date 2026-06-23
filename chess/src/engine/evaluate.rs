@@ -99,7 +99,7 @@ const EG_KING_TABLE: [i32; 64] = [
 ];
 
 impl Chess {
-    fn evaluate_passed_pawns(&self) -> i32 {
+    fn count_passed_pawns(&self) -> i32 {
         let mut score = 0;
         let mut white_passed = 0;
         let mut black_passed = 0;
@@ -122,9 +122,19 @@ impl Chess {
             black_pawns &= black_pawns - 1;
         }
 
-        score += count_ones(white_passed) * 50;
-        score -= count_ones(black_passed) * 50;
+        score += count_ones(white_passed);
+        score -= count_ones(black_passed);
         score
+    }
+
+    // Returns positive if better for the side to move, negative if worse
+    pub fn evaluate_stm(&self) -> i32 {
+        let score = self.evaluate();
+        if self.active_color == Color::White {
+            score
+        } else {
+            -score
+        }
     }
 
     // Returns negative if black is better and positive if white is better
@@ -153,15 +163,15 @@ impl Chess {
         score += self.mobility_score() / 2;
 
         // Development bonus in opening
-        if phase > 18 {
-            score -= 10 * count_ones(self.white_knights & (1 << 1 | 1 << 6)) as i32;
-            score -= 10 * count_ones(self.white_bishops & (1 << 2 | 1 << 5)) as i32;
-            score += 10 * count_ones(self.black_knights & (1 << 57 | 1 << 62)) as i32;
-            score += 10 * count_ones(self.black_bishops & (1 << 58 | 1 << 61)) as i32;
-
-            score += 20 * count_ones(self.white_pawns & CENTER) as i32;
-            score -= 20 * count_ones(self.black_pawns & CENTER) as i32;
-        }
+        // if phase > 18 {
+        //     score -= 10 * count_ones(self.white_knights & (1 << 1 | 1 << 6)) as i32;
+        //     score -= 10 * count_ones(self.white_bishops & (1 << 2 | 1 << 5)) as i32;
+        //     score += 10 * count_ones(self.black_knights & (1 << 57 | 1 << 62)) as i32;
+        //     score += 10 * count_ones(self.black_bishops & (1 << 58 | 1 << 61)) as i32;
+        //
+        //     score += 20 * count_ones(self.white_pawns & CENTER) as i32;
+        //     score -= 20 * count_ones(self.black_pawns & CENTER) as i32;
+        // }
 
         // bonus for bishop pair
         if count_ones(self.white_bishops) >= 2 {
@@ -171,7 +181,7 @@ impl Chess {
             score -= 30;
         }
 
-        score += self.evaluate_passed_pawns();
+        score += self.count_passed_pawns() * 50;
 
         score
     }
@@ -203,12 +213,7 @@ impl Chess {
         let black_count = self.count_pseudolegal_moves(Black);
         white_count - black_count
     }
-
     fn count_pseudolegal_moves(&self, color: Color) -> i32 {
-        if self.halfmove_clock >= 100 {
-            return 0;
-        }
-
         let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) = match color {
             White => (
                 self.white_rooks,
@@ -245,8 +250,8 @@ impl Chess {
         count += count_attacks(queens, own_occ, |sq| {
             straight_attacks(sq, all_occ) | diagonal_attacks(sq, all_occ)
         });
-        // King
-        count += count_attacks(king, own_occ, |sq| KING_MOVES[sq]);
+        // King: Negative, helping with king safety
+        count -= count_attacks(king, own_occ, |sq| KING_MOVES[sq]);
         // Pawns
         count += count_pawn_moves(pawns, own_occ, enemy_occ, color);
         // En passant

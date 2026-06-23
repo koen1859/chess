@@ -289,3 +289,29 @@ button:hover {
     padding: 0.35rem 1rem;
     font-size: 0.85rem;
 }
+
+/* Search info display */
+.search-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-info-idle {
+    color: #666;
+    font-size: 0.85rem;
+    justify-content: center;
+}
+
+.search-stat {
+    font-size: 0.8rem;
+    font-family: "Courier New", monospace;
+    color: #76b900;
+    white-space: nowrap;
+}

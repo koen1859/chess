@@ -2,7 +2,7 @@ use chess::{
     apply_undo_move::Move,
     chess::Chess,
     color::Color::{self, Black, White},
-    engine::engine::Engine,
+    engine::engine::{Engine, SearchInfo},
     utils::count_ones,
 };
 
@@ -90,6 +90,7 @@ pub struct GameState {
     pub engine_think_time_ms: u64,
     pub debug_overlay: Option<DebugBitboard>,
     pub last_move: Option<(usize, usize)>,
+    pub search_info: Option<SearchInfo>,
 }
 
 impl GameState {
@@ -105,6 +106,7 @@ impl GameState {
             engine_think_time_ms: DEFAULT_ENGINE_THINK_TIME_MS,
             debug_overlay: None,
             last_move: None,
+            search_info: None,
         }
     }
 

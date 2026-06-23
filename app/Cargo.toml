@@ -6,6 +6,7 @@ edition.workspace = true
 [dependencies]
 chess = { path = "../chess" }
 gloo-timers = {version = "0.4.0", features = ["futures"]}
+instant = { version = "0.1", features = ["wasm-bindgen"] }
 rand = "0.10.1"
 wasm-bindgen-futures = "=0.4.71"
 web-sys = { version = "=0.3.98", features = ["Clipboard", "Window", "Navigator"] }
