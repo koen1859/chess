@@ -11,7 +11,7 @@ use crate::{
         },
         ray::{diagonal_attacks, straight_attacks},
     },
-    utils::{BitBoard, FILES, bit_scan, count_ones},
+    utils::{bit_scan, count_ones, BitBoard, FILES},
 };
 
 const D4: usize = 27;
@@ -163,15 +163,15 @@ impl Chess {
         score += self.mobility_score() / 2;
 
         // Development bonus in opening
-        // if phase > 18 {
-        //     score -= 10 * count_ones(self.white_knights & (1 << 1 | 1 << 6)) as i32;
-        //     score -= 10 * count_ones(self.white_bishops & (1 << 2 | 1 << 5)) as i32;
-        //     score += 10 * count_ones(self.black_knights & (1 << 57 | 1 << 62)) as i32;
-        //     score += 10 * count_ones(self.black_bishops & (1 << 58 | 1 << 61)) as i32;
-        //
-        //     score += 20 * count_ones(self.white_pawns & CENTER) as i32;
-        //     score -= 20 * count_ones(self.black_pawns & CENTER) as i32;
-        // }
+        if phase > 18 {
+            score -= 10 * count_ones(self.white_knights & (1 << 1 | 1 << 6)) as i32;
+            score -= 10 * count_ones(self.white_bishops & (1 << 2 | 1 << 5)) as i32;
+            score += 10 * count_ones(self.black_knights & (1 << 57 | 1 << 62)) as i32;
+            score += 10 * count_ones(self.black_bishops & (1 << 58 | 1 << 61)) as i32;
+
+            score += 20 * count_ones(self.white_pawns & CENTER) as i32;
+            score -= 20 * count_ones(self.black_pawns & CENTER) as i32;
+        }
 
         // bonus for bishop pair
         if count_ones(self.white_bishops) >= 2 {
