@@ -2,3 +2,4 @@
 .direnv/
 dist/
 positions/*.pgn
+server/target-wasm-build/
