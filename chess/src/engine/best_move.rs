@@ -169,45 +169,44 @@ mod tests {
         assert_eq!(chess_1, chess_2);
     }
 
-    // #[test]
-    // fn find_best_move() {
-    //     let mut chess_1 = Chess::new();
-    //     let chess_2 = Chess::new();
-    //     let mut engine = Engine::new();
-    //
-    //     let start = Instant::now();
-    //
-    //     let depth = 5;
-    //     let m = engine.get_best_move(&mut chess_1, depth);
-    //
-    //     println!(
-    //         "Completed search up to depth {}, evaluated {} nodes, took {} ms",
-    //         depth,
-    //         engine.nodes,
-    //         start.elapsed().as_millis()
-    //     );
-    //     println!("{}", m.unwrap().to_san(&chess_1));
-    //
-    //     assert_eq!(chess_1, chess_2);
-    // }
-    //
-    // #[test]
-    // fn test_ladder_mate() {
-    //     let mut board =
-    //         Chess::from_fen("7k/8/8/8/8/6r1/7r/K7 w - - 0 1");
-    //     let mut engine = Engine::new();
-    //
-    //     let best = engine.get_best_move_in_time(&mut board, 1_000, None);
-    //     assert!(best.is_some(), "Engine should find a move for white");
-    //     board.apply_move(&best.unwrap());
-    //
-    //     let mut engine2 = Engine::new();
-    //     let best = engine2.get_best_move_in_time(&mut board, 1_000, None);
-    //     assert!(best.is_some(), "Engine should find a move for black");
-    //     assert_eq!(
-    //         best.unwrap().to_san(&board),
-    //         "Rg1#",
-    //         "Black should play Rg1# for checkmate"
-    //     );
-    // }
+    #[test]
+    fn find_best_move() {
+        let mut chess_1 = Chess::new();
+        let chess_2 = Chess::new();
+        let mut engine = Engine::new();
+
+        let start = Instant::now();
+
+        let depth = 5;
+        let m = engine.get_best_move(&mut chess_1, depth);
+
+        println!(
+            "Completed search up to depth {}, evaluated {} nodes, took {} ms",
+            depth,
+            engine.nodes,
+            start.elapsed().as_millis()
+        );
+        println!("{}", m.unwrap().to_san(&chess_1));
+
+        assert_eq!(chess_1, chess_2);
+    }
+
+    #[test]
+    fn test_ladder_mate() {
+        let mut board = Chess::from_fen("7k/8/8/8/8/6r1/7r/K7 w - - 0 1");
+        let mut engine = Engine::new();
+
+        let best = engine.get_best_move_in_time(&mut board, 1_000, None);
+        assert!(best.is_some(), "Engine should find a move for white");
+        board.apply_move(&best.unwrap());
+
+        let mut engine2 = Engine::new();
+        let best = engine2.get_best_move_in_time(&mut board, 1_000, None);
+        assert!(best.is_some(), "Engine should find a move for black");
+        assert_eq!(
+            best.unwrap().to_san(&board),
+            "Rg1#",
+            "Black should play Rg1# for checkmate"
+        );
+    }
 }

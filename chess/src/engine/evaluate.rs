@@ -11,7 +11,7 @@ use crate::{
         },
         ray::{diagonal_attacks, straight_attacks},
     },
-    utils::{bit_scan, count_ones, BitBoard, FILES},
+    utils::{BitBoard, FILES, bit_scan, count_ones},
 };
 
 const D4: usize = 27;
@@ -99,34 +99,6 @@ const EG_KING_TABLE: [i32; 64] = [
 ];
 
 impl Chess {
-    fn count_passed_pawns(&self) -> i32 {
-        let mut score = 0;
-        let mut white_passed = 0;
-        let mut black_passed = 0;
-
-        let mut white_pawns = self.white_pawns;
-        while white_pawns != 0 {
-            let sq = bit_scan(white_pawns);
-            if is_passed(sq, White, self.black_pawns) {
-                white_passed |= 1 << sq;
-            }
-            white_pawns &= white_pawns - 1;
-        }
-
-        let mut black_pawns = self.black_pawns;
-        while black_pawns != 0 {
-            let sq = bit_scan(black_pawns);
-            if is_passed(sq, Black, self.white_pawns) {
-                black_passed |= 1 << sq;
-            }
-            black_pawns &= black_pawns - 1;
-        }
-
-        score += count_ones(white_passed);
-        score -= count_ones(black_passed);
-        score
-    }
-
     // Returns positive if better for the side to move, negative if worse
     pub fn evaluate_stm(&self) -> i32 {
         let score = self.evaluate();
@@ -153,14 +125,20 @@ impl Chess {
 
         score += self.material_score();
 
-        // Calculate for both middle game and end game
+        // Calculate positional score for both middle game and end game
         let mg_score = self.calculate_pst_score(true);
         let eg_score = self.calculate_pst_score(false);
         let phase = self.get_game_phase();
         score += (mg_score * phase + eg_score * (24 - phase)) / 24;
 
         // Mobility score
-        score += self.mobility_score() / 2;
+        // Square root since it is bad if we only have very little moves, but when we have 50 or 30 moves it matters much less.
+        score += self.count_pseudolegal_moves(White).isqrt();
+        score -= self.count_pseudolegal_moves(Black).isqrt();
+
+        // King safety: Higher score is more safe
+        score += self.king_safety(&Color::White);
+        score -= self.king_safety(&Color::Black);
 
         // Development bonus in opening
         if phase > 18 {
@@ -207,20 +185,40 @@ impl Chess {
 
         score
     }
-    fn mobility_score(&self) -> i32 {
-        // Count pseudolegal moves without allocating any Move structs
-        let white_count = self.count_pseudolegal_moves(White);
-        let black_count = self.count_pseudolegal_moves(Black);
-        white_count - black_count
+    fn count_passed_pawns(&self) -> i32 {
+        let mut score = 0;
+        let mut white_passed = 0;
+        let mut black_passed = 0;
+
+        let mut white_pawns = self.white_pawns;
+        while white_pawns != 0 {
+            let sq = bit_scan(white_pawns);
+            if is_passed(sq, White, self.black_pawns) {
+                white_passed |= 1 << sq;
+            }
+            white_pawns &= white_pawns - 1;
+        }
+
+        let mut black_pawns = self.black_pawns;
+        while black_pawns != 0 {
+            let sq = bit_scan(black_pawns);
+            if is_passed(sq, Black, self.white_pawns) {
+                black_passed |= 1 << sq;
+            }
+            black_pawns &= black_pawns - 1;
+        }
+
+        score += count_ones(white_passed);
+        score -= count_ones(black_passed);
+        score
     }
     fn count_pseudolegal_moves(&self, color: Color) -> i32 {
-        let (rooks, knights, bishops, queens, king, pawns, own_occ, enemy_occ) = match color {
+        let (rooks, knights, bishops, queens, pawns, own_occ, enemy_occ) = match color {
             White => (
                 self.white_rooks,
                 self.white_knights,
                 self.white_bishops,
                 self.white_queens,
-                self.white_king,
                 self.white_pawns,
                 self.white_occupancy(),
                 self.black_occupancy(),
@@ -230,7 +228,6 @@ impl Chess {
                 self.black_knights,
                 self.black_bishops,
                 self.black_queens,
-                self.black_king,
                 self.black_pawns,
                 self.black_occupancy(),
                 self.white_occupancy(),
@@ -250,8 +247,6 @@ impl Chess {
         count += count_attacks(queens, own_occ, |sq| {
             straight_attacks(sq, all_occ) | diagonal_attacks(sq, all_occ)
         });
-        // King: Negative, helping with king safety
-        count -= count_attacks(king, own_occ, |sq| KING_MOVES[sq]);
         // Pawns
         count += count_pawn_moves(pawns, own_occ, enemy_occ, color);
         // En passant
@@ -260,6 +255,261 @@ impl Chess {
         }
 
         count
+    }
+    fn king_safety(&self, color: &Color) -> i32 {
+        let (
+            king,
+            own_pawns,
+            enemy_pawns,
+            enemy_knights,
+            enemy_bishops,
+            enemy_rooks,
+            enemy_queens,
+            enemy_king,
+            own_occ,
+            enemy_occ,
+        ) = match color {
+            White => (
+                self.white_king,
+                self.white_pawns,
+                self.black_pawns,
+                self.black_knights,
+                self.black_bishops,
+                self.black_rooks,
+                self.black_queens,
+                self.black_king,
+                self.white_occupancy(),
+                self.black_occupancy(),
+            ),
+            Black => (
+                self.black_king,
+                self.black_pawns,
+                self.white_pawns,
+                self.white_knights,
+                self.white_bishops,
+                self.white_rooks,
+                self.white_queens,
+                self.white_king,
+                self.black_occupancy(),
+                self.white_occupancy(),
+            ),
+        };
+        let all_occ: BitBoard = own_occ | enemy_occ;
+
+        let king_sq = bit_scan(king);
+        let king_file = king_sq % 8;
+        let king_rank = king_sq / 8;
+        let kf = king_file as i32;
+        let kr = king_rank as i32;
+
+        let king_zone = KING_MOVES[king_sq] | king;
+
+        let mut score: i32 = 0;
+
+        // Files adjacent to king (including king's own file)
+        let adj_files: [Option<usize>; 3] = [
+            if king_file > 0 {
+                Some(king_file - 1)
+            } else {
+                None
+            },
+            Some(king_file),
+            if king_file < 7 {
+                Some(king_file + 1)
+            } else {
+                None
+            },
+        ];
+
+        // Front ranks for pawn shield (one and two steps forward)
+        let (rank1, rank2): (Option<i32>, Option<i32>) = match color {
+            White => (
+                if kr + 1 < 8 { Some(kr + 1) } else { None },
+                if kr + 2 < 8 { Some(kr + 2) } else { None },
+            ),
+            Black => (
+                if kr - 1 >= 0 { Some(kr - 1) } else { None },
+                if kr - 2 >= 0 { Some(kr - 2) } else { None },
+            ),
+        };
+
+        // Build shield masks
+        let mut front_shield: BitBoard = 0;
+        let mut deep_shield: BitBoard = 0;
+        let mut shield_mask: BitBoard = 0;
+
+        for f_opt in adj_files.iter() {
+            if let Some(f) = f_opt {
+                if let Some(r) = rank1 {
+                    let sq = (r * 8 + *f as i32) as usize;
+                    front_shield |= 1 << sq;
+                    shield_mask |= 1 << sq;
+                }
+                if let Some(r) = rank2 {
+                    let sq = (r * 8 + *f as i32) as usize;
+                    deep_shield |= 1 << sq;
+                    shield_mask |= 1 << sq;
+                }
+            }
+        }
+
+        // 1. Pawn shield: friendly pawns in front of king
+        let shield_count = count_ones(own_pawns & shield_mask);
+        score += shield_count * 15;
+
+        // 5. Storm damage: enemy pawns in shield zone
+        let storm_front = count_ones(enemy_pawns & front_shield);
+        let storm_deep = count_ones(enemy_pawns & deep_shield);
+        score -= storm_front * 30;
+        score -= storm_deep * 10;
+
+        // 2. King zone attack count
+        // Pawn attacks into zone
+        let mut pawn_attacks_bb: BitBoard = 0;
+        let mut p = enemy_pawns;
+        while p != 0 {
+            let sq = bit_scan(p);
+            pawn_attacks_bb |= match color {
+                White => BLACK_PAWN_ATTACKS[sq],
+                Black => WHITE_PAWN_ATTACKS[sq],
+            };
+            p &= p - 1;
+        }
+        score -= count_ones(pawn_attacks_bb & king_zone) * 10;
+
+        // Knight attacks into zone
+        let mut k = enemy_knights;
+        while k != 0 {
+            let sq = bit_scan(k);
+            if KNIGHT_MOVES[sq] & king_zone != 0 {
+                score -= 25;
+            }
+            k &= k - 1;
+        }
+
+        // Bishop attacks into zone
+        let mut b = enemy_bishops;
+        while b != 0 {
+            let sq = bit_scan(b);
+            if diagonal_attacks(sq, all_occ) & king_zone != 0 {
+                score -= 20;
+            }
+            b &= b - 1;
+        }
+
+        // Rook attacks into zone
+        let mut r = enemy_rooks;
+        while r != 0 {
+            let sq = bit_scan(r);
+            if straight_attacks(sq, all_occ) & king_zone != 0 {
+                score -= 30;
+            }
+            r &= r - 1;
+        }
+
+        // Queen attacks into zone
+        let mut q = enemy_queens;
+        while q != 0 {
+            let sq = bit_scan(q);
+            if (straight_attacks(sq, all_occ) | diagonal_attacks(sq, all_occ)) & king_zone != 0 {
+                score -= 45;
+            }
+            q &= q - 1;
+        }
+
+        // King attack into zone
+        if KING_MOVES[king_sq] & enemy_king != 0 {
+            score -= 10;
+        }
+
+        // 3. King tropism: enemy pieces close to the king are weighted more heavily
+        let chebyshev = |sq: usize| -> i32 {
+            let df = (sq as i32 % 8 - kf).abs();
+            let dr = (sq as i32 / 8 - kr).abs();
+            df.max(dr)
+        };
+
+        let mut tropism = 0;
+
+        let mut pieces = enemy_knights;
+        while pieces != 0 {
+            let sq = bit_scan(pieces);
+            tropism += (6 - chebyshev(sq).min(6)) * 10;
+            pieces &= pieces - 1;
+        }
+
+        let mut pieces = enemy_bishops;
+        while pieces != 0 {
+            let sq = bit_scan(pieces);
+            tropism += (6 - chebyshev(sq).min(6)) * 10;
+            pieces &= pieces - 1;
+        }
+
+        let mut pieces = enemy_rooks;
+        while pieces != 0 {
+            let sq = bit_scan(pieces);
+            tropism += (6 - chebyshev(sq).min(6)) * 15;
+            pieces &= pieces - 1;
+        }
+
+        let mut pieces = enemy_queens;
+        while pieces != 0 {
+            let sq = bit_scan(pieces);
+            tropism += (6 - chebyshev(sq).min(6)) * 30;
+            pieces &= pieces - 1;
+        }
+
+        score -= tropism;
+
+        // 4. Open file penalty (adjacent files too)
+        for f_opt in adj_files.iter() {
+            if let Some(f) = f_opt {
+                let file_bb = FILES[*f];
+                let has_friendly = (own_pawns & file_bb) != 0;
+                if !has_friendly {
+                    let is_king_file = *f == king_file;
+                    let has_enemy = (enemy_pawns & file_bb) != 0;
+                    if !has_enemy {
+                        // Fully open
+                        score -= if is_king_file { 30 } else { 15 };
+                    } else {
+                        // Semi-open
+                        score -= if is_king_file { 15 } else { 8 };
+                    }
+                }
+            }
+        }
+
+        // 6. Safe checks: count enemy pieces that can directly check the king
+        let diag_atk = diagonal_attacks(king_sq, all_occ);
+        let strt_atk = straight_attacks(king_sq, all_occ);
+
+        let pawn_checks = count_ones(
+            enemy_pawns
+                & match color {
+                    White => BLACK_PAWN_ATTACKS[king_sq],
+                    Black => WHITE_PAWN_ATTACKS[king_sq],
+                },
+        );
+        score -= pawn_checks * 15;
+
+        let knight_checks = count_ones(enemy_knights & KNIGHT_MOVES[king_sq]);
+        score -= knight_checks * 35;
+
+        let bishop_checks = count_ones(diag_atk & enemy_bishops);
+        score -= bishop_checks * 25;
+
+        let rook_checks = count_ones(strt_atk & enemy_rooks);
+        score -= rook_checks * 35;
+
+        let queen_checks = count_ones((diag_atk | strt_atk) & enemy_queens);
+        score -= queen_checks * 50;
+
+        if KING_MOVES[king_sq] & enemy_king != 0 {
+            score -= 10;
+        }
+
+        score
     }
     fn calculate_pst_score(&self, middlegame: bool) -> i32 {
         let (pawn_t, knight_t, bishop_t, rook_t, queen_t, king_t) = if middlegame {
