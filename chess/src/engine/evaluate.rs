@@ -115,12 +115,12 @@ impl Chess {
 
         // Draw detection: 50-move rule
         if self.halfmove_clock >= 100 {
-            return 0;
+            return score;
         }
 
         // Draw detection: threefold repetition
         if self.history.is_repetition(self) {
-            return 0;
+            return score;
         }
 
         score += self.material_score();
